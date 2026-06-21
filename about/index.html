@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Omo Research — exploring voice, space, and presence as the primitives of human-agent interaction." />
+  <meta name="theme-color" content="#f5f0e8" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line x1='20' y1='20' x2='20' y2='180' stroke='%231a1008' stroke-width='12'/><line x1='20' y1='20' x2='100' y2='20' stroke='%231a1008' stroke-width='12'/><line x1='20' y1='180' x2='180' y2='180' stroke='%231a1008' stroke-width='12'/><rect x='90' y='90' width='16' height='16' fill='%231a1008'/></svg>" />
+  <title>Research — Omo Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --ink: #1a1008;
+      --dark-taupe: #4a3b2f;
+      --mid-taupe: #8a7865;
+      --paper: #f5f0e8;
+      --border: #d4cdc0;
+      --font-body: "Crimson Text", Georgia, "Times New Roman", serif;
+      --font-mono: "IBM Plex Mono", "SF Mono", "Menlo", monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .placeholder {
+      text-align: center;
+      max-width: 32rem;
+    }
+    .placeholder-mark {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .placeholder-mark svg { width: 96px; height: 96px; }
+    .placeholder-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--mid-taupe);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 1.25rem;
+    }
+    .placeholder-headline {
+      font-style: italic;
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+    }
+    .placeholder-text {
+      font-size: 1.05rem;
+      color: var(--dark-taupe);
+      line-height: 1.7;
+      max-width: 28rem;
+      margin: 0 auto;
+    }
+    .placeholder-home {
+      display: inline-block;
+      margin-top: 2.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--mid-taupe);
+      text-decoration: none;
+      transition: color 140ms;
+    }
+    .placeholder-home:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <main class="placeholder">
+    <div class="placeholder-mark">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="20" y1="20" x2="20" y2="180" stroke="#1a1008" stroke-width="8"/>
+        <line x1="20" y1="20" x2="100" y2="20" stroke="#1a1008" stroke-width="8"/>
+        <line x1="20" y1="180" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/>
+        <line x1="100" y1="20" x2="130" y2="20" stroke="#1a1008" stroke-width="8"/>
+        <line x1="140" y1="20" x2="160" y2="20" stroke="#1a1008" stroke-width="8"/>
+        <line x1="180" y1="20" x2="180" y2="60" stroke="#1a1008" stroke-width="8"/>
+        <line x1="180" y1="72" x2="180" y2="110" stroke="#1a1008" stroke-width="8"/>
+        <line x1="180" y1="120" x2="180" y2="150" stroke="#1a1008" stroke-width="8"/>
+        <line x1="180" y1="160" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/>
+        <path d="M 62 100 A 30 30 0 0 1 100 70" fill="none" stroke="#1a1008" stroke-width="7"/>
+        <path d="M 100 70 A 30 30 0 0 1 100 90" fill="none" stroke="#1a1008" stroke-width="7"/>
+        <path d="M 100 90 A 30 30 0 0 0 62 100" fill="none" stroke="#1a1008" stroke-width="7"/>
+        <rect x="95" y="95" width="10" height="10" fill="#1a1008"/>
+      </svg>
+    </div>
+    <p class="placeholder-label">Research</p>
+    <h1 class="placeholder-headline">We're looking into Minecraft.</h1>
+    <p class="placeholder-text">
+      We test ideas by building them — exploring voice, space, and presence as the
+      primitives of human-agent interaction. More to share soon.
+    </p>
+    <a class="placeholder-home" href="/">← Home</a>
+  </main>
+</body>
+</html>
