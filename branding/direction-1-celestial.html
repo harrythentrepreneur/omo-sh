@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omo Research — Direction 1: Celestial / Orbital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --deep-navy: #0a1628;
+      --navy: #13203d;
+      --mid-blue: #1e3256;
+      --gold: #d4a843;
+      --gold-light: #f0d78c;
+      --cream: #f7f5f0;
+      --white: #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--cream);
+      color: var(--deep-navy);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+    .logo-mark {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .logo-mark svg {
+      width: 180px;
+      height: 180px;
+    }
+    .logotype {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      color: var(--deep-navy);
+      margin-bottom: 0.4rem;
+    }
+    .logotype .dot {
+      color: var(--gold);
+    }
+    .tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--mid-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      opacity: 0.7;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 4rem;
+    }
+    section h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--deep-navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--gold-light);
+    }
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .swatch {
+      flex: 1 1 120px;
+      min-width: 100px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .swatch-color {
+      height: 100px;
+    }
+    .swatch-info {
+      padding: 0.75rem;
+      background: var(--white);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+    }
+    .swatch-info .hex {
+      font-weight: 600;
+      color: var(--deep-navy);
+    }
+    .swatch-info .label {
+      color: var(--mid-blue);
+      opacity: 0.7;
+      margin-top: 0.15rem;
+    }
+
+    /* Typography */
+    .type-sample {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .type-headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 500;
+      color: var(--deep-navy);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .type-body {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      color: var(--deep-navy);
+      opacity: 0.8;
+      line-height: 1.8;
+      max-width: 600px;
+    }
+    .type-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--mid-blue);
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /* Rationale */
+    .rationale {
+      background: var(--deep-navy);
+      color: var(--cream);
+      padding: 2.5rem;
+      border-radius: 12px;
+      font-style: normal;
+      line-height: 1.9;
+    }
+    .rationale p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+    }
+    .rationale strong {
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    /* Nav */
+    .brand-nav {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .brand-nav a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--mid-blue);
+      text-decoration: none;
+      margin: 0 0.75rem;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .brand-nav a:hover { opacity: 1; color: var(--gold); }
+
+    @media (max-width: 600px) {
+      .container { padding: 2rem 1.25rem 4rem; }
+      .type-sample { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo-mark">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer orbital ring -->
+        <circle cx="100" cy="100" r="85" fill="none" stroke="#d4a843" stroke-width="1.5" stroke-dasharray="8 10" opacity="0.5"/>
+        <!-- Middle orbital ellipse (angled) -->
+        <ellipse cx="100" cy="100" rx="70" ry="25" fill="none" stroke="#d4a843" stroke-width="1.2" transform="rotate(-30 100 100)" opacity="0.6"/>
+        <!-- Inner orbital path -->
+        <circle cx="100" cy="100" r="52" fill="none" stroke="#d4a843" stroke-width="1" stroke-dasharray="4 6" opacity="0.4"/>
+        <!-- Central body (planet / the "O") -->
+        <defs>
+          <radialGradient id="planetGrad" cx="40%" cy="35%">
+            <stop offset="0%" stop-color="#f0d78c"/>
+            <stop offset="40%" stop-color="#d4a843"/>
+            <stop offset="100%" stop-color="#1e3256"/>
+          </radialGradient>
+        </defs>
+        <circle cx="100" cy="100" r="36" fill="url(#planetGrad)"/>
+        <!-- Highlight on planet -->
+        <ellipse cx="87" cy="87" rx="12" ry="8" fill="white" opacity="0.18"/>
+        <!-- Central dot (the "eye" / presence marker) -->
+        <circle cx="100" cy="100" r="7" fill="#0a1628"/>
+        <circle cx="100" cy="100" r="3" fill="#f0d78c" opacity="0.8"/>
+        <!-- Small orbiting node -->
+        <circle cx="148" cy="68" r="6" fill="#d4a843"/>
+        <circle cx="148" cy="68" r="2.5" fill="#0a1628"/>
+        <!-- Connecting line from orbit to center -->
+        <line x1="148" y1="68" x2="100" y2="100" stroke="#d4a843" stroke-width="0.8" opacity="0.3" stroke-dasharray="3 5"/>
+      </svg>
+    </div>
+    <h1 class="logotype">omo<span class="dot">·</span>research</h1>
+    <p class="tagline">Exploring the next interface for agents</p>
+  </header>
+
+  <section>
+    <h2>Color Palette</h2>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0a1628;"></div>
+        <div class="swatch-info"><div class="hex">#0a1628</div><div class="label">Deep Space Navy</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#13203d;"></div>
+        <div class="swatch-info"><div class="hex">#13203d</div><div class="label">Cosmic Navy</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1e3256;"></div>
+        <div class="swatch-info"><div class="hex">#1e3256</div><div class="label">Midnight Blue</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#d4a843;"></div>
+        <div class="swatch-info"><div class="hex">#d4a843</div><div class="label">Stellar Gold</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f0d78c;"></div>
+        <div class="swatch-info"><div class="hex">#f0d78c</div><div class="label">Warm Gold Light</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f7f5f0; border:1px solid #e0ddd6;"></div>
+        <div class="swatch-info"><div class="hex">#f7f5f0</div><div class="label">Cream Base</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <div class="type-sample">
+      <div class="type-headline">Voice, Space, Presence — all three at once.</div>
+      <div class="type-body">
+        Omo Research builds working prototypes that explore how human beings will communicate with AI agents. 
+        Not a hypothetical paper. Not a speculative deck. Deployed, open-source, running on the hardware you 
+        already carry. The next interface is ambient, spatial, and speaks your language.
+      </div>
+      <div class="type-mono">
+        Headings: Space Grotesk (300–700) &nbsp;|&nbsp; UI / Labels: JetBrains Mono (400–600)<br/>
+        System fallbacks: system-ui, -apple-system, sans-serif
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Style Rationale</h2>
+    <div class="rationale">
+      <p>
+        The <strong>Celestial / Orbital</strong> direction draws a deliberate parallel between Omo Research's three 
+        pillars — <strong>voice, space, and presence</strong> — and the mechanics of orbital systems. The central 
+        planet represents <strong>presence</strong> (the agent's grounded awareness), while orbiting paths and a 
+        traveling node evoke <strong>voice in motion</strong> and <strong>spatial computing</strong>. Deep navy 
+        conveys scientific rigor and the unknown frontier; warm gold provides the human warmth that Omo's 
+        personality demands. The central dot — an "eye" inside the planet — hints at <strong>attention and 
+        awareness</strong>, the unspoken fourth dimension of agent communication. This direction says: 
+        <em>we are doing serious research, but there is wonder in it.</em>
+      </p>
+    </div>
+  </section>
+
+  <nav class="brand-nav">
+    <a href="direction-1-celestial.html">● Celestial</a>
+    <a href="direction-2-brutalist.html">○ Brutalist</a>
+    <a href="direction-3-bauhaus-refined.html">○ Bauhaus Refined</a>
+    <a href="direction-4-warm-minimal.html">○ Warm Minimal</a>
+    <a href="direction-5-molecular.html">○ Molecular</a>
+  </nav>
+
+</div>
+</body>
+</html>

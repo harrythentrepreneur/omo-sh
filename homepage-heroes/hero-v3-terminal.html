@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omo Research — Hero V3: Terminal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --bg-card: #f9f7f3;
+      --text: #2c251e;
+      --text-2: #8b8680;
+      --border: #e0ddd6;
+      --btn-bg: #2e2a26;
+      --btn-hover: #3d3832;
+      --link-color: #8b5a2b;
+      --font-body: "Sora", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+      --font-mono: "Geist Mono", "SFMono-Regular", "Menlo", monospace;
+
+      /* Terminal colors */
+      --term-bg: #1a1815;
+      --term-surface: #24211e;
+      --term-text: #e8e4df;
+      --term-dim: #8b8680;
+      --term-accent: #d4a055;
+      --term-green: #7fb87f;
+      --term-blue: #7fa9c9;
+      --term-pink: #c98b9e;
+      --term-border: #3a3632;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+    }
+
+    /* ---- Top bar (warm cream) ---- */
+    .hero-top {
+      text-align: center;
+      padding: 2.5rem 2rem 1rem;
+    }
+
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-2);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-name {
+      font-family: var(--font-body);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    /* ---- Terminal section ---- */
+    .term-section {
+      max-width: 800px;
+      margin: 1.5rem auto 2rem;
+      padding: 0 1.25rem;
+    }
+
+    .term-window {
+      background: var(--term-bg);
+      border: 1px solid var(--term-border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Title bar */
+    .term-titlebar {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background: var(--term-surface);
+      border-bottom: 1px solid var(--term-border);
+      gap: 0.5rem;
+    }
+
+    .term-dots {
+      display: flex;
+      gap: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    .term-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .term-dot.red    { background: #e0555a; }
+    .term-dot.yellow { background: #cfaa4c; }
+    .term-dot.green  { background: #5fa85f; }
+
+    .term-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--term-dim);
+      margin-left: 0.5rem;
+    }
+
+    /* Terminal body */
+    .term-body {
+      padding: 1.5rem 1.5rem 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.85;
+      color: var(--term-text);
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .term-prompt { color: var(--term-green); }
+    .term-cmd    { color: var(--term-text); }
+    .term-output { color: var(--term-dim); margin-bottom: 0.75rem; }
+    .term-highlight { color: var(--term-accent); font-weight: 500; }
+    .term-blue   { color: var(--term-blue); }
+    .term-pink   { color: var(--term-pink); }
+    .term-dim    { color: var(--term-dim); }
+    .term-bold   { font-weight: 600; color: var(--term-text); }
+
+    .term-cursor {
+      display: inline-block;
+      width: 0.55em;
+      height: 1.15em;
+      background: var(--term-text);
+      margin-left: 0.15em;
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ---- Bottom (warm cream) ---- */
+    .hero-bottom {
+      text-align: center;
+      padding: 0.5rem 2rem 4rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      color: var(--text-2);
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Actions */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.8rem 1.8rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 140ms, border-color 140ms, transform 140ms;
+      text-decoration: none;
+    }
+
+    .btn-dark {
+      background: var(--btn-bg);
+      color: #fff;
+      border-color: var(--btn-bg);
+    }
+    .btn-dark:hover { background: var(--btn-hover); border-color: var(--btn-hover); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-outline:hover { border-color: var(--text); background: rgba(44,37,30,0.04); transform: translateY(-1px); }
+
+    /* Stats */
+    .stats-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 0;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--text-2);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .term-body { font-size: 0.72rem; padding: 1.25rem 1rem 1.5rem; min-height: 240px; }
+      .stats-bar { gap: 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: center; }
+      .hero-actions .btn { width: 100%; max-width: 16rem; justify-content: center; }
+      .stats-bar { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Warm cream top -->
+  <header class="hero-top">
+    <p class="hero-label">AI Research Lab</p>
+    <h1 class="hero-name">Omo Research</h1>
+  </header>
+
+  <!-- Terminal window -->
+  <section class="term-section">
+    <div class="term-window">
+      <div class="term-titlebar">
+        <div class="term-dots">
+          <span class="term-dot red" aria-hidden="true"></span>
+          <span class="term-dot yellow" aria-hidden="true"></span>
+          <span class="term-dot green" aria-hidden="true"></span>
+        </div>
+        <span class="term-title">omo — -zsh — 80×24</span>
+      </div>
+      <div class="term-body">
+        <div><span class="term-prompt">❯</span> <span class="term-cmd">omo.init()</span></div>
+        <div class="term-output">Initializing research environment...</div>
+
+        <div style="margin-top: 0.75rem;">
+          <span class="term-prompt">❯</span> <span class="term-cmd">cat</span> <span class="term-pink">manifesto.md</span>
+        </div>
+        <div class="term-output" style="margin-top: 0.4rem;">
+          <span class="term-dim">//</span> <span class="term-highlight">The next interface for communicating with agents</span><br />
+          <span class="term-dim">//</span> We explore <span class="term-bold">voice</span>, <span class="term-bold">space</span>, and <span class="term-bold">presence</span><br />
+          <span class="term-dim">//</span> as the primitives of human-agent interaction.<br />
+          <span class="term-dim">//</span> Not a smarter text box — a new paradigm.
+        </div>
+
+        <div style="margin-top: 1rem;">
+          <span class="term-prompt">❯</span> <span class="term-cmd">omo.launch</span> <span class="term-blue">--modality=voice+spatial</span>
+        </div>
+        <div class="term-output" style="margin-bottom: 0;">
+          ✓ Streaming ASR loaded (sub-300ms)<br />
+          ✓ Spatial audio engine initialized (48kHz)<br />
+          ✓ Agent runtime ready <span class="term-dim">— waiting for input</span>
+        </div>
+        <div><span class="term-cursor" aria-hidden="true"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warm cream bottom -->
+  <div class="hero-bottom">
+    <p class="hero-subtitle">
+      We explore voice, space, and presence as the primitives of human-agent interaction.
+      All research open source. All models running on consumer hardware.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn btn-dark" href="https://github.com/omo-research" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn btn-dark" href="#">Live Demos ↗</a>
+      <a class="btn btn-dark" href="#">Papers ↗</a>
+      <a class="btn btn-outline" href="mailto:harrythentrepreneur@gmail.com">Contact ↗</a>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-item">
+        <p class="stat-value">4 Projects</p>
+        <p class="stat-label">Active</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-value">Voice · Spatial · Visual</p>
+        <p class="stat-label">Modalities</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-value">&lt;300ms Latency</p>
+        <p class="stat-label">Real-time</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-value">Open Source</p>
+        <p class="stat-label">All Research</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omo Research — Direction 3: Bauhaus Refined</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f5f0;
+      --cream-dark: #eee9de;
+      --text: #2c251e;
+      --text-2: #8b8680;
+      --bauhaus-red: #e03a3a;
+      --bauhaus-blue: #2563eb;
+      --bauhaus-yellow: #f5c842;
+      --bauhaus-black: #1a1a1a;
+      --border: #e0ddd6;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'Sora', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.75;
+      min-height: 100vh;
+      font-size: 15px;
+    }
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+    .logo-mark {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .logo-mark svg {
+      width: 180px;
+      height: 180px;
+    }
+    .logotype {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .logotype em {
+      font-style: normal;
+      color: var(--bauhaus-blue);
+    }
+    .tagline {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text-2);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+    section h2 {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-2);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--bauhaus-yellow);
+    }
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .swatch {
+      flex: 1 1 110px;
+      min-width: 90px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .swatch:hover { transform: translateY(-3px); }
+    .swatch-color {
+      height: 110px;
+    }
+    .swatch-info {
+      padding: 0.7rem;
+      background: white;
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.7rem;
+    }
+    .swatch-info .hex {
+      font-weight: 600;
+      color: var(--text);
+    }
+    .swatch-info .label {
+      color: var(--text-2);
+      margin-top: 0.12rem;
+    }
+
+    .type-sample {
+      background: white;
+      border-radius: 10px;
+      padding: 2.5rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      border-left: 5px solid var(--bauhaus-red);
+    }
+    .type-headline {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .type-body {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.05rem;
+      color: var(--text);
+      opacity: 0.82;
+      line-height: 1.8;
+      max-width: 580px;
+    }
+    .type-mono {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-2);
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .rationale {
+      background: var(--bauhaus-black);
+      color: var(--cream);
+      padding: 2.5rem;
+      border-radius: 10px;
+      line-height: 1.9;
+    }
+    .rationale p {
+      font-size: 1.02rem;
+      opacity: 0.9;
+    }
+    .rationale strong {
+      color: var(--bauhaus-yellow);
+      font-weight: 600;
+    }
+
+    .brand-nav {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .brand-nav a {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-2);
+      text-decoration: none;
+      margin: 0 0.75rem;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .brand-nav a:hover { opacity: 1; color: var(--bauhaus-red); }
+
+    @media (max-width: 600px) {
+      .container { padding: 2rem 1.25rem 4rem; }
+      .type-sample { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo-mark">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Interlocking Bauhaus geometric composition forming "omo" -->
+        
+        <!-- Large red circle — the first "o" -->
+        <circle cx="70" cy="100" r="44" fill="#e03a3a" opacity="0.9"/>
+        <!-- Negative space cutout in the red circle -->
+        <circle cx="70" cy="100" r="18" fill="#f7f5f0"/>
+        
+        <!-- Blue rectangle — the "m" structure (two vertical strokes) -->
+        <rect x="88" y="54" width="12" height="92" fill="#2563eb" opacity="0.9"/>
+        <rect x="116" y="54" width="12" height="92" fill="#2563eb" opacity="0.9"/>
+        <!-- Yellow triangles forming the "m" arches -->
+        <polygon points="100,54 88,54 100,80" fill="#f5c842"/>
+        <polygon points="100,54 112,54 100,80" fill="#f5c842" opacity="0.85"/>
+        <polygon points="128,54 116,54 128,80" fill="#f5c842"/>
+        <polygon points="128,54 140,54 128,80" fill="#f5c842" opacity="0.85"/>
+        <!-- Connecting horizontal bar for "m" -->
+        <rect x="88" y="78" width="40" height="6" fill="#f5c842"/>
+        
+        <!-- Small red circle — the second "o" -->
+        <circle cx="170" cy="100" r="26" fill="#e03a3a" opacity="0.9"/>
+        <circle cx="170" cy="100" r="8" fill="#f7f5f0"/>
+        
+        <!-- Thin black rule — grounding line -->
+        <line x1="26" y1="146" x2="196" y2="146" stroke="#1a1a1a" stroke-width="2" opacity="0.5"/>
+      </svg>
+    </div>
+    <h1 class="logotype">omo <em>research</em></h1>
+    <p class="tagline">Geometry of the next interface</p>
+  </header>
+
+  <section>
+    <h2>Color Palette</h2>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f7f5f0; border:1px solid #e0ddd6;"></div>
+        <div class="swatch-info"><div class="hex">#f7f5f0</div><div class="label">Cream Base</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#e03a3a;"></div>
+        <div class="swatch-info"><div class="hex">#e03a3a</div><div class="label">Bauhaus Red</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2563eb;"></div>
+        <div class="swatch-info"><div class="hex">#2563eb</div><div class="label">Bauhaus Blue</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f5c842;"></div>
+        <div class="swatch-info"><div class="hex">#f5c842</div><div class="label">Bauhaus Yellow</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2c251e;"></div>
+        <div class="swatch-info"><div class="hex">#2c251e</div><div class="label">Warm Brown Text</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1a1a1a;"></div>
+        <div class="swatch-info"><div class="hex">#1a1a1a</div><div class="label">Structural Black</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <div class="type-sample">
+      <div class="type-headline">Form follows function. Interface follows presence.</div>
+      <div class="type-body">
+        Omo Research explores the geometry of human-agent communication — not through metaphor, 
+        but through working prototypes. Voice is the arc. Space is the grid. Presence is the field 
+        that holds them together. We borrow from a century-old design philosophy that insisted 
+        beauty emerges from utility. Every interface decision traces back to a user need, every 
+        color to a signal, every shape to an affordance.
+      </div>
+      <div class="type-mono">
+        Headings / Body: Sora (300–700) &nbsp;|&nbsp; UI / Labels: Geist Mono (400–600)<br/>
+        Aligned with existing Omo Research design tokens. Bauhaus primaries layered atop the cream base.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Style Rationale</h2>
+    <div class="rationale">
+      <p>
+        The <strong>Bauhaus Refined</strong> direction takes the geometric abstraction already present 
+        in Omo's design language and pushes it further. Where the existing brand hints at Bauhaus 
+        influence through warm minimalism, this direction <strong>fully commits</strong> to the 
+        movement's core vocabulary: <strong>primary colors</strong> (red, blue, yellow) anchored on a 
+        cream base, <strong>pure geometry</strong> (circles, rectangles, triangles) composing a 
+        unified mark, and <strong>structural clarity</strong> through intentional negative space. 
+        The interlocking shapes in the logo form "omo" without spelling it — the "m" is blue 
+        verticals bridged by yellow triangles; the twin "o"s are red circles with cream cutouts. 
+        This direction says: <em>research is a tradition of disciplined exploration — and we are 
+        extending that tradition into the age of agents.</em>
+      </p>
+    </div>
+  </section>
+
+  <nav class="brand-nav">
+    <a href="direction-1-celestial.html">○ Celestial</a>
+    <a href="direction-2-brutalist.html">○ Brutalist</a>
+    <a href="direction-3-bauhaus-refined.html">● Bauhaus Refined</a>
+    <a href="direction-4-warm-minimal.html">○ Warm Minimal</a>
+    <a href="direction-5-molecular.html">○ Molecular</a>
+  </nav>
+
+</div>
+</body>
+</html>

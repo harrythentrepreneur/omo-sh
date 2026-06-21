@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omo Research — Direction 4: Warm Minimal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #faf8f4;
+      --cream-card: #fefdfb;
+      --warm-taupe: #8b8680;
+      --brown: #3d3428;
+      --amber: #a0723e;
+      --amber-light: #c99b5a;
+      --terracotta: #c1784c;
+      --sand: #e8e0d5;
+      --border: #e5e0d8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--cream);
+      color: var(--brown);
+      font-family: 'Sora', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.75;
+      min-height: 100vh;
+      font-size: 15px;
+    }
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+    .logo-mark {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .logo-mark svg {
+      width: 180px;
+      height: 180px;
+    }
+    .logotype {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+    }
+    .logotype span {
+      color: var(--amber);
+    }
+    .tagline {
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      color: var(--warm-taupe);
+      font-weight: 400;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+    section h2 {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--warm-taupe);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1.5px solid var(--sand);
+    }
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .swatch {
+      flex: 1 1 100px;
+      min-width: 90px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 14px rgba(61, 52, 40, 0.06);
+      transition: transform 0.2s;
+    }
+    .swatch:hover { transform: translateY(-2px); }
+    .swatch-color {
+      height: 100px;
+    }
+    .swatch-info {
+      padding: 0.65rem 0.7rem;
+      background: var(--cream-card);
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.68rem;
+    }
+    .swatch-info .hex {
+      font-weight: 600;
+      color: var(--brown);
+    }
+    .swatch-info .label {
+      color: var(--warm-taupe);
+      margin-top: 0.1rem;
+    }
+
+    .type-sample {
+      background: var(--cream-card);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 2px 14px rgba(61, 52, 40, 0.04);
+    }
+    .type-headline {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 500;
+      color: var(--brown);
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+    .type-body {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.02rem;
+      color: var(--brown);
+      opacity: 0.8;
+      line-height: 1.85;
+      max-width: 560px;
+    }
+    .type-mono {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--warm-taupe);
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--sand);
+    }
+
+    .rationale {
+      background: var(--brown);
+      color: var(--cream);
+      padding: 2.5rem;
+      border-radius: 16px;
+      line-height: 1.9;
+    }
+    .rationale p {
+      font-size: 1.02rem;
+      opacity: 0.92;
+    }
+    .rationale strong {
+      color: var(--amber-light);
+      font-weight: 600;
+    }
+
+    .brand-nav {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .brand-nav a {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--warm-taupe);
+      text-decoration: none;
+      margin: 0 0.75rem;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .brand-nav a:hover { opacity: 1; color: var(--amber); }
+
+    @media (max-width: 600px) {
+      .container { padding: 2rem 1.25rem 4rem; }
+      .type-sample { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo-mark">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Warm minimal mark: speech bubble merged with a circle → voice + presence -->
+        
+        <!-- Outer circle — presence / the "O" -->
+        <circle cx="100" cy="100" r="72" fill="none" stroke="#a0723e" stroke-width="2.5" opacity="0.5"/>
+        
+        <!-- Main shape: rounded speech-bubble form (voice) merged with central circle (presence) -->
+        <defs>
+          <linearGradient id="warmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#c99b5a"/>
+            <stop offset="100%" stop-color="#a0723e"/>
+          </linearGradient>
+        </defs>
+        
+        <!-- Rounded rectangle forming the speech bubble body -->
+        <rect x="42" y="55" width="116" height="80" rx="40" ry="40" fill="url(#warmGrad)" opacity="0.18"/>
+        
+        <!-- Speech bubble tail (pointing down-right — communication outgoing) -->
+        <polygon points="130,130 160,165 148,125" fill="url(#warmGrad)" opacity="0.18"/>
+        
+        <!-- Central circle — presence marker -->
+        <circle cx="100" cy="95" r="36" fill="url(#warmGrad)"/>
+        
+        <!-- Inner highlight — warmth -->
+        <circle cx="88" cy="84" r="10" fill="white" opacity="0.22"/>
+        
+        <!-- Small dot — attention / the "eye" -->
+        <circle cx="100" cy="95" r="5" fill="#faf8f4"/>
+        
+        <!-- Sound wave arcs (voice visualization) — subtle -->
+        <path d="M 78 65 Q 100 50 122 65" fill="none" stroke="#a0723e" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+        <path d="M 72 60 Q 100 42 128 60" fill="none" stroke="#a0723e" stroke-width="1.2" opacity="0.25" stroke-linecap="round"/>
+        
+        <!-- Small spatial node (space visualization) -->
+        <circle cx="155" cy="52" r="11" fill="none" stroke="#c1784c" stroke-width="2" opacity="0.35"/>
+        <circle cx="155" cy="52" r="4" fill="#c1784c" opacity="0.5"/>
+        <line x1="155" y1="63" x2="100" y2="95" stroke="#c1784c" stroke-width="1" opacity="0.2" stroke-dasharray="4 4"/>
+      </svg>
+    </div>
+    <h1 class="logotype">Omo <span>Research</span></h1>
+    <p class="tagline">The next interface feels like conversation.</p>
+  </header>
+
+  <section>
+    <h2>Color Palette</h2>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#faf8f4; border:1px solid #e5e0d8;"></div>
+        <div class="swatch-info"><div class="hex">#faf8f4</div><div class="label">Warm Cream</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#3d3428;"></div>
+        <div class="swatch-info"><div class="hex">#3d3428</div><div class="label">Warm Brown</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#a0723e;"></div>
+        <div class="swatch-info"><div class="hex">#a0723e</div><div class="label">Amber Core</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#c99b5a;"></div>
+        <div class="swatch-info"><div class="hex">#c99b5a</div><div class="label">Amber Light</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#c1784c;"></div>
+        <div class="swatch-info"><div class="hex">#c1784c</div><div class="label">Terracotta</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#e8e0d5;"></div>
+        <div class="swatch-info"><div class="hex">#e8e0d5</div><div class="label">Warm Sand</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <div class="type-sample">
+      <div class="type-headline">Agents should feel like someone you trust, not something you configure.</div>
+      <div class="type-body">
+        Omo Research builds prototypes that make agent communication feel natural. Voice isn't a 
+        command line — it's a conversation. Space isn't a coordinate system — it's where presence 
+        lives. Our work is warm, approachable, and grounded in real hardware running real code. 
+        No AI hype. No cold, corporate blue. Just honest research with a human tone.
+      </div>
+      <div class="type-mono">
+        Headings / Body: Sora (300–700) &nbsp;|&nbsp; UI / Labels: Geist Mono (400–600)<br/>
+        Close to existing Omo palette — warmer, softer, more rounded.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Style Rationale</h2>
+    <div class="rationale">
+      <p>
+        The <strong>Warm Minimal</strong> direction is the closest to Omo's existing brand but 
+        pushes further into approachability. The logo mark fuses a <strong>speech bubble</strong> 
+        (voice) with a <strong>centered circle</strong> (presence), connected by a subtle arc to 
+        a <strong>spatial node</strong> — visually encoding all three pillars in one round, 
+        gentle mark. The color palette stays anchored in cream and warm brown but introduces 
+        <strong>terracotta</strong> as a secondary accent and pushes amber into a softer, 
+        honey-like range. Rounded corners, generous padding, and low contrast create a 
+        <strong>psychologically safe</strong> brand feel — important for a research lab asking 
+        people to trust agents with their attention and presence. This direction says: 
+        <em>the future of computing is kind.</em>
+      </p>
+    </div>
+  </section>
+
+  <nav class="brand-nav">
+    <a href="direction-1-celestial.html">○ Celestial</a>
+    <a href="direction-2-brutalist.html">○ Brutalist</a>
+    <a href="direction-3-bauhaus-refined.html">○ Bauhaus Refined</a>
+    <a href="direction-4-warm-minimal.html">● Warm Minimal</a>
+    <a href="direction-5-molecular.html">○ Molecular</a>
+  </nav>
+
+</div>
+</body>
+</html>

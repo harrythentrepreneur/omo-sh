@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Omo Research." />
+  <meta name="theme-color" content="#f5f0e8" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line x1='20' y1='20' x2='20' y2='180' stroke='%231a1008' stroke-width='12'/><line x1='20' y1='20' x2='100' y2='20' stroke='%231a1008' stroke-width='12'/><line x1='20' y1='180' x2='180' y2='180' stroke='%231a1008' stroke-width='12'/><rect x='90' y='90' width='16' height='16' fill='%231a1008'/></svg>" />
+  <title>Contact — Omo Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --ink: #1a1008;
+      --near-ink: #2c2015;
+      --mid-taupe: #8a7865;
+      --paper: #f5f0e8;
+      --border: #d4cdc0;
+      --font-body: "Crimson Text", Georgia, "Times New Roman", serif;
+      --font-mono: "IBM Plex Mono", "SF Mono", "Menlo", monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-card {
+      text-align: center;
+      max-width: 480px;
+      padding: 2rem;
+    }
+    .contact-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--mid-taupe);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+    }
+    .contact-email {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.15rem;
+      transition: border-color 140ms;
+    }
+    .contact-email:hover {
+      border-color: var(--ink);
+    }
+    .contact-home {
+      display: inline-block;
+      margin-top: 2.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--mid-taupe);
+      text-decoration: none;
+      transition: color 140ms;
+    }
+    .contact-home:hover {
+      color: var(--ink);
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-card">
+    <p class="contact-label">Contact</p>
+    <a class="contact-email" href="mailto:harrythentrepreneur@gmail.com">harrythentrepreneur@gmail.com</a>
+    <br>
+    <a class="contact-home" href="./index.html">← Home</a>
+  </div>
+</body>
+</html>

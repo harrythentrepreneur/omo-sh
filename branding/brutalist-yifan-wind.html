@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omo Research — Brutalist: Yifan Wind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0d0d0d;
+      --near-black: #1a1a1a;
+      --dark-gray: #333333;
+      --mid-gray: #666666;
+      --light-gray: #cccccc;
+      --white: #ffffff;
+      --cobalt: #0038a8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'IBM Plex Mono', 'SF Mono', 'Menlo', monospace;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      min-height: 100vh;
+      font-size: 15px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+    header {
+      text-align: left;
+      margin-bottom: 5rem;
+      border-bottom: 4px solid var(--black);
+      padding-bottom: 2.5rem;
+    }
+    .logo-mark {
+      display: flex;
+      margin-bottom: 2rem;
+    }
+    .logo-mark svg {
+      width: 160px;
+      height: 160px;
+    }
+    .logotype {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      color: var(--black);
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+    }
+    .tagline {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--cobalt);
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      opacity: 0.9;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+    section h2 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--black);
+    }
+    /* Cobalt underline accent on section headings */
+    section h2::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: var(--cobalt);
+      margin-top: 0.5rem;
+    }
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .swatch {
+      flex: 1 1 100px;
+      min-width: 80px;
+      border: 2px solid var(--black);
+      margin-right: -2px;
+      margin-bottom: -2px;
+    }
+    .swatch-color {
+      height: 120px;
+    }
+    .swatch-info {
+      padding: 0.5rem 0.6rem;
+      background: var(--white);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      border-top: 1px solid var(--black);
+      font-weight: 500;
+    }
+    .swatch-info .hex {
+      font-weight: 700;
+      color: var(--black);
+    }
+    .swatch-info .label {
+      color: var(--mid-gray);
+      margin-top: 0.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .type-sample {
+      border: 2px solid var(--black);
+      padding: 2.5rem;
+      background: var(--white);
+    }
+    .type-headline {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      border-left: 4px solid var(--cobalt);
+      padding-left: 1rem;
+    }
+    .type-body {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.92rem;
+      color: var(--black);
+      line-height: 1.9;
+      max-width: 560px;
+      font-weight: 400;
+      opacity: 0.85;
+    }
+    .type-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--mid-gray);
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .type-label span { color: var(--cobalt); font-weight: 600; }
+
+    .rationale {
+      background: var(--black);
+      color: var(--white);
+      padding: 2.5rem;
+      border: 2px solid var(--black);
+      line-height: 1.9;
+    }
+    .rationale p {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.92rem;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+    .rationale strong {
+      color: var(--light-gray);
+      font-weight: 700;
+    }
+
+    .brand-nav {
+      text-align: left;
+      margin-top: 3rem;
+      border-top: 2px solid var(--black);
+      padding-top: 2rem;
+    }
+    .brand-nav a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--mid-gray);
+      text-decoration: none;
+      margin-right: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .brand-nav a:hover { color: var(--cobalt); }
+
+    @media (max-width: 600px) {
+      .container { padding: 2rem 1rem 4rem; }
+      .type-sample { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo-mark">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- YIFAN WIND — flowing through rigid structure -->
+
+        <!-- Background grid — rigid structure -->
+        <line x1="0" y1="40" x2="200" y2="40" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+        <line x1="0" y1="60" x2="200" y2="60" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+        <line x1="0" y1="80" x2="200" y2="80" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+        <line x1="0" y1="100" x2="200" y2="100" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+        <line x1="0" y1="120" x2="200" y2="120" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+        <line x1="0" y1="140" x2="200" y2="140" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+        <line x1="0" y1="160" x2="200" y2="160" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+        <line x1="40" y1="0" x2="40" y2="200" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+        <line x1="60" y1="0" x2="60" y2="200" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+        <line x1="80" y1="0" x2="80" y2="200" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+        <line x1="100" y1="0" x2="100" y2="200" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+        <line x1="120" y1="0" x2="120" y2="200" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+        <line x1="140" y1="0" x2="140" y2="200" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+        <line x1="160" y1="0" x2="160" y2="200" stroke="#cccccc" stroke-width="0.5" opacity="0.5"/>
+
+        <!-- Outer double frame — intact, rigid -->
+        <rect x="20" y="20" width="160" height="160" fill="none" stroke="#0d0d0d" stroke-width="6"/>
+        <rect x="32" y="32" width="136" height="136" fill="none" stroke="#0d0d0d" stroke-width="2"/>
+
+        <!-- Open "O" — a circle deliberately broken open to let wind pass through -->
+        <!-- Left arc of the O -->
+        <path d="M 62 100 A 38 38 0 0 1 100 62" fill="none" stroke="#0d0d0d" stroke-width="8"/>
+        <!-- Bottom arc of the O -->
+        <path d="M 100 62 A 38 38 0 0 1 138 100" fill="none" stroke="#0d0d0d" stroke-width="8"/>
+        <!-- Right arc of the O -->
+        <path d="M 138 100 A 38 38 0 0 1 100 138" fill="none" stroke="#0d0d0d" stroke-width="8"/>
+        <!-- O is open at bottom-left — gap between 62,100 and 100,138 -->
+
+        <!-- Inner ring of the O — thinner, also open -->
+        <path d="M 76 100 A 24 24 0 0 1 100 76" fill="none" stroke="#0d0d0d" stroke-width="4"/>
+        <path d="M 100 76 A 24 24 0 0 1 124 100" fill="none" stroke="#0d0d0d" stroke-width="4"/>
+        <path d="M 124 100 A 24 24 0 0 1 100 124" fill="none" stroke="#0d0d0d" stroke-width="4"/>
+
+        <!-- Wind lines — cobalt, segmented geometric arcs flowing through grid -->
+        <!-- Wind line 1: sweeping through the open O from left to top-right -->
+        <polyline points="28,130 44,126 60,118 76,108 92,96 108,84 124,74 140,66 156,60 172,56"
+                  fill="none" stroke="#0038a8" stroke-width="3" stroke-linecap="square"/>
+
+        <!-- Wind line 2: higher arc flowing through O opening -->
+        <polyline points="32,98 48,92 64,84 80,74 96,64 112,56 128,50 144,46 160,44"
+                  fill="none" stroke="#0038a8" stroke-width="2" stroke-linecap="square"/>
+
+        <!-- Wind line 3: lower flow, passes outside the O -->
+        <polyline points="24,154 44,148 64,140 84,132 104,124 124,116 144,110 164,106 176,104"
+                  fill="none" stroke="#0038a8" stroke-width="2" stroke-linecap="square"/>
+
+        <!-- Wind line 4: intersects the grid vertically, short segmental arc -->
+        <polyline points="96,28 102,44 108,58 112,70 114,78 112,86"
+                  fill="none" stroke="#0038a8" stroke-width="1.5" stroke-linecap="square"/>
+
+        <!-- Structural anchor — small filled square where black and cobalt intersect -->
+        <rect x="74" y="106" width="8" height="8" fill="#0d0d0d"/>
+        <rect x="76" y="108" width="4" height="4" fill="#0038a8"/>
+      </svg>
+    </div>
+    <h1 class="logotype">Omo<br/>Research</h1>
+    <p class="tagline">逸凡 · Wind — Structure resists. Flow persists.</p>
+  </header>
+
+  <section>
+    <h2>Color Palette</h2>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0d0d0d;"></div>
+        <div class="swatch-info"><div class="hex">#0d0d0d</div><div class="label">Frame Black</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1a1a1a;"></div>
+        <div class="swatch-info"><div class="hex">#1a1a1a</div><div class="label">Anchor Black</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#333333;"></div>
+        <div class="swatch-info"><div class="hex">#333333</div><div class="label">Grid Dark</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#666666;"></div>
+        <div class="swatch-info"><div class="hex">#666666</div><div class="label">Mid Gray</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#cccccc;"></div>
+        <div class="swatch-info"><div class="hex">#cccccc</div><div class="label">Grid Line</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#ffffff;"></div>
+        <div class="swatch-info"><div class="hex">#ffffff</div><div class="label">Base White</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0038a8;"></div>
+        <div class="swatch-info"><div class="hex">#0038a8</div><div class="label">Cobalt Wind</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <div class="type-sample">
+      <div class="type-headline">Rigid grids are for measuring. Wind is for moving.</div>
+      <div class="type-body">
+        Yifan (逸凡) — free and unspirited, like wind that cannot be contained by any
+        structure. The Wind variation sets flowing cobalt lines against a rigid
+        monochrome grid. The "O" mark is deliberately broken open — a circle that
+        refuses to close — allowing the wind lines to pass through instead of being
+        blocked. Every flow line is rendered as segmented geometric polylines, keeping
+        the brutalist DNA while suggesting motion. Cobalt (#0038a8) appears only in
+        the wind lines and nowhere else.
+      </div>
+      <div class="type-label">
+        All typography: IBM Plex Mono (300–700) &nbsp;|&nbsp; <span>Accent: Cobalt Wind #0038a8</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Style Rationale</h2>
+    <div class="rationale">
+      <p>
+        The <strong>Yifan Wind</strong> direction applies <em>逸凡</em> as flow moving
+        <strong>through</strong> structure rather than breaking it. A rigid 20px
+        grid — the brutalist drafting skeleton — underlies the entire logo mark.
+        The double-frame remains intact, but the "O" circle is deliberately opened
+        at its bottom edge so that <strong>cobalt wind lines</strong> (#0038a8)
+        can sweep through. These lines are rendered as polyline segments — geometric,
+        angular, unmistakably brutalist — yet they curve across the composition
+        like air. The palette is B&W with five structural grays plus a single cobalt
+        accent reserved exclusively for motion. This direction says:
+        <em>structure defines the space. Flow defines what moves through it.</em>
+      </p>
+    </div>
+  </section>
+
+  <nav class="brand-nav">
+    <a href="direction-2-brutalist.html">● Brutalist</a>
+    <a href="brutalist-d1-architect.html">○ Architect</a>
+    <a href="brutalist-yifan-ascent.html">○ Ascent</a>
+    <a href="brutalist-yifan-wind.html">● Wind</a>
+    <a href="brutalist-yifan-unbound.html">○ Unbound</a>
+  </nav>
+
+</div>
+</body>
+</html>

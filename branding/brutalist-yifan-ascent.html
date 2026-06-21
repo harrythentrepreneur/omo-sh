@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omo Research — Brutalist: Yifan Ascent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0d0d0d;
+      --near-black: #1a1a1a;
+      --dark-gray: #333333;
+      --mid-gray: #666666;
+      --light-gray: #cccccc;
+      --white: #ffffff;
+      --vermillion: #cc2200;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'IBM Plex Mono', 'SF Mono', 'Menlo', monospace;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      min-height: 100vh;
+      font-size: 15px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+    header {
+      text-align: left;
+      margin-bottom: 5rem;
+      border-bottom: 4px solid var(--black);
+      padding-bottom: 2.5rem;
+    }
+    .logo-mark {
+      display: flex;
+      margin-bottom: 2rem;
+    }
+    .logo-mark svg {
+      width: 160px;
+      height: 160px;
+    }
+    .logotype {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      color: var(--black);
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+    }
+    .tagline {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--vermillion);
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      opacity: 0.9;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+    section h2 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--black);
+    }
+    /* Vermillion underline accent on section headings */
+    section h2::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: var(--vermillion);
+      margin-top: 0.5rem;
+    }
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .swatch {
+      flex: 1 1 100px;
+      min-width: 80px;
+      border: 2px solid var(--black);
+      margin-right: -2px;
+      margin-bottom: -2px;
+    }
+    .swatch-color {
+      height: 120px;
+    }
+    .swatch-info {
+      padding: 0.5rem 0.6rem;
+      background: var(--white);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      border-top: 1px solid var(--black);
+      font-weight: 500;
+    }
+    .swatch-info .hex {
+      font-weight: 700;
+      color: var(--black);
+    }
+    .swatch-info .label {
+      color: var(--mid-gray);
+      margin-top: 0.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .type-sample {
+      border: 2px solid var(--black);
+      padding: 2.5rem;
+      background: var(--white);
+    }
+    .type-headline {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      border-left: 4px solid var(--vermillion);
+      padding-left: 1rem;
+    }
+    .type-body {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.92rem;
+      color: var(--black);
+      line-height: 1.9;
+      max-width: 560px;
+      font-weight: 400;
+      opacity: 0.85;
+    }
+    .type-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--mid-gray);
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .type-label span { color: var(--vermillion); font-weight: 600; }
+
+    .rationale {
+      background: var(--black);
+      color: var(--white);
+      padding: 2.5rem;
+      border: 2px solid var(--black);
+      line-height: 1.9;
+    }
+    .rationale p {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.92rem;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+    .rationale strong {
+      color: var(--light-gray);
+      font-weight: 700;
+    }
+    .rationale em {
+      color: #ff6644;
+    }
+
+    .brand-nav {
+      text-align: left;
+      margin-top: 3rem;
+      border-top: 2px solid var(--black);
+      padding-top: 2rem;
+    }
+    .brand-nav a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--mid-gray);
+      text-decoration: none;
+      margin-right: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .brand-nav a:hover { color: var(--vermillion); }
+
+    @media (max-width: 600px) {
+      .container { padding: 2rem 1rem 4rem; }
+      .type-sample { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo-mark">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- YIFAN ASCENT — breaking upward through the frame -->
+
+        <!-- Outer frame — bottom and sides intact, top broken open -->
+        <line x1="20" y1="20" x2="55" y2="20" stroke="#0d0d0d" stroke-width="8"/>
+        <line x1="145" y1="20" x2="180" y2="20" stroke="#0d0d0d" stroke-width="8"/>
+        <line x1="20" y1="20" x2="20" y2="180" stroke="#0d0d0d" stroke-width="8"/>
+        <line x1="180" y1="20" x2="180" y2="180" stroke="#0d0d0d" stroke-width="8"/>
+        <line x1="20" y1="180" x2="180" y2="180" stroke="#0d0d0d" stroke-width="8"/>
+
+        <!-- Inner frame — same broken-top treatment -->
+        <line x1="32" y1="32" x2="62" y2="32" stroke="#0d0d0d" stroke-width="3"/>
+        <line x1="138" y1="32" x2="168" y2="32" stroke="#0d0d0d" stroke-width="3"/>
+        <line x1="32" y1="32" x2="32" y2="168" stroke="#0d0d0d" stroke-width="3"/>
+        <line x1="168" y1="32" x2="168" y2="168" stroke="#0d0d0d" stroke-width="3"/>
+        <line x1="32" y1="168" x2="168" y2="168" stroke="#0d0d0d" stroke-width="3"/>
+
+        <!-- "O" mark — anchored at bottom, opening upward into the ascent -->
+        <path d="M 72 150 A 28 28 0 0 1 128 150" fill="none" stroke="#0d0d0d" stroke-width="8"/>
+        <line x1="62" y1="150" x2="62" y2="122" stroke="#0d0d0d" stroke-width="8"/>
+        <line x1="138" y1="150" x2="138" y2="122" stroke="#0d0d0d" stroke-width="8"/>
+
+        <!-- Wing form — left wing: ascending geometric blades -->
+        <polygon points="62,122 30,60 50,105" fill="#0d0d0d"/>
+        <polygon points="50,105 20,55 42,95" fill="#0d0d0d"/>
+        <polygon points="42,95 15,65 36,88" fill="#0d0d0d"/>
+
+        <!-- Wing form — right wing: ascending geometric blades -->
+        <polygon points="138,122 170,60 150,105" fill="#0d0d0d"/>
+        <polygon points="150,105 180,55 158,95" fill="#0d0d0d"/>
+        <polygon points="158,95 185,65 164,88" fill="#0d0d0d"/>
+
+        <!-- Center ascender — sharp vertical wedge punching through the gap -->
+        <polygon points="92,130 100,34 108,130" fill="#0d0d0d"/>
+
+        <!-- Breakthrough point — vermillion marker at the rupture -->
+        <rect x="94" y="28" width="12" height="4" fill="#cc2200"/>
+        <rect x="100" y="20" width="6" height="8" fill="#cc2200"/>
+        <line x1="100" y1="34" x2="100" y2="16" stroke="#cc2200" stroke-width="2"/>
+
+        <!-- Fracture marks on the broken frame edge -->
+        <line x1="55" y1="20" x2="58" y2="18" stroke="#0d0d0d" stroke-width="2"/>
+        <line x1="145" y1="20" x2="142" y2="18" stroke="#0d0d0d" stroke-width="2"/>
+      </svg>
+    </div>
+    <h1 class="logotype">Omo<br/>Research</h1>
+    <p class="tagline">逸凡 · Ascent — Break the frame. Ship the flight.</p>
+  </header>
+
+  <section>
+    <h2>Color Palette</h2>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0d0d0d;"></div>
+        <div class="swatch-info"><div class="hex">#0d0d0d</div><div class="label">Ascent Black</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1a1a1a;"></div>
+        <div class="swatch-info"><div class="hex">#1a1a1a</div><div class="label">Depth Black</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#333333;"></div>
+        <div class="swatch-info"><div class="hex">#333333</div><div class="label">Shadow Gray</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#666666;"></div>
+        <div class="swatch-info"><div class="hex">#666666</div><div class="label">Mid Gray</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#cccccc;"></div>
+        <div class="swatch-info"><div class="hex">#cccccc</div><div class="label">Draft Gray</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#ffffff;"></div>
+        <div class="swatch-info"><div class="hex">#ffffff</div><div class="label">Base White</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#cc2200;"></div>
+        <div class="swatch-info"><div class="hex">#cc2200</div><div class="label">Vermillion Break</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <div class="type-sample">
+      <div class="type-headline">Some things don't fit inside the border anymore.</div>
+      <div class="type-body">
+        Yifan (逸凡) — free, unspirited, transcending restraint. The Ascent variation
+        encodes breakthrough into the brutalist frame itself. The logo mark shows wings
+        built from sharp geometric blades punching through a double-border that was never
+        meant to contain flight. Vermillion marks only the rupture point — the single
+        moment where motion overcomes structure. This is the brutalist spirit of
+        <em>build and break upward</em>.
+      </div>
+      <div class="type-label">
+        All typography: IBM Plex Mono (300–700) &nbsp;|&nbsp; <span>Accent: Vermillion #cc2200</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Style Rationale</h2>
+    <div class="rationale">
+      <p>
+        The <strong>Yifan Ascent</strong> direction applies the concept of <em>逸凡</em> —
+        <strong>free and unspirited</strong> — to the brutalist frame as an act of
+        <strong>controlled rupture</strong>. The double-border, inherited from the master
+        brutalist direction, is deliberately broken at the top. Geometric wing-forms
+        ascend through the gap, built from hard triangular blades that retain the
+        stark line vocabulary of the reference directions. A single vermillion
+        (#cc2200) marks the breakthrough — used only at the point of rupture and
+        nowhere else. The "O" mark opens upward into the ascent rather than closing
+        as a circle. The palette is otherwise pure B&W with the standard five
+        structural grays. This direction says: <em>we build within the frame until
+        the frame is too small — then we break it.</em>
+      </p>
+    </div>
+  </section>
+
+  <nav class="brand-nav">
+    <a href="direction-2-brutalist.html">● Brutalist</a>
+    <a href="brutalist-d1-architect.html">○ Architect</a>
+    <a href="brutalist-yifan-ascent.html">● Ascent</a>
+    <a href="brutalist-yifan-wind.html">○ Wind</a>
+    <a href="brutalist-yifan-unbound.html">○ Unbound</a>
+  </nav>
+
+</div>
+</body>
+</html>

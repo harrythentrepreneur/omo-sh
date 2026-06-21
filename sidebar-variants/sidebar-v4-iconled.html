@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omo Research — V4 Icon-Led Compact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f0e8;
+    --ink: #1a1008;
+    --muted: #8a7865;
+    --border: #d4cdc0;
+    --hover: rgba(44,37,30,0.05);
+    --font-body: 'Crimson Text', serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---- Sidebar ---- */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 160px;
+    height: 100vh;
+    border-right: 1px solid var(--border);
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+  }
+
+  .icon {
+    margin-bottom: 2.2rem;
+  }
+  .icon svg { width: 48px; height: 48px; display: block; }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
+    width: 100%;
+    align-items: center;
+  }
+
+  .nav a {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.28rem 0;
+    text-align: center;
+    transition: color 140ms ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav a:hover { color: #4a3b2f; }
+
+  .nav a.active {
+    border-bottom: 1px solid var(--ink);
+  }
+
+  /* sublinks: dingbat prefix, no indentation */
+  .nav a.sub::before {
+    content: "◦ ";
+    color: var(--muted);
+  }
+  .nav a.sub.active::before {
+    content: "• ";
+    color: var(--ink);
+  }
+
+  .nav .placeholder {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    padding: 0.28rem 0;
+    text-align: center;
+    cursor: default;
+  }
+
+  .nav .ext::after {
+    content: " ↗";
+    font-size: 0.65rem;
+    color: var(--muted);
+  }
+
+  .nav .rule {
+    width: 28px;
+    height: 1px;
+    background: var(--border);
+    margin: 0.5rem 0;
+  }
+
+  /* ---- Main content ---- */
+  .main {
+    margin-left: 160px;
+    padding: 3rem;
+    min-height: 100vh;
+  }
+  .placeholder-box {
+    border: 1px dashed var(--border);
+    background: var(--hover);
+    border-radius: 4px;
+    padding: 3rem;
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  .placeholder-box h1 {
+    font-size: 2rem;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  /* ---- Mobile ---- */
+  .topbar { display: none; }
+
+  @media (max-width: 767px) {
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 140ms ease;
+      z-index: 100;
+      box-shadow: 2px 0 12px rgba(0,0,0,0.08);
+    }
+    .sidebar.open { transform: translateX(0); }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: sticky;
+      top: 0;
+      height: 52px;
+      padding: 0 1rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      z-index: 50;
+    }
+    .topbar svg { width: 26px; height: 26px; }
+    .hamburger {
+      margin-left: auto;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.35rem 0.55rem;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+    .main { margin-left: 0; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="20" y1="20" x2="20" y2="180" stroke="#1a1008" stroke-width="8"/><line x1="20" y1="20" x2="100" y2="20" stroke="#1a1008" stroke-width="8"/><line x1="20" y1="180" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/><line x1="100" y1="20" x2="130" y2="20" stroke="#1a1008" stroke-width="8"/><line x1="140" y1="20" x2="160" y2="20" stroke="#1a1008" stroke-width="8"/><line x1="180" y1="20" x2="180" y2="60" stroke="#1a1008" stroke-width="8"/><line x1="180" y1="72" x2="180" y2="110" stroke="#1a1008" stroke-width="8"/><line x1="180" y1="120" x2="180" y2="150" stroke="#1a1008" stroke-width="8"/><line x1="180" y1="160" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/><line x1="32" y1="32" x2="32" y2="168" stroke="#1a1008" stroke-width="3"/><line x1="32" y1="32" x2="100" y2="32" stroke="#1a1008" stroke-width="3"/><line x1="32" y1="168" x2="168" y2="168" stroke="#1a1008" stroke-width="3"/><line x1="105" y1="32" x2="125" y2="32" stroke="#1a1008" stroke-width="3"/><line x1="138" y1="32" x2="155" y2="32" stroke="#1a1008" stroke-width="3"/><line x1="168" y1="32" x2="168" y2="65" stroke="#1a1008" stroke-width="3"/><line x1="168" y1="75" x2="168" y2="105" stroke="#1a1008" stroke-width="3"/><line x1="168" y1="115" x2="168" y2="140" stroke="#1a1008" stroke-width="3"/><line x1="168" y1="150" x2="168" y2="168" stroke="#1a1008" stroke-width="3"/><path d="M 62 100 A 30 30 0 0 1 100 70" fill="none" stroke="#1a1008" stroke-width="7"/><path d="M 100 70 A 30 30 0 0 1 100 90" fill="none" stroke="#1a1008" stroke-width="7"/><path d="M 100 90 A 30 30 0 0 1 125 108" fill="none" stroke="#1a1008" stroke-width="7"/><path d="M 125 108 A 30 30 0 0 1 138 130" fill="none" stroke="#1a1008" stroke-width="7"/><path d="M 100 90 A 30 30 0 0 0 62 100" fill="none" stroke="#1a1008" stroke-width="7"/><rect x="130" y="110" width="8" height="8" fill="none" stroke="#1a1008" stroke-width="3" transform="rotate(15,134,114)"/><rect x="142" y="100" width="6" height="6" fill="none" stroke="#1a1008" stroke-width="2" transform="rotate(-10,145,103)"/><rect x="148" y="118" width="7" height="7" fill="none" stroke="#1a1008" stroke-width="2.5" transform="rotate(25,151,121)"/><rect x="138" y="128" width="5" height="5" fill="none" stroke="#1a1008" stroke-width="2" transform="rotate(-20,140,130)"/><rect x="152" y="108" width="5" height="5" fill="none" stroke="#1a1008" stroke-width="1.5" transform="rotate(8,154,110)"/><rect x="155" y="58" width="14" height="10" fill="none" stroke="#1a1008" stroke-width="3" transform="rotate(12,162,63)"/><line x1="155" y1="68" x2="155" y2="80" stroke="#4a3b2f" stroke-width="1" stroke-dasharray="2,3"/><line x1="164" y1="68" x2="164" y2="76" stroke="#4a3b2f" stroke-width="1" stroke-dasharray="2,3"/><rect x="95" y="95" width="10" height="10" fill="#1a1008"/>
+    </svg>
+    <button class="hamburger" aria-label="Toggle navigation" onclick="document.querySelector('.sidebar').classList.toggle('open')">≡</button>
+  </header>
+
+  <nav class="sidebar" aria-label="Primary">
+    <div class="icon">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Omo Research">
+        <line x1="20" y1="20" x2="20" y2="180" stroke="#1a1008" stroke-width="8"/><line x1="20" y1="20" x2="100" y2="20" stroke="#1a1008" stroke-width="8"/><line x1="20" y1="180" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/><line x1="100" y1="20" x2="130" y2="20" stroke="#1a1008" stroke-width="8"/><line x1="140" y1="20" x2="160" y2="20" stroke="#1a1008" stroke-width="8"/><line x1="180" y1="20" x2="180" y2="60" stroke="#1a1008" stroke-width="8"/><line x1="180" y1="72" x2="180" y2="110" stroke="#1a1008" stroke-width="8"/><line x1="180" y1="120" x2="180" y2="150" stroke="#1a1008" stroke-width="8"/><line x1="180" y1="160" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/><line x1="32" y1="32" x2="32" y2="168" stroke="#1a1008" stroke-width="3"/><line x1="32" y1="32" x2="100" y2="32" stroke="#1a1008" stroke-width="3"/><line x1="32" y1="168" x2="168" y2="168" stroke="#1a1008" stroke-width="3"/><line x1="105" y1="32" x2="125" y2="32" stroke="#1a1008" stroke-width="3"/><line x1="138" y1="32" x2="155" y2="32" stroke="#1a1008" stroke-width="3"/><line x1="168" y1="32" x2="168" y2="65" stroke="#1a1008" stroke-width="3"/><line x1="168" y1="75" x2="168" y2="105" stroke="#1a1008" stroke-width="3"/><line x1="168" y1="115" x2="168" y2="140" stroke="#1a1008" stroke-width="3"/><line x1="168" y1="150" x2="168" y2="168" stroke="#1a1008" stroke-width="3"/><path d="M 62 100 A 30 30 0 0 1 100 70" fill="none" stroke="#1a1008" stroke-width="7"/><path d="M 100 70 A 30 30 0 0 1 100 90" fill="none" stroke="#1a1008" stroke-width="7"/><path d="M 100 90 A 30 30 0 0 1 125 108" fill="none" stroke="#1a1008" stroke-width="7"/><path d="M 125 108 A 30 30 0 0 1 138 130" fill="none" stroke="#1a1008" stroke-width="7"/><path d="M 100 90 A 30 30 0 0 0 62 100" fill="none" stroke="#1a1008" stroke-width="7"/><rect x="130" y="110" width="8" height="8" fill="none" stroke="#1a1008" stroke-width="3" transform="rotate(15,134,114)"/><rect x="142" y="100" width="6" height="6" fill="none" stroke="#1a1008" stroke-width="2" transform="rotate(-10,145,103)"/><rect x="148" y="118" width="7" height="7" fill="none" stroke="#1a1008" stroke-width="2.5" transform="rotate(25,151,121)"/><rect x="138" y="128" width="5" height="5" fill="none" stroke="#1a1008" stroke-width="2" transform="rotate(-20,140,130)"/><rect x="152" y="108" width="5" height="5" fill="none" stroke="#1a1008" stroke-width="1.5" transform="rotate(8,154,110)"/><rect x="155" y="58" width="14" height="10" fill="none" stroke="#1a1008" stroke-width="3" transform="rotate(12,162,63)"/><line x1="155" y1="68" x2="155" y2="80" stroke="#4a3b2f" stroke-width="1" stroke-dasharray="2,3"/><line x1="164" y1="68" x2="164" y2="76" stroke="#4a3b2f" stroke-width="1" stroke-dasharray="2,3"/><rect x="95" y="95" width="10" height="10" fill="#1a1008"/>
+      </svg>
+    </div>
+
+    <div class="nav">
+      <a href="#">← Home</a>
+      <a href="#">About</a>
+      <div class="rule"></div>
+      <a href="#" class="sub active">Omo Space</a>
+      <a href="#" class="sub">AgentJam</a>
+      <a href="#" class="sub">Spoken English</a>
+      <div class="rule"></div>
+      <span class="placeholder">Products — soon</span>
+      <a href="#">Consulting</a>
+      <a href="#" class="ext" target="_blank" rel="noopener">Open Source</a>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div class="placeholder-box">
+      <h1>V4 — Icon-Led Compact</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </main>
+
+</body>
+</html>

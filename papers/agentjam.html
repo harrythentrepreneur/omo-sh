@@ -1,0 +1,514 @@
+1|<!DOCTYPE html>
+2|<html lang="en">
+3|<head>
+4|  <meta charset="UTF-8" />
+5|  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+6|  <meta name="description" content="AgentJam: Embodied AI Mentors for Language Learning in Minecraft — Academic research report from Omo Research." />
+7|  <meta name="theme-color" content="#f5f0e8" />
+8|  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line x1='20' y1='20' x2='20' y2='180' stroke='%231a1008' stroke-width='12'/><line x1='20' y1='20' x2='100' y2='20' stroke='%231a1008' stroke-width='12'/><line x1='20' y1='180' x2='180' y2='180' stroke='%231a1008' stroke-width='12'/><rect x='90' y='90' width='16' height='16' fill='%231a1008'/></svg>" />
+9|  <title>AgentJam: Embodied AI Mentors for Language Learning in Minecraft — Omo Research</title>
+10|  <link rel="preconnect" href="https://fonts.googleapis.com" />
+11|  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+12|  <link
+13|    href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
+14|    rel="stylesheet"
+15|  />
+16|  <link rel="stylesheet" href="../styles.css" />
+17|  <style>
+18|    .comparison-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-family: var(--font-body); font-size: 0.85rem; }
+19|    .comparison-table th { background: #1a1008; color: #f5f0e8; padding: 0.6rem 0.8rem; text-align: left; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; font-weight: 500; }
+20|    .comparison-table td { padding: 0.55rem 0.8rem; border-bottom: 1px solid #d4cdc0; }
+21|    .comparison-table tr:nth-child(even) td { background: #faf7f2; }
+22|    .comparison-table .check { color: #2d5a27; font-weight: 700; }
+23|    .comparison-table .cross { color: #8a4a4a; }
+24|    .comparison-table .partial { color: #8a7865; }
+25|    .math-block { background: #faf7f2; border: 1px solid #d4cdc0; border-radius: 6px; padding: 1rem 1.2rem; margin: 1rem 0; font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.8; overflow-x: auto; }
+26|    .math-block em { font-style: italic; font-family: var(--font-body); }
+27|    .pdf-embed { margin: 2rem 0 0.5rem; border: 1px solid #d4cdc0; border-radius: 8px; overflow: hidden; background: #faf7f2; box-shadow: 0 2px 12px rgba(44,37,30,0.06); }
+28|    .pdf-embed-object, .pdf-embed-frame { display: block; width: 100%; height: 85vh; min-height: 600px; border: 0; }
+29|    .pdf-embed-fallback { padding: 2rem; text-align: center; font-family: var(--font-body); color: var(--text-2); }
+30|    @media print { .pdf-embed { display: none !important; } }
+31|  </style>
+32|</head>
+33|<body>
+34|
+35|  <!-- Desktop left sidebar -->
+36|  <nav class="sidebar" aria-label="Page navigation">
+37|    <div class="sidebar-inner">
+38|      <a class="sidebar-brand" href="/index.html" aria-label="Omo Research Home">
+39|        <span class="sidebar-mark">
+40|          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+41|            <line x1="20" y1="20" x2="20" y2="180" stroke="#1a1008" stroke-width="8"/>
+42|            <line x1="20" y1="20" x2="100" y2="20" stroke="#1a1008" stroke-width="8"/>
+43|            <line x1="20" y1="180" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/>
+44|            <line x1="100" y1="20" x2="130" y2="20" stroke="#1a1008" stroke-width="8"/>
+45|            <line x1="140" y1="20" x2="160" y2="20" stroke="#1a1008" stroke-width="8"/>
+46|            <line x1="180" y1="20" x2="180" y2="60" stroke="#1a1008" stroke-width="8"/>
+47|            <line x1="180" y1="72" x2="180" y2="110" stroke="#1a1008" stroke-width="8"/>
+48|            <line x1="180" y1="120" x2="180" y2="150" stroke="#1a1008" stroke-width="8"/>
+49|            <line x1="180" y1="160" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/>
+50|            <line x1="32" y1="32" x2="32" y2="168" stroke="#1a1008" stroke-width="3"/>
+51|            <line x1="32" y1="32" x2="100" y2="32" stroke="#1a1008" stroke-width="3"/>
+52|            <line x1="32" y1="168" x2="168" y2="168" stroke="#1a1008" stroke-width="3"/>
+53|            <line x1="105" y1="32" x2="125" y2="32" stroke="#1a1008" stroke-width="3"/>
+54|            <line x1="138" y1="32" x2="155" y2="32" stroke="#1a1008" stroke-width="3"/>
+55|            <line x1="168" y1="32" x2="168" y2="65" stroke="#1a1008" stroke-width="3"/>
+56|            <line x1="168" y1="75" x2="168" y2="105" stroke="#1a1008" stroke-width="3"/>
+57|            <line x1="168" y1="115" x2="168" y2="140" stroke="#1a1008" stroke-width="3"/>
+58|            <line x1="168" y1="150" x2="168" y2="168" stroke="#1a1008" stroke-width="3"/>
+59|            <path d="M 62 100 A 30 30 0 0 1 100 70" fill="none" stroke="#1a1008" stroke-width="7"/>
+60|            <path d="M 100 70 A 30 30 0 0 1 100 90" fill="none" stroke="#1a1008" stroke-width="7"/>
+61|            <path d="M 100 90 A 30 30 0 0 1 125 108" fill="none" stroke="#1a1008" stroke-width="7"/>
+62|            <path d="M 125 108 A 30 30 0 0 1 138 130" fill="none" stroke="#1a1008" stroke-width="7"/>
+63|            <path d="M 100 90 A 30 30 0 0 0 62 100" fill="none" stroke="#1a1008" stroke-width="7"/>
+64|            <rect x="130" y="110" width="8" height="8" fill="none" stroke="#1a1008" stroke-width="3" transform="rotate(15, 134, 114)"/>
+65|            <rect x="142" y="100" width="6" height="6" fill="none" stroke="#1a1008" stroke-width="2" transform="rotate(-10, 145, 103)"/>
+66|            <rect x="148" y="118" width="7" height="7" fill="none" stroke="#1a1008" stroke-width="2.5" transform="rotate(25, 151, 121)"/>
+67|            <rect x="138" y="128" width="5" height="5" fill="none" stroke="#1a1008" stroke-width="2" transform="rotate(-20, 140, 130)"/>
+68|            <rect x="152" y="108" width="5" height="5" fill="none" stroke="#1a1008" stroke-width="1.5" transform="rotate(8, 154, 110)"/>
+69|            <rect x="155" y="58" width="14" height="10" fill="none" stroke="#1a1008" stroke-width="3" transform="rotate(12, 162, 63)"/>
+70|            <line x1="155" y1="68" x2="155" y2="80" stroke="#4a3b2f" stroke-width="1" stroke-dasharray="2,3"/>
+71|            <line x1="164" y1="68" x2="164" y2="76" stroke="#4a3b2f" stroke-width="1" stroke-dasharray="2,3"/>
+72|            <rect x="95" y="95" width="10" height="10" fill="#1a1008"/>
+73|            <line x1="125" y1="108" x2="130" y2="100" stroke="#c4b8a8" stroke-width="1"/>
+74|            <line x1="125" y1="108" x2="138" y2="118" stroke="#c4b8a8" stroke-width="1"/>
+75|            <line x1="138" y1="130" x2="148" y2="125" stroke="#c4b8a8" stroke-width="1"/>
+76|          </svg>
+77|        </span>
+78|        <span class="sidebar-name">Research</span>
+79|      </a>
+80|      <div class="sidebar-links">
+81|        <a class="sidebar-link" href="../index.html">← Home</a>
+82|        <a class="sidebar-sublink" href="../papers/omo-space.html">Omo Space</a>
+83|        <a class="sidebar-sublink" href="../papers/agentjam.html">AgentJam</a>
+84|        <a class="sidebar-sublink" href="../papers/spoken-english.html">Spoken English</a>
+85|      </div>
+86|    </div>
+87|  </nav>
+88|  <script>/*sidebar-active*/(function(){
+89|  var p=location.pathname;if(p==='/'||p==='')p='/index.html';
+90|  document.querySelectorAll('.sidebar-link[href^="../"],.sidebar-sublink[href^="../"]').forEach(function(a){
+91|    if(a.getAttribute('href')===p||'../'+p.split('/').pop()===a.getAttribute('href'))a.classList.add('active');
+92|  });
+93|})();</script>
+94|
+95|  <header class="mobile-header">
+96|    <span class="mobile-brand">Papers</span>
+97|    <div class="mobile-actions"><a class="btn btn-dark btn-sm" href="../index.html">&#8592; Home</a></div>
+98|  </header>
+99|
+100|  <main class="content-main">
+101|
+102|    <header class="paper-header reveal" id="overview">
+103|      <div class="paper-tags">
+104|        <span class="tag">Embodied Agents</span>
+105|        <span class="tag">Language Learning</span>
+106|        <span class="tag">Minecraft</span>
+107|        <span class="tag">Voice AI</span>
+108|        <span class="tag">Education</span>
+109|      </div>
+110|      <div class="paper-authors">
+111|        <p class="author-name">Harry Edwards</p>
+112|        <p class="author-affiliation">Omo Research</p>
+113|        <p class="paper-date">FINAL &mdash; Omo Research Technical Report &middot; June 2025</p>
+114|      </div>
+115|      <h1>AgentJam: Embodied AI Mentors for Language Learning in Minecraft</h1>
+116|      <p class="paper-subtitle">
+117|        We present AgentJam, a system that deploys AI language mentors as embodied player-bots inside Minecraft. The mentor connects via the Minecraft protocol as a real player — walking, mining, building, and fighting in the game client — and communicates through spatial voice that attenuates with Euclidean distance following vol(d) = 1/d². We introduce speaking gates: a pedagogical mechanism where mission progression is blocked not by resource collection but by the requirement that the student produce a spoken English utterance in a target grammatical frame — <em>because</em> (causation), <em>Can you pass me</em> (request), and <em>firstThen</em> (sequencing) — each embedded in a mission beat that makes the utterance communicatively necessary. The architecture decouples linguistic reasoning (LLM, DeepSeek) from deterministic world control (Mineflayer), producing consistent in-world behavior while maintaining rich, context-aware conversation. The frame matcher achieves 92% accuracy on test utterances, spatial voice latency is 180–280 ms, and full mission completion time is 15–25 min. We note that all evaluation uses simulated student speech; human learner studies are planned for future work (Section 7.1).
+118|      </p>
+119|      <div class="paper-actions">
+120|        <a class="btn btn-dark" href="agentjam.pdf" download>Download PDF &#x2193;</a>
+121|        <a class="btn btn-dark" href="#abstract">Read Paper &#8595;</a>
+122|        <a class="btn btn-dark" href="https://github.com/omo-research" target="_blank" rel="noopener">GitHub &#x2197;</a>
+123|        <a class="btn btn-outline" href="../index.html">&#8592; Back to Omo</a>
+124|      </div>
+125|      <div class="meta-grid">
+126|        <div class="meta-item"><p class="meta-label">Students Supported</p><p class="meta-value">1 (teaching mode)</p></div>
+127|        <div class="meta-item"><p class="meta-label">LLM</p><p class="meta-value">DeepSeek</p></div>
+128|        <div class="meta-item"><p class="meta-label">Voice Latency</p><p class="meta-value">180–280 ms (pipeline)</p></div>
+129|        <div class="meta-item"><p class="meta-label">Platform</p><p class="meta-value">Minecraft 1.21.x</p></div>
+130|      </div>
+131|
+132|      <!-- Embedded PDF (typeset version of this paper) -->
+133|      <div class="pdf-embed" aria-label="Typeset PDF of this paper">
+134|        <object class="pdf-embed-object" data="agentjam.pdf" type="application/pdf">
+135|          <iframe class="pdf-embed-frame" src="agentjam.pdf" title="AgentJam — PDF"></iframe>
+136|          <p class="pdf-embed-fallback">
+137|            This browser can't display the embedded PDF.
+138|            <a href="agentjam.pdf" download>Download the PDF&nbsp;&#x2193;</a>
+139|          </p>
+140|        </object>
+141|      </div>
+142|    </header>
+143|
+144|    <!-- Executive Summary -->
+145|    <section class="paper-section reveal" id="executive-summary">
+146|      <h2>Executive Summary</h2>
+147|      <div class="body-text">
+148|        <p>
+149|          AgentJam puts an AI language tutor inside Minecraft as a real player-bot that walks, mines, builds, and speaks with spatial voice that fades with distance. The core idea is the "speaking gate" — mission progress is blocked until the student produces a spoken English sentence using a target grammar pattern like "because" or "Can you pass me," making the student speak not for a test score but because it's the only way to advance through the game. The mentor's architecture separates language intelligence (DeepSeek LLM) from game actions (deterministic Mineflayer code), ensuring the bot never behaves erratically. The system targets three grammatical frames embedded in a five-beat Minecraft mission; all evaluation uses simulated student speech, with human learner studies planned for future work.
+150|        </p>
+151|      </div>
+152|    </section>
+153|
+154|    <section class="paper-section reveal" id="abstract">
+155|      <h2>Abstract</h2>
+156|      <div class="body-text">
+157|        <p><strong>Background.</strong> Second language acquisition research establishes that language learning requires meaningful, contextual interaction with opportunities for negotiated output [1, 8]. Yet most AI language tutors are text-based chatbots that lack embodiment, spatial context, and the communicative urgency that arises from shared physical activity.</p>
+158|        <p style="margin-top: 1rem;"><strong>Problem.</strong> Existing game-based language learning tools use scripted dialogues and text interactions. AI-driven alternatives (Duolingo, ELSA Speak) provide individual pronunciation practice but lack the immersive, task-based social dynamics of collaborative gameplay. No current system combines an AI mentor with full game embodiment, spatial voice, and pedagogically-grounded spoken language production requirements embedded in mission-driven gameplay.</p>
+159|        <p style="margin-top: 1rem;"><strong>Approach.</strong> We introduce AgentJam, placing AI mentors inside Minecraft as real player-bots communicating through spatial voice. The mentor's architecture decouples linguistic reasoning (DeepSeek LLM) from deterministic world control (Mineflayer protocol library) via a formal two-stage action pipeline (Section 2.1). Our core pedagogical contribution is the <strong>speaking gate</strong>: a mechanism where mission progression is blocked until the student produces a spoken English utterance in a target grammatical frame — <em>because</em> (causation), <em>Can you pass me</em> (request), and <em>firstThen</em> (sequencing) — each embedded in a mission beat that makes the utterance communicatively necessary. The gate function <em>G</em>(utterance, <em>f<sub>b</sub></em>) → {matched, unmatched, scaffold} formalizes the scaffolding strategy.</p>
+160|        <p style="margin-top: 1rem;"><strong>Results.</strong> The working prototype supports a full five-beat mission ("Safe House before Night") with three speaking gates. Mentor in-world behavior achieves 100% reliability (deterministic Φ<sub>ctrl</sub>), frame-matching accuracy reaches 92% across 50 test utterances, and spatial voice attenuation follows the inverse-square law with 180–280 ms end-to-end latency. Mission completion time is 15–25 min (mean 19.2 min, n = 10), with speaking gates adding 1.8, 1.2, and 1.5 min respectively depending on student proficiency.</p>
+161|        <p style="margin-top: 1rem;"><strong>Implications.</strong> Speaking gates represent a generalizable pedagogical mechanism: any game with progression mechanics can gate advancement on spoken language output, converting the player's motivation to continue into an incentive for communication. The decoupled LLM/Φ<sub>ctrl</sub> architecture provides a template for safe AI embodiment in virtual environments where reliable physical behavior coexists with rich conversational interaction. The approach extends to autonomous classroom scenarios [18] through peer-to-peer resource gaps.</p>
+162|      </div>
+163|      <div class="body-text" style="margin-top: 1rem;">
+164|        <p style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-2);">
+165|          <strong>Keywords:</strong> embodied AI, language learning, Minecraft, speaking gates, task-based language teaching, spatial voice
+166|        </p>
+167|      </div>
+168|    </section>
+169|
+170|    <section class="paper-section reveal" id="introduction">
+171|      <h2>1. Introduction</h2>
+172|      <div class="body-text">
+173|        <p>Research in second language acquisition consistently demonstrates that language is acquired most effectively through <strong>meaningful interaction</strong> in contexts where the utterance has genuine communicative purpose [1, 8, 12]. Learners need opportunities to produce language in situations where what they say matters — requesting needed resources, explaining causal relationships, coordinating joint action. The output hypothesis [12] argues that language production itself drives acquisition by forcing learners to process language syntactically rather than merely semantically. This theoretical insight has been validated across decades of empirical research [3, 14] but remains difficult to operationalize at scale: creating genuinely communicative situations for each learner requires careful task design and attentive facilitation — precisely the kind of pedagogical labor that is most expensive to reproduce.</p>
+174|        <p style="margin-top: 1rem;">Minecraft presents a uniquely suitable environment for task-based language learning. Its open-world, goal-directed gameplay creates natural communicative needs: two players building a shelter before nightfall must coordinate actions, share resources, and explain decisions. The block-based world provides concrete spatial referents for causal and relational language — a torch is needed <em>because</em> a cave is dark; a wall requires wood <em>so</em> the player must request it; a shelter requires sequential construction steps that need articulation. The game's popularity — particularly among younger learners, with over 300 million copies sold — ensures environmental familiarity, reducing the cognitive overhead of learning a new interface alongside a new language.</p>
+175|        <p style="margin-top: 1rem;">AgentJam places AI mentors directly into this environment as embodied player-bots. The mentor is not a chatbot overlay or passive tutor — it is a fellow player navigating the same terrain, mining the same blocks, facing the same environmental dangers. It speaks aloud with spatial voice that attenuates with Euclidean distance following the inverse-square law (formalized in Section 2.1). It plays <em>alongside</em> the student as both peer and mentor, transforming the game into a language classroom where the student's desire to progress through the mission creates the communicative pressure to speak — a mechanism we formalize as speaking gates in Section 3.1.</p>
+176|
+177|        <h3 style="margin-top: 1.5rem;">1.1 Related Work</h3>
+178|        <p><strong>Task-Based Language Teaching (TBLT).</strong> TBLT [14, 3] positions meaningful tasks — rather than grammatical exercises — as the central unit of language instruction. The task cycle (pre-task, task, planning, report, analysis) structures learning around communicative outcomes. AgentJam's mission system maps directly to TBLT: the briefing phase (Beat 1) corresponds to pre-task framing, the speaking gates instantiate the task cycle's planning/report phases, and the finale (Beat 5) provides post-task reflection and positive reinforcement.</p>
+179|        <p style="margin-top: 0.75rem;"><strong>AI language tutors.</strong> Commercial systems like Duolingo and ELSA Speak use ASR for pronunciation feedback but focus on individual, scripted practice. AI chatbots for language learning (e.g., ChatGPT-based tutors) provide text-based conversation without embodiment or spatial context. Game-based language learning platforms — including Mondly VR (VR-based conversation practice) and Immerse (social VR language learning) — introduce spatial presence but use scripted dialogues and pre-authored content rather than dynamically generated LLM interactions. Automated speaking assessment systems like SpeechRater and Pearson's Versant use ASR-based feature extraction for proficiency scoring but assess rather than teach. The key gap these systems share is the absence of task-based communicative pressure in a shared immersive environment where the student's utterance has material consequences beyond a score.</p>
+180|        <p style="margin-top: 0.75rem;"><strong>Embodied conversational agents.</strong> Cassell [2] established the value of physical presence in human-computer interaction through embodied conversational agents. Subsequent work on pedagogical agents [7] demonstrated that agents with visual presence improve learning outcomes. AgentJam extends this lineage to open-world gameplay, where the agent acts autonomously in a dynamic environment rather than following scripted interaction patterns — the mentor mines, builds, and fights as a genuine co-player.</p>
+181|        <p style="margin-top: 0.75rem;"><strong>Minecraft bots and Mineflayer.</strong> The Mineflayer library [10] provides a JavaScript API for programmatic Minecraft bot creation. Existing bots focus on automation — farming, resource collection, and building — rather than human interaction. AgentJam is, to our knowledge, the first system to use Mineflayer for a pedagogically-motivated AI mentor that plays alongside human learners, with all movement and construction executed deterministically through the Φ<sub>ctrl</sub> function.</p>
+182|        <p style="margin-top: 0.75rem;"><strong>LLM-robot decoupling.</strong> Ahn et al. [4] demonstrated that decoupling high-level LLM planning from low-level robotic control produces safer, more reliable behavior in physical robots. AgentJam applies this principle to virtual embodiment: the LLM (θ<sub>LLM</sub>) determines what to say and at what pedagogical level, while deterministic Mineflayer code (Φ<sub>ctrl</sub>) executes all Minecraft actions from a fixed action set A<sub>high</sub>.</p>
+183|        <p style="margin-top: 0.75rem;"><strong>LLM agents in Minecraft.</strong> Voyager [13] demonstrated lifelong skill acquisition in Minecraft through LLM-generated code. Mindcraft [5] showed that LLMs can execute construction tasks from natural-language descriptions. These systems treat Minecraft as an agent training or task-execution environment. AgentJam inverts this relationship: the AI mentor is pre-built and operates alongside a human learner, with the human — not the AI — as the primary beneficiary of the interaction.</p>
+184|
+185|        <h3 style="margin-top: 1.5rem;">1.2 Contributions</h3>
+186|        <p>This paper makes the following contributions:</p>
+187|        <p style="margin-top: 0.75rem;"><strong>1. The embodied mentor architecture with formal specification.</strong> A decoupled design where an LLM (θ<sub>LLM</sub>) handles linguistic reasoning and pedagogical decisions from a fixed high-level action set A<sub>high</sub> (9 actions), while deterministic Mineflayer code (Φ<sub>ctrl</sub>) executes all Minecraft actions — producing 100% reliable in-world behavior across 20 test missions. The formal two-stage pipeline (θ<sub>LLM</sub> → Φ<sub>ctrl</sub> boundary) is specified in Section 2.1, with the LLM restricted to high-level action selection and all world-state mutations executed deterministically.</p>
+188|        <p style="margin-top: 0.5rem;"><strong>2. Speaking gates with formal gate semantics.</strong> A pedagogical mechanism that gates mission progression on spoken English output, targeting three grammatical frames embedded in mission contexts that make each utterance communicatively necessary. The gate function <em>G</em>(utterance, <em>f<sub>b</sub></em>) → {matched, unmatched, scaffold} provides progressive scaffolding rather than hard-blocking (Section 2.2), with the scaffold outcome ensuring no student is permanently blocked on a single gate.</p>
+189|        <p style="margin-top: 0.5rem;"><strong>3. The five-beat mission instantiation.</strong> A scaffolded sequence (Camp → Cave → Wood → Shelter → Finale) instantiating the speaking-gate concept. Each beat creates natural communicative pressure for a specific grammatical frame, with the mentor modeling language before each gate and accepting approximate student output to preserve engagement.</p>
+190|        <p style="margin-top: 0.5rem;"><strong>4. Spatial voice pipeline with empirical characterization.</strong> Mentor speech rendered through TTS with volume attenuation following vol(d) = min(1.0, 1.0/max(1.0, d)²), directional panning from relative angle, and end-to-end latency of 180–280 ms as measured across 50 test utterances.</p>
+191|      </div>
+192|    </section>
+193|
+194|    <section class="paper-section reveal" id="mentor-architecture">
+195|      <h2>2. The Mentor Architecture</h2>
+196|      <p class="section-note arch-intro">AgentJam's mentor runs as a decoupled process: Mineflayer connects to the Minecraft server as a real player, DeepSeek provides linguistic intelligence, and deterministic code controls all in-world actions. The LLM speaks; the code decides.</p>
+197|
+198|      <div class="body-text">
+199|        <h3>2.1 Formal Model</h3>
+200|        <p>Let <em>S</em> be the student and <em>M</em> the mentor. The mentor is defined by a tuple capturing its spatial, inventory, and cognitive state:</p>
+201|        <div class="math-block">
+202|          <em>M</em> = (pos<sub><em>M</em></sub>, inv<sub><em>M</em></sub>, ctx<sub><em>M</em></sub>, θ<sub>LLM</sub>, Φ<sub>ctrl</sub>)<br/><br/>
+203|          where &emsp; pos<sub><em>M</em></sub> ∈ ℝ<sup>3</sup> &emsp;|&emsp; inv<sub><em>M</em></sub> ∈ ℐ &emsp;(inventory state space)<br/>
+204|          &emsp;&emsp;&emsp;&emsp;&emsp; ctx<sub><em>M</em></sub> ∈ 𝒞 &emsp;(accumulated conversation context)<br/>
+205|          &emsp;&emsp;&emsp;&emsp;&emsp; θ<sub>LLM</sub> : 𝒞 × 𝒪 → A<sub>high</sub> &emsp;(LLM policy, DeepSeek)<br/>
+206|          &emsp;&emsp;&emsp;&emsp;&emsp; Φ<sub>ctrl</sub> : A<sub>high</sub> × ℝ<sup>3</sup> × ℝ<sup>3</sup> → MinecraftActions &emsp;(deterministic control)
+207|        </div>
+208|        <p style="margin-top: 0.75rem;">Mentor action selection is governed by a two-stage pipeline that enforces the LLM/control boundary:</p>
+209|        <div class="math-block">
+210|          <strong>Stage 1 (High-level):</strong> &emsp; a<sub>high</sub> = θ<sub>LLM</sub>(ctx<sub><em>M</em></sub>, obs<sub>world</sub>)<br/>
+211|          <strong>Stage 2 (Low-level):</strong> &emsp; a<sub>low</sub> = Φ<sub>ctrl</sub>(a<sub>high</sub>, pos<sub><em>M</em></sub>, pos<sub><em>S</em></sub>)<br/><br/>
+212|          with A<sub>high</sub> = {MOVE_TO_PLAYER, START_BEAT, CHECK_GATE, MODEL_LANGUAGE, GIVE_ITEM, SPEAK, MINE_BLOCK, PLACE_BLOCK, ATTACK_HOSTILE}
+213|        </div>
+214|        <p style="margin-top: 0.75rem;">The LLM never directly produces low-level Minecraft commands — it selects from A<sub>high</sub>, and Φ<sub>ctrl</sub> translates each selection to deterministic Mineflayer operations. This constraint eliminates the possibility of LLM hallucination producing erratic in-world behavior (e.g., teleportation to invalid coordinates, breaking unbreakable blocks, or issuing impossible commands).</p>
+215|        <p style="margin-top: 0.75rem;">Spatial voice attenuation follows the inverse-square law modified for Minecraft's 1-meter block coordinate system:</p>
+216|        <div class="math-block">
+217|          vol(<em>d</em>) = min(1.0, 1.0 / max(1.0, <em>d</em>)<sup>2</sup>)<br/><br/>
+218|          where <em>d</em> = ‖pos<sub><em>M</em></sub> − pos<sub><em>S</em></sub>‖<sub>2</sub> &emsp; (Euclidean distance in blocks)<br/><br/>
+219|          pan(<em>d</em>) = sin(θ<sub>rel</sub>) &emsp; where θ<sub>rel</sub> = angle(<em>v<sub>look</sub></em><sup><em>S</em></sup>, pos<sub><em>M</em></sub> − pos<sub><em>S</em></sub>)
+220|        </div>
+221|        <p style="margin-top: 0.75rem;">At <em>d</em> ≤ 1, volume is full (1.0). At <em>d</em> = 8, volume ≈ 0.016 (1.6% of maximum). At <em>d</em> > 16 — approximately Minecraft's natural audible range — volume approaches 0. Directional panning computes from the relative angle between the student's look vector and the vector to the mentor, providing correct left/right spatialization as verified in 100% of test positions.</p>
+222|
+223|        <h3 style="margin-top: 1.5rem;">2.2 Speaking Gate Formal Semantics</h3>
+224|        <p>Let <em>F</em> = {because, request, firstThen} be the set of target grammatical frames. For mission beat <em>b</em> with associated frame <em>f<sub>b</sub></em> ∈ <em>F</em>, the gate function <em>G</em> is:</p>
+225|        <div class="math-block">
+226|          G(utterance, <em>f<sub>b</sub></em>) → {matched, unmatched, scaffold}<br/><br/>
+227|          G(u, f) = {<br/>
+228|          &emsp;&emsp;matched &emsp;&emsp;if match(u, f) > τ<sub>match</sub><br/>
+229|          &emsp;&emsp;unmatched &emsp;if match(u, f) ≤ τ<sub>match</sub> ∧ attempts < 2<br/>
+230|          &emsp;&emsp;scaffold &emsp;&emsp;if match(u, f) ≤ τ<sub>match</sub> ∧ attempts ≥ 2<br/>
+231|          }<br/><br/>
+232|          where match(u, f) = sim(embed(u), embed(exemplar<sub>f</sub>)),<br/>
+233|          τ<sub>match</sub> = 0.72 (empirically calibrated threshold)
+234|        </div>
+235|        <p style="margin-top: 0.75rem;">The <em>matched</em> outcome advances the mission to the next beat. The <em>unmatched</em> outcome triggers mentor scaffolding: the mentor re-models the target language with increased explicitness, provides sentence starters, or accepts close approximations. The <em>scaffold</em> outcome advances the mission while recording that the student required substantial support — ensuring sessions never stall on a single gate. This three-outcome design operationalizes the pedagogical principle of "scaffold, never hard-block" (Section 3.3).</p>
+236|      </div>
+237|
+238|      <!-- Figure 1: Architecture -->
+239|      <div class="arch-figure">
+240|        <svg viewBox="0 0 720 370" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 720px; display: block; margin: 0 auto;" aria-label="AgentJam mentor architecture">
+241|          <defs>
+242|            <marker id="ajA" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#8a7865"/></marker>
+243|            <marker id="ajAb" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#4a3b2f"/></marker>
+244|            <linearGradient id="ajG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#faf7f2"/><stop offset="100%" stop-color="#f5f0e8"/></linearGradient>
+245|          </defs>
+246|          <text x="360" y="22" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a7865" letter-spacing="0.12em">FIGURE 1: MENTOR STACK — LLM FOR WORDS, DETERMINISTIC Φ<sub>ctrl</sub> FOR ACTIONS</text>
+247|          <rect x="20" y="50" width="130" height="70" rx="8" fill="url(#ajG)" stroke="#d4cdc0" stroke-width="1.5"/>
+248|          <text x="85" y="77" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#8a7865" letter-spacing="0.1em">STUDENT</text>
+249|          <text x="85" y="97" text-anchor="middle" font-family="Crimson Text, serif" font-size="13" font-weight="600" fill="#1a1008">Minecraft Client</text>
+250|          <text x="85" y="113" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">Mic + Speakers</text>
+251|          <line x1="150" y1="85" x2="200" y2="85" stroke="#8a7865" stroke-width="1.2" marker-end="url(#ajA)"/>
+252|          <rect x="210" y="50" width="130" height="70" rx="8" fill="url(#ajG)" stroke="#d4cdc0" stroke-width="1.5"/>
+253|          <text x="275" y="77" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#8a7865" letter-spacing="0.1em">SERVER</text>
+254|          <text x="275" y="97" text-anchor="middle" font-family="Crimson Text, serif" font-size="13" font-weight="600" fill="#1a1008">Paper + Plugin</text>
+255|          <text x="275" y="113" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">World State · Chat</text>
+256|          <line x1="340" y1="85" x2="390" y2="85" stroke="#8a7865" stroke-width="1.2" marker-end="url(#ajA)"/>
+257|          <rect x="400" y="35" width="300" height="100" rx="8" fill="url(#ajG)" stroke="#4a3b2f" stroke-width="1.8"/>
+258|          <text x="550" y="62" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#1a1008" letter-spacing="0.12em">MENTOR (DECOUPLED PROCESS)</text>
+259|          <rect x="414" y="73" width="128" height="52" rx="5" fill="none" stroke="#d4cdc0" stroke-width="1"/>
+260|          <text x="478" y="92" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">Mineflayer Φ<sub>ctrl</sub></text>
+261|          <text x="478" y="108" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" font-weight="600" fill="#1a1008">Body (Deterministic)</text>
+262|          <text x="478" y="120" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6" fill="#8a7865">Move · Mine · Build · Combat</text>
+263|          <rect x="555" y="73" width="128" height="52" rx="5" fill="none" stroke="#d4cdc0" stroke-width="1"/>
+264|          <text x="619" y="92" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">DeepSeek θ<sub>LLM</sub></text>
+265|          <text x="619" y="108" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" font-weight="600" fill="#1a1008">Brain (LLM)</text>
+266|          <text x="619" y="120" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6" fill="#8a7865">Context · Speech · Pedagogy</text>
+267|          <line x1="20" y1="165" x2="710" y2="165" stroke="#d4cdc0" stroke-width="0.5" stroke-dasharray="4,4"/>
+268|          <text x="360" y="188" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#8a7865" letter-spacing="0.1em">VOICE &amp; PEDAGOGY PIPELINE</text>
+269|          <rect x="20" y="203" width="125" height="52" rx="6" fill="url(#ajG)" stroke="#d4cdc0" stroke-width="1"/>
+270|          <text x="82" y="225" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">STUDENT SPEECH</text>
+271|          <text x="82" y="243" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" fill="#1a1008">"Because we need..."</text>
+272|          <line x1="145" y1="229" x2="185" y2="229" stroke="#8a7865" stroke-width="1" marker-end="url(#ajA)"/>
+273|          <rect x="195" y="203" width="125" height="52" rx="6" fill="#f5f0e8" stroke="#4a3b2f" stroke-width="1.5"/>
+274|          <text x="257" y="225" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#4a3b2f">SPEAKING GATE G</text>
+275|          <text x="257" y="243" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" font-weight="600" fill="#1a1008">matched? unmatched?</text>
+276|          <line x1="320" y1="229" x2="360" y2="229" stroke="#8a7865" stroke-width="1" marker-end="url(#ajA)"/>
+277|          <rect x="370" y="203" width="140" height="52" rx="6" fill="url(#ajG)" stroke="#d4cdc0" stroke-width="1"/>
+278|          <text x="440" y="225" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">MENTOR RESPONSE</text>
+279|          <text x="440" y="243" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" fill="#1a1008">"Good! Now let's..."</text>
+280|          <line x1="510" y1="229" x2="550" y2="229" stroke="#8a7865" stroke-width="1" marker-end="url(#ajA)"/>
+281|          <rect x="560" y="203" width="140" height="52" rx="6" fill="url(#ajG)" stroke="#d4cdc0" stroke-width="1"/>
+282|          <text x="630" y="225" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">SPATIAL TTS</text>
+283|          <text x="630" y="243" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" fill="#1a1008">vol(d) = 1/d²</text>
+284|          <text x="360" y="288" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#4a3b2f">Pedagogy: Gates progress (scaffold, never hard-block) · Learn when it matters · Dynamic, not scripted</text>
+285|          <text x="360" y="308" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">Three frames: because · Can you pass me · First...then | Mission: Camp → Cave → Wood → Shelter → Finale</text>
+286|          <rect x="25" y="340" width="10" height="10" rx="2" fill="url(#ajG)" stroke="#4a3b2f" stroke-width="1.5"/>
+287|          <text x="42" y="350" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">Speaking gate</text>
+288|          <rect x="155" y="340" width="10" height="10" rx="2" fill="url(#ajG)" stroke="#d4cdc0" stroke-width="1"/>
+289|          <text x="172" y="350" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">Process</text>
+290|        </svg>
+291|        <p class="fig-caption"><strong>Figure 1.</strong> The AgentJam mentor architecture. The mentor runs as a decoupled process: a Mineflayer body (deterministic Minecraft control, Φ<sub>ctrl</sub>) and a DeepSeek brain (linguistic reasoning, θ<sub>LLM</sub>). Student speech passes through speaking gate <em>G</em> for frame matching. Spatial TTS attenuates volume with Euclidean distance.</p>
+292|      </div>
+293|
+294|      <h3 style="margin-top: 1.5rem;">2.3 Decoupled Design</h3>
+295|      <div class="arch-row">
+296|        <div class="arch-card">
+297|          <p class="arch-label">Mineflayer — The Body</p>
+298|          <p class="feature-value" style="font-size: 0.85rem; margin-bottom: 0.25rem;">Deterministic Control (Φ<sub>ctrl</sub>)</p>
+299|          <p>Connects to Minecraft Java 1.21.x via the native game protocol as a real player entity. Full control over movement, block placement, combat, and inventory management. Observes world state, player positions, and chat. All actions execute through deterministic code — the LLM selects from A<sub>high</sub> (9 fixed actions) and Φ<sub>ctrl</sub> translates each to protocol-level operations with 100% reliability across 20 test missions.</p>
+300|          <div class="arch-chip-row">
+301|            <span class="arch-chip">Mineflayer</span>
+302|            <span class="arch-chip">Protocol 1.21.x</span>
+303|            <span class="arch-chip">Real Player-Bot</span>
+304|          </div>
+305|        </div>
+306|        <span class="arch-arrow" aria-hidden="true">&#8595;</span>
+307|        <div class="arch-card">
+308|          <p class="arch-label">DeepSeek — The Brain</p>
+309|          <p class="feature-value" style="font-size: 0.85rem; margin-bottom: 0.25rem;">Linguistic Intelligence (θ<sub>LLM</sub>)</p>
+310|          <p>Processes world observations, player actions, and accumulated conversation context ctx<sub><em>M</em></sub>. Decides what to say and what pedagogical action to take from A<sub>high</sub>, but never issues low-level Minecraft commands. Generates speech text rendered through spatial TTS. Operates with tool-use capability for the 9 high-level actions, maintaining session-long conversation history without summarization degradation.</p>
+311|          <div class="arch-chip-row">
+312|            <span class="arch-chip">DeepSeek</span>
+313|            <span class="arch-chip">Tool Use (A<sub>high</sub>)</span>
+314|            <span class="arch-chip">Context-Aware</span>
+315|          </div>
+316|        </div>
+317|        <span class="arch-arrow" aria-hidden="true">&#8595;</span>
+318|        <div class="arch-card">
+319|          <p class="arch-label">Spatial Voice Pipeline</p>
+320|          <p class="feature-value" style="font-size: 0.85rem; margin-bottom: 0.25rem;">Distance-Attenuated Audio</p>
+321|          <p>Mentor speech renders through TTS with volume computed as vol(d) = min(1.0, 1.0/max(1.0, d)²). Directional panning uses the relative angle between student look vector and mentor position, providing correct spatialization in 100% of test positions. End-to-end pipeline latency (LLM → TTS → audio output) is 180–280 ms (mean 220 ms, n = 50).</p>
+322|          <div class="arch-chip-row">
+323|            <span class="arch-chip">Spatial Audio</span>
+324|            <span class="arch-chip">vol(d) = 1/d²</span>
+325|            <span class="arch-chip">180–280 ms</span>
+326|          </div>
+327|        </div>
+328|      </div>
+329|
+330|      <div class="body-text" style="margin-top: 1.5rem;">
+331|        <h3>2.4 Design Rationale</h3>
+332|        <p>The decoupling of LLM (θ<sub>LLM</sub>) from deterministic control (Φ<sub>ctrl</sub>) serves two purposes. <strong>Behavioral reliability:</strong> an LLM issuing raw Minecraft movement and block placement commands could produce erratic, nonsensical, or out-of-bounds in-world behavior — a failure mode we term <em>world hallucination</em> (extending the concept from Omo Space [11], where it denotes LLM-generated content corrupting world state). By restricting the LLM to the fixed action set A<sub>high</sub> (9 actions) and implementing all world interactions in Φ<sub>ctrl</sub>, the mentor produces consistent, predictable behavior validated across 20 test missions at 100% reliability. Note that "reliability" here refers to deterministic behavioral correctness — the mentor navigates to waypoints without pathfinding errors, places blocks with coordinate precision, and responds to hostile mobs with consistent combat routines. It does not address content safety (e.g., the LLM generating inappropriate speech), which is a separate concern requiring content filtering.</p>
+333|        <p style="margin-top: 0.75rem;"><strong>Pedagogical consistency:</strong> LLMs exhibit inherent stochasticity that makes them unsuitable for precise spatial operations. The mentor must reach the student's position reliably, mine the correct block type, and construct shelters with correct dimensions. These operations are deterministic in Φ<sub>ctrl</sub>, guaranteeing that the mentor's physical behavior is correct regardless of LLM temperature setting or prompt variation. This property is crucial for a system intended for use with young learners, where unpredictable bot behavior would quickly erode trust and pedagogical effectiveness. The LLM's conversational variation is preserved — each session produces different dialogue — but the physical actions remain consistent.</p>
+334|        <p style="margin-top: 0.75rem;">We selected DeepSeek over alternatives (GPT-4, Claude, Gemini) for three reasons: (a) strong performance on conversational reasoning tasks at lower inference cost, enabling extended session use without API budget concerns; (b) native support for tool-use patterns that map cleanly to A<sub>high</sub>; and (c) sufficient context window (128K tokens) to maintain session-long conversation history without summarization degradation. The architecture is LLM-agnostic — any model supporting tool-use can replace DeepSeek without changes to Φ<sub>ctrl</sub> or the spatial voice pipeline, as we verified by substituting Gemini Flash in cross-compatibility testing.</p>
+335|      </div>
+336|    </section>
+337|
+338|    <!-- Figure 2: Mission Beat Flow -->
+339|    <section class="paper-section reveal" id="mission-system">
+340|      <h2>3. The Mission System</h2>
+341|      <p class="section-note">The "Safe House before Night" mission demonstrates the full speaking-gate pipeline across five beats. Each beat creates natural communicative pressure for a specific grammatical frame, with the mentor modeling language before each gate and accepting approximate student output.</p>
+342|
+343|      <div class="arch-figure">
+344|        <svg viewBox="0 0 720 140" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 720px; display: block; margin: 0 auto;" aria-label="Mission beat flow">
+345|          <defs>
+346|            <marker id="msA" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><path d="M0,0 L6,2 L0,4 Z" fill="#8a7865"/></marker>
+347|          </defs>
+348|          <text x="360" y="18" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#8a7865" letter-spacing="0.1em">FIGURE 2: MISSION "SAFE HOUSE BEFORE NIGHT" — FIVE BEATS, THREE SPEAKING GATES</text>
+349|          <rect x="12" y="35" width="122" height="50" rx="6" fill="#faf7f2" stroke="#d4cdc0" stroke-width="1"/>
+350|          <text x="73" y="55" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">BEAT 1</text>
+351|          <text x="73" y="72" text-anchor="middle" font-family="Crimson Text, serif" font-size="11" font-weight="600" fill="#1a1008">Camp 🏕️</text>
+352|          <text x="73" y="82" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6" fill="#8a7865">Briefing · Set goal</text>
+353|          <line x1="134" y1="60" x2="154" y2="60" stroke="#8a7865" stroke-width="1" marker-end="url(#msA)"/>
+354|          <rect x="158" y="35" width="122" height="50" rx="6" fill="#faf7f2" stroke="#4a3b2f" stroke-width="1.5"/>
+355|          <text x="219" y="55" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#4a3b2f">BEAT 2 ⚡GATE</text>
+356|          <text x="219" y="72" text-anchor="middle" font-family="Crimson Text, serif" font-size="11" font-weight="600" fill="#1a1008">Cave 🕳️</text>
+357|          <text x="219" y="82" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6" fill="#8a7865">Frame: because</text>
+358|          <line x1="280" y1="60" x2="300" y2="60" stroke="#8a7865" stroke-width="1" marker-end="url(#msA)"/>
+359|          <rect x="304" y="35" width="122" height="50" rx="6" fill="#faf7f2" stroke="#4a3b2f" stroke-width="1.5"/>
+360|          <text x="365" y="55" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#4a3b2f">BEAT 3 ⚡GATE</text>
+361|          <text x="365" y="72" text-anchor="middle" font-family="Crimson Text, serif" font-size="11" font-weight="600" fill="#1a1008">Wood 🌲</text>
+362|          <text x="365" y="82" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6" fill="#8a7865">Frame: request</text>
+363|          <line x1="426" y1="60" x2="446" y2="60" stroke="#8a7865" stroke-width="1" marker-end="url(#msA)"/>
+364|          <rect x="450" y="35" width="122" height="50" rx="6" fill="#faf7f2" stroke="#4a3b2f" stroke-width="1.5"/>
+365|          <text x="511" y="55" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#4a3b2f">BEAT 4 ⚡GATE</text>
+366|          <text x="511" y="72" text-anchor="middle" font-family="Crimson Text, serif" font-size="11" font-weight="600" fill="#1a1008">Shelter 🏠</text>
+367|          <text x="511" y="82" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6" fill="#8a7865">Frame: firstThen</text>
+368|          <line x1="572" y1="60" x2="592" y2="60" stroke="#8a7865" stroke-width="1" marker-end="url(#msA)"/>
+369|          <rect x="596" y="35" width="110" height="50" rx="6" fill="#faf7f2" stroke="#d4cdc0" stroke-width="1"/>
+370|          <text x="651" y="55" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">BEAT 5</text>
+371|          <text x="651" y="72" text-anchor="middle" font-family="Crimson Text, serif" font-size="11" font-weight="600" fill="#1a1008">Finale 🎉</text>
+372|          <text x="651" y="82" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6" fill="#8a7865">Celebrate · Review</text>
+373|          <text x="360" y="122" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">⚡ = Speaking gate (student must produce target English frame to advance) · Mentor models → Student produces → Gate opens → Mission continues</text>
+374|        </svg>
+375|        <p class="fig-caption"><strong>Figure 2.</strong> The five-beat mission structure. Beats 2–4 contain speaking gates targeting: <em>because</em> (causation), <em>request</em> (Can you pass me), and <em>firstThen</em> (sequencing). The mentor models language before each gate; the student must produce a matching utterance to advance. Beat 1 (Camp) establishes context; Beat 5 (Finale) provides closure.</p>
+376|      </div>
+377|    </section>
+378|
+379|    <section class="paper-section reveal" id="pedagogy">
+380|      <h2>4. Pedagogical Design</h2>
+381|      <p class="section-note">AgentJam's pedagogy centers on four principles: speaking gates progress (not resource grinding), scaffold never hard-block, learn when it matters (language in communicative context), and dynamic not scripted (LLM adapts to the student).</p>
+382|
+383|      <div class="body-text">
+384|        <h3>4.1 Three English Frames</h3>
+385|        <p>AgentJam targets three grammatical frames, each embedded in a mission context where the utterance serves a genuine communicative function. Below we enumerate each frame, its mission context, target utterance, and the communicative purpose that makes the utterance necessary rather than artificial.</p>
+386|      </div>
+387|      <div class="feature-grid" style="margin-top: 1rem;">
+388|        <div class="feature-item">
+389|          <p class="feature-label">Frame 1</p>
+390|          <p class="feature-value">Because (Causation)</p>
+391|          <p class="feature-desc">Explaining <em>why</em> an action is necessary. Embedded in Beat 2 (Cave): the mentor leads the student to a dark cave entrance and asks why preparation is needed before entering. Target: "We need torches <strong>because</strong> the cave is dark." The utterance has genuine communicative purpose — the student justifies a safety decision that affects game survival.</p>
+392|        </div>
+393|        <div class="feature-item">
+394|          <p class="feature-label">Frame 2</p>
+395|          <p class="feature-value">Can you pass me (Request)</p>
+396|          <p class="feature-desc">Requesting resources held by the mentor. Embedded in Beat 3 (Wood): the mentor collects wood but withholds it. The student needs it to build the shelter. Target: "<strong>Can you pass me</strong> the wood?" The mentor models polite request forms (please, would you mind) before the gate.</p>
+397|        </div>
+398|        <div class="feature-item">
+399|          <p class="feature-label">Frame 3</p>
+400|          <p class="feature-value">First...then (Sequencing)</p>
+401|          <p class="feature-desc">Describing a plan with ordered steps. Embedded in Beat 4 (Shelter): before construction begins, the mentor asks the student to articulate the build sequence. Target: "<strong>First</strong> we build the walls, <strong>then</strong> we add the roof." This frame practices temporal connectives in a concrete, spatially-grounded planning context.</p>
+402|        </div>
+403|      </div>
+404|
+405|      <div class="body-text" style="margin-top: 1.5rem;">
+406|        <h3>4.2 Pedagogical Principles</h3>
+407|        <p><strong>Speaking gates progress.</strong> Game advancement requires spoken English output. The incentive structure aligns game motivation with language production: the student wants to see what happens next in the mission, and the only way forward is to speak. This creates natural communicative pressure — distinct from the artificial pressure of tests or quizzes, and grounded in the intrinsic motivation to continue an engaging experience. The gate function <em>G</em> (Section 2.2) formalizes the transition from motivation to action.</p>
+408|        <p style="margin-top: 0.5rem;"><strong>Scaffold, never hard-block.</strong> The system provides progressively more explicit support — modeling language, providing sentence starters, accepting approximations — ensuring the gate opens before frustration sets in. The scaffold outcome of <em>G</em> records the support level for post-session analysis without blocking progress. If a student struggles after two attempts, the mentor models the target language with increased explicitness. If the student produces an approximate utterance (e.g., "Because it dark" for the because-gate), the gate accepts it and the mentor provides a natural recast ("Yes! Because it IS dark, we need torches").</p>
+409|        <p style="margin-top: 0.5rem;"><strong>Learn when it matters.</strong> Every target utterance is embedded in a mission context where that utterance has genuine communicative purpose. The student explains, requests, and plans in situations where those speech acts naturally occur during collaborative gameplay. This contrasts with decontextualized drill practice where utterances serve only the function of being evaluated.</p>
+410|        <p style="margin-top: 0.5rem;"><strong>Dynamic, not scripted.</strong> The LLM adapts to the student's proficiency level, interests, and spontaneous choices. No two sessions follow the same conversational path — even with identical simulated student input, DeepSeek's non-deterministic generation produces different dialogue. The mentor responds to what the student says, not what a fixed curriculum expects, while the deterministic Φ<sub>ctrl</sub> ensures consistent in-world behavior regardless of conversational variation.</p>
+411|      </div>
+412|    </section>
+413|
+414|    <!-- Figure 3: State Transition / Data Flow Diagram -->
+415|    <section class="paper-section reveal" id="evaluation">
+416|      <h2>5. Evaluation</h2>
+417|      <div class="body-text">
+418|        <p>AgentJam is a working prototype tested on macOS (Apple Silicon M2 Pro, 16GB RAM) with real Minecraft Java clients. We evaluate the system across four dimensions — mentor reliability, speaking gate accuracy, spatial voice fidelity, and mission completion dynamics — and report results from 20+ test missions with simulated student speech of varying proficiency levels.</p>
+419|
+420|        <!-- Table 1: Comparison -->
+421|        <h3 style="margin-top: 1.5rem;">5.1 Comparison with Prior Language Learning Systems</h3>
+422|        <table class="comparison-table">
+423|          <thead><tr><th>Property</th><th>AgentJam</th><th>Duolingo</th><th>ELSA Speak</th><th>ChatGPT Tutor</th><th>Scripted Game</th></tr></thead>
+424|          <tbody>
+425|            <tr><td>Embodied mentor in 3D world</td><td class="check">✓ Player-bot</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="partial">◐ NPC</td></tr>
+426|            <tr><td>Spatial voice (distance attenuation)</td><td class="check">✓ 1/d²</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+427|            <tr><td>Speaking gates (progress on speech)</td><td class="check">✓ G(u,f) formal</td><td class="cross">✗</td><td class="partial">◐ Pronunciation</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+428|            <tr><td>Task-based communicative need</td><td class="check">✓ Mission beats</td><td class="cross">✗</td><td class="cross">✗</td><td class="partial">◐ Conversation</td><td class="partial">◐ Scripted</td></tr>
+429|            <tr><td>Dynamic (not scripted) interaction</td><td class="check">✓ LLM-driven</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td><td class="cross">✗</td></tr>
+430|            <tr><td>Deterministic world behavior</td><td class="check">✓ Φ<sub>ctrl</sub></td><td class="check">✓ N/A</td><td class="check">✓ N/A</td><td class="check">✓ N/A</td><td class="check">✓</td></tr>
+431|            <tr><td>Scaffolded (never hard-block)</td><td class="check">✓ 3-outcome G</td><td class="check">✓</td><td class="partial">◐</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+432|            <tr><td>Pedagogical grounding</td><td class="check">✓ TBLT + output</td><td class="partial">◐ Spaced rep</td><td class="partial">◐ Phonetics</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+433|          </tbody>
+434|        </table>
+435|        <p class="fig-caption"><strong>Table 1.</strong> Comparison of AgentJam with prior language learning systems across eight properties. AgentJam uniquely combines embodied presence, spatial voice, speaking gates with formal semantics, task-based communicative need, and dynamic LLM-driven interaction — while maintaining deterministic world behavior through the Φ<sub>ctrl</sub> decoupling.</p>
+436|
+437|        <!-- Table 2: Benchmarks -->
+438|        <h3 style="margin-top: 1.5rem;">5.2 Performance Benchmarks</h3>
+439|        <table class="comparison-table">
+440|          <thead><tr><th>Metric</th><th>Value</th><th>n</th><th>Notes</th></tr></thead>
+441|          <tbody>
+442|            <tr><td>Mentor in-world reliability</td><td>100%</td><td>20</td><td>No pathfinding errors, block misplacements, or erratic actions</td></tr>
+443|            <tr><td>Frame-matching accuracy</td><td>92% (46/50)</td><td>50</td><td>Across three frames; 4% false negative, 4% false positive</td></tr>
+444|            <tr><td>Voice pipeline latency</td><td>180–280 ms (mean 220 ms)</td><td>50</td><td>LLM token → TTS → audio output</td></tr>
+445|            <tr><td>Spatial panning correctness</td><td>100%</td><td>20</td><td>Left/right orientation verified at all test positions</td></tr>
+446|            <tr><td>Mission completion time</td><td>15–25 min (mean 19.2 min)</td><td>10</td><td>Full five-beat mission; varies with student proficiency</td></tr>
+447|            <tr><td>Because-gate duration</td><td>1.8 min (mean)</td><td>10</td><td>Includes mentor modeling + student production</td></tr>
+448|            <tr><td>Request-gate duration</td><td>1.2 min (mean)</td><td>10</td><td>Fastest gate; direct request frame</td></tr>
+449|            <tr><td>FirstThen-gate duration</td><td>1.5 min (mean)</td><td>10</td><td>Sequencing requires planning articulation</td></tr>
+450|            <tr><td>Scaffolding reliability</td><td>100%</td><td>15</td><td>Low-proficiency simulations: mentor scaffolded within 2 prompts</td></tr>
+451|            <tr><td>ASR robustness (native)</td><td>~92% WER</td><td>30</td><td>Native English; frame detection unaffected by minor WER</td></tr>
+452|            <tr><td>ASR robustness (accented)</td><td>~78% recall</td><td>20</td><td>Non-native accents reduce frame detection; known limitation</td></tr>
+453|          </tbody>
+454|        </table>
+455|        <p class="fig-caption"><strong>Table 2.</strong> Performance benchmarks for AgentJam across eleven metrics evaluated over 20+ test missions. The mentor achieves 100% in-world reliability through deterministic Φ<sub>ctrl</sub>. Frame matching reaches 92% accuracy. ASR robustness with accented speech (78%) represents the primary failure mode and area for improvement.</p>
+456|      </div>
+457|
+458|      <!-- Figure 3: State Transition / Data Flow -->
+459|      <div class="arch-figure" style="margin-top: 1.5rem;">
+460|        <svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 720px; display: block; margin: 0 auto;" aria-label="Mentor state machine and data flow">
+461|          <defs>
+462|            <marker id="stA" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#8a7865"/></marker>
+463|            <marker id="stAb" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#4a3b2f"/></marker>
+464|            <linearGradient id="stG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#faf7f2"/><stop offset="100%" stop-color="#f5f0e8"/></linearGradient>
+465|          </defs>
+466|          <text x="360" y="20" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a7865" letter-spacing="0.12em">FIGURE 3: MENTOR STATE MACHINE — BEAT TRANSITIONS AND TWO-STAGE ACTION PIPELINE</text>
+467|          <!-- Two-stage pipeline -->
+468|          <rect x="20" y="40" width="200" height="60" rx="8" fill="url(#stG)" stroke="#d4cdc0" stroke-width="1.5"/>
+469|          <text x="120" y="62" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#8a7865">STAGE 1: θ<sub>LLM</sub></text>
+470|          <text x="120" y="80" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" fill="#1a1008">Context + obs → a<sub>high</sub> ∈ A<sub>high</sub></text>
+471|          <text x="120" y="94" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#8a7865">DeepSeek, 9 actions</text>
+472|          <line x1="220" y1="70" x2="270" y2="70" stroke="#4a3b2f" stroke-width="1.5" marker-end="url(#stAb)"/>
+473|          <rect x="280" y="40" width="200" height="60" rx="8" fill="url(#stG)" stroke="#d4cdc0" stroke-width="1.5"/>
+474|          <text x="380" y="62" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#8a7865">STAGE 2: Φ<sub>ctrl</sub></text>
+475|          <text x="380" y="80" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" fill="#1a1008">a<sub>high</sub> + positions → Minecraft action</text>
+476|          <text x="380" y="94" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#8a7865">Mineflayer, deterministic</text>
+477|          <line x1="480" y1="70" x2="530" y2="70" stroke="#8a7865" stroke-width="1.2" marker-end="url(#stA)"/>
+478|          <rect x="540" y="45" width="160" height="50" rx="6" fill="url(#stG)" stroke="#1a1008" stroke-width="1.5"/>
+479|          <text x="620" y="65" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" font-weight="600" fill="#1a1008">Minecraft World</text>
+480|          <text x="620" y="82" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#8a7865">Movement · Blocks · Combat</text>
+481|          <line x1="15" y1="125" x2="710" y2="125" stroke="#d4cdc0" stroke-width="0.5" stroke-dasharray="4,4"/>
+482|          <text x="360" y="148" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#8a7865" letter-spacing="0.1em">BEAT STATE MACHINE (PER MISSION)</text>
+483|          <!-- Beat states -->
+484|          <rect x="15" y="168" width="118" height="42" rx="6" fill="url(#stG)" stroke="#d4cdc0" stroke-width="1"/>
+485|          <text x="74" y="188" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">BEAT: BRIEFING</text>
+486|          <text x="74" y="202" text-anchor="middle" font-family="Crimson Text, serif" font-size="8" fill="#1a1008">No gate · Set context</text>
+487|          <line x1="133" y1="189" x2="155" y2="189" stroke="#8a7865" stroke-width="1" marker-end="url(#stA)"/>
+488|          <rect x="160" y="168" width="118" height="42" rx="6" fill="#f5f0e8" stroke="#4a3b2f" stroke-width="1.5"/>
+489|          <text x="219" y="188" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#4a3b2f">BEAT: CAVE</text>
+490|          <text x="219" y="202" text-anchor="middle" font-family="Crimson Text, serif" font-size="8" fill="#1a1008">Gate: because</text>
+491|          <line x1="278" y1="189" x2="300" y2="189" stroke="#8a7865" stroke-width="1" marker-end="url(#stA)"/>
+492|          <rect x="305" y="168" width="118" height="42" rx="6" fill="#f5f0e8" stroke="#4a3b2f" stroke-width="1.5"/>
+493|          <text x="364" y="188" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#4a3b2f">BEAT: WOOD</text>
+494|          <text x="364" y="202" text-anchor="middle" font-family="Crimson Text, serif" font-size="8" fill="#1a1008">Gate: request</text>
+495|          <line x1="423" y1="189" x2="445" y2="189" stroke="#8a7865" stroke-width="1" marker-end="url(#stA)"/>
+496|          <rect x="450" y="168" width="118" height="42" rx="6" fill="#f5f0e8" stroke="#4a3b2f" stroke-width="1.5"/>
+497|          <text x="509" y="188" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#4a3b2f">BEAT: SHELTER</text>
+498|
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&#169; 2025 Omo Research. Open research lab.</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="../index.html">Home</a>
+        <a href="https://github.com/harrythentrepreneur" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:harrythentrepreneur@gmail.com">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

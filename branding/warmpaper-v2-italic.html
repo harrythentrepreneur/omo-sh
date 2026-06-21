@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omo Research — Yifan Unbound: Warm Paper Italic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1a1008;
+      --near-ink: #2c2015;
+      --dark-taupe: #4a3b2f;
+      --mid-taupe: #8a7865;
+      --light-taupe: #c4b8a8;
+      --paper: #f5f0e8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'IBM Plex Mono', 'SF Mono', 'Menlo', monospace;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      min-height: 100vh;
+      font-size: 15px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+    header {
+      text-align: left;
+      margin-bottom: 5rem;
+      border-bottom: 4px solid var(--ink);
+      padding-bottom: 2.5rem;
+    }
+    .logo-mark {
+      display: flex;
+      margin-bottom: 2rem;
+    }
+    .logo-mark svg {
+      width: 160px;
+      height: 160px;
+    }
+    .logotype {
+      font-family: 'Crimson Text', 'Georgia', 'Times New Roman', serif;
+      font-size: clamp(2.6rem, 5vw, 3.8rem);
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+      line-height: 1.1;
+    }
+    .tagline {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--dark-taupe);
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      opacity: 0.8;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+    section h2 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--ink);
+    }
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .swatch {
+      flex: 1 1 100px;
+      min-width: 80px;
+      border: 2px solid var(--ink);
+      margin-right: -2px;
+      margin-bottom: -2px;
+    }
+    .swatch-color {
+      height: 120px;
+    }
+    .swatch-info {
+      padding: 0.5rem 0.6rem;
+      background: var(--paper);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      border-top: 1px solid var(--ink);
+      font-weight: 500;
+    }
+    .swatch-info .hex {
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .swatch-info .label {
+      color: var(--mid-taupe);
+      margin-top: 0.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .type-sample {
+      border: 2px solid var(--ink);
+      padding: 2.5rem;
+      background: var(--paper);
+    }
+    .type-headline {
+      font-family: 'Crimson Text', 'Georgia', 'Times New Roman', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .type-body {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.92rem;
+      color: var(--ink);
+      line-height: 1.9;
+      max-width: 560px;
+      font-weight: 400;
+      opacity: 0.85;
+    }
+    .type-body em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--near-ink);
+    }
+    .type-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      font-style: italic;
+      color: var(--mid-taupe);
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .rationale {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 2.5rem;
+      border: 2px solid var(--ink);
+      line-height: 1.9;
+    }
+    .rationale p {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.92rem;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+    .rationale strong {
+      color: var(--light-taupe);
+      font-weight: 700;
+    }
+    .rationale em {
+      font-style: italic;
+    }
+
+    .brand-nav {
+      text-align: left;
+      margin-top: 3rem;
+      border-top: 2px solid var(--ink);
+      padding-top: 2rem;
+    }
+    .brand-nav a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--mid-taupe);
+      text-decoration: none;
+      margin-right: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .brand-nav a:hover { color: var(--ink); }
+    .brand-nav a.active { color: var(--ink); font-weight: 700; }
+
+    @media (max-width: 600px) {
+      .container { padding: 2rem 1rem 4rem; }
+      .type-sample { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo-mark">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- YIFAN UNBOUND — one half pristine, the other fracturing -->
+        <!-- ITALIC variation: floating piece rotated more, increased urgency -->
+
+        <!-- Outer frame — left side and bottom intact, right side fracturing -->
+        <line x1="20" y1="20" x2="20" y2="180" stroke="#1a1008" stroke-width="8"/>
+        <line x1="20" y1="20" x2="100" y2="20" stroke="#1a1008" stroke-width="8"/>
+        <line x1="20" y1="180" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/>
+
+        <!-- Right side of frame — fracturing into scattered segments -->
+        <line x1="100" y1="20" x2="130" y2="20" stroke="#1a1008" stroke-width="8"/>
+        <line x1="140" y1="20" x2="160" y2="20" stroke="#1a1008" stroke-width="8"/>
+        <line x1="180" y1="20" x2="180" y2="60" stroke="#1a1008" stroke-width="8"/>
+        <line x1="180" y1="72" x2="180" y2="110" stroke="#1a1008" stroke-width="8"/>
+        <line x1="180" y1="120" x2="180" y2="150" stroke="#1a1008" stroke-width="8"/>
+        <line x1="180" y1="160" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/>
+
+        <!-- Inner frame — left side intact, right side shattering -->
+        <line x1="32" y1="32" x2="32" y2="168" stroke="#1a1008" stroke-width="3"/>
+        <line x1="32" y1="32" x2="100" y2="32" stroke="#1a1008" stroke-width="3"/>
+        <line x1="32" y1="168" x2="168" y2="168" stroke="#1a1008" stroke-width="3"/>
+        <line x1="105" y1="32" x2="125" y2="32" stroke="#1a1008" stroke-width="3"/>
+        <line x1="138" y1="32" x2="155" y2="32" stroke="#1a1008" stroke-width="3"/>
+        <line x1="168" y1="32" x2="168" y2="65" stroke="#1a1008" stroke-width="3"/>
+        <line x1="168" y1="75" x2="168" y2="105" stroke="#1a1008" stroke-width="3"/>
+        <line x1="168" y1="115" x2="168" y2="140" stroke="#1a1008" stroke-width="3"/>
+        <line x1="168" y1="150" x2="168" y2="168" stroke="#1a1008" stroke-width="3"/>
+
+        <!-- "O" mark — left half intact circle, right half breaking into scattered rectangles -->
+        <path d="M 62 100 A 30 30 0 0 1 100 70" fill="none" stroke="#1a1008" stroke-width="7"/>
+        <path d="M 100 70 A 30 30 0 0 1 100 90" fill="none" stroke="#1a1008" stroke-width="7"/>
+        <path d="M 100 90 A 30 30 0 0 1 125 108" fill="none" stroke="#1a1008" stroke-width="7"/>
+        <path d="M 125 108 A 30 30 0 0 1 138 130" fill="none" stroke="#1a1008" stroke-width="7"/>
+        <path d="M 100 90 A 30 30 0 0 0 62 100" fill="none" stroke="#1a1008" stroke-width="7"/>
+
+        <!-- Scattered rectangles — detaching from the right side of the O -->
+        <rect x="130" y="110" width="8" height="8" fill="none" stroke="#1a1008" stroke-width="3" transform="rotate(15, 134, 114)"/>
+        <rect x="142" y="100" width="6" height="6" fill="none" stroke="#1a1008" stroke-width="2" transform="rotate(-10, 145, 103)"/>
+        <rect x="148" y="118" width="7" height="7" fill="none" stroke="#1a1008" stroke-width="2.5" transform="rotate(25, 151, 121)"/>
+        <rect x="138" y="128" width="5" height="5" fill="none" stroke="#1a1008" stroke-width="2" transform="rotate(-20, 140, 130)"/>
+        <rect x="152" y="108" width="5" height="5" fill="none" stroke="#1a1008" stroke-width="1.5" transform="rotate(8, 154, 110)"/>
+
+        <!-- Detached floating piece — rotated more for italic urgency (22 degrees) -->
+        <rect x="155" y="58" width="14" height="10" fill="none" stroke="#1a1008" stroke-width="3" transform="rotate(22, 162, 63)"/>
+        <!-- Motion line indicating it's floating upward — longer, more dramatic -->
+        <line x1="153" y1="68" x2="153" y2="84" stroke="#4a3b2f" stroke-width="1" stroke-dasharray="2,3"/>
+        <line x1="162" y1="68" x2="165" y2="80" stroke="#4a3b2f" stroke-width="1" stroke-dasharray="2,3"/>
+
+        <!-- Small filled dot — anchor -->
+        <rect x="95" y="95" width="10" height="10" fill="#1a1008"/>
+
+        <!-- Fracture lines radiating from the break zone -->
+        <line x1="125" y1="108" x2="130" y2="100" stroke="#c4b8a8" stroke-width="1"/>
+        <line x1="125" y1="108" x2="138" y2="118" stroke="#c4b8a8" stroke-width="1"/>
+        <line x1="138" y1="130" x2="148" y2="125" stroke="#c4b8a8" stroke-width="1"/>
+      </svg>
+    </div>
+    <h1 class="logotype">Omo<br/>Research</h1>
+    <p class="tagline">逸凡 · Unbound — Italic urgency. The break leans forward.</p>
+  </header>
+
+  <section>
+    <h2>Color Palette</h2>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1a1008;"></div>
+        <div class="swatch-info"><div class="hex">#1a1008</div><div class="label">Deep Ink</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2c2015;"></div>
+        <div class="swatch-info"><div class="hex">#2c2015</div><div class="label">Near Ink</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4a3b2f;"></div>
+        <div class="swatch-info"><div class="hex">#4a3b2f</div><div class="label">Dark Taupe</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#8a7865;"></div>
+        <div class="swatch-info"><div class="hex">#8a7865</div><div class="label">Mid Taupe</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#c4b8a8;"></div>
+        <div class="swatch-info"><div class="hex">#c4b8a8</div><div class="label">Light Taupe</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f5f0e8;"></div>
+        <div class="swatch-info"><div class="hex">#f5f0e8</div><div class="label">Warm Paper</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <div class="type-sample">
+      <div class="type-headline">The break leans forward — italic urgency, letterpress speed.</div>
+      <div class="type-body">
+        Yifan (<em>逸凡</em>) — free and unspirited. <em>The Italic variation</em>
+        leans into the slant — Crimson Text italics carry an <em>urgent, literary
+        momentum</em> across the page. Headlines pitch forward; the tagline whispers
+        in cursive monospace. <em>The fracture accelerates.</em> Same warm paper,
+        same deep ink — but now the words are <em>already in motion</em>.
+      </div>
+      <div class="type-label">
+        Headlines: Crimson Text italic &nbsp;|&nbsp; Labels: IBM Plex Mono italic &nbsp;|&nbsp; Urgency on paper.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Style Rationale</h2>
+    <div class="rationale">
+      <p>
+        The <strong>Warm Paper Italic</strong> direction pushes the manifesto
+        into <strong>motion</strong>. Where the roman V1 sits with letterpress
+        gravity, the italic variant <em>pitches forward</em> — every headline
+        tilts into the next thought. The floating fragment in the icon rotates
+        further from its frame, accelerating the break. Crimson Text italics
+        evoke <em>broadsides, pamphlets, urgent dispatches</em> — the kind of
+        typography that was <strong>already moving</strong> before you arrived.
+      </p>
+    </div>
+  </section>
+
+  <nav class="brand-nav">
+    <a href="unbound-v1-warmpaper.html">● Warm Paper</a>
+    <a href="warmpaper-v2-italic.html" class="active">● Italic</a>
+    <a href="warmpaper-v3-larger.html">● Larger</a>
+    <a href="warmpaper-v4-deckled.html">● Deckled</a>
+  </nav>
+
+</div>
+</body>
+</html>

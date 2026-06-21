@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omo Research — Hero V1b: Asymmetric</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --bg-card: #f9f7f3;
+      --text: #2c251e;
+      --text-2: #8b8680;
+      --border: #e0ddd6;
+      --btn-bg: #2e2a26;
+      --btn-hover: #3d3832;
+      --link-color: #8b5a2b;
+      --font-body: "Sora", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+      --font-mono: "Geist Mono", "SFMono-Regular", "Menlo", monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 4rem;
+      padding: 5rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    /* ---- Left column: headline + content ---- */
+    .hero-content {
+      text-align: left;
+    }
+
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--text-2);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+
+    .accent-line {
+      width: 48px;
+      height: 2px;
+      background: var(--link-color);
+      margin-bottom: 1.75rem;
+      border-radius: 2px;
+    }
+
+    .hero-headline {
+      font-family: var(--font-body);
+      font-size: clamp(2.2rem, 5.5vw, 4.8rem);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      max-width: 10em;
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--link-color);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      color: var(--text-2);
+      line-height: 1.8;
+      max-width: 28rem;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.8rem 1.8rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 140ms, border-color 140ms, transform 140ms;
+      text-decoration: none;
+    }
+
+    .btn-dark {
+      background: var(--btn-bg);
+      color: #fff;
+      border-color: var(--btn-bg);
+    }
+    .btn-dark:hover { background: var(--btn-hover); border-color: var(--btn-hover); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-outline:hover { border-color: var(--text); background: rgba(44,37,30,0.04); transform: translateY(-1px); }
+
+    /* ---- Right column: stats stacked vertically ---- */
+    .hero-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      padding-left: 2.5rem;
+      border-left: 1px solid var(--border);
+      position: relative;
+    }
+
+    .stat-item {
+      text-align: left;
+    }
+
+    .stat-value {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+      line-height: 1.15;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--text-2);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .stat-divider {
+      width: 24px;
+      height: 1px;
+      background: var(--border);
+      margin: 0.25rem 0 0.5rem 0;
+    }
+
+    /* ---- Floating accent ---- */
+    .stat-accent {
+      position: absolute;
+      top: -6px;
+      left: -3px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--link-color);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 3.5rem 1.5rem;
+      }
+      .hero-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid var(--border);
+        padding-top: 1.75rem;
+      }
+      .stat-accent { display: none; }
+      .stat-value { font-size: 1.4rem; }
+      .hero-content { text-align: center; }
+      .hero-actions { justify-content: center; }
+      .accent-line { margin-left: auto; margin-right: auto; }
+      .hero-subtitle { margin-left: auto; margin-right: auto; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: center; }
+      .hero-actions .btn { width: 100%; max-width: 16rem; justify-content: center; }
+      .hero-stats { gap: 1rem; }
+      .stat-value { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <!-- LEFT: Text content -->
+    <div class="hero-content">
+      <p class="hero-label">Omo Research</p>
+      <div class="accent-line" aria-hidden="true"></div>
+
+      <h1 class="hero-headline">
+        The next <em>interface</em><br />for communicating<br />with agents
+      </h1>
+
+      <p class="hero-subtitle">
+        We explore voice, space, and presence as the primitives of human-agent interaction.
+        Not a smarter text box — a fundamentally different way for agents to exist alongside us.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-dark" href="https://github.com/omo-research" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn btn-dark" href="#">Live Demos ↗</a>
+        <a class="btn btn-dark" href="#">Papers ↗</a>
+        <a class="btn btn-outline" href="mailto:harrythentrepreneur@gmail.com">Contact ↗</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Stacked stats -->
+    <div class="hero-stats">
+      <div class="stat-accent" aria-hidden="true"></div>
+      <div class="stat-item">
+        <p class="stat-value">4</p>
+        <p class="stat-label">Active Projects</p>
+        <div class="stat-divider"></div>
+      </div>
+      <div class="stat-item">
+        <p class="stat-value">Voice · Spatial · Visual</p>
+        <p class="stat-label">Modalities</p>
+        <div class="stat-divider"></div>
+      </div>
+      <div class="stat-item">
+        <p class="stat-value">&lt;300ms</p>
+        <p class="stat-label">Latency Target</p>
+        <div class="stat-divider"></div>
+      </div>
+      <div class="stat-item">
+        <p class="stat-value">Open Source</p>
+        <p class="stat-label">All Research</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omo Research — Direction 5: Molecular</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --dark-slate: #1a1f2e;
+      --slate: #252b3d;
+      --teal: #2dd4bf;
+      --teal-dark: #14b8a6;
+      --amber: #f59e0b;
+      --amber-light: #fbbf24;
+      --cream: #f7f5f0;
+      --white: #ffffff;
+      --border-subtle: rgba(255,255,255,0.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--dark-slate);
+      color: var(--white);
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.75;
+      min-height: 100vh;
+      font-size: 15px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+    .logo-mark {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .logo-mark svg {
+      width: 180px;
+      height: 180px;
+    }
+    .logotype {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .logotype .accent {
+      color: var(--teal);
+      font-weight: 700;
+    }
+    .tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      opacity: 0.7;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+    section h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(45, 212, 191, 0.15);
+    }
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .swatch {
+      flex: 1 1 100px;
+      min-width: 90px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--slate);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+    }
+    .swatch-color {
+      height: 100px;
+    }
+    .swatch-info {
+      padding: 0.65rem 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .swatch-info .hex {
+      font-weight: 600;
+      color: white;
+    }
+    .swatch-info .label {
+      opacity: 0.6;
+      margin-top: 0.1rem;
+    }
+
+    .type-sample {
+      background: var(--slate);
+      border-radius: 8px;
+      padding: 2.5rem;
+      border-left: 3px solid var(--teal);
+    }
+    .type-headline {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .type-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.85;
+      max-width: 560px;
+    }
+    .type-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: var(--teal);
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      opacity: 0.7;
+    }
+
+    .rationale {
+      background: var(--slate);
+      border: 1px solid rgba(45, 212, 191, 0.12);
+      padding: 2.5rem;
+      border-radius: 8px;
+      line-height: 1.9;
+    }
+    .rationale p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+    }
+    .rationale strong {
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    .brand-nav {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .brand-nav a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      margin: 0 0.75rem;
+      transition: color 0.2s;
+    }
+    .brand-nav a:hover { color: var(--teal); }
+
+    @media (max-width: 600px) {
+      .container { padding: 2rem 1.25rem 4rem; }
+      .type-sample { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo-mark">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Molecular mark: 3 connected nodes (voice, space, presence) with connecting arcs -->
+        
+        <!-- Subtle background grid (lab feel) -->
+        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+          <circle cx="10" cy="10" r="0.5" fill="#2dd4bf" opacity="0.08"/>
+        </pattern>
+        <rect x="0" y="0" width="200" height="200" fill="url(#grid)"/>
+        
+        <!-- Three primary nodes in a triangle arrangement -->
+        
+        <!-- Node 1: VOICE (top) — teal -->
+        <circle cx="100" cy="40" r="22" fill="none" stroke="#2dd4bf" stroke-width="2.5"/>
+        <circle cx="100" cy="40" r="14" fill="#2dd4bf" opacity="0.15"/>
+        <circle cx="100" cy="40" r="6" fill="#2dd4bf" opacity="0.8"/>
+        <!-- Sound wave arcs near voice node -->
+        <path d="M 78 30 Q 100 12 122 30" fill="none" stroke="#2dd4bf" stroke-width="1" opacity="0.4"/>
+        <path d="M 72 24 Q 100 2 128 24" fill="none" stroke="#2dd4bf" stroke-width="1" opacity="0.25"/>
+        
+        <!-- Node 2: PRESENCE (center) — amber — largest, central -->
+        <circle cx="100" cy="100" r="30" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+        <circle cx="100" cy="100" r="20" fill="#f59e0b" opacity="0.12"/>
+        <circle cx="100" cy="100" r="8" fill="#f59e0b" opacity="0.85"/>
+        <!-- Double ring for presence emphasis -->
+        <circle cx="100" cy="100" r="38" fill="none" stroke="#f59e0b" stroke-width="0.8" opacity="0.2" stroke-dasharray="4 6"/>
+        
+        <!-- Node 3: SPACE (bottom-right) — teal -->
+        <circle cx="160" cy="150" r="22" fill="none" stroke="#2dd4bf" stroke-width="2.5"/>
+        <circle cx="160" cy="150" r="14" fill="#2dd4bf" opacity="0.15"/>
+        <circle cx="160" cy="150" r="6" fill="#2dd4bf" opacity="0.8"/>
+        <!-- Spatial coordinate marks -->
+        <line x1="145" y1="150" x2="155" y2="150" stroke="#2dd4bf" stroke-width="0.8" opacity="0.3"/>
+        <line x1="175" y1="150" x2="165" y2="150" stroke="#2dd4bf" stroke-width="0.8" opacity="0.3"/>
+        <line x1="160" y1="135" x2="160" y2="145" stroke="#2dd4bf" stroke-width="0.8" opacity="0.3"/>
+        <line x1="160" y1="165" x2="160" y2="155" stroke="#2dd4bf" stroke-width="0.8" opacity="0.3"/>
+        
+        <!-- Connecting arcs (bonds) between nodes -->
+        <!-- Voice → Presence -->
+        <line x1="100" y1="62" x2="100" y2="80" stroke="#2dd4bf" stroke-width="1.8" opacity="0.5"/>
+        <!-- Presence → Space -->
+        <line x1="122" y1="116" x2="142" y2="136" stroke="#2dd4bf" stroke-width="1.8" opacity="0.5"/>
+        <!-- Voice → Space (indirect connection) -->
+        <path d="M 118 50 Q 160 70 160 128" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.2" stroke-dasharray="3 5"/>
+        
+        <!-- Small floating electrons / data points -->
+        <circle cx="85" cy="62" r="3" fill="#2dd4bf" opacity="0.5"/>
+        <circle cx="138" cy="108" r="2.5" fill="#f59e0b" opacity="0.5"/>
+        <circle cx="112" cy="138" r="3" fill="#2dd4bf" opacity="0.4"/>
+        <circle cx="70" cy="120" r="2" fill="#f59e0b" opacity="0.35"/>
+      </svg>
+    </div>
+    <h1 class="logotype">omo<span class="accent">·</span>research</h1>
+    <p class="tagline">Three nodes. One protocol.</p>
+  </header>
+
+  <section>
+    <h2>Color Palette</h2>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1a1f2e;"></div>
+        <div class="swatch-info"><div class="hex">#1a1f2e</div><div class="label">Lab Slate</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#252b3d;"></div>
+        <div class="swatch-info"><div class="hex">#252b3d</div><div class="label">Dark Slate</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2dd4bf;"></div>
+        <div class="swatch-info"><div class="hex">#2dd4bf</div><div class="label">Signal Teal</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f59e0b;"></div>
+        <div class="swatch-info"><div class="hex">#f59e0b</div><div class="label">Presence Amber</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f7f5f0;"></div>
+        <div class="swatch-info"><div class="hex">#f7f5f0</div><div class="label">Cream (light mode)</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#ffffff;"></div>
+        <div class="swatch-info"><div class="hex">#ffffff</div><div class="label">White</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <div class="type-sample">
+      <div class="type-headline">Every agent interaction is a molecular bond between three forces.</div>
+      <div class="type-body">
+        Omo Research maps the architecture of agent communication. Voice carries the signal. 
+        Space provides the topology. Presence anchors the interaction in time and attention. 
+        Each is a node; the bonds between them are the protocol we're building. We work in 
+        code, not in decks. We ship prototypes, not papers. The result is an open-source 
+        stack that turns agent communication from a research problem into a working interface.
+      </div>
+      <div class="type-mono">
+        Headings / Body: Inter (300–700) &nbsp;|&nbsp; UI / Labels: JetBrains Mono (400–600)<br/>
+        Dark-first palette with teal accent. Light mode variant available via cream/white.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Style Rationale</h2>
+    <div class="rationale">
+      <p>
+        The <strong>Molecular</strong> direction visualizes Omo's three pillars — <strong>voice, 
+        space, and presence</strong> — as connected nodes in a molecular structure. The logo 
+        arranges three circular nodes in a deliberate triangle: voice at the top (teal, with 
+        sound wave arcs), presence at the center (amber, the largest and most grounded), and 
+        space at the bottom-right (teal, with coordinate marks). <strong>Bonds</strong> connect 
+        the nodes — solid lines for direct relationships, a dashed arc for the indirect 
+        voice↔space path that presence mediates. A subtle dot-grid background evokes the 
+        <strong>laboratory / biotech research</strong> aesthetic. The dark-slate palette with 
+        teal as the primary signal color and amber as the presence anchor says: 
+        <em>this is rigorous, scientific work — but the structure is beautiful.</em>
+      </p>
+    </div>
+  </section>
+
+  <nav class="brand-nav">
+    <a href="direction-1-celestial.html">○ Celestial</a>
+    <a href="direction-2-brutalist.html">○ Brutalist</a>
+    <a href="direction-3-bauhaus-refined.html">○ Bauhaus Refined</a>
+    <a href="direction-4-warm-minimal.html">○ Warm Minimal</a>
+    <a href="direction-5-molecular.html">● Molecular</a>
+  </nav>
+
+</div>
+</body>
+</html>

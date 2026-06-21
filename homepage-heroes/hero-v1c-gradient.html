@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omo Research — Hero V1c: Warm Gradient</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --bg-card: #f9f7f3;
+      --text: #2c251e;
+      --text-2: #8b8680;
+      --border: #e0ddd6;
+      --btn-bg: #2e2a26;
+      --btn-hover: #3d3832;
+      --link-color: #8b5a2b;
+      --font-body: "Sora", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+      --font-mono: "Geist Mono", "SFMono-Regular", "Menlo", monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* ---- Warm radial gradient overlay ---- */
+    .gradient-atmosphere {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 40%, rgba(180, 120, 60, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 30% at 50% 60%, rgba(200, 150, 90, 0.05) 0%, transparent 50%),
+        radial-gradient(circle 300px at 50% 35%, rgba(139, 90, 43, 0.12) 0%, transparent 70%);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---- Micro label ---- */
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-2);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 2rem;
+    }
+
+    /* ---- Warm glow behind headline ---- */
+    .headline-glow {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .headline-glow::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 280px;
+      background: radial-gradient(ellipse, rgba(180, 130, 70, 0.1) 0%, rgba(200, 160, 100, 0.04) 40%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-headline {
+      font-family: var(--font-body);
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      max-width: 14em;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--link-color);
+    }
+
+    /* ---- Accent line with warm tint ---- */
+    .accent-line {
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--link-color), transparent);
+      margin: 0 auto 2rem auto;
+      border-radius: 2px;
+    }
+
+    /* ---- Subtitle ---- */
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-2);
+      line-height: 1.75;
+      max-width: 36rem;
+      margin: 0 auto 2.5rem auto;
+      font-weight: 400;
+    }
+
+    /* ---- Actions ---- */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.8rem 1.8rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 140ms, border-color 140ms, transform 140ms, box-shadow 140ms;
+      text-decoration: none;
+    }
+
+    .btn-dark {
+      background: var(--btn-bg);
+      color: #fff;
+      border-color: var(--btn-bg);
+    }
+    .btn-dark:hover {
+      background: var(--btn-hover);
+      border-color: var(--btn-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(139, 90, 43, 0.15);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-outline:hover { border-color: var(--text); background: rgba(44,37,30,0.04); transform: translateY(-1px); }
+
+    /* ---- Stats row ---- */
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.75rem 0;
+      position: relative;
+    }
+
+    .stats-row::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 25%;
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(139, 90, 43, 0.2), transparent);
+    }
+
+    .stat-item {
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .stat-value {
+      font-family: var(--font-mono);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--text-2);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 3.5rem 1.25rem; }
+      .hero-headline { font-size: clamp(2rem, 9vw, 3.5rem); }
+      .stats-row { gap: 1.5rem; padding: 1.25rem 0; }
+      .stat-item { min-width: 80px; }
+      .stat-value { font-size: 1.15rem; }
+      .headline-glow::before { width: 320px; height: 180px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: center; }
+      .hero-actions .btn { width: 100%; max-width: 16rem; justify-content: center; }
+      .stats-row { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gradient-atmosphere" aria-hidden="true"></div>
+
+  <section class="hero">
+    <p class="hero-label">Research Lab</p>
+
+    <div class="accent-line" aria-hidden="true"></div>
+
+    <div class="headline-glow">
+      <h1 class="hero-headline">
+        The next <em>interface</em><br />for communicating<br />with agents
+      </h1>
+    </div>
+
+    <p class="hero-subtitle">
+      We explore voice, space, and presence as the primitives of human-agent interaction.
+      Not a smarter text box — a fundamentally different way for agents to exist alongside us.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn btn-dark" href="https://github.com/omo-research" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn btn-dark" href="#">Live Demos ↗</a>
+      <a class="btn btn-dark" href="#">Papers ↗</a>
+      <a class="btn btn-outline" href="mailto:harrythentrepreneur@gmail.com">Contact ↗</a>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <p class="stat-value">4</p>
+        <p class="stat-label">Active Projects</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-value">Voice · Spatial · Visual</p>
+        <p class="stat-label">Modalities</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-value">&lt;300ms</p>
+        <p class="stat-label">Latency Target</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-value">Open Source</p>
+        <p class="stat-label">All Research</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,514 @@
+1|<!DOCTYPE html>
+2|<html lang="en">
+3|<head>
+4|  <meta charset="UTF-8" />
+5|  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+6|  <meta name="description" content="Spoken English Sessions: Autonomous Multi-Agent Language Classrooms in Minecraft — Academic research report from Omo Research." />
+7|  <meta name="theme-color" content="#f5f0e8" />
+8|  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line x1='20' y1='20' x2='20' y2='180' stroke='%231a1008' stroke-width='12'/><line x1='20' y1='20' x2='100' y2='20' stroke='%231a1008' stroke-width='12'/><line x1='20' y1='180' x2='180' y2='180' stroke='%231a1008' stroke-width='12'/><rect x='90' y='90' width='16' height='16' fill='%231a1008'/></svg>" />
+9|  <title>Spoken English Sessions: Autonomous Multi-Agent Language Classrooms — Omo Research</title>
+10|  <link rel="preconnect" href="https://fonts.googleapis.com" />
+11|  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+12|  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+13|  <link rel="stylesheet" href="../styles.css" />
+14|  <style>
+15|    .comparison-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-family: var(--font-body); font-size: 0.85rem; }
+16|    .comparison-table th { background: #1a1008; color: #f5f0e8; padding: 0.6rem 0.8rem; text-align: left; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; font-weight: 500; }
+17|    .comparison-table td { padding: 0.55rem 0.8rem; border-bottom: 1px solid #d4cdc0; }
+18|    .comparison-table tr:nth-child(even) td { background: #faf7f2; }
+19|    .comparison-table .check { color: #2d5a27; font-weight: 700; }
+20|    .comparison-table .cross { color: #8a4a4a; }
+21|    .comparison-table .partial { color: #8a7865; }
+22|    .math-block { background: #faf7f2; border: 1px solid #d4cdc0; border-radius: 6px; padding: 1rem 1.2rem; margin: 1rem 0; font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.8; overflow-x: auto; }
+23|    .math-block em { font-style: italic; font-family: var(--font-body); }
+24|    .pdf-embed { margin: 2rem 0 0.5rem; border: 1px solid #d4cdc0; border-radius: 8px; overflow: hidden; background: #faf7f2; box-shadow: 0 2px 12px rgba(44,37,30,0.06); }
+25|    .pdf-embed-object, .pdf-embed-frame { display: block; width: 100%; height: 85vh; min-height: 600px; border: 0; }
+26|    .pdf-embed-fallback { padding: 2rem; text-align: center; font-family: var(--font-body); color: var(--text-2); }
+27|    @media print { .pdf-embed { display: none !important; } }
+28|  </style>
+29|</head>
+30|<body>
+31|  <!-- Desktop left sidebar -->
+32|  <nav class="sidebar" aria-label="Page navigation">
+33|    <div class="sidebar-inner">
+34|      <a class="sidebar-brand" href="/index.html" aria-label="Omo Research Home">
+35|        <span class="sidebar-mark">
+36|          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+37|            <line x1="20" y1="20" x2="20" y2="180" stroke="#1a1008" stroke-width="8"/>
+38|            <line x1="20" y1="20" x2="100" y2="20" stroke="#1a1008" stroke-width="8"/>
+39|            <line x1="20" y1="180" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/>
+40|            <line x1="100" y1="20" x2="130" y2="20" stroke="#1a1008" stroke-width="8"/>
+41|            <line x1="140" y1="20" x2="160" y2="20" stroke="#1a1008" stroke-width="8"/>
+42|            <line x1="180" y1="20" x2="180" y2="60" stroke="#1a1008" stroke-width="8"/>
+43|            <line x1="180" y1="72" x2="180" y2="110" stroke="#1a1008" stroke-width="8"/>
+44|            <line x1="180" y1="120" x2="180" y2="150" stroke="#1a1008" stroke-width="8"/>
+45|            <line x1="180" y1="160" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/>
+46|            <line x1="32" y1="32" x2="32" y2="168" stroke="#1a1008" stroke-width="3"/>
+47|            <line x1="32" y1="32" x2="100" y2="32" stroke="#1a1008" stroke-width="3"/>
+48|            <line x1="32" y1="168" x2="168" y2="168" stroke="#1a1008" stroke-width="3"/>
+49|            <line x1="105" y1="32" x2="125" y2="32" stroke="#1a1008" stroke-width="3"/>
+50|            <line x1="138" y1="32" x2="155" y2="32" stroke="#1a1008" stroke-width="3"/>
+51|            <line x1="168" y1="32" x2="168" y2="65" stroke="#1a1008" stroke-width="3"/>
+52|            <line x1="168" y1="75" x2="168" y2="105" stroke="#1a1008" stroke-width="3"/>
+53|            <line x1="168" y1="115" x2="168" y2="140" stroke="#1a1008" stroke-width="3"/>
+54|            <line x1="168" y1="150" x2="168" y2="168" stroke="#1a1008" stroke-width="3"/>
+55|            <path d="M 62 100 A 30 30 0 0 1 100 70" fill="none" stroke="#1a1008" stroke-width="7"/>
+56|            <path d="M 100 70 A 30 30 0 0 1 100 90" fill="none" stroke="#1a1008" stroke-width="7"/>
+57|            <path d="M 100 90 A 30 30 0 0 1 125 108" fill="none" stroke="#1a1008" stroke-width="7"/>
+58|            <path d="M 125 108 A 30 30 0 0 1 138 130" fill="none" stroke="#1a1008" stroke-width="7"/>
+59|            <path d="M 100 90 A 30 30 0 0 0 62 100" fill="none" stroke="#1a1008" stroke-width="7"/>
+60|            <rect x="130" y="110" width="8" height="8" fill="none" stroke="#1a1008" stroke-width="3" transform="rotate(15, 134, 114)"/>
+61|            <rect x="142" y="100" width="6" height="6" fill="none" stroke="#1a1008" stroke-width="2" transform="rotate(-10, 145, 103)"/>
+62|            <rect x="148" y="118" width="7" height="7" fill="none" stroke="#1a1008" stroke-width="2.5" transform="rotate(25, 151, 121)"/>
+63|            <rect x="138" y="128" width="5" height="5" fill="none" stroke="#1a1008" stroke-width="2" transform="rotate(-20, 140, 130)"/>
+64|            <rect x="152" y="108" width="5" height="5" fill="none" stroke="#1a1008" stroke-width="1.5" transform="rotate(8, 154, 110)"/>
+65|            <rect x="155" y="58" width="14" height="10" fill="none" stroke="#1a1008" stroke-width="3" transform="rotate(12, 162, 63)"/>
+66|            <line x1="155" y1="68" x2="155" y2="80" stroke="#4a3b2f" stroke-width="1" stroke-dasharray="2,3"/>
+67|            <line x1="164" y1="68" x2="164" y2="76" stroke="#4a3b2f" stroke-width="1" stroke-dasharray="2,3"/>
+68|            <rect x="95" y="95" width="10" height="10" fill="#1a1008"/>
+69|            <line x1="125" y1="108" x2="130" y2="100" stroke="#c4b8a8" stroke-width="1"/>
+70|            <line x1="125" y1="108" x2="138" y2="118" stroke="#c4b8a8" stroke-width="1"/>
+71|            <line x1="138" y1="130" x2="148" y2="125" stroke="#c4b8a8" stroke-width="1"/>
+72|          </svg>
+73|        </span>
+74|        <span class="sidebar-name">Research</span>
+75|      </a>
+76|      <div class="sidebar-links">
+77|        <a class="sidebar-link" href="../index.html">← Home</a>
+78|        <a class="sidebar-sublink" href="../papers/omo-space.html">Omo Space</a>
+79|        <a class="sidebar-sublink" href="../papers/agentjam.html">AgentJam</a>
+80|        <a class="sidebar-sublink" href="../papers/spoken-english.html">Spoken English</a>
+81|      </div>
+82|    </div>
+83|  </nav>
+84|  <script>/*sidebar-active*/(function(){
+85|  var p=location.pathname;if(p==='/'||p==='')p='/index.html';
+86|  document.querySelectorAll('.sidebar-link[href^="../"],.sidebar-sublink[href^="../"]').forEach(function(a){
+87|    if(a.getAttribute('href')===p||'../'+p.split('/').pop()===a.getAttribute('href'))a.classList.add('active');
+88|  });
+89|})();</script>
+90|  <header class="mobile-header">
+91|    <span class="mobile-brand">Papers</span>
+92|    <div class="mobile-actions"><a class="btn btn-dark btn-sm" href="../index.html">&#8592; Home</a></div>
+93|  </header>
+94|  <main class="content-main">
+95|    <header class="paper-header reveal" id="overview">
+96|      <div class="paper-tags">
+97|        <span class="tag">Multi-Agent Systems</span><span class="tag">Language Education</span><span class="tag">Minecraft</span><span class="tag">Voice AI</span><span class="tag">Autonomous Classrooms</span>
+98|      </div>
+99|      <div class="paper-authors">
+100|        <p class="author-name">Harry Edwards</p>
+101|        <p class="author-affiliation">Omo Research</p>
+102|        <p class="paper-date">FINAL &mdash; Omo Research Technical Report &middot; June 2025</p>
+103|      </div>
+104|      <h1>Spoken English Sessions: Autonomous Multi-Agent Language Classrooms in Minecraft</h1>
+105|      <p class="paper-subtitle">
+106|        We present Spoken English Sessions, a system for fully autonomous 50–60 minute spoken-English classes in Minecraft supporting 4–6 students. An AI captain — the Captain Dyad (Game Agent ⊕ Teaching Agent) — directs the session; peer AI bots model target language; and resource gaps engineered into the game world require student-to-student English communication to resolve. The architecture combines a deterministic Session Manager for orchestration, a text-only LLM Captain Dyad for dynamic direction with formal action spaces, and a voice bridge with streaming ASR (faster-whisper) and multi-voice TTS (MOSS-TTS-Nano, < 100M parameters). Per-student exponent scoring provides live, transparent assessment across three weighted dimensions. No human teacher is required during the session. End-to-end voice latency is 1.5–2.5 s; the SpeechBus serializes multi-agent audio output; and the Session Manager achieves 100% structural reliability across 10 test runs. All evaluation uses simulated student scenarios; human learner studies are planned for future work (Section 7.1).
+107|      </p>
+108|      <div class="paper-actions">
+109|        <a class="btn btn-dark" href="spoken-english.pdf" download>Download PDF &#x2193;</a>
+110|        <a class="btn btn-dark" href="#abstract">Read Paper &#8595;</a>
+111|        <a class="btn btn-dark" href="https://github.com/omo-research" target="_blank" rel="noopener">GitHub &#x2197;</a>
+112|        <a class="btn btn-outline" href="../index.html">&#8592; Back to Omo</a>
+113|      </div>
+114|      <div class="meta-grid">
+115|        <div class="meta-item"><p class="meta-label">Class Size</p><p class="meta-value">4–6 students + AI peers</p></div>
+116|        <div class="meta-item"><p class="meta-label">Duration</p><p class="meta-value">50–60 minutes</p></div>
+117|        <div class="meta-item"><p class="meta-label">Voice Latency</p><p class="meta-value">1.5–2.5 s (end-to-end)</p></div>
+118|        <div class="meta-item"><p class="meta-label">TTS Model</p><p class="meta-value">MOSS-TTS-Nano (< 100M)</p></div>
+119|      </div>
+120|
+121|      <!-- Embedded PDF (typeset version of this paper) -->
+122|      <div class="pdf-embed" aria-label="Typeset PDF of this paper">
+123|        <object class="pdf-embed-object" data="spoken-english.pdf" type="application/pdf">
+124|          <iframe class="pdf-embed-frame" src="spoken-english.pdf" title="Spoken English Sessions — PDF"></iframe>
+125|          <p class="pdf-embed-fallback">
+126|            This browser can't display the embedded PDF.
+127|            <a href="spoken-english.pdf" download>Download the PDF&nbsp;&#x2193;</a>
+128|          </p>
+129|        </object>
+130|      </div>
+131|    </header>
+132|
+133|    <!-- Executive Summary -->
+134|    <section class="paper-section reveal" id="executive-summary">
+135|      <h2>Executive Summary</h2>
+136|      <div class="body-text">
+137|        <p>
+138|          Spoken English Sessions is a fully autonomous AI-directed classroom that runs 50–60 minute spoken-English lessons for 4–6 students in Minecraft, with no human teacher required. An AI "Captain Dyad" — two specialized LLMs handling game actions and teaching respectively — orchestrates the session while AI peer bots hold critical items that real students need, creating "resource gaps" that force students to communicate with each other in English to progress. The system tracks each student's performance live through a weighted scoring formula that counts exchanges, frame accuracy, and task completion. Voice processing uses streaming speech recognition (faster-whisper) and multi-voice text-to-speech (MOSS-TTS-Nano), with a SpeechBus ensuring AI voices don't overlap. All evaluation currently uses simulated student scenarios; classroom studies with real learners are planned for future work.
+139|        </p>
+140|      </div>
+141|    </section>
+142|
+143|    <section class="paper-section reveal" id="abstract">
+144|      <h2>Abstract</h2>
+145|      <div class="body-text">
+146|        <p><strong>Background.</strong> Autonomous AI-directed classrooms represent a frontier in educational technology: can an AI system orchestrate a full language class — including briefing, task phases, peer interaction, scoring, and debrief — without a human teacher present? Existing AI tutoring systems provide one-on-one practice but strip away the social dynamics (peer interaction, group tasks, multi-party communication) that give classrooms their distinctive pedagogical value.</p>
+147|        <p style="margin-top: 1rem;"><strong>Problem.</strong> Scaling language speaking practice to classrooms is fundamentally limited by teacher availability. Human teachers cannot simultaneously monitor, assess, and provide feedback to 4–6 students engaged in spoken interaction. AI tutors address individual practice but cannot reproduce the communicative pressure that arises when a peer holds a resource another student needs — a dynamic we formalize as the resource gap mechanism (Section 3.1).</p>
+148|        <p style="margin-top: 1rem;"><strong>Approach.</strong> We introduce Spoken English Sessions, a working prototype that orchestrates autonomous 50–60 minute spoken-English classes for 4–6 students inside Minecraft. The architecture rests on three pillars: (1) a deterministic Session Manager serving as the single source of truth for session state, scores, and beat progression; (2) the Captain Dyad — a Game Agent (A<sub>game</sub>, controlling Minecraft actions) coupled with a Teaching Agent (A<sub>teach</sub>, managing pedagogy and scoring) — both text-only LLMs communicating over a Captain Bridge at port <code>:8768</code>; and (3) a voice bridge with streaming ASR (faster-whisper) and multi-voice TTS (MOSS-TTS-Nano) in dedicated sidecars, with a SpeechBus serializer preventing audio overlap. Our core pedagogical innovation is <strong>peer-to-peer speaking gates</strong>: AI peer bots hold items that real students need, creating resource gaps that require student-to-student English communication to resolve — extending the speaking-gate concept [10] from one-on-one mentoring to multi-student classrooms. Per-student exponent scoring, formalized as S(p<sub>i</sub>) = 0.4·X<sub>i</sub> + 0.35·F<sub>i</sub> + 0.25·C<sub>i</sub>, provides live, transparent assessment.</p>
+149|        <p style="margin-top: 1rem;"><strong>Results.</strong> The Session Manager reliably orchestrates beat transitions and scoring updates across full 50–60 minute sessions with 100% structural reliability (n = 10). End-to-end voice latency (student speech → ASR → LLM → TTS → audio) is 1.5–2.5 s (mean 1.9 s), decomposed as VAD (~100 ms) + ASR (~400 ms) + LLM (~800 ms) + TTS (~400 ms) + SpeechBus (~200 ms). Exchange detection matches ground truth in 94% of test cases; frame accuracy scoring agrees with human annotators at 88%. The SpeechBus successfully prevents audio overlap in all test scenarios.</p>
+150|        <p style="margin-top: 1rem;"><strong>Implications.</strong> Autonomous multi-agent classrooms represent a new category of educational technology — one where AI systems orchestrate peer interaction rather than replacing it. The Captain Dyad architecture and resource gap mechanism are generalizable to any domain where collaborative task completion can be engineered to require peer communication. All code is released as open source.</p>
+151|      </div>
+152|      <div class="body-text" style="margin-top: 1rem;">
+153|        <p style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-2);">
+154|          <strong>Keywords:</strong> autonomous classrooms, multi-agent systems, language education, Minecraft, voice AI, peer-to-peer learning
+155|        </p>
+156|      </div>
+157|    </section>
+158|
+159|    <section class="paper-section reveal" id="introduction">
+160|      <h2>1. Introduction</h2>
+161|      <div class="body-text">
+162|        <p>Language classrooms face an irreducible scaling constraint: providing each student with sufficient speaking practice — the activity most strongly associated with language acquisition [12] — requires teacher attention that cannot be simultaneously distributed across students. A teacher can listen to one student at a time. In a class of 25, each student receives at most 2–3 minutes of individual speaking attention per hour. AI tutors can provide unlimited one-on-one practice [17], but they strip away the social dynamics that give classrooms their distinctive pedagogical value: peer interaction, negotiated meaning, group problem-solving, and the communicative urgency that arises when another person holds a resource you need.</p>
+163|        <p style="margin-top: 1rem;">Spoken English Sessions addresses both problems simultaneously — scaling and peer dynamics — through AI-orchestrated resource engineering. The system orchestrates a complete classroom of 4–6 human students alongside AI peer bots, entirely autonomously. The AI captain (the Captain Dyad) directs the session through briefing, task beats, a finale, and a debrief. AI peer bots model target language at an appropriate proficiency level and, critically, <em>hold items that real students need</em>. This engineered resource scarcity creates a gap that demands student-to-student English communication to resolve. The AI orchestrates the conditions for peer interaction; it does not participate in the communicative transaction itself — a design principle we formalize through the resource gap predicate in Section 3.1.</p>
+164|
+165|        <h3 style="margin-top: 1.5rem;">1.1 Related Work</h3>
+166|        <p><strong>Intelligent tutoring systems.</strong> VanLehn [14] demonstrated that well-designed ITS can approach human tutoring effectiveness, but these systems operate through screen-based interfaces with individual learners. Spoken English Sessions extends the ITS paradigm to multi-student classroom orchestration in an immersive 3D environment — shifting the unit of analysis from individual learner to classroom ecosystem.</p>
+167|        <p style="margin-top: 0.75rem;"><strong>Computer-supported collaborative learning (CSCL).</strong> Stahl et al. [11] established that peer interaction — not just individual task completion — drives learning in collaborative settings. Key CSCL findings relevant to our work include: (a) the importance of task structures that require genuine interdependence rather than optional collaboration [3]; (b) the role of shared artifacts in grounding communication [11]; and (c) the finding that engineered resource interdependence (jigsaw-style task designs) produces more equitable participation than unstructured group work. CSCL platforms (Knowledge Forum, CoFFEE, Collage) provide structured environments for peer knowledge construction but operate through text-based interfaces. Our system instantiates CSCL principles in a voice-driven, 3D game environment where communication produces immediate material consequences — obtaining items needed to continue playing. The resource gap mechanism directly operationalizes engineered interdependence from CSCL theory, but with AI-orchestrated rather than teacher-orchestrated gap assignment.</p>
+168|        <p style="margin-top: 0.75rem;"><strong>Multi-agent systems for education.</strong> Baylor and Kim [1] demonstrated that pedagogical agents playing distinct roles (expert, motivator, mentor) improve learning outcomes, but their agents were animated characters delivering scripted content. Subsequent work on multi-agent learning environments has explored agent teams for collaborative problem-solving and peer modeling, though primarily in screen-based, non-immersive settings. Our system extends this with LLM-driven agents that adapt dynamically to student behavior, combined with a resource-gap mechanism that shifts communication from student-to-agent to student-to-student. The Captain Dyad pattern — splitting orchestration between a Game Agent and a Teaching Agent — draws on the established finding that role specialization in pedagogical agent teams improves effectiveness [1], but applies it to autonomous rather than scripted agents.</p>
+169|        <p style="margin-top: 0.75rem;"><strong>Speaking gates.</strong> The speaking-gate concept was introduced in AgentJam [10] for one-on-one mentoring, formalized as <em>G</em>(utterance, <em>f<sub>b</sub></em>) → {matched, unmatched, scaffold}. Spoken English Sessions extends this to multi-student classrooms via peer-to-peer speaking gates, where AI peers hold resources that real students must request from each other — creating communicative pressure between humans rather than between human and AI.</p>
+170|        <p style="margin-top: 0.75rem;"><strong>Voice AI for education.</strong> Commercial systems (ELSA Speak, Duolingo) use ASR for pronunciation assessment but focus on individual, scripted practice. Voice agent architectures [8, 9] have demonstrated low-latency conversational AI but in single-speaker contexts. Our system combines streaming ASR (faster-whisper) with multi-voice TTS (MOSS-TTS-Nano, distinct voices per speaker) for multi-party classroom interaction — the SpeechBus solves the "cacophony problem" that arises when multiple AI agents attempt to speak simultaneously.</p>
+171|
+172|        <h3 style="margin-top: 1.5rem;">1.2 Contributions</h3>
+173|        <p>This paper makes the following contributions:</p>
+174|        <p style="margin-top: 0.75rem;"><strong>1. The Captain Dyad architectural pattern.</strong> A two-agent orchestration pattern (Game Agent A<sub>game</sub> ⊕ Teaching Agent A<sub>teach</sub>) where both are text-only LLMs communicating over a typed-message Captain Bridge, with audio processing delegated to dedicated sidecar processes for independent scalability. Each agent maintains a focused context — world-state vs. student-assessment — with a shared coordination context preventing context pollution. This pattern generalizes beyond language education: any domain requiring simultaneous management of a virtual environment and a human-facing interaction could adopt the dyad structure.</p>
+175|        <p style="margin-top: 0.5rem;"><strong>2. Peer-to-peer speaking gates via resource gaps.</strong> A mechanism extending the speaking-gate concept from one-on-one mentoring (AgentJam [10]) to multi-student classrooms: AI peer bots hold items that real students need, creating resource gaps formalized through the gap predicate (Section 3.1). The key design principle is that the AI orchestrates the conditions for peer communication but does not participate in the communicative transaction — the exchange occurs between human learners.</p>
+176|        <p style="margin-top: 0.5rem;"><strong>3. The Session Manager with formal state machine.</strong> A deterministic runtime orchestrating the complete session lifecycle — player connections, voice bridges, scoring, state transitions, beat progression — as the system's single source of truth, achieving 100% structural reliability in test runs. The Session Manager enforces the structural scaffold on which the dynamic Captain Dyad operates, ensuring reliable session structure even when LLM content varies.</p>
+177|        <p style="margin-top: 0.5rem;"><strong>4. Multi-voice pipeline with SpeechBus.</strong> A voice architecture combining faster-whisper for streaming ASR, MOSS-TTS-Nano (< 100M parameters) for multi-voice TTS with distinct voices per speaker, and a SpeechBus serializer that prevents audio overlap in multi-agent scenarios through priority-sorted queuing (captain utterances > peer utterances).</p>
+178|      </div>
+179|    </section>
+180|
+181|    <section class="paper-section reveal" id="architecture">
+182|      <h2>2. System Architecture</h2>
+183|      <p class="section-note arch-intro">The system is built on three pillars: a deterministic Session Manager (runtime, single source of truth), a dynamic Captain Dyad (text-only LLM: Game Agent ⊕ Teaching Agent), and a Voice Bridge (streaming ASR + multi-voice TTS sidecars). LLMs process text only; audio runs in dedicated processes.</p>
+184|
+185|      <div class="body-text">
+186|        <h3>2.1 Formal Model</h3>
+187|        <p>Let <em>P</em> = {<em>p</em><sub>1</sub>, …, <em>p<sub>k</sub></em>} be the set of human students (<em>k</em> ∈ [4, 6]) and <em>B</em> = {<em>b</em><sub>1</sub>, …, <em>b<sub>m</sub></em>} be the set of AI peer bots. The session is defined as a formal structure:</p>
+188|        <div class="math-block">
+189|          Session = (state, beat, scores, clock, bridge<sub>cap</sub>, bridge<sub>voice</sub>)<br/><br/>
+190|          where &emsp; state ∈ {idle, briefing, in_progress, finale, debrief, ended}<br/>
+191|          &emsp;&emsp;&emsp;&emsp;&emsp; beat ∈ ℕ &emsp;(current beat index, 0-indexed)<br/>
+192|          &emsp;&emsp;&emsp;&emsp;&emsp; scores : <em>P</em> → ℝ<sup>≥0</sup> &emsp;(per-student exponent score)<br/>
+193|          &emsp;&emsp;&emsp;&emsp;&emsp; clock ∈ ℝ<sup>≥0</sup> &emsp;(session elapsed time in seconds)
+194|        </div>
+195|        <p style="margin-top: 0.75rem;">The Captain Dyad consists of two specialized LLM agents sharing context over the Captain Bridge:</p>
+196|        <div class="math-block">
+197|          Captain = (A<sub>game</sub>, A<sub>teach</sub>, ctx<sub>shared</sub>)<br/><br/>
+198|          A<sub>game</sub> : ctx<sub>shared</sub> × obs<sub>world</sub> → A<sub>minecraft</sub><br/>
+199|          A<sub>teach</sub> : ctx<sub>shared</sub> × obs<sub>students</sub> × scores → A<sub>pedagogy</sub><br/><br/>
+200|          where &emsp; A<sub>minecraft</sub> = {MOVE_BOT, PLACE_BLOCK, GIVE_ITEM, TELEPORT, BUILD_STRUCTURE, ANNOUNCE_GAP}<br/>
+201|          &emsp;&emsp;&emsp;&emsp;&emsp; A<sub>pedagogy</sub> = {START_BEAT, END_BEAT, UPDATE_SCORE, ANNOUNCE, PROMPT_STUDENT, MODEL_LANGUAGE, MANAGE_PACING}
+202|        </div>
+203|        <p style="margin-top: 0.75rem;">Communication over the Captain Bridge at port <code>:8768</code> uses JSON-serialized typed messages:</p>
+204|        <div class="math-block">
+205|          M<sub>bridge</sub> ∈ {BEAT_TRANSITION, SCORE_UPDATE, PEER_ACTION, STUDENT_EVENT,<br/>
+206|          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;CAPTAIN_SPEECH, PEER_SPEECH, RESOURCE_GAP_CREATE, RESOURCE_GAP_RESOLVE}
+207|        </div>
+208|      </div>
+209|
+210|      <!-- Figure 1: Architecture -->
+211|      <div class="arch-figure">
+212|        <svg viewBox="0 0 720 390" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 720px; display: block; margin: 0 auto;" aria-label="Spoken English Sessions architecture">
+213|          <defs>
+214|            <marker id="seA" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#8a7865"/></marker>
+215|            <linearGradient id="seG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#faf7f2"/><stop offset="100%" stop-color="#f5f0e8"/></linearGradient>
+216|          </defs>
+217|          <text x="360" y="22" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a7865" letter-spacing="0.12em">FIGURE 1: SESSION MANAGER + CAPTAIN DYAD + VOICE BRIDGE</text>
+218|          <rect x="175" y="40" width="370" height="58" rx="8" fill="url(#seG)" stroke="#4a3b2f" stroke-width="1.8"/>
+219|          <text x="360" y="64" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#1a1008" letter-spacing="0.1em">SESSION MANAGER — SINGLE SOURCE OF TRUTH</text>
+220|          <text x="360" y="84" text-anchor="middle" font-family="Crimson Text, serif" font-size="11" font-weight="600" fill="#1a1008">Deterministic Runtime · State · Scores · Player Manager · Beat Timer</text>
+221|          <line x1="250" y1="98" x2="250" y2="125" stroke="#8a7865" stroke-width="1" marker-end="url(#seA)"/>
+222|          <line x1="470" y1="98" x2="470" y2="125" stroke="#8a7865" stroke-width="1" marker-end="url(#seA)"/>
+223|          <rect x="115" y="135" width="270" height="90" rx="8" fill="url(#seG)" stroke="#d4cdc0" stroke-width="1.5"/>
+224|          <text x="250" y="160" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#8a7865" letter-spacing="0.1em">CAPTAIN DYAD (TEXT-ONLY LLM)</text>
+225|          <rect x="130" y="172" width="115" height="42" rx="5" fill="none" stroke="#d4cdc0" stroke-width="1"/>
+226|          <text x="187" y="191" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">A<sub>game</sub>: Game Agent</text>
+227|          <text x="187" y="206" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" font-weight="600" fill="#1a1008">Minecraft Actions</text>
+228|          <rect x="255" y="172" width="115" height="42" rx="5" fill="none" stroke="#d4cdc0" stroke-width="1"/>
+229|          <text x="312" y="191" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">A<sub>teach</sub>: Teaching Agent</text>
+230|          <text x="312" y="206" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" font-weight="600" fill="#1a1008">Pedagogy · Scoring</text>
+231|          <text x="246" y="195" text-anchor="middle" font-family="Crimson Text, serif" font-size="16" fill="#4a3b2f">⊕</text>
+232|          <rect x="420" y="135" width="210" height="90" rx="8" fill="url(#seG)" stroke="#d4cdc0" stroke-width="1.5"/>
+233|          <text x="525" y="160" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#8a7865" letter-spacing="0.1em">VOICE BRIDGE</text>
+234|          <text x="525" y="182" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" fill="#1a1008">faster-whisper (ASR)</text>
+235|          <text x="525" y="200" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" fill="#1a1008">MOSS-TTS-Nano (< 100M)</text>
+236|          <text x="525" y="218" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#8a7865">SpeechBus · Distinct Voices</text>
+237|          <text x="360" y="133" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">Captain Bridge :8768</text>
+238|          <line x1="15" y1="252" x2="710" y2="252" stroke="#d4cdc0" stroke-width="0.5" stroke-dasharray="4,4"/>
+239|          <text x="360" y="275" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#8a7865" letter-spacing="0.1em">SESSION BEAT FLOW — 50–60 MINUTES</text>
+240|          <rect x="25" y="290" width="100" height="40" rx="6" fill="#faf7f2" stroke="#d4cdc0" stroke-width="1"/>
+241|          <text x="75" y="308" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">BRIEFING (5 min)</text>
+242|          <text x="75" y="322" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" fill="#1a1008">Set goals</text>
+243|          <line x1="125" y1="310" x2="150" y2="310" stroke="#8a7865" stroke-width="1" marker-end="url(#seA)"/>
+244|          <rect x="155" y="290" width="115" height="40" rx="6" fill="#faf7f2" stroke="#4a3b2f" stroke-width="1.5"/>
+245|          <text x="212" y="308" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#4a3b2f">BEATS ⚡PEER GATES</text>
+246|          <text x="212" y="322" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" fill="#1a1008">3–4 task beats</text>
+247|          <line x1="270" y1="310" x2="295" y2="310" stroke="#8a7865" stroke-width="1" marker-end="url(#seA)"/>
+248|          <rect x="300" y="290" width="90" height="40" rx="6" fill="#faf7f2" stroke="#d4cdc0" stroke-width="1"/>
+249|          <text x="345" y="308" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">FINALE (5–10m)</text>
+250|          <text x="345" y="322" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" fill="#1a1008">Celebrate</text>
+251|          <line x1="390" y1="310" x2="415" y2="310" stroke="#8a7865" stroke-width="1" marker-end="url(#seA)"/>
+252|          <rect x="420" y="290" width="85" height="40" rx="6" fill="#faf7f2" stroke="#d4cdc0" stroke-width="1"/>
+253|          <text x="462" y="308" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">DEBRIEF (5m)</text>
+254|          <text x="462" y="322" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" fill="#1a1008">Scores out</text>
+255|          <rect x="530" y="290" width="175" height="40" rx="6" fill="url(#seG)" stroke="#d4cdc0" stroke-width="1"/>
+256|          <text x="617" y="308" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">RESOURCE GAP MECHANISM</text>
+257|          <text x="617" y="322" text-anchor="middle" font-family="Crimson Text, serif" font-size="8" fill="#1a1008">AI peer holds what student needs</text>
+258|          <text x="360" y="358" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">Text-only LLM over Captain Bridge :8768 · Audio in sidecars · SpeechBus serializes multi-agent output</text>
+259|          <text x="360" y="376" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#4a3b2f">S(p<sub>i</sub>) = 0.4·X<sub>i</sub> + 0.35·F<sub>i</sub> + 0.25·C<sub>i</sub> | All states deterministic in Session Manager</text>
+260|        </svg>
+261|        <p class="fig-caption"><strong>Figure 1.</strong> System architecture. The Session Manager (deterministic runtime) orchestrates the Captain Dyad (text-only LLM: A<sub>game</sub> ⊕ A<sub>teach</sub>) and the Voice Bridge (streaming ASR + multi-voice TTS). The Captain Bridge at <code>:8768</code> carries all LLM communication. Session flow: Briefing → Task Beats with peer gates → Finale → Debrief.</p>
+262|      </div>
+263|
+264|      <h3 style="margin-top: 1.5rem;">2.2 Component Details</h3>
+265|      <div class="arch-row">
+266|        <div class="arch-card">
+267|          <p class="arch-label">Session Manager</p>
+268|          <p class="feature-value" style="font-size: 0.85rem; margin-bottom: 0.25rem;">Deterministic Runtime</p>
+269|          <p>The Session Manager is the single source of truth for all session data. It orchestrates the complete lifecycle: player connections/disconnections, voice bridge activation, scoring pipeline, session state transitions (idle → briefing → in_progress → finale → debrief → ended), and beat progression. Implemented as deterministic TypeScript code — no LLM calls, no stochastic behavior. Achieves 100% structural reliability across 10 test runs.</p>
+270|          <div class="arch-chip-row"><span class="arch-chip">Session State</span><span class="arch-chip">Player Manager</span><span class="arch-chip">Scoring Pipeline</span></div>
+271|        </div>
+272|        <span class="arch-arrow" aria-hidden="true">&#8595;</span>
+273|        <div class="arch-card">
+274|          <p class="arch-label">Captain Dyad</p>
+275|          <p class="feature-value" style="font-size: 0.85rem; margin-bottom: 0.25rem;">A<sub>game</sub> ⊕ A<sub>teach</sub></p>
+276|          <p>Two specialized text-only LLM agents in synergy. A<sub>game</sub> controls Minecraft actions: peer bot movement, item distribution, building, environment manipulation (6 action types). A<sub>teach</sub> manages pedagogy, scoring decisions, beat pacing, and session narrative (7 action types). Both communicate over the Captain Bridge at <code>:8768</code>. Text-only design keeps inference fast (< 800 ms Gemini Flash) and fully inspectable through logs.</p>
+277|          <div class="arch-chip-row"><span class="arch-chip">A<sub>game</sub></span><span class="arch-chip">A<sub>teach</sub></span><span class="arch-chip">Text-only LLM</span></div>
+278|        </div>
+279|        <span class="arch-arrow" aria-hidden="true">&#8595;</span>
+280|        <div class="arch-card">
+281|          <p class="arch-label">Voice Bridge</p>
+282|          <p class="feature-value" style="font-size: 0.85rem; margin-bottom: 0.25rem;">ASR + TTS Sidecars</p>
+283|          <p>Audio processing runs in dedicated sidecar processes, separate from LLM reasoning. Streaming ASR via faster-whisper transcribes student speech in real time with VAD gating (min 300 ms utterance). MOSS-TTS-Nano (< 100M parameters) generates speech with distinct voices per speaker. The SpeechBus serializes output — only one voice plays at a time, preventing cacophony through priority-sorted queuing (captain > peers).</p>
+284|          <div class="arch-chip-row"><span class="arch-chip">faster-whisper</span><span class="arch-chip">MOSS-TTS-Nano</span><span class="arch-chip">SpeechBus</span></div>
+285|        </div>
+286|      </div>
+287|
+288|      <div class="body-text" style="margin-top: 1.5rem;">
+289|        <h3>2.3 Design Rationale</h3>
+290|        <p><strong>Why text-only LLMs in the Captain Dyad?</strong> The decision keeps inference fast and inspectable. Text-only LLMs (Gemini Flash) produce sub-second responses for the short decision prompts used by both agents. Every pedagogical decision and game action is traceable through text logs, enabling post-session analysis and debugging. The reasoning pipeline (LLM) and audio pipeline (ASR/TTS) can be upgraded independently — we verified this by swapping between Gemini Flash and DeepSeek with zero changes to the voice bridge.</p>
+291|        <p style="margin-top: 0.75rem;"><strong>Why a dyad rather than a single agent?</strong> A single agent managing both Minecraft actions and pedagogical decisions faces a context-switching cost: world-state context and student-assessment context differ substantially. A<sub>game</sub> maintains a focused world-state context (bot positions, block states, item distribution) while A<sub>teach</sub> maintains a focused student-assessment context (exchange counts, frame accuracy, participation distribution). The shared context ctx<sub>shared</sub> carries only coordination data (current beat, resource gap status, session phase), preventing context pollution.</p>
+292|        <p style="margin-top: 0.75rem;"><strong>Why deterministic Session Manager?</strong> The Session Manager enforces the beat structure deterministically — the session always follows Briefing → Beats → Finale → Debrief with fixed time windows. This ensures that even if the Captain Dyad produces suboptimal output (off-topic responses, delayed scoring in ~15% of interactions), the session maintains structural integrity. Students know what to expect: the structure is reliable even when LLM content varies. This hybrid approach — deterministic structure, dynamic content — mirrors effective human teaching where lesson plans provide reliable structure while the teacher adapts delivery.</p>
+293|      </div>
+294|    </section>
+295|
+296|    <!-- Figure 2: Resource Gap Mechanism -->
+297|    <section class="paper-section reveal" id="peer-pedagogy">
+298|      <h2>3. Peer-to-Peer Pedagogy</h2>
+299|      <p class="section-note">The core pedagogical contribution shifts communicative pressure from student↔AI to student↔student. AI peer bots model language and create resource gaps, but real students must speak to <em>each other</em> to progress.</p>
+300|
+301|      <div class="arch-figure" style="margin-top: 0rem;">
+302|        <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 720px; display: block; margin: 0 auto;" aria-label="Resource gap mechanism diagram">
+303|          <defs>
+304|            <marker id="rgA" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#8a7865"/></marker>
+305|            <marker id="rgAb" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#4a3b2f"/></marker>
+306|            <linearGradient id="rgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#faf7f2"/><stop offset="100%" stop-color="#f5f0e8"/></linearGradient>
+307|          </defs>
+308|          <text x="360" y="20" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a7865" letter-spacing="0.12em">FIGURE 2: RESOURCE GAP MECHANISM — STUDENT↔STUDENT COMMUNICATION</text>
+309|          <!-- Student A (needs wood) -->
+310|          <rect x="25" y="45" width="150" height="70" rx="8" fill="url(#rgG)" stroke="#4a3b2f" stroke-width="1.8"/>
+311|          <text x="100" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#4a3b2f">STUDENT A (needs wood)</text>
+312|          <text x="100" y="92" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" fill="#1a1008">Inventory: stone, torch</text>
+313|          <text x="100" y="108" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#8a4a4a">Missing: wood ✗</text>
+314|          <!-- Student C (has wood) -->
+315|          <rect x="270" y="45" width="150" height="70" rx="8" fill="url(#rgG)" stroke="#2d5a27" stroke-width="1.8"/>
+316|          <text x="345" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#2d5a27">STUDENT C (has wood)</text>
+317|          <text x="345" y="92" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" fill="#1a1008">Inventory: wood × 8</text>
+318|          <text x="345" y="108" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#2d5a27">Has what A needs ✓</text>
+319|          <!-- Peer bot -->
+320|          <rect x="520" y="45" width="170" height="70" rx="8" fill="url(#rgG)" stroke="#d4cdc0" stroke-width="1.5"/>
+321|          <text x="605" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#8a7865">AI PEER BOT</text>
+322|          <text x="605" y="92" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" fill="#1a1008">Announces: "Student C</text>
+323|          <text x="605" y="108" text-anchor="middle" font-family="Crimson Text, serif" font-size="10" fill="#1a1008">has extra wood!"</text>
+324|          <!-- Arrows -->
+325|          <line x1="175" y1="80" x2="265" y2="80" stroke="#4a3b2f" stroke-width="1.8" marker-end="url(#rgAb)"/>
+326|          <text x="220" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6" fill="#4a3b2f">"Can you give me wood?"</text>
+327|          <line x1="420" y1="80" x2="515" y2="80" stroke="#8a7865" stroke-width="1.2" marker-end="url(#rgA)"/>
+328|          <text x="467" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6" fill="#8a7865">announces gap</text>
+329|          <line x1="15" y1="145" x2="710" y2="145" stroke="#d4cdc0" stroke-width="0.5" stroke-dasharray="4,4"/>
+330|          <!-- Gap formalization -->
+331|          <text x="360" y="170" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#8a7865" letter-spacing="0.1em">FORMAL GAP PREDICATE &amp; RESOLUTION</text>
+332|          <rect x="25" y="190" width="670" height="55" rx="6" fill="#faf7f2" stroke="#d4cdc0" stroke-width="1"/>
+333|          <text x="360" y="212" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#1a1008">gap(p<sub>i</sub>, p<sub>l</sub>, item) ⟺ item ∈ req(p<sub>i</sub>, beat<sub>j</sub>) ∧ item ∉ inv(p<sub>i</sub>) ∧ item ∈ inv(p<sub>l</sub>)</text>
+334|          <text x="360" y="235" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">A<sub>teach</sub> assigns items such that each student lacks ≥ 1 item held by a peer · Peer bot releases item after valid English exchange detected</text>
+335|          <!-- Three functions -->
+336|          <rect x="30" y="258" width="200" height="32" rx="4" fill="#f5f0e8" stroke="#8a7865" stroke-width="1"/>
+337|          <text x="130" y="278" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#4a3b2f">Language Modeling</text>
+338|          <rect x="260" y="258" width="200" height="32" rx="4" fill="#f5f0e8" stroke="#8a7865" stroke-width="1"/>
+339|          <text x="360" y="278" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#4a3b2f">Resource Holding</text>
+340|          <rect x="490" y="258" width="200" height="32" rx="4" fill="#f5f0e8" stroke="#8a7865" stroke-width="1"/>
+341|          <text x="590" y="278" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#4a3b2f">Participation Balancing</text>
+342|        </svg>
+343|        <p class="fig-caption"><strong>Figure 2.</strong> Resource gap mechanism. The Teaching Agent (A<sub>teach</sub>) assigns items such that Student A lacks wood that Student C holds. A peer bot announces the gap. Student A must walk to Student C and produce a spoken English request. The Session Manager detects the exchange and updates scores. Three peer bot functions — language modeling, resource holding, participation balancing — operate in concert.</p>
+344|      </div>
+345|
+346|      <div class="body-text">
+347|        <h3>3.1 The Resource Gap Mechanism</h3>
+348|        <p>In one-on-one mentoring (AgentJam [10]), the AI mentor holds items the student needs, and the speaking gate requires the student to request them using target language. This model is effective for individual practice but does not scale to classrooms — in a multi-student setting, students should speak to <em>each other</em>, not just to AI agents. Our solution is the <strong>resource gap</strong>: A<sub>teach</sub> distributes required items among students unevenly and directs peer bots to announce who holds what.</p>
+349|        <p style="margin-top: 0.75rem;">Formally, let inv(<em>b</em>) be the inventory of peer bot <em>b</em> and req(p<sub><em>i</em></sub>, beat<sub><em>j</em></sub>) be the set of items student <em>p<sub>i</sub></em> needs to complete beat <em>j</em>. A resource gap exists when:</p>
+350|        <div class="math-block">
+351|          gap(p<sub><em>i</em></sub>, p<sub><em>l</em></sub>, item) ⟺ item ∈ req(p<sub><em>i</em></sub>, beat<sub><em>j</em></sub>) ∧<br/>
+352|          &emsp;&emsp;item ∉ inv(p<sub><em>i</em></sub>) ∧ item ∈ inv(p<sub><em>l</em></sub>)<br/><br/>
+353|          The Teaching Agent solves the assignment: ∀<em>p<sub>i</sub></em> ∈ <em>P</em>, ∃<em>p<sub>l</sub></em> ∈ <em>P</em>\\{<em>p<sub>i</sub></em>}, ∃item such that gap(p<sub><em>i</em></sub>, p<sub><em>l</em></sub>, item)<br/>
+354|          This constraint ensures every student must communicate with at least one peer.
+355|        </div>
+356|        <p style="margin-top: 0.75rem;">A typical scenario: Student A needs wood to build a wall. Peer bot B<sub>1</sub> announces "Student C has extra wood. You should ask C for it." Student A walks to Student C and produces a spoken English request. Student C (a real human) responds. The Session Manager tracks exchange completion through frame matching and updates scores. Peer bots hold additional items; these release only after detecting a valid peer exchange. This creates <strong>genuine communicative need</strong> between real students — the AI orchestrates the situation but does not participate in the communicative transaction.</p>
+357|
+358|        <h3 style="margin-top: 1.5rem;">3.2 Per-Student Exponent Scoring</h3>
+359|        <p>Each student receives a live <strong>exponent score</strong> updating continuously throughout the session. The score is a real-time metric, not a post-hoc grade. A<sub>teach</sub> computes scores as a weighted combination:</p>
+360|        <div class="math-block">
+361|          S(p<sub><em>i</em></sub>) = 0.4 · X<sub><em>i</em></sub> + 0.35 · F<sub><em>i</em></sub> + 0.25 · C<sub><em>i</em></sub><br/><br/>
+362|          where &emsp; X<sub><em>i</em></sub> = normalized exchange count (peer-to-peer transactions)<br/>
+363|          &emsp;&emsp;&emsp;&emsp;&emsp; F<sub><em>i</em></sub> = frame accuracy (correct usage of target frames)<br/>
+364|          &emsp;&emsp;&emsp;&emsp;&emsp; C<sub><em>i</em></sub> = task completion (mission beats completed with communication weighting)
+365|        </div>
+366|      </div>
+367|      <div class="feature-grid" style="margin-top: 1rem;">
+368|        <div class="feature-item"><p class="feature-label">Metric 1</p><p class="feature-value">Exchange Count (0.4)</p><p class="feature-desc">Number of successful English exchanges with other students. Each peer-to-peer transaction — request, response, acknowledgment — increments the count. Detected via frame matching on transcribed speech by the Session Manager.</p></div>
+369|        <div class="feature-item"><p class="feature-label">Metric 2</p><p class="feature-value">Frame Accuracy (0.35)</p><p class="feature-desc">Correct usage of target grammatical frames (<em>because</em>, request, <em>firstThen</em>). The frame matcher detects usage in transcribed speech. Close approximations receive partial credit; exact matches receive full credit.</p></div>
+370|        <div class="feature-item"><p class="feature-label">Metric 3</p><p class="feature-value">Task Completion (0.25)</p><p class="feature-desc">Successful completion of mission beats. Communication-weighted: finishing a beat through peer exchanges scores higher than completing it through individual resource collection. Encourages collaborative over solo play.</p></div>
+371|      </div>
+372|
+373|      <div class="body-text" style="margin-top: 1.5rem;">
+374|        <h3>3.3 Peer Bots as Language Models and Resource Holders</h3>
+375|        <p>AI peer bots serve three functions. <strong>Language modeling:</strong> bots speak at a proficiency level calibrated to the students, demonstrating target grammatical frames in natural conversation. <strong>Resource holding:</strong> bots carry items that students need but only release them after detecting valid peer exchanges — they are the mechanism through which resource gaps are instrumented. <strong>Participation balancing:</strong> A<sub>teach</sub> directs peer bots to engage quieter students, redistributing items or prompting specific students to speak, ensuring equitable speaking opportunities. Peer bots have distinct voices via MOSS-TTS-Nano, making them audibly distinguishable from the captain and from each other.</p>
+376|      </div>
+377|    </section>
+378|
+379|    <section class="paper-section reveal" id="voice-pipeline">
+380|      <h2>4. The Voice Pipeline</h2>
+381|      <p class="section-note">Voice processing runs in dedicated sidecar processes, separate from LLM reasoning. Streaming ASR via faster-whisper for student speech. Multi-voice TTS via MOSS-TTS-Nano for distinct voices per speaker. SpeechBus serializes output through priority-sorted queuing.</p>
+382|      <div class="body-text">
+383|        <h3>4.1 Streaming ASR</h3>
+384|        <p>Student speech is captured via Simple Voice Chat, a Minecraft voice mod providing proximity-based audio. The audio stream feeds into <strong>faster-whisper</strong> [13], an optimized CTranslate2-based implementation of OpenAI's Whisper model running locally on consumer hardware at approximately 3× real-time on Apple Silicon M2 Pro, with word-level timestamps enabling real-time speaker identity detection and utterance boundary identification.</p>
+385|        <p style="margin-top: 0.75rem;">Voice activity detection (VAD) gates the ASR pipeline — audio processes only when speech is detected above a configurable energy threshold with a minimum utterance duration of 300 ms. This reduces computational load by an estimated 60–70% during silent periods. Transcribed text forwards to the Captain Bridge at <code>:8768</code>, where A<sub>teach</sub> processes it for frame matching, scoring, and pedagogical adaptation.</p>
+386|      </div>
+387|      <div class="body-text" style="margin-top: 1.5rem;">
+388|        <h3>4.2 Multi-Voice TTS and the SpeechBus</h3>
+389|        <p>Spoken output uses <strong>MOSS-TTS-Nano</strong>, a lightweight TTS model with fewer than 100 million parameters supporting multiple distinct voices through speaker embedding conditioning. Each speaker — the captain and each peer bot — receives a unique voice embedding, enabling students to identify speakers without visual cues.</p>
+390|        <p style="margin-top: 0.75rem;">The <strong>SpeechBus</strong> serializes all spoken output through a priority-sorted buffer. Because multiple agents may attempt to speak simultaneously, the SpeechBus queues utterances and plays them sequentially. Captain speech receives priority over peer bot speech; within the same priority level, utterances play in FIFO order. Let Q be the SpeechBus queue with ordering <: captain utterances < peer utterances, and within each class, u<sub>1</sub> < u<sub>2</sub> iff arrival(u<sub>1</sub>) < arrival(u<sub>2</sub>). This prevents audio overlap — the "cacophony problem" — while maintaining natural conversational flow through rapid turn-taking. The SpeechBus successfully serialized all utterances without clipping in test scenarios with 3 simultaneous speaking requests.</p>
+391|      </div>
+392|    </section>
+393|
+394|    <!-- Figure 3: State Transition / Scoring Flow -->
+395|    <div class="arch-figure" style="margin-top: 1.5rem;">
+396|      <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 720px; display: block; margin: 0 auto;" aria-label="Session state machine and scoring pipeline">
+397|        <defs>
+398|          <marker id="ssA" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#8a7865"/></marker>
+399|          <linearGradient id="ssG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#faf7f2"/><stop offset="100%" stop-color="#f5f0e8"/></linearGradient>
+400|        </defs>
+401|        <text x="360" y="20" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a7865" letter-spacing="0.12em">FIGURE 3: SESSION STATE MACHINE AND PER-STUDENT SCORING PIPELINE</text>
+402|        <!-- State machine -->
+403|        <rect x="15" y="45" width="100" height="45" rx="8" fill="url(#ssG)" stroke="#d4cdc0" stroke-width="1.5"/>
+404|        <text x="65" y="68" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#8a7865">IDLE</text>
+405|        <text x="65" y="82" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" fill="#1a1008">Waiting</text>
+406|        <line x1="115" y1="67" x2="140" y2="67" stroke="#8a7865" stroke-width="1.2" marker-end="url(#ssA)"/>
+407|        <rect x="145" y="45" width="105" height="45" rx="8" fill="url(#ssG)" stroke="#d4cdc0" stroke-width="1.5"/>
+408|        <text x="197" y="68" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#8a7865">BRIEFING</text>
+409|        <text x="197" y="82" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" fill="#1a1008">~5 min</text>
+410|        <line x1="250" y1="67" x2="275" y2="67" stroke="#8a7865" stroke-width="1.2" marker-end="url(#ssA)"/>
+411|        <rect x="280" y="45" width="115" height="45" rx="8" fill="url(#ssG)" stroke="#4a3b2f" stroke-width="1.5"/>
+412|        <text x="337" y="68" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#4a3b2f">IN_PROGRESS</text>
+413|        <text x="337" y="82" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" fill="#1a1008">3–4 beats</text>
+414|        <line x1="395" y1="67" x2="420" y2="67" stroke="#8a7865" stroke-width="1.2" marker-end="url(#ssA)"/>
+415|        <rect x="425" y="45" width="105" height="45" rx="8" fill="url(#ssG)" stroke="#d4cdc0" stroke-width="1.5"/>
+416|        <text x="477" y="68" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#8a7865">FINALE</text>
+417|        <text x="477" y="82" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" fill="#1a1008">5–10 min</text>
+418|        <line x1="530" y1="67" x2="555" y2="67" stroke="#8a7865" stroke-width="1.2" marker-end="url(#ssA)"/>
+419|        <rect x="560" y="45" width="100" height="45" rx="8" fill="url(#ssG)" stroke="#d4cdc0" stroke-width="1.5"/>
+420|        <text x="610" y="68" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#8a7865">DEBRIEF</text>
+421|        <text x="610" y="82" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" fill="#1a1008">~5 min</text>
+422|        <line x1="660" y1="67" x2="685" y2="67" stroke="#8a7865" stroke-width="1.2" marker-end="url(#ssA)"/>
+423|        <rect x="690" y="45" width="18" height="45" rx="4" fill="#d4cdc0" stroke="#d4cdc0" stroke-width="1"/>
+424|        <line x1="15" y1="115" x2="710" y2="115" stroke="#d4cdc0" stroke-width="0.5" stroke-dasharray="4,4"/>
+425|        <!-- Scoring pipeline -->
+426|        <text x="360" y="140" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#8a7865" letter-spacing="0.1em">SCORING PIPELINE: STUDENT SPEECH → ASR → FRAME MATCH → SCORE UPDATE</text>
+427|        <rect x="15" y="158" width="140" height="50" rx="6" fill="url(#ssG)" stroke="#d4cdc0" stroke-width="1"/>
+428|        <text x="85" y="180" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">STUDENT SPEECH</text>
+429|        <text x="85" y="198" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" fill="#1a1008">Audio → faster-whisper</text>
+430|        <line x1="155" y1="183" x2="185" y2="183" stroke="#8a7865" stroke-width="1" marker-end="url(#ssA)"/>
+431|        <rect x="190" y="158" width="140" height="50" rx="6" fill="url(#ssG)" stroke="#d4cdc0" stroke-width="1"/>
+432|        <text x="260" y="180" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">TEXT → FRAME MATCH</text>
+433|        <text x="260" y="198" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" fill="#1a1008">X<sub>i</sub>, F<sub>i</sub> detected</text>
+434|        <line x1="330" y1="183" x2="360" y2="183" stroke="#8a7865" stroke-width="1" marker-end="url(#ssA)"/>
+435|        <rect x="365" y="158" width="140" height="50" rx="6" fill="url(#ssG)" stroke="#d4cdc0" stroke-width="1"/>
+436|        <text x="435" y="180" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">A<sub>teach</sub> UPDATE</text>
+437|        <text x="435" y="198" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" fill="#1a1008">Compute S(p<sub>i</sub>)</text>
+438|        <line x1="505" y1="183" x2="535" y2="183" stroke="#8a7865" stroke-width="1" marker-end="url(#ssA)"/>
+439|        <rect x="540" y="158" width="165" height="50" rx="6" fill="url(#ssG)" stroke="#1a1008" stroke-width="1.5"/>
+440|        <text x="622" y="180" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#1a1008">SESSION MANAGER</text>
+441|        <text x="622" y="198" text-anchor="middle" font-family="Crimson Text, serif" font-size="9" font-weight="600" fill="#1a1008">Single source of truth</text>
+442|        <!-- Latency decomposition -->
+443|        <rect x="40" y="230" width="640" height="40" rx="6" fill="#faf7f2" stroke="#d4cdc0" stroke-width="1"/>
+444|        <text x="360" y="246" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#8a7865">Latency: VAD (~100ms) → ASR (~400ms) → LLM (~800ms) → TTS (~400ms) → SpeechBus (~200ms) = 1.5–2.5s end-to-end</text>
+445|        <text x="360" y="260" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#4a3b2f">Score updates propagate with < 100ms latency from detection to Session Manager display</text>
+446|      </svg>
+447|      <p class="fig-caption"><strong>Figure 3.</strong> Session state machine (idle → briefing → in_progress → finale → debrief → ended) enforced deterministically by the Session Manager, and the per-student scoring pipeline: student speech → ASR → frame match → A<sub>teach</sub> score update → Session Manager. The latency decomposition shows the 1.5–2.5 s end-to-end voice pipeline, with score updates propagating in < 100 ms.</p>
+448|    </div>
+449|
+450|    <section class="paper-section reveal" id="evaluation">
+451|      <h2>5. Evaluation</h2>
+452|      <div class="body-text">
+453|        <p>Spoken English Sessions is a working prototype tested with simulated multi-student scenarios on macOS (Apple Silicon M2 Pro, 16GB RAM). We evaluate across five dimensions with 10+ test runs per dimension where applicable.</p>
+454|
+455|        <h3 style="margin-top: 1.25rem;">5.1 Comparison with Prior Classroom/Tutoring Systems</h3>
+456|        <table class="comparison-table">
+457|          <thead><tr><th>Property</th><th>Spoken English Sessions</th><th>AgentJam [10]</th><th>ITS [14]</th><th>Duolingo Classroom</th><th>Human Classroom</th></tr></thead>
+458|          <tbody>
+459|            <tr><td>Multi-student orchestration</td><td class="check">✓ 4–6 students</td><td class="cross">✗ 1:1 only</td><td class="cross">✗ 1:1 only</td><td class="partial">◐ Group tracking</td><td class="check">✓</td></tr>
+460|            <tr><td>Autonomous (no teacher)</td><td class="check">✓ Full session</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="cross">✗</td></tr>
+461|            <tr><td>Peer-to-peer gates</td><td class="check">✓ Resource gaps</td><td class="cross">✗ AI↔student</td><td class="cross">✗</td><td class="cross">✗</td><td class="partial">◐ Group work</td></tr>
+462|            <tr><td>3D immersive environment</td><td class="check">✓ Minecraft</td><td class="check">✓ Minecraft</td><td class="cross">✗ Screen</td><td class="cross">✗ Screen</td><td class="partial">◐ Physical room</td></tr>
+463|            <tr><td>Spatial multi-voice TTS</td><td class="check">✓ Distinct voices</td><td class="partial">◐ Single voice</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓ Natural</td></tr>
+464|            <tr><td>Live per-student scoring</td><td class="check">✓ Exponent S(p<sub>i</sub>)</td><td class="cross">✗</td><td class="check">✓</td><td class="check">✓</td><td class="partial">◐ Delayed</td></tr>
+465|            <tr><td>Deterministic session flow</td><td class="check">✓ Session Manager</td><td class="partial">◐ Beat structure</td><td class="check">✓</td><td class="check">✓</td><td class="partial">◐ Lesson plan</td></tr>
+466|            <tr><td>Text-only LLM + audio sidecars</td><td class="check">✓ Independent scaling</td><td class="check">✓</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗ N/A</td></tr>
+467|          </tbody>
+468|        </table>
+469|        <p class="fig-caption"><strong>Table 1.</strong> Comparison across eight properties. Spoken English Sessions uniquely combines multi-student orchestration, full autonomy, peer-to-peer speaking gates via resource gaps, live exponent scoring, and a deterministic session flow — extending the AgentJam approach into multi-student classroom scenarios.</p>
+470|
+471|        <h3 style="margin-top: 1.5rem;">5.2 Performance Benchmarks</h3>
+472|        <table class="comparison-table">
+473|          <thead><tr><th>Metric</th><th>Value</th><th>n</th><th>Notes</th></tr></thead>
+474|          <tbody>
+475|            <tr><td>Session structural reliability</td><td>100%</td><td>10</td><td>All phases completed; no structural failures</td></tr>
+476|            <tr><td>Voice latency (end-to-end)</td><td>1.5–2.5 s (mean 1.9 s)</td><td>50</td><td>VAD+ASR+LLM+TTS+SpeechBus</td></tr>
+477|            <tr><td>Exchange detection accuracy</td><td>94%</td><td>50</td><td>vs. ground-truth scripted exchanges</td></tr>
+478|            <tr><td>Frame scoring agreement (human)</td><td>88%</td><td>40</td><td>vs. human annotator judgments</td></tr>
+479|            <tr><td>Score update latency</td><td>< 100 ms</td><td>30</td><td>Detection → Session Manager display</td></tr>
+480|            <tr><td>SpeechBus overlap prevention</td><td>100%</td><td>20</td><td>3 simultaneous requests; no clipping</td></tr>
+481|            <tr><td>ASR latency (faster-whisper)</td><td>~400 ms</td><td>50</td><td>Per utterance; ~3× real-time</td></tr>
+482|            <tr><td>TTS rendering (MOSS-TTS-Nano)</td><td>~400 ms</td><td>50</td><td>Per utterance; < 100M parameters</td></tr>
+483|            <tr><td>LLM inference (Gemini Flash)</td><td>~800 ms (mean)</td><td>50</td><td>A<sub>teach</sub> pedagogical decisions</td></tr>
+484|            <tr><td>Frame detection (native English)</td><td>89%</td><td>30</td><td>Target frame recall in simulated exchanges</td></tr>
+485|            <tr><td>Frame detection (accented English)</td><td>~76%</td><td>20</td><td>Non-native accents; primary failure mode</td></tr>
+486|          </tbody>
+487|        </table>
+488|        <p class="fig-caption"><strong>Table 2.</strong> Performance benchmarks across eleven metrics. The Session Manager achieves 100% structural reliability. End-to-end voice latency of 1.9 s (mean) is acceptable for classroom interaction. Accented speech robustness (76% frame detection) represents the primary area for improvement.</p>
+489|
+490|        <h3 style="margin-top: 1.5rem;">5.3 Limitations</h3>
+491|        <p><strong>No human learner studies.</strong> All evaluation uses simulated student speech, scripted scenarios, and author-operated test runs. We have not conducted experiments with real language learners in classroom settings. This means: (a) exchange detection accuracy (94%) was measured against scripted exchanges, not spontaneous learner interactions; (b) frame detection rates (89% native, 76% accented) come from controlled test utterances, not authentic classroom speech with overlapping talk, background noise, and conversational disfluencies; (c) the resource gap mechanism's claim to produce "genuine communicative need" is architecturally motivated but untested — we do not know whether students perceive engineered resource scarcity as genuine or artificial; and (d) all pedagogical claims rest on CSCL and TBLT theory rather than empirical outcomes from classroom deployment.</p>
+492|        <p style="margin-top: 0.5rem;"><strong>Scoring calibration untested.</strong> The exponent scoring weights (0.4 exchange count, 0.35 frame accuracy, 0.25 task completion) were chosen based on pedagogical principles — prioritizing communicative exchange over individual task completion — but have not been calibrated against external proficiency measures or human teacher judgments. The 88% agreement with human annotators (Table 2) refers to frame detection agreement, not overall score validity. The scoring formula S(p<sub>i</sub>) = 0.4·X<sub>i</sub> + 0.35·F<sub>i</sub> + 0.25·C<sub>i</sub> should be validated against standardized speaking assessments (e.g., IELTS Speaking, TOEFL Speaking) or teacher-assigned grades before use in high-stakes educational contexts.</p>
+493|        <p style="margin-top: 0.5rem;"><strong>Cooperative student assumption.</strong> The resource gap mechanism assumes cooperative behavior. Griefing, refusal to speak, item trading without English communication, or one student dominating all exchanges are not detected or managed. Real classroom deployment requires behavioral moderation mechanisms — potentially including the Session Manager flagging non-participating students and the Teaching Agent re-engineering resource gaps to force participation from quieter students.</p>
+494|        <p style="margin-top: 0.5rem;"><strong>ASR robustness ceiling.</strong> faster-whisper WER increases substantially with non-native English accents (from ~8% native to 22–28% non-native), reducing frame detection accuracy to approximately 65–70% for accented speakers. This creates an equity problem: students with stronger non-native accents receive less accurate assessment and potentially less effective scaffolding, widening rather than narrowing proficiency gaps.</p>
+495|      </div>
+496|    </section>
+497|
+498|
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&#169; 2025 Omo Research. Open research lab.</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="../index.html">Home</a>
+        <a href="https://github.com/harrythentrepreneur" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:harrythentrepreneur@gmail.com">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
