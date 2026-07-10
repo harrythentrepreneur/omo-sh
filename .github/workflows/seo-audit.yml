@@ -1,0 +1,26 @@
+name: SEO regression audit
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Audit metadata, links, schema, and crawl files
+        run: node scripts/seo/audit.mjs
+      - name: Verify sitemap coverage
+        run: node scripts/seo/generate-sitemap.mjs
+      - name: Verify RSS feed freshness
+        run: node scripts/seo/generate-feed.mjs

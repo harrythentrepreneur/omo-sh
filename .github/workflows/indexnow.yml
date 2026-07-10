@@ -1,0 +1,45 @@
+name: Notify IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.html"
+      - "**/index.html"
+      - "assets/**"
+      - "feed.xml"
+      - "robots.txt"
+      - "site.webmanifest"
+      - "sitemap.xml"
+      - "styles.css"
+      - "vercel.json"
+      - "*.txt"
+      - "scripts/seo/submit-indexnow.mjs"
+      - "scripts/seo/lib.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow-production
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Verify SEO files before notification
+        run: |
+          node scripts/seo/audit.mjs
+          node scripts/seo/generate-sitemap.mjs
+          node scripts/seo/generate-feed.mjs
+      - name: Wait for production and submit canonical URLs
+        run: node scripts/seo/submit-indexnow.mjs --all --wait-live
