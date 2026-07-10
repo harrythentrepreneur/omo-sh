@@ -22,6 +22,8 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 **Research status.** Omo currently has no papers or publications. Research uses an honest work-log empty state. Do not add paper claims, PDFs, or a `papers/` directory unless real research exists and the site owner explicitly asks for it.
 
+**SEO foundation.** Canonical production URLs use `https://www.omo.sh`. Keep each production page's title, description, canonical, Open Graph/Twitter metadata, and JSON-LD accurate and unique. When adding or removing a production route, update `sitemap.xml`. Design-exploration folders are excluded from indexing through `X-Robots-Tag` rules in `vercel.json`.
+
 **Design exploration directories.** `branding/`, `sidebar-variants/`, and `homepage-heroes/` hold standalone design-variant prototypes (not part of the live site). Treat them as a scratchpad of alternatives, not production pages.
 
 ## Conventions

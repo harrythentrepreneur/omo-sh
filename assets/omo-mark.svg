@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Omo Research mark</title>
+  <desc id="desc">A fractured square frame surrounding an open circular form.</desc>
+  <rect width="512" height="512" fill="#f5f0e8"/>
+  <g transform="translate(56 56) scale(2)" fill="none" stroke="#1a1008">
+    <path d="M20 180V20h80M20 180h160M100 20h30m10 0h20m20 0v40m0 12v38m0 10v30m0 10v20M32 168V32h68M32 168h136" stroke-width="8"/>
+    <path d="M62 100a30 30 0 0 1 38-30m0 0a30 30 0 0 1 0 20m0 0a30 30 0 0 1 38 40M100 90a30 30 0 0 0-38 10" stroke-width="7"/>
+    <rect x="95" y="95" width="10" height="10" fill="#1a1008" stroke="none"/>
+  </g>
+</svg>
