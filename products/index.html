@@ -3,110 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Omo Research products — voice-first, spatial, and local-first AI prototypes." />
+  <meta name="description" content="The Omo product studio — interface directions, principles, and future releases." />
   <meta name="theme-color" content="#f5f0e8" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line x1='20' y1='20' x2='20' y2='180' stroke='%231a1008' stroke-width='12'/><line x1='20' y1='20' x2='100' y2='20' stroke='%231a1008' stroke-width='12'/><line x1='20' y1='180' x2='180' y2='180' stroke='%231a1008' stroke-width='12'/><rect x='90' y='90' width='16' height='16' fill='%231a1008'/></svg>" />
   <title>Products — Omo Research</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <style>
-    :root {
-      --ink: #1a1008;
-      --dark-taupe: #4a3b2f;
-      --mid-taupe: #8a7865;
-      --paper: #f5f0e8;
-      --border: #d4cdc0;
-      --font-body: "Crimson Text", Georgia, "Times New Roman", serif;
-      --font-mono: "IBM Plex Mono", "SF Mono", "Menlo", monospace;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--font-body);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-    .placeholder {
-      text-align: center;
-      max-width: 32rem;
-    }
-    .placeholder-mark {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-    .placeholder-mark svg { width: 96px; height: 96px; }
-    .placeholder-label {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--mid-taupe);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      margin-bottom: 1.25rem;
-    }
-    .placeholder-headline {
-      font-style: italic;
-      font-size: clamp(1.6rem, 4vw, 2.3rem);
-      font-weight: 400;
-      line-height: 1.25;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.25rem;
-    }
-    .placeholder-text {
-      font-size: 1.05rem;
-      color: var(--dark-taupe);
-      line-height: 1.7;
-      max-width: 28rem;
-      margin: 0 auto;
-    }
-    .placeholder-home {
-      display: inline-block;
-      margin-top: 2.75rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--mid-taupe);
-      text-decoration: none;
-      transition: color 140ms;
-    }
-    .placeholder-home:hover { color: var(--ink); }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <main class="placeholder">
-    <div class="placeholder-mark">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <line x1="20" y1="20" x2="20" y2="180" stroke="#1a1008" stroke-width="8"/>
-        <line x1="20" y1="20" x2="100" y2="20" stroke="#1a1008" stroke-width="8"/>
-        <line x1="20" y1="180" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/>
-        <line x1="100" y1="20" x2="130" y2="20" stroke="#1a1008" stroke-width="8"/>
-        <line x1="140" y1="20" x2="160" y2="20" stroke="#1a1008" stroke-width="8"/>
-        <line x1="180" y1="20" x2="180" y2="60" stroke="#1a1008" stroke-width="8"/>
-        <line x1="180" y1="72" x2="180" y2="110" stroke="#1a1008" stroke-width="8"/>
-        <line x1="180" y1="120" x2="180" y2="150" stroke="#1a1008" stroke-width="8"/>
-        <line x1="180" y1="160" x2="180" y2="180" stroke="#1a1008" stroke-width="8"/>
-        <path d="M 62 100 A 30 30 0 0 1 100 70" fill="none" stroke="#1a1008" stroke-width="7"/>
-        <path d="M 100 70 A 30 30 0 0 1 100 90" fill="none" stroke="#1a1008" stroke-width="7"/>
-        <path d="M 100 90 A 30 30 0 0 0 62 100" fill="none" stroke="#1a1008" stroke-width="7"/>
-        <rect x="95" y="95" width="10" height="10" fill="#1a1008"/>
-      </svg>
+  <nav class="sidebar" aria-label="Product navigation">
+    <div class="sidebar-inner">
+      <a class="sidebar-brand" href="/" aria-label="Omo Research home">
+        <span class="sidebar-mark">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20 180V20h80M20 180h160M100 20h30m10 0h20m20 0v40m0 12v38m0 10v30m0 10v20M32 168V32h68M32 168h136" fill="none" stroke="currentColor" stroke-width="8" />
+            <path d="M62 100a30 30 0 0 1 38-30m0 0a30 30 0 0 1 0 20m0 0a30 30 0 0 1 38 40M100 90a30 30 0 0 0-38 10" fill="none" stroke="currentColor" stroke-width="7" />
+            <rect x="95" y="95" width="10" height="10" fill="currentColor" />
+          </svg>
+        </span>
+        <span class="sidebar-name">Products</span>
+      </a>
+      <div class="sidebar-links">
+        <a class="sidebar-link" href="/">← Home</a>
+        <a class="sidebar-sublink" href="#directions">Directions</a>
+        <a class="sidebar-sublink" href="#principles">Principles</a>
+        <a class="sidebar-sublink" href="#releases">Releases</a>
+      </div>
     </div>
-    <p class="placeholder-label">Products</p>
-    <h1 class="placeholder-headline">We'll share more soon.</h1>
-    <p class="placeholder-text">
-      We're building voice-first, spatial, local-first prototypes to test our research.
-      Check back shortly.
-    </p>
-    <a class="placeholder-home" href="/">← Home</a>
+  </nav>
+
+  <header class="mobile-header">
+    <span class="mobile-brand">Products</span>
+    <nav class="mobile-actions" aria-label="Primary"><a class="btn btn-dark btn-sm" href="/">← Home</a></nav>
+  </header>
+
+  <main class="content-main">
+    <header class="paper-header" id="overview">
+      <div class="paper-tags"><span class="tag">Product studio</span><span class="tag">Interfaces</span><span class="tag">Local-first</span></div>
+      <h1>Products</h1>
+      <p class="paper-subtitle">There are no public products yet. For now, this page shows the territory we are exploring, the standards future releases must meet, and where those releases will live.</p>
+      <div class="paper-actions"><a class="btn btn-dark" href="#directions">See the directions ↓</a><a class="btn btn-outline" href="/consulting">Build with us</a></div>
+      <div class="meta-grid">
+        <div class="meta-item"><p class="meta-label">Stage</p><p class="meta-value">Pre-launch</p></div>
+        <div class="meta-item"><p class="meta-label">Focus</p><p class="meta-value">Human-agent interfaces</p></div>
+        <div class="meta-item"><p class="meta-label">Constraint</p><p class="meta-value">Useful before impressive</p></div>
+        <div class="meta-item"><p class="meta-label">Release</p><p class="meta-value">Public when ready</p></div>
+      </div>
+    </header>
+
+    <section class="paper-section" id="directions">
+      <p class="section-kicker">01 / Directions</p>
+      <h2>What we want to make possible</h2>
+      <p class="section-note">These are interface directions—not product announcements or promises.</p>
+      <div class="feature-grid">
+        <article class="feature-item"><p class="feature-label">Direction</p><p class="feature-value">Agents you can speak with</p><p class="feature-desc">Conversation that respects interruption, silence, rhythm, and attention instead of forcing every thought through a text box.</p></article>
+        <article class="feature-item"><p class="feature-label">Direction</p><p class="feature-value">Work you can move through</p><p class="feature-desc">Spatial interfaces where place and proximity explain what an agent knows, what it can do, and when it should be present.</p></article>
+        <article class="feature-item"><p class="feature-label">Direction</p><p class="feature-value">Intelligence that stays close</p><p class="feature-desc">Smaller, focused systems that run near the person using them and remain useful without a permanent cloud connection.</p></article>
+      </div>
+    </section>
+
+    <section class="paper-section" id="principles">
+      <p class="section-kicker">02 / Principles</p>
+      <h2>The bar for becoming a product</h2>
+      <div class="process-list">
+        <article class="process-item"><span class="process-index">01</span><div><h3>Felt in the first minute</h3><p>The value should be understandable through use, without a tour of the technology underneath it.</p></div></article>
+        <article class="process-item"><span class="process-index">02</span><div><h3>Calm enough to live with</h3><p>Presence should not become noise. The interface must know when to recede.</p></div></article>
+        <article class="process-item"><span class="process-index">03</span><div><h3>Clear about its limits</h3><p>People should understand what the system knows, what it can act on, and what remains uncertain.</p></div></article>
+        <article class="process-item"><span class="process-index">04</span><div><h3>Built to leave</h3><p>Data and workflows should remain portable. A useful product should not depend on captivity.</p></div></article>
+      </div>
+    </section>
+
+    <section class="paper-section" id="releases">
+      <p class="section-kicker">03 / Releases</p>
+      <h2>Future products will live here</h2>
+      <div class="empty-state">
+        <p class="empty-state-label">No public releases yet</p>
+        <p class="empty-state-title">Nothing to download. Nothing to pretend.</p>
+        <p class="empty-state-copy">A product will appear here only when it is usable, explainable, and ready for someone outside Omo to try. Each release will include a clear status, documentation, and a way to give feedback.</p>
+        <div class="empty-state-actions"><a class="btn btn-dark" href="https://github.com/harrythentrepreneur" target="_blank" rel="noopener">Watch GitHub ↗</a><a class="btn btn-outline" href="mailto:harrythentrepreneur@gmail.com">Share a problem</a></div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><p>© 2026 Omo Research. Useful before impressive.</p><nav class="footer-links" aria-label="Footer"><a href="/">Home</a><a href="/about">Research</a><a href="/consulting">Contact</a></nav></div>
+  </footer>
 </body>
 </html>
