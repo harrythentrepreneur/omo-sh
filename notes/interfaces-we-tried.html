@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A field report from Omo Research: thirteen voice, screen, and world interfaces we built and used for working with AI agents, and what each one taught us." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Omo Research" />
+  <meta name="theme-color" content="#f5f0e8" />
+  <title>Thirteen Interfaces We Tried for Working with AI Agents | Omo Notes</title>
+  <link rel="canonical" href="https://www.omo.sh/notes/interfaces-we-tried" />
+  <link rel="alternate" type="application/rss+xml" title="Omo Notes" href="/feed.xml" />
+  <link rel="icon" href="/assets/omo-mark.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Omo Research" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Thirteen Interfaces We Tried for Working with AI Agents" />
+  <meta property="og:description" content="Voice loops, a hologram, chat hubs, glass apps, and Minecraft: what we learned building and living with thirteen agent interfaces." />
+  <meta property="og:url" content="https://www.omo.sh/notes/interfaces-we-tried" />
+  <meta property="og:image" content="https://www.omo.sh/assets/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Omo Research — voice, space, and presence for human-agent interaction" />
+  <meta property="article:published_time" content="2026-10-29" />
+  <meta property="article:modified_time" content="2026-10-29" />
+  <meta property="article:section" content="Field report" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Thirteen Interfaces We Tried for Working with AI Agents" />
+  <meta name="twitter:description" content="Voice loops, a hologram, chat hubs, glass apps, and Minecraft: what we learned building and living with thirteen agent interfaces." />
+  <meta name="twitter:image" content="https://www.omo.sh/assets/og-card.png" />
+  <meta name="twitter:image:alt" content="Omo Research — voice, space, and presence for human-agent interaction" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"Organization","@id":"https://www.omo.sh/#organization","name":"Omo Research","url":"https://www.omo.sh/","logo":{"@type":"ImageObject","url":"https://www.omo.sh/assets/icon-512.png","width":512,"height":512}},
+    {"@type":"Article","@id":"https://www.omo.sh/notes/interfaces-we-tried#article","headline":"Thirteen Interfaces We Tried for Working with AI Agents","description":"A field report from Omo Research: thirteen voice, screen, and world interfaces we built and used for working with AI agents, and what each one taught us.","datePublished":"2026-10-29","dateModified":"2026-10-29","author":{"@id":"https://www.omo.sh/#organization"},"publisher":{"@id":"https://www.omo.sh/#organization"},"mainEntityOfPage":{"@id":"https://www.omo.sh/notes/interfaces-we-tried#webpage"},"image":"https://www.omo.sh/assets/og-card.png","articleSection":"Omo Notes","keywords":["AI agent interface","human-agent interaction","voice AI","spatial agents","Minecraft AI agents","multi-agent workspace"],"inLanguage":"en"},
+    {"@type":"WebPage","@id":"https://www.omo.sh/notes/interfaces-we-tried#webpage","url":"https://www.omo.sh/notes/interfaces-we-tried","name":"Thirteen Interfaces We Tried for Working with AI Agents | Omo Notes","isPartOf":{"@id":"https://www.omo.sh/#website"},"about":{"@id":"https://www.omo.sh/notes/interfaces-we-tried#article"},"inLanguage":"en"},
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.omo.sh/"},{"@type":"ListItem","position":2,"name":"Notes","item":"https://www.omo.sh/notes"},{"@type":"ListItem","position":3,"name":"Thirteen interfaces we tried for working with agents","item":"https://www.omo.sh/notes/interfaces-we-tried"}]}
+  ]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" /></noscript>
+  <link rel="stylesheet" href="/styles.css" />
+<style>
+.process-item p.log-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; margin-bottom: 0.35rem; font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-2); }
+.log-status { padding: 0.12rem 0.55rem; border: 1px solid var(--border); border-radius: 999px; }
+.log-status-now { background: var(--btn-bg); color: var(--bg); border-color: transparent; }
+.process-item p.log-learned { margin-top: 0.45rem; color: var(--text); }
+.process-item p.log-learned strong { font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 500; color: var(--text-2); margin-right: 0.35rem; }
+
+.log-figure { margin: 0.85rem 0 0.2rem; max-width: 38rem; }
+.log-figure img, .log-figure video, .log-thumb img, .log-thumb video { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); }
+.log-figure figcaption, .log-thumb figcaption { margin-top: 0.4rem; font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-2); line-height: 1.5; }
+.log-figure figcaption span, .log-thumb figcaption span { text-transform: uppercase; letter-spacing: 0.04em; margin-right: 0.45rem; color: var(--text); }
+.process-item.log-item { grid-template-columns: 3rem minmax(0, 1fr) 13rem; align-items: start; }
+.log-thumb { margin: 0; }
+.log-thumb figcaption { display: none; }
+@media (max-width: 768px) { .process-item.log-item { grid-template-columns: 2.25rem minmax(0, 1fr); } .log-thumb { grid-column: 2; } }
+</style>
+</head>
+<body>
+<nav class="sidebar" aria-label="Article navigation"><div class="sidebar-inner">
+<a class="sidebar-brand" href="/notes" aria-label="Omo Notes"><span class="sidebar-mark"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 180V20h80M20 180h160M100 20h30m10 0h20m20 0v40m0 12v38m0 10v30m0 10v20M32 168V32h68M32 168h136" fill="none" stroke="currentColor" stroke-width="8" /><path d="M62 100a30 30 0 0 1 38-30m0 0a30 30 0 0 1 0 20m0 0a30 30 0 0 1 38 40M100 90a30 30 0 0 0-38 10" fill="none" stroke="currentColor" stroke-width="7" /><rect x="95" y="95" width="10" height="10" fill="currentColor" /></svg></span><span class="sidebar-name">Omo Notes</span></a>
+<div class="sidebar-links"><a class="sidebar-link" href="/notes">← All notes</a><a class="sidebar-sublink" href="#approach">Approach</a><a class="sidebar-sublink" href="#voice">Voice</a><a class="sidebar-sublink" href="#screens">Screens</a><a class="sidebar-sublink" href="#space">Space</a><a class="sidebar-sublink" href="#patterns">Patterns</a><a class="sidebar-sublink" href="#limits">Limits</a></div>
+</div></nav>
+<header class="mobile-header"><a class="mobile-brand" href="/notes">Omo Notes</a><nav class="mobile-actions" aria-label="Primary"><a class="btn btn-dark btn-sm" href="/notes">← Notes</a></nav></header>
+<main class="content-main">
+<article>
+<header class="paper-header" id="overview">
+<div class="paper-tags"><span class="tag">Field report</span><span class="tag">Voice</span><span class="tag">Screens</span><span class="tag">Space</span></div>
+<h1>Thirteen interfaces we tried for working with agents</h1>
+<p class="paper-subtitle">Before we had a thesis, we had a problem: too many agents and no good way to be with them. So we kept building interfaces and living with them.</p>
+<p class="section-note">A field report from our own daily use, April to October 2026. These are prototypes we built and used for real work, not controlled studies.</p>
+<div class="meta-grid"><div class="meta-item"><p class="meta-label">Published</p><p class="meta-value"><time datetime="2026-10-29">29 Oct 2026</time></p></div><div class="meta-item"><p class="meta-label">Period</p><p class="meta-value">Apr–Oct 2026</p></div><div class="meta-item"><p class="meta-label">Type</p><p class="meta-value">Field report</p></div><div class="meta-item"><p class="meta-label">Interfaces</p><p class="meta-value">13 tried</p></div></div>
+</header>
+<section class="paper-section" id="approach">
+<p class="section-kicker">01 / Approach</p>
+<h2>Build it, use it for real work, notice what we return to</h2>
+<div class="body-text"><p class="body-content">Each interface started from the same question: what is the most natural way for one person to work with a team of AI agents? We built the smallest version that could answer it, used it for actual projects, and kept notes on what felt natural, what broke, and which tools we quietly stopped opening. The experiments fall under the three questions on our research agenda: voice, screens, and space.</p></div>
+</section>
+<section class="paper-section" id="voice">
+<p class="section-kicker">02 / Voice</p>
+<h2>Can speaking replace typing?</h2>
+<div class="process-list">
+<article class="process-item"><span class="process-index">01</span><div><p class="log-meta"><span class="log-date">Apr 2026</span><span class="log-status">Prototype</span></p><h3><a href="/research/talk-to-anything">Talk to anything</a></h3><p>Point a phone at a mug or a mouse, tap it, and it wakes up with a face, a personality, and a voice you can talk back to. Built at a hackathon.</p><figure class="log-figure"><img src="/assets/research/talk-to-anything.jpg" alt="Hackathon demo: everyday objects with faces and voices" loading="lazy" decoding="async" /><figcaption><span>Screenshot</span>Hackathon demo: everyday objects with faces and voices</figcaption></figure><p class="log-learned"><strong>What we saw</strong>Talking out loud felt natural as soon as the thing we talked to had a face and a place.</p></div></article>
+<article class="process-item"><span class="process-index">02</span><div><p class="log-meta"><span class="log-date">May 2026</span><span class="log-status">Open source</span></p><h3><a href="/research/holographic-cofounder">Holographic co-founder</a></h3><p>A voice-first hologram that draws live business charts in the air, with a command terminal and a small pixel office where the agent team works. Built in two and a half days and placed third at a hackathon.</p><figure class="log-figure"><video src="/assets/research/hologram-demo.mp4" poster="/assets/research/hologram-demo.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Hologram demo, from the open-source repo (demo data)"></video><figcaption><span>Demo</span>Hologram demo, from the open-source repo (demo data)</figcaption></figure><p class="log-learned"><strong>What we saw</strong>Giving the agent a body and a place made it feel present, which pointed us toward worlds instead of windows.</p></div></article>
+<article class="process-item"><span class="process-index">03</span><div><p class="log-meta"><span class="log-date">Oct 2026</span><span class="log-status">Open source</span></p><h3><a href="/research/voice-from-the-phone">Voice control from the phone</a></h3><p>Ask out loud what's new, hear a spoken catch-up, and post into a thread by voice. Later versions also show the messages on screen.</p><figure class="log-figure"><img src="/assets/research/voice-commander.jpg" alt="The open-source voice app's landing page (example conversation)" loading="lazy" decoding="async" /><figcaption><span>Screenshot</span>The open-source voice app's landing page (example conversation)</figcaption></figure><p class="log-learned"><strong>What we saw</strong>Most spoken requests were catch-ups (“any updates?”, “what's new?”), not instructions. Reading every post back for confirmation felt slow, and a voice app and a text chat on top of the same agent drifted into giving different answers.</p></div></article>
+</div>
+</section>
+<section class="paper-section" id="screens">
+<p class="section-kicker">03 / Screens</p>
+<h2>Can the right app make many agents manageable?</h2>
+<div class="process-list">
+<article class="process-item"><span class="process-index">04</span><div><p class="log-meta"><span class="log-date">Sep 2026</span><span class="log-status">Tried</span></p><h3><a href="/research/terminal-workspace">Terminal workspace</a></h3><p>One space per project and one tab per agent profile in a terminal multiplexer.</p><figure class="log-figure"><img src="/assets/research/terminal-workspace.svg" alt="One tab per agent, split panes per task" loading="lazy" decoding="async" /><figcaption><span>Diagram</span>One tab per agent, split panes per task</figcaption></figure><p class="log-learned"><strong>What we saw</strong>The most fluid text setup we used. It broke down on small things, like copying text over a remote connection.</p></div></article>
+<article class="process-item"><span class="process-index">05</span><div><p class="log-meta"><span class="log-date">Sep 2026</span><span class="log-status">Kept as the message layer</span></p><h3><a href="/research/chat-server-hq">Chat server as HQ</a></h3><p>One channel per agent with its reasoning and tool calls visible, plus an HQ channel that sends work out and relays results back.</p><figure class="log-figure"><img src="/assets/research/chat-hq.svg" alt="A channel per agent; HQ sends work out and relays results back" loading="lazy" decoding="async" /><figcaption><span>Diagram</span>A channel per agent; HQ sends work out and relays results back</figcaption></figure><p class="log-learned"><strong>What we saw</strong>Seeing reasoning in the open helped. Nested threads got confusing fast, and the app felt heavy for what we used.</p></div></article>
+<article class="process-item"><span class="process-index">06</span><div><p class="log-meta"><span class="log-date">Sep–Oct 2026</span><span class="log-status">Stalled</span></p><h3><a href="/research/one-chat">One chat that runs everything</a></h3><p>Talk to one agent in one thread; it delegates to the others and reports back.</p><figure class="log-figure"><img src="/assets/research/one-chat.svg" alt="One thread in front, the agents hidden behind it" loading="lazy" decoding="async" /><figcaption><span>Diagram</span>One thread in front, the agents hidden behind it</figcaption></figure><p class="log-learned"><strong>What we saw</strong>It was hard to tell which agent was actually answering. For a while, it was still the default one.</p></div></article>
+<article class="process-item"><span class="process-index">07</span><div><p class="log-meta"><span class="log-date">Sep 2026</span><span class="log-status">App retired</span></p><h3><a href="/research/kanban-boards">Kanban boards</a></h3><p>A web board and a native app to watch agent tasks move across columns.</p><figure class="log-figure"><img src="/assets/research/kanban.svg" alt="Agent tasks moving across columns" loading="lazy" decoding="async" /><figcaption><span>Diagram</span>Agent tasks moving across columns</figcaption></figure><p class="log-learned"><strong>What we saw</strong>Good for status at a glance. A separate app for it didn't stick.</p></div></article>
+<article class="process-item"><span class="process-index">08</span><div><p class="log-meta"><span class="log-date">Sep 2026</span><span class="log-status">Tried</span></p><h3><a href="/research/browser-extension">Browser extension</a></h3><p>A community-built extension we tried, not one of ours: the agent in a side panel next to the page it is working on.</p><figure class="log-figure"><img src="/assets/research/browser-extension.svg" alt="The agent in a side panel next to the page" loading="lazy" decoding="async" /><figcaption><span>Diagram</span>The agent in a side panel next to the page</figcaption></figure><p class="log-learned"><strong>What we saw</strong>Handy next to a single page, but one more place to look.</p></div></article>
+<article class="process-item"><span class="process-index">09</span><div><p class="log-meta"><span class="log-date">Sep 2026</span><span class="log-status">Tried</span></p><h3><a href="/research/status-dashboard">Status dashboard</a></h3><p>A small desktop app for logs, service health, and API costs: the agent system as a dashboard instead of a conversation.</p><figure class="log-figure"><img src="/assets/research/status-dashboard.svg" alt="Logs, services, jobs, and API costs at a glance" loading="lazy" decoding="async" /><figcaption><span>Diagram</span>Logs, services, jobs, and API costs at a glance</figcaption></figure><p class="log-learned"><strong>What we saw</strong>Good for health and costs. It said nothing about what the agents were working on.</p></div></article>
+<article class="process-item"><span class="process-index">10</span><div><p class="log-meta"><span class="log-date">Sep 2026</span><span class="log-status">Prototype</span></p><h3><a href="/research/glass-desktop-app">Glass desktop app</a></h3><p>A lightweight native app with the same channel and thread structure as the chat server: about 206 MB of memory against roughly 1 GB, and ready in a quarter of a second.</p><figure class="log-figure"><img src="/assets/research/glass-app.svg" alt="Channels and threads in a lightweight glass window" loading="lazy" decoding="async" /><figcaption><span>Diagram</span>Channels and threads in a lightweight glass window</figcaption></figure><p class="log-learned"><strong>What we saw</strong>A lighter skin on the same structure. Replies were only tested against a mock backend.</p></div></article>
+</div>
+</section>
+<section class="paper-section" id="space">
+<p class="section-kicker">04 / Space</p>
+<h2>Can a place replace the menu?</h2>
+<div class="process-list">
+<article class="process-item"><span class="process-index">11</span><div><p class="log-meta"><span class="log-date">Jun–Aug 2026</span><span class="log-status">Led to the next step</span></p><h3><a href="/research/agents-in-minecraft-world">Agents in a Minecraft world</a></h3><p>Agents living in a shared Minecraft world instead of a chat window.</p><figure class="log-figure"><img src="/assets/research/agents-in-minecraft.jpg" alt="Agents at their desks in a Minecraft build" loading="lazy" decoding="async" /><figcaption><span>Image</span>Agents at their desks in a Minecraft build</figcaption></figure><p class="log-learned"><strong>What we saw</strong>Gave us our working idea: the world is the interface.</p></div></article>
+<article class="process-item"><span class="process-index">12</span><div><p class="log-meta"><span class="log-date">Sep 2026</span><span class="log-status">Led to Omo Space</span></p><h3><a href="/research/minecraft-as-interface">Minecraft as the interface</a></h3><p>A real terminal inside Minecraft, a pocket computer you can type into, and in-game monitors that show live web pages.</p><figure class="log-figure"><img src="/assets/research/omo-life-monitor.jpg" alt="In-game footage: a live web page on a Minecraft monitor" loading="lazy" decoding="async" /><figcaption><span>Screenshot</span>In-game footage: a live web page on a Minecraft monitor</figcaption></figure><p class="log-learned"><strong>What we saw</strong>The first version felt slightly laggy. Once typing in the world was instant, it became the interface we kept coming back to.</p></div></article>
+<article class="process-item"><span class="process-index">13</span><div><p class="log-meta"><span class="log-date">Oct 2026 – now</span><span class="log-status log-status-now">Now</span></p><h3><a href="/research/omo-space">Omo Space</a></h3><p>One room per project and screens that stay where you left them, which became Omo Space: real AI agents at their own desks inside Minecraft, each with its terminal on the wall.</p><figure class="log-figure"><img src="/assets/research/omo-space-command-center.jpg" alt="Omo Space: agent terminals and a live board on the walls" loading="lazy" decoding="async" /><figcaption><span>Screenshot</span>Omo Space: agent terminals and a live board on the walls</figcaption></figure><p class="log-learned"><strong>What we saw</strong>Walking to an agent's desk is a fast way to know what it is doing. This is what we use every day.</p></div></article>
+</div>
+</section>
+<section class="paper-section" id="patterns">
+<p class="section-kicker">05 / Patterns</p>
+<h2>What kept showing up</h2>
+<div class="feature-grid">
+<article class="feature-item"><p class="feature-label">Pattern 01</p><p class="feature-value">Every setup rebuilt rooms</p><p class="feature-desc">Tabs per agent, channels per agent, spaces per project. Each text interface ended up drawing a map. A world gives you that map directly.</p></article>
+<article class="feature-item"><p class="feature-label">Pattern 02</p><p class="feature-value">Voice is for catching up</p><p class="feature-desc">Spoken requests were mostly status questions. Detailed instructions still went through typing.</p></article>
+<article class="feature-item"><p class="feature-label">Pattern 03</p><p class="feature-value">Speed decides everything</p><p class="feature-desc">A beautiful interface that lags gets abandoned. The in-world terminal only stuck once typing felt instant.</p></article>
+<article class="feature-item"><p class="feature-label">Pattern 04</p><p class="feature-value">One agent, one front door</p><p class="feature-desc">Two interfaces on the same agent drifted apart in tone and answers. Shared state underneath matters more than the skin on top.</p></article>
+<article class="feature-item"><p class="feature-label">Pattern 05</p><p class="feature-value">Persistence builds trust</p><p class="feature-desc">Screens and desks that stay where you left them made it easy to pick up where an agent was.</p></article>
+<article class="feature-item"><p class="feature-label">Pattern 06</p><p class="feature-value">Hidden routing hurts</p><p class="feature-desc">The more an interface hid which agent was doing what, the harder it was to fix things when they went wrong.</p></article>
+</div>
+</section>
+<section class="paper-section" id="limits">
+<p class="section-kicker">06 / Limits</p>
+<h2>One small team, one set of habits</h2>
+<div class="body-text"><p class="body-content">These observations come from a small team using its own tools. We did not run controlled comparisons, and most numbers here are from our own setup. Some ideas stalled for practical reasons, such as a bug or a missing feature, rather than because the idea failed. Treat this as a map of what we tried, not as evidence that one interface is better for everyone.</p></div>
+</section>
+<section class="paper-section" id="next"><p class="section-kicker">07 / Continue</p><h2>Where it led</h2><div class="empty-state"><p class="empty-state-label">Experiment 13, ongoing</p><p class="empty-state-title">Omo Space</p><p class="empty-state-copy">Real AI agents at their own desks inside Minecraft, each with its terminal on the wall. It is what we use every day now, and where the next experiments will happen.</p><div class="empty-state-actions"><a class="btn btn-dark" href="https://github.com/omoresearch/omo-space" target="_blank" rel="noopener">See Omo Space ↗</a><a class="btn btn-outline" href="/notes/minecraft-as-an-agent-interface">Read the Minecraft note</a></div></div></section>
+</article>
+</main>
+<footer class="site-footer"><div class="footer-inner"><p>© 2026 Omo Research. A field report from our own use, not a controlled study.</p><nav class="footer-links" aria-label="Footer"><a href="/">Home</a><a href="/notes">Notes</a><a href="/omo-space">Research</a><a href="mailto:harrythentrepreneur@gmail.com">Contact</a></nav></div></footer>
+</body>
+</html>

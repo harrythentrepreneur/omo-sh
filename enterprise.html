@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Give every AI agent in your organisation a place. Spatial interfaces where teams find, resume and monitor dozens of agents. Used daily in our own studio; built on open-source Omo Space." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Omo Research" />
+  <meta name="theme-color" content="#f5f0e8" />
+  <title>Omo Enterprise: Agentic Interfaces for Large Organisations | Omo Research</title>
+  <link rel="canonical" href="https://www.omo.sh/enterprise" />
+  <link rel="alternate" type="application/rss+xml" title="Omo Notes" href="/feed.xml" />
+  <link rel="icon" href="/assets/omo-mark.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Omo Research" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Omo Enterprise: Agentic Interfaces for Large Organisations | Omo Research" />
+  <meta property="og:description" content="Give every AI agent in your organisation a place. Spatial interfaces where teams find, resume and monitor dozens of agents. Used daily in our own studio; built on open-source Omo Space." />
+  <meta property="og:url" content="https://www.omo.sh/enterprise" />
+  <meta property="og:image" content="https://www.omo.sh/assets/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Omo Research — voice, space, and presence for human-agent interaction" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Omo Enterprise: Agentic Interfaces for Large Organisations | Omo Research" />
+  <meta name="twitter:description" content="Give every AI agent in your organisation a place. Spatial interfaces where teams find, resume and monitor dozens of agents. Used daily in our own studio; built on open-source Omo Space." />
+  <meta name="twitter:image" content="https://www.omo.sh/assets/og-card.png" />
+  <meta name="twitter:image:alt" content="Omo Research — voice, space, and presence for human-agent interaction" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" /></noscript>
+  <link rel="stylesheet" href="/styles.css" />
+<style>
+.exp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); gap: 1.1rem; margin-top: 1.25rem; }
+.exp-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-card); transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.exp-card:hover { transform: translateY(-2px); border-color: var(--text-2); box-shadow: 0 8px 22px rgba(26,16,8,.07); }
+.exp-card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid var(--border); background: var(--bg); }
+.exp-card-body { padding: .8rem .95rem 1rem; display: flex; flex-direction: column; gap: .3rem; flex: 1; }
+.exp-meta { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-2); }
+.exp-status { padding: .08rem .5rem; border: 1px solid var(--border); border-radius: 999px; }
+.exp-status.now { background: var(--btn-bg); color: var(--bg); border-color: transparent; }
+.exp-card h3 { font-family: var(--font-body); font-size: 1.12rem; font-weight: 600; line-height: 1.25; margin: .1rem 0 0; }
+.exp-card p.exp-line { color: var(--text-2); font-size: .88rem; line-height: 1.5; margin: 0; }
+.exp-more { margin-top: auto; padding-top: .35rem; font-family: var(--font-mono); font-size: .64rem; color: var(--text); }
+.exp-cover { margin: 1.2rem 0 0; }
+.exp-cover img, .exp-figure img, .exp-figure video { display: block; width: 100%; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); }
+.exp-figure { margin: 1.4rem 0 .4rem; }
+.exp-figure img, .exp-figure video { aspect-ratio: 16 / 9; object-fit: cover; }
+.exp-figure.diagram img { object-fit: contain; }
+.exp-cover figcaption, .exp-figure figcaption { margin-top: .45rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.exp-cover figcaption span, .exp-figure figcaption span { text-transform: uppercase; letter-spacing: .04em; margin-right: .45rem; color: var(--text); }
+.exp-lead { max-width: 38rem; color: var(--text-2); }
+.exp-list { margin: .6rem 0 0; padding-left: 1.1rem; max-width: 38rem; }
+.exp-list li { margin: .35rem 0; color: var(--text-2); line-height: 1.6; font-size: .95rem; }
+.exp-saw { max-width: 38rem; border-left: 2px solid var(--btn-bg); padding: .2rem 0 .2rem 1rem; font-size: 1.08rem; line-height: 1.6; }
+.exp-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+.exp-pager a { text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; padding: .8rem 1rem; }
+.exp-pager a:hover { border-color: var(--text-2); }
+.exp-pager .next { text-align: right; grid-column: 2; }
+.exp-pager small { display: block; font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-2); }
+.exp-pager strong { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; }
+.sidebar-sublink .exp-n { font-family: var(--font-mono); font-size: .6rem; color: var(--text-2); margin-right: .4rem; }
+.research-intro { margin-top: .6rem; max-width: 36rem; }
+.small-links { margin-top: 2.2rem; display: flex; gap: 1.2rem; font-family: var(--font-mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .04em; }
+.small-links a { color: var(--text-2); text-decoration: none; }
+.small-links a:hover { color: var(--text); }
+.side-group { margin: 1.1rem 0 .3rem; padding: 0 .55rem; font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-2); }
+.side-group:first-of-type { margin-top: .6rem; }
+.paper-card { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg-card); margin-top: 1.1rem; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.paper-card:hover { transform: translateY(-2px); border-color: var(--text-2); box-shadow: 0 10px 26px rgba(26,16,8,.08); }
+.paper-card img { width: 100%; height: 100%; min-height: 15rem; object-fit: cover; border-right: 1px solid var(--border); }
+.paper-card-body { padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: .45rem; }
+.paper-card h3 { font-family: var(--font-body); font-style: italic; font-weight: 400; font-size: 2rem; line-height: 1.05; margin: .1rem 0; }
+.paper-card p { color: var(--text-2); font-size: .92rem; line-height: 1.6; margin: 0; }
+.paper-card p.exp-meta { font-size: .62rem; line-height: 1.4; }
+.sidebar-inner { max-height: 100vh; overflow-y: auto; scrollbar-width: thin; }
+.move-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin-top: .9rem; }
+.move-card { display: flex; flex-direction: column; gap: .2rem; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; padding: .8rem .9rem; background: var(--bg-card); }
+.move-card:hover { border-color: var(--text-2); }
+.move-old { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); text-decoration: line-through; }
+.move-k { font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); margin-top: .3rem; }
+.move-card strong { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; line-height: 1.25; }
+.worked-note { margin-top: .9rem; font-family: var(--font-mono); font-size: .64rem; color: var(--text-2); }
+@media (max-width: 900px) { .paper-card { grid-template-columns: 1fr; } .paper-card img { border-right: 0; border-bottom: 1px solid var(--border); min-height: 0; aspect-ratio: 16 / 9; } .move-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.os-loops { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; margin-top: 1rem; }
+.os-loop { margin: 0; } .os-loop img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--border); border-radius: 10px; background: #111; }
+.os-loop figcaption { margin-top: .4rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.os-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+.os-shot { margin: 0; } .os-shot img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--border); border-radius: 10px; }
+.os-shot:first-child { grid-column: 1 / -1; }
+.os-shot figcaption { margin-top: .4rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.os-demo { position: relative; display: block; margin: 1rem 0 .4rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.os-demo img { display: block; width: 100%; }
+.os-demo span { position: absolute; left: 1rem; bottom: 1rem; background: var(--btn-bg); color: var(--bg); font-family: var(--font-mono); font-size: .72rem; padding: .5rem .9rem; border-radius: 999px; }
+.os-demo:hover span { background: #2c2015; }
+.os-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+.os-blocks { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
+.os-code { margin: 1rem 0; padding: 1rem 1.1rem; background: #1a1008; color: #f5f0e8; border-radius: 10px; overflow-x: auto; font-family: var(--font-mono); font-size: .74rem; line-height: 1.7; }
+.os-arch { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: 1.2rem 0; font-family: var(--font-mono); font-size: .68rem; }
+.os-arch span { border: 1px solid var(--border); background: var(--bg-card); border-radius: 999px; padding: .35rem .75rem; }
+.os-arch i { font-style: normal; color: var(--text-2); }
+.os-faq { border-bottom: 1px solid var(--border); padding: .85rem 0; max-width: 40rem; }
+.os-faq summary { cursor: pointer; font-family: var(--font-body); font-size: 1.12rem; font-weight: 600; }
+.os-faq p { margin: .5rem 0 0; color: var(--text-2); line-height: 1.65; }
+.os-legal { margin-top: 1.6rem; font-family: var(--font-mono); font-size: .6rem; color: var(--text-2); max-width: 40rem; line-height: 1.6; }
+@media (max-width: 700px) { .os-loops, .os-pair, .os-gallery { grid-template-columns: 1fr; } }
+#log.paper-section { padding-top: 0; border-top: 0; }
+.tl-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); counter-reset: tl; }
+.tl-row { display: grid; grid-template-columns: 2.4rem 8.5rem minmax(0, 15rem) minmax(0, 1fr); gap: 1rem; align-items: baseline; padding: .7rem 0; border-bottom: 1px solid var(--border); counter-increment: tl; }
+.tl-row::before { content: counter(tl, decimal-leading-zero); font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.tl-date { font-family: var(--font-mono); font-size: .66rem; color: var(--text-2); text-transform: uppercase; letter-spacing: .03em; }
+.tl-what { font-family: var(--font-body); font-size: 1.04rem; font-weight: 600; line-height: 1.3; }
+.tl-what a { color: var(--text); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.tl-what a:hover { text-decoration-color: var(--text); }
+.log-sources { padding-left: 1.2rem; max-width: 40rem; } .log-sources li { margin: .4rem 0; font-size: .86rem; color: var(--text-2); line-height: 1.55; word-break: break-word; } .log-sources b { color: var(--text); font-weight: 500; }
+.tl-note { font-size: .9rem; color: var(--text-2); line-height: 1.5; }
+@media (max-width: 800px) { .tl-row { grid-template-columns: 2rem minmax(0, 1fr); gap: .15rem .8rem; } .tl-date, .tl-what, .tl-note { grid-column: 2; } }
+@media (max-width: 600px) { .exp-pager { grid-template-columns: 1fr; } .exp-pager .next { grid-column: 1; } }
+</style>
+<style>
+.ent { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+.ent-top { position: sticky; top: 0; z-index: 20; background: rgba(245,240,232,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.ent-top-in { max-width: 1120px; margin: 0 auto; padding: .8rem 1.5rem; display: flex; align-items: center; gap: 1.5rem; }
+.ent-brand { display: flex; align-items: center; gap: .6rem; color: var(--text); text-decoration: none; font-family: var(--font-mono); font-size: .78rem; letter-spacing: .04em; }
+.ent-brand svg { width: 26px; height: 26px; }
+.ent-top nav { margin-left: auto; display: flex; align-items: center; gap: 1.3rem; }
+.ent-top nav a:not(.btn) { font-family: var(--font-mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); text-decoration: none; }
+.ent-top nav a:not(.btn):hover { color: var(--text); }
+.ent-kicker { font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-2); margin: 0 0 .9rem; }
+.ent-hero { padding: 4.5rem 0 2.5rem; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 3rem; align-items: center; }
+.ent-hero h1 { font-size: clamp(2.4rem, 4.6vw, 3.7rem); line-height: 1.04; letter-spacing: -.02em; margin: 0 0 1.2rem; font-weight: 600; }
+.ent-hero p.lead { font-size: 1.25rem; line-height: 1.55; color: var(--text-2); margin: 0 0 1.8rem; max-width: 34rem; }
+.ent-actions { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; }
+.act-link { align-self: center; margin-left: .4rem; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .04em; color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; } .act-link:hover { color: var(--text); text-decoration-color: var(--text); }
+
+.ent-hero figure { margin: 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 30px 60px -40px rgba(26,16,8,.45); }
+.ent-hero figure img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.ent-proof { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 1rem 0 0; }
+.ent-proof div { padding: 1.4rem 1.2rem; border-right: 1px solid var(--border); }
+.ent-proof div:last-child { border-right: 0; }
+.ent-proof b { display: block; font-size: 2rem; line-height: 1; font-weight: 600; margin-bottom: .45rem; }
+.ent-proof span { font-family: var(--font-mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); line-height: 1.5; display: block; }
+.ent-sec { padding: 5rem 0 0; scroll-margin-top: 64px; }
+.ent-sec h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.12; letter-spacing: -.01em; margin: 0 0 1rem; font-weight: 600; max-width: 44rem; }
+.ent-sec > p.sub { font-size: 1.12rem; line-height: 1.6; color: var(--text-2); max-width: 44rem; margin: 0 0 2.2rem; }
+.ent-video { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: #1a1008; }
+.ent-video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.ent-cap { font-family: var(--font-mono); font-size: .64rem; color: var(--text-2); margin: .7rem 0 0; letter-spacing: .02em; }
+.ent-grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.ent-grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.ent-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+.ent-card img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-bottom: 1px solid var(--border); }
+.ent-card div { padding: 1.1rem 1.15rem 1.3rem; }
+.ent-card h3 { font-size: 1.3rem; margin: 0 0 .4rem; font-weight: 600; }
+.ent-card p { margin: 0; font-size: 1rem; line-height: 1.5; color: var(--text-2); }
+.ent-card .n { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); letter-spacing: .06em; text-transform: uppercase; display: block; margin-bottom: .55rem; }
+.ent-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.ent-split img { width: 100%; border-radius: 14px; border: 1px solid var(--border); display: block; }
+.ent-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
+.ent-list li { padding: .9rem 0; border-bottom: 1px solid var(--border); font-size: 1.05rem; line-height: 1.5; }
+.ent-list li b { display: block; font-weight: 600; margin-bottom: .15rem; }
+.ent-list li span { color: var(--text-2); }
+.ent-steps { counter-reset: st; }
+.ent-steps .ent-card div::before { counter-increment: st; content: "Step " counter(st, decimal-leading-zero); font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); display: block; margin-bottom: .55rem; }
+.ent-honest { background: var(--btn-bg); color: var(--bg); border-radius: 18px; padding: 2.6rem 2.6rem 2.2rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; }
+.ent-honest h2 { color: var(--bg); }
+.ent-honest .ent-kicker { color: #c9bba8; }
+.ent-honest ul { margin: 0; padding: 0; list-style: none; }
+.ent-honest li { padding: .7rem 0; border-bottom: 1px solid #3a2c1f; line-height: 1.5; font-size: 1.02rem; color: #e9e1d4; }
+.ent-honest li b { color: var(--bg); }
+.ent-honest a { color: var(--bg); }
+.ent-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
+.ent-strip figure { margin: 0; }
+.ent-strip img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); display: block; }
+.ent-strip figcaption { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); margin-top: .45rem; }
+.ent-form-wrap { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 3rem; align-items: start; }
+.ent-form { background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px; padding: 1.8rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1rem; }
+.ent-form .full { grid-column: 1 / -1; }
+.ent-form label { display: block; font-family: var(--font-mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); margin-bottom: .4rem; }
+.ent-form label i { font-style: normal; color: #a4483a; }
+.ent-form input[type=text], .ent-form input[type=email], .ent-form select, .ent-form textarea { width: 100%; box-sizing: border-box; font: inherit; font-size: 1.02rem; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: .65rem .75rem; }
+.ent-form textarea { min-height: 7.5rem; resize: vertical; }
+.ent-form input:focus, .ent-form select:focus, .ent-form textarea:focus { outline: 2px solid var(--text); outline-offset: 1px; }
+.ent-form .bad input, .ent-form .bad select { border-color: #a4483a; }
+.ent-form .err { color: #a4483a; font-family: var(--font-mono); font-size: .62rem; margin-top: .3rem; min-height: .8rem; }
+.ent-checks { display: flex; flex-wrap: wrap; gap: .5rem; }
+.ent-checks label { display: inline-flex; align-items: center; gap: .45rem; text-transform: none; letter-spacing: 0; font-family: var(--font-body); font-size: 1rem; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: .4rem .8rem; margin: 0; cursor: pointer; }
+.ent-consent { display: flex !important; gap: .6rem; align-items: flex-start; text-transform: none !important; letter-spacing: 0 !important; font-family: var(--font-body) !important; font-size: .98rem !important; color: var(--text) !important; line-height: 1.45; }
+.ent-consent input { margin-top: .25rem; }
+.ent-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+.ent-submit { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.ent-status { font-family: var(--font-mono); font-size: .7rem; color: var(--text-2); }
+.ent-done { display: none; grid-column: 1 / -1; padding: 1.2rem 0; }
+.ent-done h3 { font-size: 1.6rem; margin: 0 0 .5rem; }
+.ent-done p { margin: 0; color: var(--text-2); font-size: 1.05rem; line-height: 1.55; }
+.ent-faq details { border-bottom: 1px solid var(--border); padding: 1rem 0; }
+.ent-faq summary { cursor: pointer; font-size: 1.15rem; font-weight: 600; }
+.ent-faq details p { color: var(--text-2); line-height: 1.6; margin: .6rem 0 0; max-width: 46rem; }
+@media (max-width: 900px) {
+  .ent-hero, .ent-split, .ent-honest, .ent-form-wrap { grid-template-columns: 1fr; }
+  .ent-grid4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ent-grid3, .ent-strip { grid-template-columns: 1fr; }
+  .ent-proof { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ent-proof div:nth-child(2) { border-right: 0; }
+  .ent-top nav a:not(.btn) { display: none; }
+}
+@media (max-width: 560px) { .ent-grid4, .ent-form { grid-template-columns: 1fr; } .ent-honest { padding: 1.8rem 1.4rem; } }
+
+.ent-q { margin: .9rem 0 0; padding: .7rem 0 0; border-top: 1px dashed var(--border); font-style: italic; font-size: 1rem; line-height: 1.45; color: var(--text); }
+.ent-q cite { display: block; font-style: normal; font-family: var(--font-mono); font-size: .58rem; color: var(--text-2); margin-top: .35rem; letter-spacing: .03em; text-transform: uppercase; }
+.ent-band { margin: 4.5rem 0 0; padding: 2.4rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); text-align: center; }
+.ent-band blockquote { margin: 0 auto; max-width: 52rem; font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.3; font-style: italic; }
+.ent-band cite { display: block; margin-top: 1rem; font-style: normal; font-family: var(--font-mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+.ent-problem { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+#teams .ent-split > div:last-child { position: sticky; top: 90px; }
+.ent-problem div { border: 1px solid var(--border); border-radius: 14px; padding: 1.3rem 1.2rem; background: var(--bg-card); }
+.ent-problem b { display: block; font-size: 1.25rem; margin-bottom: .35rem; }
+.ent-problem span { color: var(--text-2); line-height: 1.5; }
+.ent-pipe { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin: 0 0 1.6rem; background: var(--bg-card); }
+.ent-pipe div { padding: 1rem .9rem 1.1rem; border-right: 1px solid var(--border); position: relative; }
+.ent-pipe div:last-child { border-right: 0; }
+.ent-pipe div:not(:last-child)::after { content: "92"; position: absolute; right: -.55rem; top: 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 999px; width: 1.1rem; height: 1.1rem; font-size: .7rem; line-height: 1.05rem; text-align: center; z-index: 2; color: var(--text-2); }
+.ent-pipe small { display: block; font-family: var(--font-mono); font-size: .58rem; color: var(--text-2); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .35rem; }
+.ent-pipe b { display: block; font-size: 1.1rem; margin-bottom: .25rem; }
+.ent-pipe span { font-size: .9rem; color: var(--text-2); line-height: 1.4; display: block; }
+#studio .ent-split > div:last-child { position: sticky; top: 90px; }
+.ent-day { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--border); }
+.ent-day li { position: relative; padding: 0 0 1.5rem 1.6rem; }
+.ent-day li::before { content: ""; position: absolute; left: -5px; top: .45rem; width: 9px; height: 9px; border-radius: 50%; background: var(--text); }
+.ent-day small { font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+.ent-day b { display: block; font-size: 1.2rem; margin: .15rem 0 .25rem; }
+.ent-day p { margin: 0; color: var(--text-2); line-height: 1.55; font-size: 1.02rem; }
+.ent-day p q { color: var(--text); font-style: italic; }
+.ent-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin-top: 1.2rem; }
+.ent-stats div { border: 1px solid var(--border); border-radius: 12px; padding: 1rem; background: var(--bg-card); }
+.ent-stats b { display: block; font-size: 1.7rem; line-height: 1; margin-bottom: .35rem; }
+.ent-stats span { font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); line-height: 1.5; }
+.ent-tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.ent-tools .ent-card img { aspect-ratio: 16 / 10; }
+.ent-table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+.ent-table th { text-align: left; font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); font-weight: 500; padding: .6rem .7rem; border-bottom: 1px solid var(--text); }
+.ent-table td { vertical-align: top; padding: .9rem .7rem; border-bottom: 1px solid var(--border); line-height: 1.5; }
+.ent-table td:first-child { font-weight: 600; width: 22%; }
+.ent-table td:nth-child(2) { color: var(--text-2); }
+.ent-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.4rem; }
+.ent-metrics div { border-top: 2px solid var(--text); padding-top: .8rem; }
+.ent-metrics small { font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+.ent-metrics b { display: block; font-size: 1.15rem; margin: .3rem 0; }
+.ent-metrics p { margin: 0; color: var(--text-2); line-height: 1.5; }
+.ent-roots { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .8rem; margin-top: 1.4rem; }
+.ent-roots div { border: 1px solid var(--border); border-radius: 12px; padding: .9rem; background: var(--bg-card); }
+.ent-roots small { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.ent-roots b { display: block; margin: .25rem 0; font-size: 1.05rem; }
+.ent-roots span { font-size: .9rem; color: var(--text-2); line-height: 1.4; display: block; }
+.ent-travel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; align-items: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px; padding: 2rem; }
+.ent-travel img { width: 100%; border-radius: 12px; border: 1px solid var(--border); display: block; }
+.ent-cta { margin-top: 5rem; text-align: center; padding: 3rem 1rem; border-radius: 18px; border: 1px solid var(--border); background: var(--bg-card); }
+.ent-cta h2 { margin: 0 auto .8rem; }
+.ent-cta p { color: var(--text-2); font-size: 1.1rem; margin: 0 auto 1.4rem; max-width: 36rem; }
+.ent-cta .ent-actions { justify-content: center; }
+@media (max-width: 900px) {
+  .ent-problem, .ent-tools, .ent-metrics, .ent-travel { grid-template-columns: 1fr; }
+  .ent-pipe { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ent-pipe div:not(:last-child)::after { display: none; }
+  .ent-roots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ent-table td:first-child { width: auto; }
+}
+.ent-vid { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #1a1008; }
+.ent-card .ent-vid { aspect-ratio: 4 / 3; border-bottom: 1px solid var(--border); }
+.ent-tools .ent-card .ent-vid { aspect-ratio: 16 / 10; }
+.ent-video .ent-vid { border-radius: 0; }
+.ent-split .ent-video { border-radius: 14px; }
+.ent-reel3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.4rem; }
+.ent-reel3 figure { margin: 0; }
+.ent-reel3 .ent-vid { border-radius: 12px; border: 1px solid var(--border); }
+.ent-reel3 figcaption { margin-top: .6rem; color: var(--text-2); font-size: .98rem; line-height: 1.45; }
+.ent-reel3 figcaption b { display: block; color: var(--text); font-size: 1.1rem; }
+.ent-wide { margin: 5rem 0 0; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); }
+.ent-wide + .ent-cta { margin-top: 1.2rem; }
+/* ---------- mobile ---------- */
+@media (max-width: 900px) {
+  .ent-reel3 { grid-template-columns: 1fr; }
+  #studio .ent-split > div:last-child, #teams .ent-split > div:last-child { position: static; }
+}
+@media (max-width: 640px) {
+  .ent { padding: 0 1.1rem 3rem; }
+  .ent-top-in { padding: .65rem 1.1rem; gap: .8rem; }
+  .ent-brand span { font-size: .66rem; letter-spacing: .03em; }
+  .ent-brand svg { width: 22px; height: 22px; }
+  .ent-top .btn-sm { padding: .5rem .85rem; font-size: .68rem; min-height: 0; line-height: 1.2; }
+  .ent-hero { padding: 2.2rem 0 1.6rem; gap: 1.6rem; }
+  .ent-hero h1 { font-size: 2.3rem; line-height: 1.06; }
+  .ent-hero p.lead { font-size: 1.1rem; margin-bottom: 1.3rem; }
+  .ent-hero figure img { aspect-ratio: 16 / 11; }
+  .ent-actions { gap: .55rem; }
+  .ent-actions .btn { flex: 1 1 100%; justify-content: center; text-align: center; }
+  .ent-actions .act-link { margin: .3rem auto 0 !important; }
+  .ent-proof b { font-size: 1.6rem; }
+  .ent-proof div { padding: 1.1rem .9rem; border-bottom: 1px solid var(--border); }
+  .ent-proof div:nth-child(n+3) { border-bottom: 0; }
+  .ent-proof span { font-size: .58rem; }
+  .ent-sec { padding-top: 3.4rem; }
+  .ent-sec h2 { font-size: 1.75rem; }
+  .ent-sec > p.sub { font-size: 1.04rem; margin-bottom: 1.5rem; }
+  .ent-problem { grid-template-columns: 1fr; gap: .7rem; }
+  .ent-problem div { padding: 1rem; }
+  /* swipeable rows instead of tall stacks */
+  .ent-grid4, .ent-tools, .ent-reel3, .ent-strip { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: .8rem; margin-right: -1.1rem; padding-right: 1.1rem; padding-bottom: .4rem; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .ent-grid4::-webkit-scrollbar, .ent-tools::-webkit-scrollbar, .ent-reel3::-webkit-scrollbar, .ent-strip::-webkit-scrollbar { display: none; }
+  .ent-grid4 > *, .ent-tools > *, .ent-reel3 > *, .ent-strip > * { flex: 0 0 84%; scroll-snap-align: start; }
+  .ent-pipe { grid-template-columns: 1fr; }
+  .ent-pipe div { border-right: 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 4.2rem 1fr; column-gap: .6rem; padding: .8rem .9rem; }
+  .ent-pipe div:last-child { border-bottom: 0; }
+  .ent-pipe small { grid-row: span 2; margin: .2rem 0 0; }
+  .ent-day li { padding-bottom: 1.2rem; }
+  .ent-stats b { font-size: 1.4rem; }
+  .ent-band { margin-top: 3rem; padding: 1.8rem 0; }
+  .ent-band blockquote { font-size: 1.35rem; }
+  .ent-travel { padding: 1.2rem; gap: 1.2rem; }
+  .ent-roots { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-right: -1.1rem; scrollbar-width: none; }
+  .ent-roots > div { flex: 0 0 62%; scroll-snap-align: start; }
+  /* the failures table becomes cards */
+  .ent-table thead { display: none; }
+  .ent-table, .ent-table tbody, .ent-table tr, .ent-table td { display: block; width: auto !important; }
+  .ent-table tr { border: 1px solid var(--border); border-radius: 12px; padding: .9rem 1rem; margin-bottom: .7rem; background: var(--bg-card); }
+  .ent-table td { border: 0; padding: .2rem 0; }
+  .ent-table td:first-child { font-size: 1.15rem; margin-bottom: .2rem; }
+  .ent-table td:nth-child(3)::before { content: "For a pilot: "; font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); display: block; margin-top: .4rem; }
+  .ent-metrics { grid-template-columns: 1fr; }
+  .ent-honest { padding: 1.6rem 1.2rem; gap: 1.2rem; border-radius: 14px; }
+  .ent-form { padding: 1.2rem; border-radius: 14px; gap: .9rem; }
+  .ent-form input[type=text], .ent-form input[type=email], .ent-form select, .ent-form textarea { font-size: 16px; padding: .75rem .8rem; }
+  .ent-submit .btn { width: 100%; justify-content: center; }
+  .ent-checks label { font-size: .95rem; }
+  .ent-wide { margin-top: 3.4rem; border-radius: 14px; }
+  .ent-cta { padding: 2rem 1.1rem; margin-top: 1rem; }
+  .ent-faq summary { font-size: 1.05rem; }
+}
+</style>
+</head>
+<body>
+<header class="ent-top"><div class="ent-top-in">
+<a class="ent-brand" href="/" aria-label="Omo Research home"><span class="sidebar-mark"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 180V20h80M20 180h160M100 20h30m10 0h20m20 0v40m0 12v38m0 10v30m0 10v20M32 168V32h68M32 168h136" fill="none" stroke="currentColor" stroke-width="8" /><path d="M62 100a30 30 0 0 1 38-30m0 0a30 30 0 0 1 0 20m0 0a30 30 0 0 1 38 40M100 90a30 30 0 0 0-38 10" fill="none" stroke="currentColor" stroke-width="7" /><rect x="95" y="95" width="10" height="10" fill="currentColor" /></svg></span><span>OMO RESEARCH / ENTERPRISE</span></a>
+<nav aria-label="Enterprise"><a href="#teams">Teams</a><a href="#how">How it works</a><a href="#studio">Our studio</a><a href="#pilot">Pilot</a><a href="#security">Security</a><a class="btn btn-dark btn-sm" href="#talk">Talk to us</a></nav>
+</div></header>
+<main class="ent">
+
+<section class="ent-hero">
+<div>
+<p class="ent-kicker">Enterprise · Agentic interfaces</p>
+<h1>Give every agent in your organisation a place.</h1>
+<p class="lead">Your teams are starting to run agents by the dozen, for hours at a time, and nobody can see anyone else’s. A chat window was built for one person and one conversation. We design spaces where people can find any agent, see which one needs them, and pick up where they left off.</p>
+<div class="ent-actions"><a class="btn btn-dark" href="#talk">Request a conversation</a><a class="btn btn-outline" href="https://www.youtube.com/watch?v=GWpLXMl44p8" target="_blank" rel="noopener">Watch the demo &#8599;</a><a class="act-link" style="align-self:center;margin-left:.5rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px" href="https://github.com/omoresearch/omo-space" target="_blank" rel="noopener">GitHub &#8599;</a></div>
+</div>
+<figure><img src="/assets/enterprise/cover.jpg" alt="Illustration: an organisation as an open world of districts, agents at work in each, all linked to a central status wall" /></figure>
+</section>
+
+<div class="ent-proof">
+<div><b>21&ndash;25</b><span>agent sessions running at once, at peak, for one person</span></div>
+<div><b>22</b><span>agent profiles in our studio, one per role</span></div>
+<div><b>114</b><span>workspaces on one machine, 62 of them live</span></div>
+<div><b>791</b><span>quotes checked against 29 hours of footage</span></div>
+</div>
+<p class="ent-cap">Measured in our own studio, 25&ndash;29 October 2026, and reported in our working paper <a href="/research/rooms-not-windows/">Rooms, Not Windows</a>. One builder plus one second user; not a controlled study.</p>
+
+<section class="ent-sec" id="problem">
+<p class="ent-kicker">01 / The problem</p>
+<h2>One agent fits in a chat window. Twelve do not.</h2>
+<p class="sub">Agentic work means many agents that keep running for hours. Each one gets a tab, and every tab looks the same. Past a dozen, people lose track of three simple things.</p>
+<div class="ent-problem">
+<div><b>Which is which?</b><span>Twelve identical tabs, and the names stop meaning anything.</span></div>
+<div><b>Which is working?</b><span>Checking means opening every tab, one by one, all day.</span></div>
+<div><b>Which is waiting for you?</b><span>The agent that asked a question an hour ago is still waiting, silently.</span></div>
+</div>
+<p class="ent-q" style="max-width:40rem">“Nobody remembers which of the 12 terminal tabs are doing what but you can remember space and rooms … It’s the oldest memory trick out there.”<cite>From our stream, 28 Oct 2026</cite></p>
+</section>
+
+<section class="ent-sec" id="teams">
+<p class="ent-kicker">02 / And it gets worse with teams</p>
+<h2>More people does not mean more done. It often means less.</h2>
+<p class="sub">Agents were designed as one person talking to one assistant. Put fifty people in a team, each running ten agents, and you have five hundred conversations that only their owners can see. Adding people to that does not add up; the coordination cost grows faster than the work.</p>
+<div class="ent-problem">
+<div><b>Invisible to everyone else</b><span>Each person’s agents live in their own tabs. Nobody else can see what is running, what is stuck or what is already done.</span></div>
+<div><b>Handoffs happen in chat</b><span>Work moves between people by pasting outputs into messages. Context is lost at every step, and agents start again from zero.</span></div>
+<div><b>Waiting on the wrong person</b><span>An agent asks a question its owner will not see until tomorrow, while the colleague who could answer it sits next to them.</span></div>
+<div><b>Duplicated work</b><span>Two people set agents on the same problem, because nothing shows that someone already has.</span></div>
+<div><b>No shape to the work</b><span>A new hire cannot see how the team actually runs. The process lives in people’s heads and private chat histories.</span></div>
+<div><b>Managers fly blind</b><span>The only way to know where things stand is to ask around, which is the very interruption agents were meant to remove.</span></div>
+</div>
+<div class="ent-split" style="margin-top:2.2rem">
+<div>
+<h3 style="font-size:1.6rem;margin:0 0 .6rem">A place is shared by default.</h3>
+<p style="color:var(--text-2);font-size:1.08rem;line-height:1.6;margin:0 0 1rem">In a space, the agents are not hidden inside someone’s laptop; they are in rooms everyone can walk into. The floor shows the whole team’s work at once: which room belongs to which team, which agents are working, which one is waiting, and who it is waiting for.</p>
+<ul class="ent-list">
+<li><b>One room per team or stage</b><span>The structure of the work is the building. New people learn it by walking it.</span></li>
+<li><b>Status anyone can read</b><span>A lamp outside a room tells the whole team that an agent needs someone, not just its owner.</span></li>
+<li><b>Handoffs by walking, not pasting</b><span>Work moves to the next room with its context, the way it moves through our studio pipeline.</span></li>
+</ul>
+</div>
+<div>
+<div class="ent-video"><video class="ent-vid ent-vid-big" muted loop playsinline preload="none" poster="/assets/world/01-glass-tower-reveal.jpg" data-src="/assets/world/01-glass-tower-reveal.webm" aria-label="The Glass Tower on the summit"></video></div>
+<p class="ent-cap">Honest status: today a workspace lives on the computer that opened it, and a friend on another PC gets a fresh copy. Shared spaces for whole teams are what our pilots are for.</p>
+</div>
+</div>
+</section>
+
+<section class="ent-sec" id="watch">
+<p class="ent-kicker">03 / See it</p>
+<h2>A real workspace, not a mock-up.</h2>
+<p class="sub">This is our own world, filmed tonight. Every room is a job, and every room was built by an agent from a short request. In daily use each terminal on a wall is a live agent session on the computer underneath.</p>
+<div class="ent-video"><video class="ent-vid ent-vid-big" muted loop playsinline preload="none" poster="/assets/world/06-omo-falls-library.jpg" data-src="/assets/world/06-omo-falls-library.webm" aria-label="The library: two agent terminals under the bookshelves"></video></div>
+<p class="ent-cap">The library: our launch-video and branding room, one agent desk per job. In-game footage, 30 Oct 2026, filmed on a copy of the world, so these screens show log text rather than live agents.</p>
+<div class="ent-reel3">
+<figure><video class="ent-vid" muted loop playsinline preload="none" poster="/assets/world/11-glass-tower-floor.jpg" data-src="/assets/world/11-glass-tower-floor.webm" aria-label="Inside the Glass Tower, the glass box in the middle"></video><figcaption><b>The Glass Tower</b> An office floor around a glass box, with an agent inside.</figcaption></figure>
+<figure><video class="ent-vid" muted loop playsinline preload="none" poster="/assets/world/09-mountain-studio.jpg" data-src="/assets/world/09-mountain-studio.webm" aria-label="The studio cavern inside the mountain"></video><figcaption><b>Mountain Studio</b> An eight-stage video pipeline, one zone per stage.</figcaption></figure>
+<figure><video class="ent-vid" muted loop playsinline preload="none" poster="/assets/world/07-omo-falls-grove.jpg" data-src="/assets/world/07-omo-falls-grove.webm" aria-label="The Lantern Grove with research walls"></video><figcaption><b>The Lantern Grove</b> The calm centre, with research papers on the walls.</figcaption></figure>
+</div>
+</section>
+
+<section class="ent-sec" id="how">
+<p class="ent-kicker">04 / Why a place</p>
+<h2>Four chores that break in a chat window, and work in a room.</h2>
+<p class="sub">People remember places far better than tabs; interface research has shown it for forty years. A spatial interface turns the four hardest parts of running many agents into things people already do well. Each of these came up in nearly every part of our five-day study.</p>
+<div class="ent-grid4">
+<article class="ent-card"><video class="ent-vid" muted loop playsinline preload="none" poster="/assets/world/11-glass-tower-floor.jpg" data-src="/assets/world/11-glass-tower-floor.webm" aria-label="Inside the Glass Tower"></video><div><span class="n">Find · 8 of 8</span><h3>Walk to it</h3><p>Each agent has a desk, a name plate and a screen. You find it the way you find a colleague.</p><p class="ent-q">“How do you keep track of your agents? I just walk around”<cite>Stream, 28 Oct</cite></p></div></article>
+<article class="ent-card"><video class="ent-vid" muted loop playsinline preload="none" poster="/assets/world/06-omo-falls-library.jpg" data-src="/assets/world/06-omo-falls-library.webm" aria-label="The library terminals"></video><div><span class="n">Resume · 8 of 8</span><h3>Come back to it</h3><p>The work stays on the wall where you left it, through closed screens, restarts and days away.</p><p class="ent-q">“Boom the agents are still working right here”<cite>Stream, 25 Oct, after quitting the game</cite></p></div></article>
+<article class="ent-card"><img src="/assets/world/05-omo-falls-mod-room.jpg" alt="The mod room: a terminal, the GitHub page on a web wall, lanterns" loading="lazy" decoding="async" /><div><span class="n">Monitor · 7 of 8</span><h3>Glance down the hall</h3><p>Status lamps show working, idle or interrupted. You see who needs you without opening anything.</p><p class="ent-q">“Every light that you see in there is an agent still working.”<cite>Stream, 28 Oct</cite></p></div></article>
+<article class="ent-card"><video class="ent-vid" muted loop playsinline preload="none" poster="/assets/world/03-cliff-cabin.jpg" data-src="/assets/world/03-cliff-cabin.webm" aria-label="The cabin on the cliff, a four-room video pipeline"></video><div><span class="n">Orchestrate · 7 of 8</span><h3>Walk the pipeline</h3><p>One room per stage or team, so the shape of the work is visible to everyone who walks in.</p><p class="ent-q">“We just go to that room and just start building. And when we’re done, then we just leave that room.”<cite>Stream, 25 Oct</cite></p></div></article>
+</div>
+</section>
+
+<div class="ent-band"><blockquote>“So it’s like I’m spatially aware of my workspace. … It’s not a chat window, it’s an interface.”</blockquote><cite>First night of streaming the studio · 25 Oct 2026</cite></div>
+
+<section class="ent-sec" id="studio">
+<p class="ent-kicker">05 / How we use it</p>
+<h2>We run Omo Research from inside it, every day, live on stream.</h2>
+<p class="sub">Before we offer this to anyone, we use it ourselves. Our whole content studio is a row of rooms in one world. Each room is one stage, with its own agent profile and its own screens.</p>
+<div class="ent-pipe">
+<div><small>Room 1</small><b>Ideas</b><span>Agents gather and rank ideas for videos and posts.</span></div>
+<div><small>Room 2</small><b>References</b><span>Research and examples for the chosen idea.</span></div>
+<div><small>Room 3</small><b>Requirements</b><span>What to record, shot by shot.</span></div>
+<div><small>Room 4</small><b>Editing</b><span>Agents cut and caption the footage.</span></div>
+<div><small>Room 5</small><b>Publishing</b><span>A person reviews and approves here.</span></div>
+<div><small>Room 6</small><b>Analytics</b><span>What worked, fed back into ideas.</span></div>
+</div>
+<div class="ent-split">
+<ol class="ent-day">
+<li><small>Morning</small><b>Come back to a world that kept working</b><p>After the PC had been off overnight, the world was exactly where we left it, and agents had edited 22 clips while we slept. <q>I’m not dreading any pain or context loss.</q></p></li>
+<li><small>Through the day</small><b>Walk the pipeline</b><p>Each piece of work moves from room to room. A video went through all five production rooms before a person saw it; the human’s job shrinks to reviewing and approving.</p></li>
+<li><small>Any time</small><b>Glance down the hallway</b><p>Lamps outside each room show the state of the whole team from the doorway: working, idle or interrupted.</p></li>
+<li><small>When the work changes</small><b>Ask for a new room</b><p>Nobody places these blocks by hand. Our underground base and a robotics lab were each built by an agent from one prompt, live on stream. <q>Was done in one shot. One prompt.</q></p></li>
+<li><small>Hands free</small><b>Talk to an agent out loud</b><p>An agent player, <a href="/research/omo-r1/">Omo R1</a>, joins the same world. You speak, a Hermes agent plans the job, and his body does it with 22 tools.</p></li>
+</ol>
+<div>
+<div class="ent-video"><video class="ent-vid ent-vid-big" muted loop playsinline preload="none" poster="/assets/world/09-mountain-studio.jpg" data-src="/assets/world/09-mountain-studio.webm" aria-label="Mountain Studio, the long-form video pipeline"></video></div>
+<div class="ent-stats">
+<div><b>21&ndash;25</b><span>sessions at once, at peak</span></div>
+<div><b>22</b><span>clips edited overnight</span></div>
+<div><b>6</b><span>rooms, one per stage</span></div>
+<div><b>1</b><span>prompt to build a room</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="ent-sec">
+<p class="ent-kicker">06 / What runs at the desks</p>
+<h2>The tools your teams already use, given a place.</h2>
+<p class="sub">Omo Space does not replace your agents. Every desk runs the real tool on a real machine, with your own model access.</p>
+<div class="ent-tools">
+<article class="ent-card"><img src="/assets/world/06-omo-falls-library.jpg" alt="A live agent terminal on an in-world screen" loading="lazy" decoding="async" /><div><span class="n">Agents</span><h3>Hermes, Claude Code, Codex</h3><p>Any desk can run Hermes Agent, Claude Code, Codex or a plain shell. Each Hermes desk can have its own profile, memory and skills.</p></div></article>
+<article class="ent-card"><img src="/assets/world/11-glass-tower-floor.jpg" alt="The glass box in the tower" loading="lazy" decoding="async" /><div><span class="n">Persistence</span><h3>Sessions that outlive the screen</h3><p>Work keeps running when the screen closes, the game quits or the bridge restarts. After a reboot, desks reopen their tabs; nothing re-runs on its own.</p></div></article>
+<article class="ent-card"><img src="/assets/world/05-omo-falls-mod-room.jpg" alt="A desk with a computer, a terminal and a lamp" loading="lazy" decoding="async" /><div><span class="n">Status</span><h3>Lamps and name plates</h3><p>A name readable across the room, and a lamp that is lit while the agent works. The same signal can drive anything else in the world.</p></div></article>
+<article class="ent-card"><img src="/assets/world/07-omo-falls-grove.jpg" alt="Web pages on in-world monitors" loading="lazy" decoding="async" /><div><span class="n">Web walls</span><h3>Live pages on the walls</h3><p>Real browser pages for dashboards, docs and video, up to 12 in a world, each with its own tabs and sound.</p></div></article>
+<article class="ent-card"><img src="/assets/omo-space/s-agent-player.jpg" alt="The agent player standing in the world" loading="lazy" decoding="async" /><div><span class="n">Voice</span><h3>Agents with bodies</h3><p>Agents on the same computer can join as players. Omo R1 takes spoken requests and acts in the world.</p></div></article>
+<article class="ent-card"><img src="/research/robots/img/flock.jpg" alt="A group of small walking robots in a hall" loading="lazy" decoding="async" /><div><span class="n">Research</span><h3>Robots in the same world</h3><p>Open-source robots simulated with real physics walk on the blocks and come when called by voice. Early research, not a product.</p></div></article>
+</div>
+</section>
+
+<section class="ent-sec">
+<div class="ent-travel">
+<div class="ent-video"><video class="ent-vid ent-vid-big" muted loop playsinline preload="none" poster="/assets/world/12-glass-tower-orbit.jpg" data-src="/assets/world/12-glass-tower-orbit.webm" aria-label="The Glass Tower at golden hour"></video></div>
+<div>
+<p class="ent-kicker">07 / It travels</p>
+<h2>A second person set it up in about a day.</h2>
+<p style="color:var(--text-2);font-size:1.08rem;line-height:1.6;margin:0 0 1rem">A builder new to Hermes, working on Windows, set up his own world from the public repository and built an AI office in about a day, barely troubleshooting along the way. Unprompted, he said watching agents in a world was more fun than watching an AI type in a terminal.</p>
+<p class="ent-q">“It just gave Claude the GitHub.”<cite>Second user, on stream · self-reported</cite></p>
+</div>
+</div>
+</section>
+
+<section class="ent-sec">
+<p class="ent-kicker">08 / Built on research</p>
+<h2>A forty-year-old idea, with live agents inside.</h2>
+<p class="sub">People remember where things are long after they forget names. Earlier systems arranged documents and windows, which sit still. We arrange agents that keep working, change state and ask questions while you are somewhere else.</p>
+<div class="ent-roots">
+<div><small>1983</small><b>Desks</b><span>Piles remind people what to do.</span></div>
+<div><small>1986</small><b>Rooms</b><span>Virtual workspaces end window thrashing.</span></div>
+<div><small>1995</small><b>Calm technology</b><span>Know the state without looking.</span></div>
+<div><small>1998</small><b>Data Mountain</b><span>Spatial memory helps people find documents.</span></div>
+<div><small>2026</small><b>Omo Space</b><span>Rooms for live agents.</span></div>
+</div>
+<p class="ent-cap" style="margin-top:1rem">Sources and method in <a href="/research/rooms-not-windows/">Rooms, Not Windows</a>: seven stream recordings, about 29 hours, 791 quotes each checked word for word against the transcripts.</p>
+</section>
+
+<section class="ent-sec">
+<p class="ent-kicker">09 / What broke</p>
+<h2>We show the failures too.</h2>
+<p class="sub">Five days of real use also broke things, on camera. Each failure is a design requirement, and each one shapes how we would run a pilot with you.</p>
+<table class="ent-table">
+<thead><tr><th>What happened</th><th>In our studio</th><th>What it means for a pilot</th></tr></thead>
+<tbody>
+<tr><td>The 3D view crashed</td><td>Game crashes and two whole-PC freezes. The agent sessions survived; the 3D client often did not.</td><td>The work always lives outside the view. A crash costs you the picture, never the work.</td></tr>
+<tr><td>A question was missed</td><td>An agent asked something and nothing told the builder. A lamp in another room is not a notification.</td><td>Urgent questions need a backup that follows the person: a sound, a message, an alert.</td></tr>
+<tr><td>Who is listening?</td><td>With several voice agents in range, it was unclear which one was being spoken to.</td><td>Voice needs a clear rule for who is addressed before teams share a space.</td></tr>
+<tr><td>Trust</td><td>The second user would not use it at his day job, because an agent could delete a database.</td><td>Permissions and review come before shared, multi-user spaces.</td></tr>
+<tr><td>More is not better</td><td>A challenge to post 20 short videos in 100 minutes posted none.</td><td>We measure the value of the work, not the volume of agents.</td></tr>
+</tbody></table>
+</section>
+
+<section class="ent-sec" id="pilot">
+<p class="ent-kicker">10 / Working with us</p>
+<h2>Start with one team, one real workflow.</h2>
+<p class="sub">We work with a small number of organisations at a time. Each engagement starts from the work your people already do with agents, not from a demo.</p>
+<div class="ent-grid3 ent-steps">
+<article class="ent-card"><div><h3>Map the work</h3><p>We sit with one team and map how their agents run today: how many, which tools, where things get lost and who waits on whom.</p></div></article>
+<article class="ent-card"><div><h3>Build a pilot space</h3><p>We design a space around that workflow: a room per stage or role, status everyone can see, and the agents your team already uses.</p></div></article>
+<article class="ent-card"><div><h3>Measure and decide</h3><p>Your team uses it for real work. We write up what changed and what did not, in plain language, before anyone decides on more.</p></div></article>
+</div>
+<div class="ent-metrics">
+<div><small>Measure 1 · Find</small><b>Time to find a named agent</b><p>In the space versus your current tabs, at the number of agents your team really runs.</p></div>
+<div><small>Measure 2 · Resume</small><b>Time back to useful work</b><p>After a break or a day away, how long until the first useful action.</p></div>
+<div><small>Measure 3 · Monitor</small><b>Time to notice a stuck agent</b><p>How long an agent waits on a question before someone sees it.</p></div>
+</div>
+<p class="ent-cap" style="margin-top:1rem">These are the tests proposed in our working paper. A pilot is how we find out whether the effect holds for your teams, or not.</p>
+</section>
+
+<section class="ent-sec">
+<p class="ent-kicker">11 / Where it fits</p>
+<h2>For teams that already run many agents.</h2>
+<div class="ent-strip">
+<figure><img src="/assets/world/03-cliff-cabin.jpg" alt="" loading="lazy" /><figcaption>Content and creative: one room per stage, from idea to publish. This is how we run our own channels.</figcaption></figure>
+<figure><img src="/assets/world/07-omo-falls-grove.jpg" alt="" loading="lazy" /><figcaption>Research and engineering: rooms where papers, experiments and long runs stay on the walls while people move between them.</figcaption></figure>
+<figure><img src="/research/omo-r1/img/follows.jpg" alt="" loading="lazy" /><figcaption>New interfaces: agents that join the world as players you can talk to. Early research.</figcaption></figure>
+</div>
+</section>
+
+<section class="ent-sec" id="security">
+<div class="ent-honest">
+<div>
+<p class="ent-kicker">12 / Security and honesty</p>
+<h2>What it is today, and what it is not yet.</h2>
+<p style="color:#c9bba8;line-height:1.6;font-size:1.05rem">Our motto is questions before claims. Here is the plain version, so nobody is surprised in a security review.</p>
+</div>
+<ul>
+<li><b>Local by design.</b> The bridge listens on this machine only (127.0.0.1) and refuses foreign hosts. Worlds store workspace ids, never a credential.</li>
+<li><b>Your models, your permissions.</b> Agents use your own model access and keep their own approval prompts. Nothing turns on paid inference by itself.</li>
+<li><b>Not a sandbox.</b> A room is a way to see work, not a security boundary. Agents have the same access as a terminal.</li>
+<li><b>Single machine today.</b> Workspaces live on the PC that opened them. Shared, multi-user spaces are part of what pilots explore.</li>
+<li><b>Not yet built:</b> single sign-on, an admin console, audit exports. Tested end to end on Linux; macOS and Windows support is newer. <a href="https://github.com/omoresearch/omo-space/blob/main/SECURITY.md" target="_blank" rel="noopener">Security notes &#8599;</a></li>
+</ul>
+</div>
+</section>
+
+<section class="ent-sec" id="talk">
+<div class="ent-form-wrap">
+<div>
+<p class="ent-kicker">13 / Talk to us</p>
+<h2>Tell us how your teams work with agents.</h2>
+<p class="sub" style="margin-bottom:1.4rem">A short form. We read every request ourselves and reply with a time to talk, or an honest note if we are not the right fit yet.</p>
+<ul class="ent-list">
+<li><b>A 30-minute conversation</b><span>About your teams, your agents and what slows them down.</span></li>
+<li><b>No slides, no pressure</b><span>We show the real system running, in our own studio.</span></li>
+<li><b>Prefer email?</b><span><a href="mailto:harrythentrepreneur@gmail.com?subject=Omo%20Enterprise">harrythentrepreneur@gmail.com</a></span></li>
+</ul>
+</div>
+
+<form class="ent-form" id="ent-form" novalidate>
+  <div class="ent-hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+  <div class="f-name"><label for="f-name">Full name <i>*</i></label><input id="f-name" name="name" type="text" autocomplete="name" required maxlength="120"><div class="err"></div></div>
+  <div class="f-email"><label for="f-email">Work email <i>*</i></label><input id="f-email" name="email" type="email" autocomplete="email" required maxlength="200"><div class="err"></div></div>
+  <div class="f-company"><label for="f-company">Organisation <i>*</i></label><input id="f-company" name="company" type="text" autocomplete="organization" required maxlength="160"><div class="err"></div></div>
+  <div class="f-role"><label for="f-role">Role</label><input id="f-role" name="role" type="text" autocomplete="organization-title" maxlength="120"><div class="err"></div></div>
+  <div class="f-size"><label for="f-size">Organisation size <i>*</i></label><select id="f-size" name="size" required>
+    <option value="">Choose</option><option>1-49</option><option>50-249</option><option>250-999</option><option>1,000-4,999</option><option>5,000+</option></select><div class="err"></div></div>
+  <div class="f-agents"><label for="f-agents">AI agents in use today</label><select id="f-agents" name="agents">
+    <option value="">Choose</option><option>Exploring</option><option>A few pilots</option><option>One team, daily</option><option>Several teams</option><option>Organisation-wide</option></select><div class="err"></div></div>
+  <div class="full f-interest"><label>What are you interested in?</label><div class="ent-checks">
+    <label><input type="checkbox" name="interest" value="Pilot world for one team"> A pilot for one team</label>
+    <label><input type="checkbox" name="interest" value="Agent floor for engineering"> Engineering</label>
+    <label><input type="checkbox" name="interest" value="Content and creative pipeline"> Content pipeline</label>
+    <label><input type="checkbox" name="interest" value="Operations and monitoring"> Operations</label>
+    <label><input type="checkbox" name="interest" value="Research partnership"> Research partnership</label>
+  </div></div>
+  <div class="f-timeline"><label for="f-timeline">Timeline</label><select id="f-timeline" name="timeline">
+    <option value="">Choose</option><option>This quarter</option><option>Next quarter</option><option>Later this year</option><option>Just exploring</option></select><div class="err"></div></div>
+  <div></div>
+  <div class="full f-message"><label for="f-message">What would your teams use it for?</label><textarea id="f-message" name="message" maxlength="4000" placeholder="How many agents, which tools (Hermes, Claude Code, Codex, shells), and what slows you down today."></textarea></div>
+  <div class="full f-consent"><label class="ent-consent"><input type="checkbox" name="consent" value="yes" required> <span>Omo Research may contact me about this request. We keep your details only to reply, and never share them.</span></label><div class="err"></div></div>
+  <div class="full ent-submit"><button class="btn btn-dark" type="submit">Request a conversation</button><span class="ent-status" role="status" aria-live="polite"></span></div>
+  <div class="ent-done" role="status"><h3>Thank you. We have your request.</h3><p>We reply to every enterprise request personally. Reference: <b class="ent-ref"></b></p></div>
+</form>
+
+</div>
+</section>
+
+<section class="ent-sec ent-faq">
+<p class="ent-kicker">Questions</p>
+<details><summary>Do our people need to play Minecraft?</summary><p>No game skills are needed. You walk, look and type. Today's system uses Minecraft as the view because it is a fast way to build and walk through spaces, and agents can build it for you. What we study is the interface: places, presence and status, not the game.</p></details>
+<details><summary>Why Minecraft, for a serious organisation?</summary><p>It is already multiplayer, already buildable and familiar to a generation of people, and the world itself can be written by agents, which earlier 3D desktops could not do. The cost is a client that is heavier and less reliable than a terminal, which is why the work never lives inside it.</p></details>
+<details><summary>Which agents does it work with?</summary><p>Any desk can run Hermes Agent, Claude Code, Codex or a plain shell. They are the real tools, running on your machine, with your own model access.</p></details>
+<details><summary>Does it replace our existing tools?</summary><p>No. Your agents, repositories and dashboards stay where they are. The space is a way to see and reach them; web walls can show the dashboards you already use.</p></details>
+<details><summary>Is our data sent to you?</summary><p>No. The open-source system runs on your machine and talks to nothing of ours. If we work together on a pilot, what we see is agreed with you first.</p></details>
+<details><summary>What does it cost?</summary><p>The core is free and open source. Pilots are scoped per organisation after a first conversation.</p></details>
+</section>
+
+<div class="ent-wide"><video class="ent-vid ent-vid-big" muted loop playsinline preload="none" poster="/assets/world/02-summit-vista.jpg" data-src="/assets/world/02-summit-vista.webm" aria-label="Above the forest: the whole world at golden hour"></video></div>
+<div class="ent-cta">
+<h2>Chat windows were built for one conversation.</h2>
+<p>Your teams now run dozens. Let's find out together what a place does for them.</p>
+<div class="ent-actions"><a class="btn btn-dark" href="#talk">Request a conversation</a><a class="btn btn-outline" href="https://www.youtube.com/watch?v=GWpLXMl44p8" target="_blank" rel="noopener">Watch the demo &#8599;</a></div>
+</div>
+
+</main>
+<script>
+(() => {
+  const vids = document.querySelectorAll("video[data-src]");
+  const load = v => { if (!v.src) { v.src = v.dataset.src; } v.play().catch(() => {}); };
+  if (!("IntersectionObserver" in window)) { vids.forEach(load); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) load(e.target); else if (e.target.src) e.target.pause(); }), { rootMargin: "200px" });
+  vids.forEach(v => io.observe(v));
+})();
+(() => {
+  const f = document.getElementById("ent-form"); if (!f) return;
+  const st = f.querySelector(".ent-status"), btn = f.querySelector("button[type=submit]");
+  const req = {name: "Required.", email: "Required.", company: "Required.", size: "Pick a size.", consent: "Please tick to continue."};
+  const show = (errs) => {
+    f.querySelectorAll("[class^='f-'], [class*=' f-']").forEach(el => { el.classList.remove("bad"); const e = el.querySelector(".err"); if (e) e.textContent = ""; });
+    Object.entries(errs).forEach(([k, v]) => { const el = f.querySelector(".f-" + k); if (el) { el.classList.add("bad"); const e = el.querySelector(".err"); if (e) e.textContent = v; } });
+  };
+  // a request that failed to send earlier is retried quietly when the page opens again
+  try {
+    const pend = JSON.parse(localStorage.getItem("omo-ent-pending") || "null");
+    if (pend && pend.email) fetch("/api/enterprise", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(pend) })
+      .then(r => r.json()).then(j => { if (j && j.ok) localStorage.removeItem("omo-ent-pending"); }).catch(() => {});
+  } catch (e) {}
+  // if the server cannot store it, hand the visitor a ready-to-send email with every answer, so nothing is lost
+  const viaEmail = (d) => {
+    const lines = ["Name: " + d.name, "Email: " + d.email, "Organisation: " + d.company, "Role: " + (d.role || ""), "Size: " + d.size,
+      "Agents today: " + (d.agents || ""), "Interested in: " + (d.interest || ""), "Timeline: " + (d.timeline || ""), "", d.message || ""];
+    const href = "mailto:harrythentrepreneur@gmail.com?subject=" + encodeURIComponent("Omo Enterprise: " + d.company) + "&body=" + encodeURIComponent(lines.join("
+"));
+    st.innerHTML = 'Almost there: our form server is not reachable, so we opened an email with your answers. Press send, or <a href="' + href + '">open it again</a>.';
+    btn.disabled = false;
+    location.href = href;
+  };
+  f.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    const fd = new FormData(f), data = {};
+    for (const [k, v] of fd.entries()) data[k] = data[k] ? data[k] + ", " + v : String(v).trim();
+    data.page = location.pathname;
+    const errs = {};
+    for (const k of Object.keys(req)) if (!data[k]) errs[k] = req[k];
+    if (data.email && !/^[^@\s]+@[^@\s]+\.[A-Za-z]{2,}$/.test(data.email)) errs.email = "Enter a valid work email.";
+    show(errs);
+    if (Object.keys(errs).length) { st.textContent = "Please check the highlighted fields."; return; }
+    btn.disabled = true; st.textContent = "Sending...";
+    try { localStorage.setItem("omo-ent-pending", JSON.stringify(data)); } catch (e) {}
+    try {
+      const r = await fetch("/api/enterprise", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+      const j = await r.json().catch(() => ({}));
+      if (r.status === 422) { show(j.fields || {}); st.textContent = j.error || "Please check the highlighted fields."; btn.disabled = false; return; }
+      if (!r.ok || !j.ok) { viaEmail(data); return; }
+      try { localStorage.removeItem("omo-ent-pending"); } catch (e) {}
+      f.querySelectorAll(":scope > div:not(.ent-done)").forEach(el => el.style.display = "none");
+      f.querySelector(".ent-ref").textContent = j.id;
+      f.querySelector(".ent-done").style.display = "block";
+    } catch (e) {
+      viaEmail(data); return;
+      st.innerHTML = 'Could not send. Your answers are kept in this browser and will be sent next time you open this page. Or email us: <a href="mailto:harrythentrepreneur@gmail.com?subject=Omo%20Enterprise">harrythentrepreneur@gmail.com</a>';
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
+<footer class="site-footer"><div class="footer-inner"><p>© 2026 Omo Research. Prototypes from our own use, not controlled studies.</p><nav class="footer-links" aria-label="Footer"><a href="/">Home</a><a href="/omo-space">Research</a><a href="/notes">Notes</a><a href="/products">Releases</a><a href="mailto:harrythentrepreneur@gmail.com">Contact</a></nav></div></footer>
+</body>
+</html>

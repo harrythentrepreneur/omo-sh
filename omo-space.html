@@ -3,12 +3,350 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
-  <meta http-equiv="refresh" content="0; url=/products" />
-  <title>Redirecting — Omo Research</title>
-  <link rel="canonical" href="/products" />
+  <meta name="description" content="Omo Space gives every AI agent a room in Minecraft: walk to it to find it, come back to resume, glance down the hall to see who needs you. Real Hermes, Claude Code, Codex and shell sessions, MIT." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Omo Research" />
+  <meta name="theme-color" content="#f5f0e8" />
+  <title>Omo Space: Real AI Agents at Desks Inside Minecraft | Omo Research</title>
+  <link rel="canonical" href="https://www.omo.sh/omo-space" />
+  <link rel="alternate" type="application/rss+xml" title="Omo Notes" href="/feed.xml" />
+  <link rel="icon" href="/assets/omo-mark.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Omo Research" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Omo Space: Real AI Agents at Desks Inside Minecraft | Omo Research" />
+  <meta property="og:description" content="Omo Space gives every AI agent a room in Minecraft: walk to it to find it, come back to resume, glance down the hall to see who needs you. Real Hermes, Claude Code, Codex and shell sessions, MIT." />
+  <meta property="og:url" content="https://www.omo.sh/omo-space" />
+  <meta property="og:image" content="https://www.omo.sh/assets/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Omo Research — voice, space, and presence for human-agent interaction" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Omo Space: Real AI Agents at Desks Inside Minecraft | Omo Research" />
+  <meta name="twitter:description" content="Omo Space gives every AI agent a room in Minecraft: walk to it to find it, come back to resume, glance down the hall to see who needs you. Real Hermes, Claude Code, Codex and shell sessions, MIT." />
+  <meta name="twitter:image" content="https://www.omo.sh/assets/og-card.png" />
+  <meta name="twitter:image:alt" content="Omo Research — voice, space, and presence for human-agent interaction" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" /></noscript>
+  <link rel="stylesheet" href="/styles.css" />
+<style>
+.exp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); gap: 1.1rem; margin-top: 1.25rem; }
+.exp-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-card); transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.exp-card:hover { transform: translateY(-2px); border-color: var(--text-2); box-shadow: 0 8px 22px rgba(26,16,8,.07); }
+.exp-card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid var(--border); background: var(--bg); }
+.exp-card-body { padding: .8rem .95rem 1rem; display: flex; flex-direction: column; gap: .3rem; flex: 1; }
+.exp-meta { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-2); }
+.exp-status { padding: .08rem .5rem; border: 1px solid var(--border); border-radius: 999px; }
+.exp-status.now { background: var(--btn-bg); color: var(--bg); border-color: transparent; }
+.exp-card h3 { font-family: var(--font-body); font-size: 1.12rem; font-weight: 600; line-height: 1.25; margin: .1rem 0 0; }
+.exp-card p.exp-line { color: var(--text-2); font-size: .88rem; line-height: 1.5; margin: 0; }
+.exp-more { margin-top: auto; padding-top: .35rem; font-family: var(--font-mono); font-size: .64rem; color: var(--text); }
+.exp-cover { margin: 1.2rem 0 0; }
+.exp-cover img, .exp-figure img, .exp-figure video { display: block; width: 100%; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); }
+.exp-figure { margin: 1.4rem 0 .4rem; }
+.exp-figure img, .exp-figure video { aspect-ratio: 16 / 9; object-fit: cover; }
+.exp-figure.diagram img { object-fit: contain; }
+.exp-cover figcaption, .exp-figure figcaption { margin-top: .45rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.exp-cover figcaption span, .exp-figure figcaption span { text-transform: uppercase; letter-spacing: .04em; margin-right: .45rem; color: var(--text); }
+.exp-lead { max-width: 38rem; color: var(--text-2); }
+.exp-list { margin: .6rem 0 0; padding-left: 1.1rem; max-width: 38rem; }
+.exp-list li { margin: .35rem 0; color: var(--text-2); line-height: 1.6; font-size: .95rem; }
+.exp-saw { max-width: 38rem; border-left: 2px solid var(--btn-bg); padding: .2rem 0 .2rem 1rem; font-size: 1.08rem; line-height: 1.6; }
+.exp-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+.exp-pager a { text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; padding: .8rem 1rem; }
+.exp-pager a:hover { border-color: var(--text-2); }
+.exp-pager .next { text-align: right; grid-column: 2; }
+.exp-pager small { display: block; font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-2); }
+.exp-pager strong { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; }
+.sidebar-sublink .exp-n { font-family: var(--font-mono); font-size: .6rem; color: var(--text-2); margin-right: .4rem; }
+.research-intro { margin-top: .6rem; max-width: 36rem; }
+.small-links { margin-top: 2.2rem; display: flex; gap: 1.2rem; font-family: var(--font-mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .04em; }
+.small-links a { color: var(--text-2); text-decoration: none; }
+.small-links a:hover { color: var(--text); }
+.side-group { margin: 1.1rem 0 .3rem; padding: 0 .55rem; font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-2); }
+.side-group:first-of-type { margin-top: .6rem; }
+.paper-card { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg-card); margin-top: 1.1rem; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.paper-card:hover { transform: translateY(-2px); border-color: var(--text-2); box-shadow: 0 10px 26px rgba(26,16,8,.08); }
+.paper-card img { width: 100%; height: 100%; min-height: 15rem; object-fit: cover; border-right: 1px solid var(--border); }
+.paper-card-body { padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: .45rem; }
+.paper-card h3 { font-family: var(--font-body); font-style: italic; font-weight: 400; font-size: 2rem; line-height: 1.05; margin: .1rem 0; }
+.paper-card p { color: var(--text-2); font-size: .92rem; line-height: 1.6; margin: 0; }
+.paper-card p.exp-meta { font-size: .62rem; line-height: 1.4; }
+.sidebar-inner { max-height: 100vh; overflow-y: auto; scrollbar-width: thin; }
+.move-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin-top: .9rem; }
+.move-card { display: flex; flex-direction: column; gap: .2rem; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; padding: .8rem .9rem; background: var(--bg-card); }
+.move-card:hover { border-color: var(--text-2); }
+.move-old { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); text-decoration: line-through; }
+.move-k { font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); margin-top: .3rem; }
+.move-card strong { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; line-height: 1.25; }
+.worked-note { margin-top: .9rem; font-family: var(--font-mono); font-size: .64rem; color: var(--text-2); }
+@media (max-width: 900px) { .paper-card { grid-template-columns: 1fr; } .paper-card img { border-right: 0; border-bottom: 1px solid var(--border); min-height: 0; aspect-ratio: 16 / 9; } .move-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.os-loops { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; margin-top: 1rem; }
+.os-loop { margin: 0; } .os-loop img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--border); border-radius: 10px; background: #111; }
+.os-loop figcaption { margin-top: .4rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.os-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+.os-shot { margin: 0; } .os-shot img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--border); border-radius: 10px; }
+.os-shot:first-child { grid-column: 1 / -1; }
+.os-shot figcaption { margin-top: .4rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.os-demo { position: relative; display: block; margin: 1rem 0 .4rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.os-demo img { display: block; width: 100%; }
+.os-demo span { position: absolute; left: 1rem; bottom: 1rem; background: var(--btn-bg); color: var(--bg); font-family: var(--font-mono); font-size: .72rem; padding: .5rem .9rem; border-radius: 999px; }
+.os-demo:hover span { background: #2c2015; }
+.os-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+.os-blocks { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
+.os-code { margin: 1rem 0; padding: 1rem 1.1rem; background: #1a1008; color: #f5f0e8; border-radius: 10px; overflow-x: auto; font-family: var(--font-mono); font-size: .74rem; line-height: 1.7; }
+.os-arch { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: 1.2rem 0; font-family: var(--font-mono); font-size: .68rem; }
+.os-arch span { border: 1px solid var(--border); background: var(--bg-card); border-radius: 999px; padding: .35rem .75rem; }
+.os-arch i { font-style: normal; color: var(--text-2); }
+.os-faq { border-bottom: 1px solid var(--border); padding: .85rem 0; max-width: 40rem; }
+.os-faq summary { cursor: pointer; font-family: var(--font-body); font-size: 1.12rem; font-weight: 600; }
+.os-faq p { margin: .5rem 0 0; color: var(--text-2); line-height: 1.65; }
+.os-legal { margin-top: 1.6rem; font-family: var(--font-mono); font-size: .6rem; color: var(--text-2); max-width: 40rem; line-height: 1.6; }
+@media (max-width: 700px) { .os-loops, .os-pair, .os-gallery { grid-template-columns: 1fr; } }
+#log.paper-section { padding-top: 0; border-top: 0; }
+.tl-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); counter-reset: tl; }
+.tl-row { display: grid; grid-template-columns: 2.4rem 8.5rem minmax(0, 15rem) minmax(0, 1fr); gap: 1rem; align-items: baseline; padding: .7rem 0; border-bottom: 1px solid var(--border); counter-increment: tl; }
+.tl-row::before { content: counter(tl, decimal-leading-zero); font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.tl-date { font-family: var(--font-mono); font-size: .66rem; color: var(--text-2); text-transform: uppercase; letter-spacing: .03em; }
+.tl-what { font-family: var(--font-body); font-size: 1.04rem; font-weight: 600; line-height: 1.3; }
+.tl-what a { color: var(--text); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.tl-what a:hover { text-decoration-color: var(--text); }
+.log-sources { padding-left: 1.2rem; max-width: 40rem; } .log-sources li { margin: .4rem 0; font-size: .86rem; color: var(--text-2); line-height: 1.55; word-break: break-word; } .log-sources b { color: var(--text); font-weight: 500; }
+.tl-note { font-size: .9rem; color: var(--text-2); line-height: 1.5; }
+@media (max-width: 800px) { .tl-row { grid-template-columns: 2rem minmax(0, 1fr); gap: .15rem .8rem; } .tl-date, .tl-what, .tl-note { grid-column: 2; } }
+@media (max-width: 600px) { .exp-pager { grid-template-columns: 1fr; } .exp-pager .next { grid-column: 1; } }
+</style>
+<style>
+.rb-article { max-width: 44rem; }
+.rb-article p, .rb-article li { font-size: 1.06rem; line-height: 1.72; color: var(--text); }
+.rb-article p { margin: 0 0 1.05rem; } .rb-article li { margin: .3rem 0; } .rb-article ul, .rb-article ol { margin: 0 0 1.1rem; }
+.rb-article h2 { margin-top: .2rem; } .rb-article .section-kicker { margin-top: 3rem; }
+.rb-article h3 { font-family: var(--font-body); font-size: 1.3rem; font-weight: 600; margin: 2rem 0 .4rem; }
+.rb-article ul, .rb-article ol { padding-left: 1.2rem; }
+.rb-article code { font-family: var(--font-mono); font-size: .85em; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 0 .25rem; }
+.rb-fig img { aspect-ratio: auto !important; max-height: 34rem; object-fit: contain !important; background: #111 !important; }
+.rb-cite { font-family: var(--font-mono); font-size: .62rem; vertical-align: super; line-height: 0; text-decoration: none; color: var(--text-2); margin-left: .12rem; }
+.rb-cite:hover { color: var(--text); }
+.rb-ref { font-size: .86rem !important; line-height: 1.55 !important; color: var(--text-2) !important; padding-left: 3.2rem; text-indent: -3.2rem; word-break: break-word; }
+.rb-ref b { font-family: var(--font-mono); font-size: .7rem; color: var(--text); display: inline-block; width: 3.2rem; text-indent: 0; }
+.rb-ref:target { background: #efe7da; }
+.rb-ladder { display: flex; flex-wrap: wrap; align-items: stretch; gap: .5rem; margin: 1.3rem 0 .5rem; }
+.rb-ladder div { flex: 1 1 8rem; border: 1px solid var(--border); border-radius: 10px; padding: .7rem .8rem; background: var(--bg-card); display: flex; flex-direction: column; gap: .15rem; }
+.rb-ladder div.on { background: var(--btn-bg); color: var(--bg); border-color: transparent; }
+.rb-ladder div.on span, .rb-ladder div.on b { color: #d4cdc0; }
+.rb-ladder b { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.rb-ladder strong { font-family: var(--font-body); font-size: 1.1rem; }
+.rb-ladder span { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); line-height: 1.4; }
+.rb-ladder i { align-self: center; font-style: normal; color: var(--text-2); }
+.rb-abstract { border-left: 2px solid var(--btn-bg); padding-left: 1rem; }
+
+.op-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+.op-pair .rb-fig img { aspect-ratio: 16 / 9 !important; object-fit: cover !important; }
+.op-demo { position: relative; display: block; margin: 1.2rem 0 .6rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.op-demo img { display: block; width: 100%; }
+.op-demo span { position: absolute; left: 1rem; bottom: 1rem; background: var(--btn-bg); color: var(--bg); font-family: var(--font-mono); font-size: .72rem; padding: .5rem .9rem; border-radius: 999px; }
+.rb-article table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.4rem; font-size: .95rem; }
+.rb-article th, .rb-article td { text-align: left; vertical-align: top; padding: .55rem .6rem; border-bottom: 1px solid var(--border); line-height: 1.5; }
+.rb-article th { font-family: var(--font-mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); font-weight: 500; }
+.rb-article pre { background: #1a1008; color: #f5f0e8; border-radius: 10px; padding: 1rem 1.1rem; overflow: hidden !important; white-space: pre-wrap !important; word-break: break-all; margin: 1rem 0 1.2rem; }
+.rb-article pre code { white-space: pre-wrap !important; display: block; }
+.rb-article pre code { background: none; border: 0; color: inherit; font-size: .72rem; line-height: 1.55; padding: 0; }
+@media (max-width: 700px) { .op-pair { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
-  <p>This page has moved to <a href="/products">Products</a>.</p>
+<nav class="sidebar" aria-label="Research navigation"><div class="sidebar-inner">
+<a class="sidebar-brand" href="/" aria-label="Omo Research home"><span class="sidebar-mark"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 180V20h80M20 180h160M100 20h30m10 0h20m20 0v40m0 12v38m0 10v30m0 10v20M32 168V32h68M32 168h136" fill="none" stroke="currentColor" stroke-width="8" /><path d="M62 100a30 30 0 0 1 38-30m0 0a30 30 0 0 1 0 20m0 0a30 30 0 0 1 38 40M100 90a30 30 0 0 0-38 10" fill="none" stroke="currentColor" stroke-width="7" /><rect x="95" y="95" width="10" height="10" fill="currentColor" /></svg></span><span class="sidebar-name">Research</span></a>
+<div class="sidebar-links">
+<a class="sidebar-link active" href="/omo-space">Omo Space</a><a class="sidebar-link" href="/research/robots/">Omo Microduck</a><a class="sidebar-link" href="/research/omo-r1/">Omo R1</a><a class="sidebar-link" href="/about">Research log</a></div>
+</div></nav>
+<header class="mobile-header"><span class="mobile-brand">Omo Space</span><nav class="mobile-actions" aria-label="Primary"><a class="btn btn-dark btn-sm" href="/about">Research</a></nav></header>
+<main class="content-main">
+<article>
+<header class="paper-header" id="overview">
+<div class="paper-tags"><span class="tag">System</span><span class="tag">v1.2.0</span><span class="tag">MIT</span><span class="tag">Minecraft Java 26.2</span></div>
+<h1>Omo Space</h1>
+<p class="paper-subtitle">Chat windows were built for one conversation. Now there are twenty, and they keep running when you look away. So we gave every agent a room.</p>
+<p class="section-note">Find, resume, monitor, orchestrate: our working paper found that a place turns all four into things people already do well. This page is the system behind it: what it is, how it works, what survives what, and what it does not do yet.</p>
+<div class="meta-grid"><div class="meta-item"><p class="meta-label">Release</p><p class="meta-value"><a href="https://github.com/omoresearch/omo-space/releases/tag/v1.2.0" target="_blank" rel="noopener">v1.2.0</a>, 28 Oct 2026</p></div><div class="meta-item"><p class="meta-label">Runs on</p><p class="meta-value">Linux · macOS · Windows (WSL2)</p></div><div class="meta-item"><p class="meta-label">Licence</p><p class="meta-value">MIT</p></div><div class="meta-item"><p class="meta-label">Code</p><p class="meta-value"><a href="https://github.com/omoresearch/omo-space" target="_blank" rel="noopener">GitHub</a></p></div></div>
+<div class="paper-actions" style="margin-top:1.6rem;align-items:center"><a class="btn btn-dark" href="https://github.com/omoresearch/omo-space" target="_blank" rel="noopener">GitHub ↗</a><a class="btn btn-outline" href="https://www.youtube.com/watch?v=GWpLXMl44p8" target="_blank" rel="noopener">Watch the demo ↗</a><a class="act-link" style="align-self:center;margin-left:.5rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px" href="https://github.com/omoresearch/omo-space/releases/tag/v1.2.0" target="_blank" rel="noopener">or download v1.2.0 ↗</a></div>
+<figure class="exp-cover"><img src="/assets/omo-space/cover.jpg" alt="Illustration: an open blocky world of islands, a lake and a waterfall, agents working wherever they like, their screens linked across the sky, a player wandering the path" /><figcaption><span>Illustration</span>Generated with ChatGPT image generation</figcaption></figure>
+</header>
+<div class="rb-article">
+<p class="section-kicker">Abstract</p>
+<p class="rb-abstract">People remember rooms better than tabs. Omo Space uses that: it gives every long-running agent a place in a shared 3D world, so finding one becomes walking to it, resuming becomes coming back to where you left it, and checking on the team becomes a glance down the hallway <a class="rb-cite" href="#s6">S6</a>. It is a Minecraft mod and a small local service. Placing a computer block starts a named workspace on your own PC: a Hermes Agent conversation, a Claude Code or Codex session, or a plain shell. Its terminal is painted on a wall, real web pages run on monitors beside it, and a lamp shows whether it is working. Walking away, or quitting the game, stops nothing, because the sessions belong to a background session server, not to the game <a class="rb-cite" href="#s1">S1</a><a class="rb-cite" href="#s2">S2</a>. This page describes what Omo Space is, how it is built, what survives what, what we built with it this week, and what it does not do yet. Version 1.2.0 was released on 28 October 2026 under the MIT licence <a class="rb-cite" href="#s3">S3</a><a class="rb-cite" href="#s8">S8</a>.</p>
+<p class="section-kicker">01</p><h2>Introduction</h2>
+<p>Most agent interfaces disappear when you close the window. The agent is a tab, the tab looks like every other tab, and after a dozen of them it is hard to say which one is which, which one is working and which one is waiting for you.</p>
+<figure class="exp-figure rb-fig"><img src="/assets/omo-space/s-white-hall.jpg" alt="A hall of desks with screens on the walls, 27 October" loading="lazy" decoding="async" /><figcaption><span>From our stream</span>A hall of desks with screens on the walls, 27 October</figcaption></figure>
+
+<p>Omo Space starts from the opposite end. Each agent gets a place: a desk in a room, with its terminal on the wall and its name on a plate. You find it by walking to it. You check on it by looking down the hallway. When you come back the next day, it is where you left it <a class="rb-cite" href="#s1">S1</a>.</p>
+<p>Our companion paper, <em>Rooms, Not Windows</em>, reports five days of using it as a main workspace <a class="rb-cite" href="#s6">S6</a>. This page is the system itself.</p>
+<p class="section-kicker">02</p><h2>What you can build</h2>
+<p>Everything is an ordinary-looking game block. The blocks below are the whole kit <a class="rb-cite" href="#s1">S1</a>:</p>
+<figure class="exp-figure rb-fig"><img src="/assets/omo-space/s-hermes-terminal.jpg" alt="A real Hermes session on an in-world screen, answering live on stream" loading="lazy" decoding="async" /><figcaption><span>From our stream</span>A real Hermes session on an in-world screen, answering live on stream</figcaption></figure>
+
+<table>
+<thead>
+<tr>
+<th>Block</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hermes Computer</strong></td>
+<td>One named workspace with a Hermes conversation in the profile you choose. Different agents, different desks.</td>
+</tr>
+<tr>
+<td><strong>Terminal</strong></td>
+<td>A persistent shell. Its "+" menu opens Shell, Hermes, Claude Code or Codex tabs.</td>
+</tr>
+<tr>
+<td><strong>Omo Monitor / Slim Screen</strong></td>
+<td>A bigger view of a terminal, or a real Chromium page: up to 6 tabs, its own sound, WASD for web games.</td>
+</tr>
+<tr>
+<td><strong>Omo Linker</strong></td>
+<td>Mirrors a station onto walls across the room, with no wiring.</td>
+</tr>
+<tr>
+<td><strong>Omo Pocket</strong></td>
+<td>A Hermes or Terminal workspace you carry as an item.</td>
+</tr>
+<tr>
+<td><strong>Name Plate / Status Lamp</strong></td>
+<td>A name, and a live working / idle / interrupted light that also drives redstone.</td>
+</tr>
+</tbody>
+</table>
+<p>Claude Code and Codex tabs are on the main branch and ship in the next release <a class="rb-cite" href="#s3">S3</a>.</p>
+<p class="section-kicker">03</p><h2>How it works</h2>
+<p>The game is only the view. Four steps describe the whole interaction <a class="rb-cite" href="#s1">S1</a>:</p>
+<div class="rb-ladder op-arch" aria-label="How a keystroke travels">
+<div><b>in the game</b><strong>You at a desk</strong><span>computer, pocket or wall</span></div><i>&rarr;</i>
+<div><b>127.0.0.1 only</b><strong>Local bridge</strong><span>paints screens, sends keys</span></div><i>&rarr;</i>
+<div class="on"><b>background service</b><strong>tmux sessions</strong><span>owns every workspace</span></div><i>&rarr;</i>
+<div class="on"><b>your PC</b><strong>Real agents</strong><span>Hermes, Claude Code, Codex, shell</span></div>
+</div>
+
+<ol>
+<li><strong>Place a desk.</strong> A Hermes Computer or Terminal block opens a named workspace on your PC.</li>
+<li><strong>Type on the wall.</strong> Your keys go to a real shell or agent, and its terminal is painted in the world.</li>
+<li><strong>Walk away.</strong> tmux owns every session. Quit Minecraft and the work goes on while your PC is awake.</li>
+<li><strong>Come back.</strong> It is on the wall where you left it. After a reboot, the desk reopens its tabs; nothing is re-run.</li>
+</ol>
+<p>Underneath, a small bridge listens on 127.0.0.1 only. It paints the sessions onto in-game screens and sends your keystrokes back. The sessions themselves live in a tmux session server that runs as a background service <a class="rb-cite" href="#s1">S1</a><a class="rb-cite" href="#s4">S4</a>.</p>
+<p>Web walls are real Chromium pages. Since v1.2.0 a world can show 12 pages at once. A guard rate-limits new pages and closes all but the nearest walls if memory runs high, which fixed a crash where three walls kept evicting each other's page <a class="rb-cite" href="#s3">S3</a>.</p>
+<p class="section-kicker">04</p><h2>What survives what</h2>
+<p>Persistence is the point, so it is worth being exact about it <a class="rb-cite" href="#s2">S2</a>:</p>
+<figure class="exp-figure rb-fig"><img src="/assets/omo-space/loop-review.webp" alt="Reviewing a cut on the wall: the editing agent&#x27;s work, where you left it" loading="lazy" decoding="async" /><figcaption><span>Stream clip</span>Reviewing a cut on the wall: the editing agent&#x27;s work, where you left it</figcaption></figure>
+
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Shells and running jobs</th>
+<th>Hermes conversation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Close the screen, walk away</td>
+<td>Keep running</td>
+<td>Keeps running</td>
+</tr>
+<tr>
+<td>Quit Minecraft</td>
+<td>Keep running</td>
+<td>Keeps running</td>
+</tr>
+<tr>
+<td>Restart the bridge or launcher</td>
+<td>Keep running</td>
+<td>Keeps running</td>
+</tr>
+<tr>
+<td>Hermes tab idle and unseen for 20 min</td>
+<td>(no change)</td>
+<td>Sleeps, saved, and resumes when a screen shows it</td>
+</tr>
+<tr>
+<td>PC restart</td>
+<td>Lost; the tabs come back with the same names, shells in their last folder</td>
+<td>Saved, and resumes in its reopened tab</td>
+</tr>
+</tbody>
+</table>
+<p>Two rules hold throughout. State is reported honestly: if the session server stops, the screen says INTERRUPTED. And nothing is re-run on its own: "Commands that were running are never re-run" <a class="rb-cite" href="#s2">S2</a>.</p>
+<p class="section-kicker">05</p><h2>What we built with it this week</h2>
+<p>We use Omo Space as our main workspace, live on stream. Between 25 and 29 October 2026 the builder ran a content pipeline from inside the game, with one room per stage: ideas, references, recording requirements, editing, publishing and analytics. Each room has its own Hermes profile <a class="rb-cite" href="#s6">S6</a>.</p><a class="op-demo" href="https://github.com/omoresearch/omo-space/releases/tag/demo-2026-10-27" target="_blank" rel="noopener"><img src="/assets/omo-space/demo-poster.webp" alt="Watch the 15-minute demo" loading="lazy" /><span>▶ Watch the 15-minute demo</span></a><div class="op-pair">
+<figure class="exp-figure rb-fig"><img src="/assets/omo-space/loop-base.webp" alt="Rooms going up, block by block, from one prompt" loading="lazy" decoding="async" /><figcaption><span>Stream clip</span>Rooms going up, block by block, from one prompt</figcaption></figure>
+
+<figure class="exp-figure rb-fig"><img src="/assets/omo-space/loop-lab.webp" alt="An underground lab, built from one prompt" loading="lazy" decoding="async" /><figcaption><span>Stream clip</span>An underground lab, built from one prompt</figcaption></figure>
+</div><div class="op-pair">
+<figure class="exp-figure rb-fig"><img src="/assets/omo-space/s-pipeline-wall.jpg" alt="A pipeline room: one stage, one agent, its work on the wall" loading="lazy" decoding="async" /><figcaption><span>From our stream</span>A pipeline room: one stage, one agent, its work on the wall</figcaption></figure>
+
+<figure class="exp-figure rb-fig"><img src="/assets/omo-space/s-planning-wall.jpg" alt="The planning wall in the underground base" loading="lazy" decoding="async" /><figcaption><span>From our stream</span>The planning wall in the underground base</figcaption></figure>
+</div>
+<figure class="exp-figure rb-fig"><img src="/assets/omo-space/s-agent-player.jpg" alt="An AI agent joins the world as a player and follows you around" loading="lazy" decoding="async" /><figcaption><span>From our stream</span>An AI agent joins the world as a player and follows you around</figcaption></figure>
+
+<p>The rooms themselves were built by agents. The main underground base, with one room per stage, "Was done in one shot One prompt" <a class="rb-cite" href="#s6">S6</a>. An underground robot lab was also built from one prompt, live on stream <a class="rb-cite" href="#s1">S1</a>.</p>
+<p>At the time of the companion paper, the bridge on the builder's machine reported 114 known workspaces, 62 live tmux sessions and 22 separate Hermes profiles. At peak he ran 21 to 25 agent sessions at once <a class="rb-cite" href="#s6">S6</a>.</p>
+<p>Since v1.2.0, agents running on the same computer can also join the world as players, over a LAN port that refuses offline logins from other machines <a class="rb-cite" href="#s2">S2</a><a class="rb-cite" href="#s3">S3</a>. Our robots and the OMO agent player are built on that, and are described in <em>Bodies in the Block World</em> <a class="rb-cite" href="#s7">S7</a>.</p>
+<p class="section-kicker">06</p><h2>Install</h2>
+<p>Download the installer, your platform's bundle and <code>SHA256SUMS</code> from the v1.2.0 release, check them, then install <a class="rb-cite" href="#s1">S1</a><a class="rb-cite" href="#s8">S8</a>:</p>
+<pre><code>curl -LO https://github.com/omoresearch/omo-space/releases/download/v1.2.0/install.sh
+curl -LO https://github.com/omoresearch/omo-space/releases/download/v1.2.0/omo-research-1.2.0-linux-x64.tar.gz
+curl -LO https://github.com/omoresearch/omo-space/releases/download/v1.2.0/SHA256SUMS
+sha256sum -c --ignore-missing SHA256SUMS
+bash install.sh omo-research-1.2.0-linux-x64.tar.gz
+</code></pre>
+<ul>
+<li>The launcher fetches Minecraft 26.2, Fabric, CC: Tweaked, MCEF and Java from their official sources, with pinned hashes, into its own folder. It never touches your Minecraft or Prism installs.</li>
+<li>You need your own Minecraft Java account, Python 3.11+ and about 2 GB free. Hermes Agent is optional, and model access is your own.</li>
+<li>Setup fetches about 650 MB; the in-game browser fetches about 360 MB the first time a web wall opens.</li>
+<li>On Windows 10/11 the game runs natively, and the sessions and Hermes run in WSL2 (<code>install.ps1</code>).</li>
+</ul>
+<p class="section-kicker">07</p><h2>Security model</h2>
+<p>Omo Space puts real shells on your computer behind blocks in a world, so it should be treated with the same care as a terminal <a class="rb-cite" href="#s4">S4</a>:</p>
+<ul>
+<li>The bridge listens on 127.0.0.1 only and refuses foreign <code>Host</code> headers.</li>
+<li>A computer's screen only ever holds a single-use ticket, bound to its station, its workspace and the running bridge.</li>
+<li>Worlds store workspace ids and monitor URLs, never a credential.</li>
+<li>Hermes' own approval prompts and permissions are untouched. Nothing here enables paid inference by itself.</li>
+</ul>
+<p>It is for singleplayer and trusted local worlds. "A block, a room or a pocket dimension is a presentation boundary, not a sandbox." <a class="rb-cite" href="#s4">S4</a></p>
+<p class="section-kicker">08</p><h2>Limitations</h2>
+<figure class="exp-figure rb-fig"><img src="/assets/omo-space/s-glass-villa.jpg" alt="Part of our world, 27 October" loading="lazy" decoding="async" /><figcaption><span>From our stream</span>Part of our world, 27 October</figcaption></figure>
+
+<ul>
+<li><strong>Platforms.</strong> Tested end to end on Linux. macOS and Windows support is new and tested offline only; a clean-machine install through Microsoft sign-in has not been tested yet <a class="rb-cite" href="#s1">S1</a><a class="rb-cite" href="#s5">S5</a>.</li>
+<li><strong>Desk agents do not act in the world.</strong> "A Hermes desk agent does not act in the world. It cannot walk, place blocks or press buttons." Agent bodies are a separate runtime <a class="rb-cite" href="#s2">S2</a>.</li>
+<li><strong>Agents do not talk to each other through the world.</strong> Work is handed between them the normal Hermes way <a class="rb-cite" href="#s2">S2</a>.</li>
+<li><strong>Workspaces live on the PC that opened them.</strong> A friend on another PC gets a fresh workspace from the same preset <a class="rb-cite" href="#s2">S2</a>.</li>
+<li><strong>Web video.</strong> The bundled Chromium has no H.264/AAC codecs, so YouTube plays but most Instagram, X and Reddit video does not <a class="rb-cite" href="#s1">S1</a>.</li>
+<li><strong>The game is heavier than the work.</strong> In our own use, the game client crashed or froze more often than the agent sessions failed; the sessions survived <a class="rb-cite" href="#s6">S6</a>.</li>
+</ul>
+<p class="section-kicker">09</p><h2>Sources</h2>
+<p class="rb-ref" id="s1"><b>[S1]</b> Omo Space README (public). <a href="https://github.com/omoresearch/omo-space" target="_blank" rel="noopener">github.com/omoresearch/omo-space</a>. "Place a computer in Minecraft and a real Hermes Agent, Claude Code, Codex or plain shell starts on your own machine."</p>
+<p class="rb-ref" id="s2"><b>[S2]</b> Omo Space docs, Agents and terminals (public). <a href="https://github.com/omoresearch/omo-space/blob/main/docs/AGENTS-AND-TERMINALS.md" target="_blank" rel="noopener">github.com/omoresearch/omo-space/blob/main/docs/AGENTS-AND-TERMINALS.md</a>. "Commands that were running are never re-run, and shell scrollback is gone."</p>
+<p class="rb-ref" id="s3"><b>[S3]</b> Omo Space CHANGELOG (public). <a href="https://github.com/omoresearch/omo-space/blob/main/CHANGELOG.md" target="_blank" rel="noopener">github.com/omoresearch/omo-space/blob/main/CHANGELOG.md</a>. "Single-player worlds open to LAN for local AI agents once you have joined"</p>
+<p class="rb-ref" id="s4"><b>[S4]</b> Omo Space SECURITY.md (public). <a href="https://github.com/omoresearch/omo-space/blob/main/SECURITY.md" target="_blank" rel="noopener">github.com/omoresearch/omo-space/blob/main/SECURITY.md</a>. "A block, a room or a pocket dimension is a presentation boundary, not a sandbox."</p>
+<p class="rb-ref" id="s5"><b>[S5]</b> Omo Space docs, Platforms (public). <a href="https://github.com/omoresearch/omo-space/blob/main/docs/PLATFORMS.md" target="_blank" rel="noopener">github.com/omoresearch/omo-space/blob/main/docs/PLATFORMS.md</a>. "Status: untested on a real Mac."</p>
+<p class="rb-ref" id="s6"><b>[S6]</b> Rooms, Not Windows: Spatially Aware Creative Agentic Interfaces. Omo Research working paper, October 2026. <a href="https://www.omo.sh/research/rooms-not-windows/" target="_blank" rel="noopener">www.omo.sh/research/rooms-not-windows/</a></p>
+<p class="rb-ref" id="s7"><b>[S7]</b> Bodies in the Block World. Omo Research working paper, October 2026. <a href="https://www.omo.sh/research/robots/" target="_blank" rel="noopener">www.omo.sh/research/robots/</a></p>
+<p class="rb-ref" id="s8"><b>[S8]</b> Omo Space v1.2.0 release, 28 October 2026. <a href="https://github.com/omoresearch/omo-space/releases/tag/v1.2.0" target="_blank" rel="noopener">github.com/omoresearch/omo-space/releases/tag/v1.2.0</a></p>
+<p class="rb-ref" id="s9"><b>[S9]</b> Omo Space demo, 27 October 2026: 15 minutes, one take, live on stream. <a href="https://github.com/omoresearch/omo-space/releases/tag/demo-2026-10-27" target="_blank" rel="noopener">github.com/omoresearch/omo-space/releases/tag/demo-2026-10-27</a></p>
+<p class="os-legal">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft. Minecraft is a trademark of Mojang/Microsoft. Hermes Agent is by Nous Research, Claude Code by Anthropic and Codex by OpenAI; Omo Space runs them, it doesn't ship them.</p>
+</div>
+</article>
+</main>
+<footer class="site-footer"><div class="footer-inner"><p>© 2026 Omo Research. Prototypes from our own use, not controlled studies.</p><nav class="footer-links" aria-label="Footer"><a href="/">Home</a><a href="/omo-space">Research</a><a href="/notes">Notes</a><a href="/products">Releases</a><a href="mailto:harrythentrepreneur@gmail.com">Contact</a></nav></div></footer>
 </body>
 </html>

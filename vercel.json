@@ -3,24 +3,54 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/agentjam", "destination": "/products", "permanent": true },
-    { "source": "/momo", "destination": "/products", "permanent": true },
-    { "source": "/omo-space", "destination": "/products", "permanent": true },
-    { "source": "/spatial-agent", "destination": "/products", "permanent": true },
-    { "source": "/spoken-english", "destination": "/products", "permanent": true }
+    {
+      "source": "/agentjam",
+      "destination": "/products",
+      "permanent": true
+    },
+    {
+      "source": "/momo",
+      "destination": "/products",
+      "permanent": true
+    },
+    {
+      "source": "/spatial-agent",
+      "destination": "/products",
+      "permanent": true
+    },
+    {
+      "source": "/spoken-english",
+      "destination": "/products",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/branding/(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     },
     {
       "source": "/homepage-heroes/(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     },
     {
       "source": "/sidebar-variants/(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }

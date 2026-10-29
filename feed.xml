@@ -5,8 +5,15 @@
     <link>https://www.omo.sh/notes</link>
     <description>Notes on voice-first AI, spatial agents, local intelligence, and human-agent interaction.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 10 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://www.omo.sh/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thirteen Interfaces We Tried for Working with AI Agents | Omo Notes</title>
+      <link>https://www.omo.sh/notes/interfaces-we-tried</link>
+      <guid isPermaLink="true">https://www.omo.sh/notes/interfaces-we-tried</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A field report from Omo Research: thirteen voice, screen, and world interfaces we built and used for working with AI agents, and what each one taught us.</description>
+    </item>
     <item>
       <title>Minecraft as an Interface for AI Agents | Omo Notes</title>
       <link>https://www.omo.sh/notes/minecraft-as-an-agent-interface</link>

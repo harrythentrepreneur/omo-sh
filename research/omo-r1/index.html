@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Omo R1 joins your Minecraft world as a real player. Talk to him out loud; a Hermes agent plans the job and his body does it with 22 tools. Open source, MIT." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Omo Research" />
+  <meta name="theme-color" content="#f5f0e8" />
+  <title>Omo R1: An AI Agent That Is a Player in Your Minecraft World | Omo Research</title>
+  <link rel="canonical" href="https://www.omo.sh/research/omo-r1/" />
+  <link rel="alternate" type="application/rss+xml" title="Omo Notes" href="/feed.xml" />
+  <link rel="icon" href="/assets/omo-mark.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Omo Research" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Omo R1: An AI Agent That Is a Player in Your Minecraft World | Omo Research" />
+  <meta property="og:description" content="Omo R1 joins your Minecraft world as a real player. Talk to him out loud; a Hermes agent plans the job and his body does it with 22 tools. Open source, MIT." />
+  <meta property="og:url" content="https://www.omo.sh/research/omo-r1/" />
+  <meta property="og:image" content="https://www.omo.sh/assets/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Omo Research — voice, space, and presence for human-agent interaction" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Omo R1: An AI Agent That Is a Player in Your Minecraft World | Omo Research" />
+  <meta name="twitter:description" content="Omo R1 joins your Minecraft world as a real player. Talk to him out loud; a Hermes agent plans the job and his body does it with 22 tools. Open source, MIT." />
+  <meta name="twitter:image" content="https://www.omo.sh/assets/og-card.png" />
+  <meta name="twitter:image:alt" content="Omo Research — voice, space, and presence for human-agent interaction" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" /></noscript>
+  <link rel="stylesheet" href="/styles.css" />
+<style>
+.exp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); gap: 1.1rem; margin-top: 1.25rem; }
+.exp-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-card); transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.exp-card:hover { transform: translateY(-2px); border-color: var(--text-2); box-shadow: 0 8px 22px rgba(26,16,8,.07); }
+.exp-card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid var(--border); background: var(--bg); }
+.exp-card-body { padding: .8rem .95rem 1rem; display: flex; flex-direction: column; gap: .3rem; flex: 1; }
+.exp-meta { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-2); }
+.exp-status { padding: .08rem .5rem; border: 1px solid var(--border); border-radius: 999px; }
+.exp-status.now { background: var(--btn-bg); color: var(--bg); border-color: transparent; }
+.exp-card h3 { font-family: var(--font-body); font-size: 1.12rem; font-weight: 600; line-height: 1.25; margin: .1rem 0 0; }
+.exp-card p.exp-line { color: var(--text-2); font-size: .88rem; line-height: 1.5; margin: 0; }
+.exp-more { margin-top: auto; padding-top: .35rem; font-family: var(--font-mono); font-size: .64rem; color: var(--text); }
+.exp-cover { margin: 1.2rem 0 0; }
+.exp-cover img, .exp-figure img, .exp-figure video { display: block; width: 100%; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); }
+.exp-figure { margin: 1.4rem 0 .4rem; }
+.exp-figure img, .exp-figure video { aspect-ratio: 16 / 9; object-fit: cover; }
+.exp-figure.diagram img { object-fit: contain; }
+.exp-cover figcaption, .exp-figure figcaption { margin-top: .45rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.exp-cover figcaption span, .exp-figure figcaption span { text-transform: uppercase; letter-spacing: .04em; margin-right: .45rem; color: var(--text); }
+.exp-lead { max-width: 38rem; color: var(--text-2); }
+.exp-list { margin: .6rem 0 0; padding-left: 1.1rem; max-width: 38rem; }
+.exp-list li { margin: .35rem 0; color: var(--text-2); line-height: 1.6; font-size: .95rem; }
+.exp-saw { max-width: 38rem; border-left: 2px solid var(--btn-bg); padding: .2rem 0 .2rem 1rem; font-size: 1.08rem; line-height: 1.6; }
+.exp-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+.exp-pager a { text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; padding: .8rem 1rem; }
+.exp-pager a:hover { border-color: var(--text-2); }
+.exp-pager .next { text-align: right; grid-column: 2; }
+.exp-pager small { display: block; font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-2); }
+.exp-pager strong { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; }
+.sidebar-sublink .exp-n { font-family: var(--font-mono); font-size: .6rem; color: var(--text-2); margin-right: .4rem; }
+.research-intro { margin-top: .6rem; max-width: 36rem; }
+.small-links { margin-top: 2.2rem; display: flex; gap: 1.2rem; font-family: var(--font-mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .04em; }
+.small-links a { color: var(--text-2); text-decoration: none; }
+.small-links a:hover { color: var(--text); }
+.side-group { margin: 1.1rem 0 .3rem; padding: 0 .55rem; font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-2); }
+.side-group:first-of-type { margin-top: .6rem; }
+.paper-card { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg-card); margin-top: 1.1rem; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.paper-card:hover { transform: translateY(-2px); border-color: var(--text-2); box-shadow: 0 10px 26px rgba(26,16,8,.08); }
+.paper-card img { width: 100%; height: 100%; min-height: 15rem; object-fit: cover; border-right: 1px solid var(--border); }
+.paper-card-body { padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: .45rem; }
+.paper-card h3 { font-family: var(--font-body); font-style: italic; font-weight: 400; font-size: 2rem; line-height: 1.05; margin: .1rem 0; }
+.paper-card p { color: var(--text-2); font-size: .92rem; line-height: 1.6; margin: 0; }
+.paper-card p.exp-meta { font-size: .62rem; line-height: 1.4; }
+.sidebar-inner { max-height: 100vh; overflow-y: auto; scrollbar-width: thin; }
+.move-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin-top: .9rem; }
+.move-card { display: flex; flex-direction: column; gap: .2rem; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; padding: .8rem .9rem; background: var(--bg-card); }
+.move-card:hover { border-color: var(--text-2); }
+.move-old { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); text-decoration: line-through; }
+.move-k { font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); margin-top: .3rem; }
+.move-card strong { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; line-height: 1.25; }
+.worked-note { margin-top: .9rem; font-family: var(--font-mono); font-size: .64rem; color: var(--text-2); }
+@media (max-width: 900px) { .paper-card { grid-template-columns: 1fr; } .paper-card img { border-right: 0; border-bottom: 1px solid var(--border); min-height: 0; aspect-ratio: 16 / 9; } .move-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.os-loops { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; margin-top: 1rem; }
+.os-loop { margin: 0; } .os-loop img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--border); border-radius: 10px; background: #111; }
+.os-loop figcaption { margin-top: .4rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.os-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+.os-shot { margin: 0; } .os-shot img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--border); border-radius: 10px; }
+.os-shot:first-child { grid-column: 1 / -1; }
+.os-shot figcaption { margin-top: .4rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.os-demo { position: relative; display: block; margin: 1rem 0 .4rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.os-demo img { display: block; width: 100%; }
+.os-demo span { position: absolute; left: 1rem; bottom: 1rem; background: var(--btn-bg); color: var(--bg); font-family: var(--font-mono); font-size: .72rem; padding: .5rem .9rem; border-radius: 999px; }
+.os-demo:hover span { background: #2c2015; }
+.os-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+.os-blocks { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
+.os-code { margin: 1rem 0; padding: 1rem 1.1rem; background: #1a1008; color: #f5f0e8; border-radius: 10px; overflow-x: auto; font-family: var(--font-mono); font-size: .74rem; line-height: 1.7; }
+.os-arch { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: 1.2rem 0; font-family: var(--font-mono); font-size: .68rem; }
+.os-arch span { border: 1px solid var(--border); background: var(--bg-card); border-radius: 999px; padding: .35rem .75rem; }
+.os-arch i { font-style: normal; color: var(--text-2); }
+.os-faq { border-bottom: 1px solid var(--border); padding: .85rem 0; max-width: 40rem; }
+.os-faq summary { cursor: pointer; font-family: var(--font-body); font-size: 1.12rem; font-weight: 600; }
+.os-faq p { margin: .5rem 0 0; color: var(--text-2); line-height: 1.65; }
+.os-legal { margin-top: 1.6rem; font-family: var(--font-mono); font-size: .6rem; color: var(--text-2); max-width: 40rem; line-height: 1.6; }
+@media (max-width: 700px) { .os-loops, .os-pair, .os-gallery { grid-template-columns: 1fr; } }
+#log.paper-section { padding-top: 0; border-top: 0; }
+.tl-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); counter-reset: tl; }
+.tl-row { display: grid; grid-template-columns: 2.4rem 8.5rem minmax(0, 15rem) minmax(0, 1fr); gap: 1rem; align-items: baseline; padding: .7rem 0; border-bottom: 1px solid var(--border); counter-increment: tl; }
+.tl-row::before { content: counter(tl, decimal-leading-zero); font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.tl-date { font-family: var(--font-mono); font-size: .66rem; color: var(--text-2); text-transform: uppercase; letter-spacing: .03em; }
+.tl-what { font-family: var(--font-body); font-size: 1.04rem; font-weight: 600; line-height: 1.3; }
+.tl-what a { color: var(--text); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.tl-what a:hover { text-decoration-color: var(--text); }
+.log-sources { padding-left: 1.2rem; max-width: 40rem; } .log-sources li { margin: .4rem 0; font-size: .86rem; color: var(--text-2); line-height: 1.55; word-break: break-word; } .log-sources b { color: var(--text); font-weight: 500; }
+.tl-note { font-size: .9rem; color: var(--text-2); line-height: 1.5; }
+@media (max-width: 800px) { .tl-row { grid-template-columns: 2rem minmax(0, 1fr); gap: .15rem .8rem; } .tl-date, .tl-what, .tl-note { grid-column: 2; } }
+@media (max-width: 600px) { .exp-pager { grid-template-columns: 1fr; } .exp-pager .next { grid-column: 1; } }
+</style>
+<style>
+.rb-article { max-width: 44rem; }
+.rb-article p, .rb-article li { font-size: 1.06rem; line-height: 1.72; color: var(--text); }
+.rb-article p { margin: 0 0 1.05rem; } .rb-article li { margin: .3rem 0; } .rb-article ul, .rb-article ol { margin: 0 0 1.1rem; }
+.rb-article h2 { margin-top: .2rem; } .rb-article .section-kicker { margin-top: 3rem; }
+.rb-article h3 { font-family: var(--font-body); font-size: 1.3rem; font-weight: 600; margin: 2rem 0 .4rem; }
+.rb-article ul, .rb-article ol { padding-left: 1.2rem; }
+.rb-article code { font-family: var(--font-mono); font-size: .85em; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 0 .25rem; }
+.rb-fig img { aspect-ratio: auto !important; max-height: 34rem; object-fit: contain !important; background: #111 !important; }
+.rb-cite { font-family: var(--font-mono); font-size: .62rem; vertical-align: super; line-height: 0; text-decoration: none; color: var(--text-2); margin-left: .12rem; }
+.rb-cite:hover { color: var(--text); }
+.rb-ref { font-size: .86rem !important; line-height: 1.55 !important; color: var(--text-2) !important; padding-left: 3.2rem; text-indent: -3.2rem; word-break: break-word; }
+.rb-ref b { font-family: var(--font-mono); font-size: .7rem; color: var(--text); display: inline-block; width: 3.2rem; text-indent: 0; }
+.rb-ref:target { background: #efe7da; }
+.rb-ladder { display: flex; flex-wrap: wrap; align-items: stretch; gap: .5rem; margin: 1.3rem 0 .5rem; }
+.rb-ladder div { flex: 1 1 8rem; border: 1px solid var(--border); border-radius: 10px; padding: .7rem .8rem; background: var(--bg-card); display: flex; flex-direction: column; gap: .15rem; }
+.rb-ladder div.on { background: var(--btn-bg); color: var(--bg); border-color: transparent; }
+.rb-ladder div.on span, .rb-ladder div.on b { color: #d4cdc0; }
+.rb-ladder b { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.rb-ladder strong { font-family: var(--font-body); font-size: 1.1rem; }
+.rb-ladder span { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); line-height: 1.4; }
+.rb-ladder i { align-self: center; font-style: normal; color: var(--text-2); }
+.rb-abstract { border-left: 2px solid var(--btn-bg); padding-left: 1rem; }
+
+.op-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+.op-pair .rb-fig img { aspect-ratio: 16 / 9 !important; object-fit: cover !important; }
+.op-demo { position: relative; display: block; margin: 1.2rem 0 .6rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.op-demo img { display: block; width: 100%; }
+.op-demo span { position: absolute; left: 1rem; bottom: 1rem; background: var(--btn-bg); color: var(--bg); font-family: var(--font-mono); font-size: .72rem; padding: .5rem .9rem; border-radius: 999px; }
+.rb-article table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.4rem; font-size: .95rem; }
+.rb-article th, .rb-article td { text-align: left; vertical-align: top; padding: .55rem .6rem; border-bottom: 1px solid var(--border); line-height: 1.5; }
+.rb-article th { font-family: var(--font-mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); font-weight: 500; }
+.rb-article pre { background: #1a1008; color: #f5f0e8; border-radius: 10px; padding: 1rem 1.1rem; overflow: hidden !important; white-space: pre-wrap !important; word-break: break-all; margin: 1rem 0 1.2rem; }
+.rb-article pre code { white-space: pre-wrap !important; display: block; background: none; border: 0; color: inherit; font-size: .72rem; line-height: 1.55; padding: 0; }
+.act-link { align-self: center; margin-left: .4rem; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .04em; color: var(--text-2); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; } .act-link:hover { color: var(--text); text-decoration-color: var(--text); }
+.os-legal { margin-top: 1.6rem; font-family: var(--font-mono); font-size: .6rem; color: var(--text-2); max-width: 40rem; line-height: 1.6; }
+@media (max-width: 700px) { .op-pair { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav class="sidebar" aria-label="Research navigation"><div class="sidebar-inner">
+<a class="sidebar-brand" href="/" aria-label="Omo Research home"><span class="sidebar-mark"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 180V20h80M20 180h160M100 20h30m10 0h20m20 0v40m0 12v38m0 10v30m0 10v20M32 168V32h68M32 168h136" fill="none" stroke="currentColor" stroke-width="8" /><path d="M62 100a30 30 0 0 1 38-30m0 0a30 30 0 0 1 0 20m0 0a30 30 0 0 1 38 40M100 90a30 30 0 0 0-38 10" fill="none" stroke="currentColor" stroke-width="7" /><rect x="95" y="95" width="10" height="10" fill="currentColor" /></svg></span><span class="sidebar-name">Research</span></a>
+<div class="sidebar-links">
+<a class="sidebar-link" href="/omo-space">Omo Space</a><a class="sidebar-link" href="/research/robots/">Omo Microduck</a><a class="sidebar-link active" href="/research/omo-r1/">Omo R1</a><a class="sidebar-link" href="/about">Research log</a></div>
+</div></nav>
+<header class="mobile-header"><span class="mobile-brand">Omo R1</span><nav class="mobile-actions" aria-label="Primary"><a class="btn btn-dark btn-sm" href="/omo-space">Research</a></nav></header>
+<main class="content-main">
+<article>
+<header class="paper-header" id="overview">
+<div class="paper-tags"><span class="tag">Agent</span><span class="tag">v0.1.0</span><span class="tag">MIT</span><span class="tag">Open source</span></div>
+<h1>Omo R1</h1>
+<p class="paper-subtitle">An agent with a body, a place and a voice: a player in your Minecraft world that does what you ask</p>
+<p class="section-note">Released 28 October 2026 after a first live run on stream. Every claim links to the public repository.</p>
+<div class="meta-grid"><div class="meta-item"><p class="meta-label">Release</p><p class="meta-value"><a href="https://github.com/omoresearch/omo-brought-to-life/releases/tag/v0.1.0" target="_blank" rel="noopener">v0.1.0</a>, 28 Oct 2026</p></div><div class="meta-item"><p class="meta-label">Body</p><p class="meta-value">Mineflayer player, 22 tools</p></div><div class="meta-item"><p class="meta-label">Brain</p><p class="meta-value">Hermes Agent</p></div><div class="meta-item"><p class="meta-label">Code</p><p class="meta-value"><a href="https://github.com/omoresearch/omo-brought-to-life" target="_blank" rel="noopener">GitHub</a></p></div></div>
+<div class="paper-actions" style="margin-top:1.6rem;align-items:center"><a class="btn btn-dark" href="https://github.com/omoresearch/omo-brought-to-life" target="_blank" rel="noopener">GitHub ↗</a><a class="btn btn-outline" href="https://github.com/omoresearch/omo-brought-to-life#quick-start" target="_blank" rel="noopener">Quick start ↗</a><a class="act-link" style="align-self:center;margin-left:.5rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px" href="https://github.com/omoresearch/omo-brought-to-life/releases/tag/v0.1.0" target="_blank" rel="noopener">or download v0.1.0 ↗</a></div>
+<figure class="exp-cover"><img src="/research/omo-r1/img/cover.jpg" alt="Illustration: a player talks out loud to Omo R1, who walks off on his own to chop a tree, craft, smelt and come back with a stone sword; his brain is a screen floating above him" /><figcaption><span>Illustration</span>Generated with ChatGPT image generation</figcaption></figure>
+</header>
+<div class="rb-article">
+<p class="section-kicker">Abstract</p>
+<p class="rb-abstract">Omo R1 is our first agent brought all the way to life in Minecraft. He is not a chatbot in a side window. He logs into your single-player world as a real player, you talk to him out loud, he answers in his own voice, and then he goes and does it <a class="rb-cite" href="#s1">S1</a>. Three parts make him: a realtime voice model that listens and speaks, a Hermes agent that plans, and a Mineflayer body that serves 22 tools to that agent <a class="rb-cite" href="#s1">S1</a><a class="rb-cite" href="#s2">S2</a>. He was released as open source on 28 October 2026, after a first live run on stream the day before <a class="rb-cite" href="#s3">S3</a>. This page describes how he works, what he did on stream, and where he still falls short.</p>
+<p class="section-kicker">01</p><h2>Introduction</h2>
+<p>The desk agents in Omo Space work in terminals. They cannot walk, place blocks or press buttons <a class="rb-cite" href="#s4">S4</a>. That keeps them safe and simple, but it also means the world around them is scenery.</p>
+<figure class="exp-figure rb-fig"><img src="/research/omo-r1/img/hall.jpg" alt="Omo R1 in the underground base, 27 October" loading="lazy" decoding="async" /><figcaption><span>From our stream</span>Omo R1 in the underground base, 27 October</figcaption></figure>
+
+<p>Omo R1 is the next step on our ladder of embodiment: from a terminal, to a terminal on a wall, to an agent that is a player <a class="rb-cite" href="#s5">S5</a>. At Omo Research we want agents that are present: with a body, a place and a voice <a class="rb-cite" href="#s1">S1</a>. R1 is the first one that has all three.</p>
+<p class="section-kicker">02</p><h2>What he is</h2><div class="op-pair">
+<figure class="exp-figure rb-fig"><img src="/research/omo-r1/img/follows.jpg" alt="He follows you through the base on his own legs" loading="lazy" decoding="async" /><figcaption><span>From our stream</span>He follows you through the base on his own legs</figcaption></figure>
+
+<figure class="exp-figure rb-fig"><img src="/research/omo-r1/img/close.jpg" alt="A player entity with a body, a skin and a name tag" loading="lazy" decoding="async" /><figcaption><span>From our stream</span>A player entity with a body, a skin and a name tag</figcaption></figure>
+</div>
+<ul>
+<li><strong>A body.</strong> Omo logs into your world as a player called <code>ChatGPT - OMO</code>, with his own skin. He walks, jumps, swims, takes knockback, gets hungry, fights and sleeps. Other mobs see him as a player, because he is one <a class="rb-cite" href="#s1">S1</a>.</li>
+<li><strong>A place.</strong> He lives where you play. He sees the blocks, mobs and players around him, carries an inventory, and uses the same crafting tables, furnaces and chests that you do <a class="rb-cite" href="#s1">S1</a>.</li>
+<li><strong>A voice.</strong> You press "Start talking" and speak. A realtime voice model listens and answers, full duplex, in Omo's own voice, a warm old grandad. When you ask for something real, a Hermes agent plans it and drives his body <a class="rb-cite" href="#s1">S1</a><a class="rb-cite" href="#s3">S3</a>.</li>
+</ul>
+<p class="section-kicker">03</p><h2>How it works</h2>
+<ol>
+<li><strong>Voice.</strong> A local web page opens a realtime voice call. The voice model chats on its own; when you ask Omo to <em>do</em> something, it hands the request off as a delegation <a class="rb-cite" href="#s1">S1</a><a class="rb-cite" href="#s2">S2</a>.</li>
+<li><strong>Brain.</strong> Each delegation goes to Omo's own Hermes profile. Hermes plans with the <code>omo-body</code> skill and calls body tools until the job is done. Requests that arrive mid-job are queued, and every answer goes back to the newest request, so the voice always says it <a class="rb-cite" href="#s1">S1</a>.</li>
+<li><strong>Body.</strong> A Mineflayer bot named OMO joins your world over LAN and serves its actions as an MCP server. Its skills are Mindcraft's library, wrapped in jobs that can be interrupted, paused for a fight and resumed <a class="rb-cite" href="#s1">S1</a><a class="rb-cite" href="#s6">S6</a><a class="rb-cite" href="#s7">S7</a>.</li>
+<li><strong>World.</strong> Omo Space v1.2.0 opens your single-player world to LAN for agents on the same computer only, lets a plain bot client join, and gives agents the Omo skin and name tag <a class="rb-cite" href="#s1">S1</a><a class="rb-cite" href="#s4">S4</a>.</li>
+</ol>
+<p>Short, plain requests such as "come here", "follow me", "stop", "fight" and "chop some wood" take a fast path straight to the body, so they never wait on a language model <a class="rb-cite" href="#s1">S1</a><a class="rb-cite" href="#s2">S2</a>.</p>
+<p class="section-kicker">04</p><h2>What he can do</h2>
+<p>His body serves 22 tools to Hermes. Each returns a short fact he can say out loud <a class="rb-cite" href="#s1">S1</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>See</strong></td>
+<td>where he is, health, food, nearby players, blocks and mobs, inventory; what he can craft now</td>
+</tr>
+<tr>
+<td><strong>Move</strong></td>
+<td>come to you, follow you, stop, go to coordinates, go to the nearest block of a type, look at you</td>
+</tr>
+<tr>
+<td><strong>Fight</strong></td>
+<td>guard mode (on by default), attack the nearest monster, hunt a mob type</td>
+</tr>
+<tr>
+<td><strong>Work</strong></td>
+<td>chop and mine with the right tool, craft, smelt, place blocks, use chests, pick up and give items, equip tools and armour</td>
+</tr>
+<tr>
+<td><strong>Live</strong></td>
+<td>eat, sleep in the nearest bed, type in chat</td>
+</tr>
+</tbody>
+</table>
+<p>He also has reflexes he uses without being asked: he fights back, backs off and eats when his health is low, gets out of lava, fire and deep water, wears the best armour he picks up, and looks at whoever hits him <a class="rb-cite" href="#s1">S1</a>.</p>
+<p class="section-kicker">05</p><h2>What he did on stream</h2>
+<p>On the 27 October 2026 live stream, from the bridge log <a class="rb-cite" href="#s1">S1</a>:</p>
+<figure class="exp-figure rb-fig"><img src="/research/omo-r1/img/bat-hall.jpg" alt="Waiting by the rooms of the base while a job runs" loading="lazy" decoding="async" /><figcaption><span>From our stream</span>Waiting by the rooms of the base while a job runs</figcaption></figure>
+
+<ul>
+<li><strong>A whole crafting chain.</strong> "Make me a stone sword" became: collect wood, craft planks, sticks, a crafting table and a wooden pickaxe, mine stone, craft the sword, equip it. He ran the whole chain himself, "including retrying a craft that failed the first time" <a class="rb-cite" href="#s1">S1</a>.</li>
+<li><strong>Following through the base.</strong> He followed the builder through the underground base and up the stairs, on his own legs <a class="rb-cite" href="#s1">S1</a>.</li>
+<li><strong>Two requests at once.</strong> Asked to look something up and, at the same time, what was in his inventory, he answered both in one reply: "I've got four pieces of rotten flesh and nothing else. Not exactly a gourmet picnic." <a class="rb-cite" href="#s1">S1</a></li>
+</ul>
+<p>Because his brain is a full Hermes agent, he can also do real work outside the world when asked: look something up, read a file, check a project <a class="rb-cite" href="#s1">S1</a>.</p>
+<p class="section-kicker">06</p><h2>Verified</h2>
+<p>The v0.1.0 release ships with 18 tests, all passing on Linux x86_64 with Node 22 <a class="rb-cite" href="#s1">S1</a><a class="rb-cite" href="#s3">S3</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Suite</th>
+<th>What it covers</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Voice</td>
+<td>sessions, delegation parsing, newest-delegation delivery and queueing</td>
+<td>7/7</td>
+</tr>
+<tr>
+<td>Body</td>
+<td>the LAN file, MCP tools, follow, fast-path movement and combat, jobs pausing for a fight and resuming</td>
+<td>8/8</td>
+</tr>
+<tr>
+<td>Hygiene</td>
+<td>no tokens or machine paths in the tree; the README's tools table matches the served tools</td>
+<td>3/3</td>
+</tr>
+</tbody>
+</table>
+<p class="section-kicker">07</p><h2>Limitations</h2>
+<ul>
+<li><strong>Jobs can come up short.</strong> On stream, a request for 8 birch logs finished with 1 collected. He reports the real count, so Hermes has to notice and retry. Long gather-then-craft chains are the weakest part today <a class="rb-cite" href="#s1">S1</a>.</li>
+<li><strong>The voice route is not a public API.</strong> It uses your own ChatGPT login against the endpoint the Codex app uses. It can change or break without notice, and usage counts against your subscription <a class="rb-cite" href="#s1">S1</a>.</li>
+<li><strong>You talk through a browser tab.</strong> In-game push-to-talk is not wired up for Omo yet <a class="rb-cite" href="#s1">S1</a>.</li>
+<li><strong>Minecraft 26.2 is newer than released Mineflayer.</strong> Installing patches in 26.2 data, and multi-item crafts desync, so he crafts one batch at a time <a class="rb-cite" href="#s1">S1</a>.</li>
+<li><strong>He is slow to think.</strong> Hermes replies take 8 to 12 seconds in the log, so the voice says "on it" first <a class="rb-cite" href="#s1">S1</a>.</li>
+<li><strong>He is one agent, for one player.</strong> Use it for yourself; do not run it as a service for others <a class="rb-cite" href="#s1">S1</a>.</li>
+</ul>
+<p class="section-kicker">08</p><h2>Next</h2>
+<p>The questions we want to answer next are in our robots paper: how often a long chain like the stone sword finishes from a fresh world, and why it fails when it doesn't <a class="rb-cite" href="#s5">S5</a>. We also want him to hear you through in-game push-to-talk, the way our robot ducks already do <a class="rb-cite" href="#s5">S5</a>.</p>
+<p class="section-kicker">09</p><h2>Sources</h2>
+<p class="rb-ref" id="s1"><b>[S1]</b> Omo, brought to life: README (public). <a href="https://github.com/omoresearch/omo-brought-to-life" target="_blank" rel="noopener">github.com/omoresearch/omo-brought-to-life</a>. "Not a chatbot in a side window. Omo is a player in your Minecraft world"</p>
+<p class="rb-ref" id="s2"><b>[S2]</b> Omo, brought to life: How it works (public). <a href="https://github.com/omoresearch/omo-brought-to-life/blob/main/docs/how-it-works.md" target="_blank" rel="noopener">github.com/omoresearch/omo-brought-to-life/blob/main/docs/how-it-works.md</a>. "runs them on the body directly, before any language model."</p>
+<p class="rb-ref" id="s3"><b>[S3]</b> Omo, brought to life: CHANGELOG, v0.1.0 "First breath", 28 October 2026 (public). <a href="https://github.com/omoresearch/omo-brought-to-life/blob/main/CHANGELOG.md" target="_blank" rel="noopener">github.com/omoresearch/omo-brought-to-life/blob/main/CHANGELOG.md</a>. "The first public release of Omo as one repo: voice, brain, body and the mod changes that let him in."</p>
+<p class="rb-ref" id="s4"><b>[S4]</b> Omo Space docs, Agents and terminals (public). <a href="https://github.com/omoresearch/omo-space/blob/main/docs/AGENTS-AND-TERMINALS.md" target="_blank" rel="noopener">github.com/omoresearch/omo-space/blob/main/docs/AGENTS-AND-TERMINALS.md</a>. "A Hermes desk agent does not act in the world. It cannot walk, place blocks or press buttons."</p>
+<p class="rb-ref" id="s5"><b>[S5]</b> Bodies in the Block World. Omo Research working paper, October 2026. <a href="https://www.omo.sh/research/robots/" target="_blank" rel="noopener">www.omo.sh/research/robots/</a></p>
+<p class="rb-ref" id="s6"><b>[S6]</b> Mindcraft. <a href="https://github.com/mindcraft-bots/mindcraft" target="_blank" rel="noopener">github.com/mindcraft-bots/mindcraft</a></p>
+<p class="rb-ref" id="s7"><b>[S7]</b> Mineflayer. <a href="https://github.com/PrismarineJS/mineflayer" target="_blank" rel="noopener">github.com/PrismarineJS/mineflayer</a></p>
+<p class="os-legal">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft. Not affiliated with or endorsed by OpenAI. Body skills are Mindcraft's library on Mineflayer (MIT); the brain is Hermes Agent by Nous Research.</p>
+</div>
+</article>
+</main>
+<footer class="site-footer"><div class="footer-inner"><p>© 2026 Omo Research. Prototypes from our own use, not controlled studies.</p><nav class="footer-links" aria-label="Footer"><a href="/">Home</a><a href="/omo-space">Research</a><a href="/notes">Notes</a><a href="/products">Releases</a><a href="mailto:harrythentrepreneur@gmail.com">Contact</a></nav></div></footer>
+</body>
+</html>

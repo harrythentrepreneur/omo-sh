@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Working paper from Omo Research: a simulated Microduck, an RP1 humanoid, a ceiling AI and an agent player inside one Minecraft world. What we built, what worked, what broke." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Omo Research" />
+  <meta name="theme-color" content="#f5f0e8" />
+  <title>Bodies in the Block World: Robots Inside Minecraft | Omo Research</title>
+  <link rel="canonical" href="https://www.omo.sh/research/robots/" />
+  <link rel="alternate" type="application/rss+xml" title="Omo Notes" href="/feed.xml" />
+  <link rel="icon" href="/assets/omo-mark.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Omo Research" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Bodies in the Block World: Robots Inside Minecraft | Omo Research" />
+  <meta property="og:description" content="Working paper from Omo Research: a simulated Microduck, an RP1 humanoid, a ceiling AI and an agent player inside one Minecraft world. What we built, what worked, what broke." />
+  <meta property="og:url" content="https://www.omo.sh/research/robots/" />
+  <meta property="og:image" content="https://www.omo.sh/assets/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Omo Research — voice, space, and presence for human-agent interaction" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bodies in the Block World: Robots Inside Minecraft | Omo Research" />
+  <meta name="twitter:description" content="Working paper from Omo Research: a simulated Microduck, an RP1 humanoid, a ceiling AI and an agent player inside one Minecraft world. What we built, what worked, what broke." />
+  <meta name="twitter:image" content="https://www.omo.sh/assets/og-card.png" />
+  <meta name="twitter:image:alt" content="Omo Research — voice, space, and presence for human-agent interaction" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" /></noscript>
+  <link rel="stylesheet" href="/styles.css" />
+<style>
+.exp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); gap: 1.1rem; margin-top: 1.25rem; }
+.exp-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-card); transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.exp-card:hover { transform: translateY(-2px); border-color: var(--text-2); box-shadow: 0 8px 22px rgba(26,16,8,.07); }
+.exp-card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid var(--border); background: var(--bg); }
+.exp-card-body { padding: .8rem .95rem 1rem; display: flex; flex-direction: column; gap: .3rem; flex: 1; }
+.exp-meta { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-2); }
+.exp-status { padding: .08rem .5rem; border: 1px solid var(--border); border-radius: 999px; }
+.exp-status.now { background: var(--btn-bg); color: var(--bg); border-color: transparent; }
+.exp-card h3 { font-family: var(--font-body); font-size: 1.12rem; font-weight: 600; line-height: 1.25; margin: .1rem 0 0; }
+.exp-card p.exp-line { color: var(--text-2); font-size: .88rem; line-height: 1.5; margin: 0; }
+.exp-more { margin-top: auto; padding-top: .35rem; font-family: var(--font-mono); font-size: .64rem; color: var(--text); }
+.exp-cover { margin: 1.2rem 0 0; }
+.exp-cover img, .exp-figure img, .exp-figure video { display: block; width: 100%; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); }
+.exp-figure { margin: 1.4rem 0 .4rem; }
+.exp-figure img, .exp-figure video { aspect-ratio: 16 / 9; object-fit: cover; }
+.exp-figure.diagram img { object-fit: contain; }
+.exp-cover figcaption, .exp-figure figcaption { margin-top: .45rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.exp-cover figcaption span, .exp-figure figcaption span { text-transform: uppercase; letter-spacing: .04em; margin-right: .45rem; color: var(--text); }
+.exp-lead { max-width: 38rem; color: var(--text-2); }
+.exp-list { margin: .6rem 0 0; padding-left: 1.1rem; max-width: 38rem; }
+.exp-list li { margin: .35rem 0; color: var(--text-2); line-height: 1.6; font-size: .95rem; }
+.exp-saw { max-width: 38rem; border-left: 2px solid var(--btn-bg); padding: .2rem 0 .2rem 1rem; font-size: 1.08rem; line-height: 1.6; }
+.exp-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+.exp-pager a { text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; padding: .8rem 1rem; }
+.exp-pager a:hover { border-color: var(--text-2); }
+.exp-pager .next { text-align: right; grid-column: 2; }
+.exp-pager small { display: block; font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-2); }
+.exp-pager strong { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; }
+.sidebar-sublink .exp-n { font-family: var(--font-mono); font-size: .6rem; color: var(--text-2); margin-right: .4rem; }
+.research-intro { margin-top: .6rem; max-width: 36rem; }
+.small-links { margin-top: 2.2rem; display: flex; gap: 1.2rem; font-family: var(--font-mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .04em; }
+.small-links a { color: var(--text-2); text-decoration: none; }
+.small-links a:hover { color: var(--text); }
+.side-group { margin: 1.1rem 0 .3rem; padding: 0 .55rem; font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-2); }
+.side-group:first-of-type { margin-top: .6rem; }
+.paper-card { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg-card); margin-top: 1.1rem; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.paper-card:hover { transform: translateY(-2px); border-color: var(--text-2); box-shadow: 0 10px 26px rgba(26,16,8,.08); }
+.paper-card img { width: 100%; height: 100%; min-height: 15rem; object-fit: cover; border-right: 1px solid var(--border); }
+.paper-card-body { padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: .45rem; }
+.paper-card h3 { font-family: var(--font-body); font-style: italic; font-weight: 400; font-size: 2rem; line-height: 1.05; margin: .1rem 0; }
+.paper-card p { color: var(--text-2); font-size: .92rem; line-height: 1.6; margin: 0; }
+.paper-card p.exp-meta { font-size: .62rem; line-height: 1.4; }
+.sidebar-inner { max-height: 100vh; overflow-y: auto; scrollbar-width: thin; }
+.move-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin-top: .9rem; }
+.move-card { display: flex; flex-direction: column; gap: .2rem; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; padding: .8rem .9rem; background: var(--bg-card); }
+.move-card:hover { border-color: var(--text-2); }
+.move-old { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); text-decoration: line-through; }
+.move-k { font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); margin-top: .3rem; }
+.move-card strong { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; line-height: 1.25; }
+.worked-note { margin-top: .9rem; font-family: var(--font-mono); font-size: .64rem; color: var(--text-2); }
+@media (max-width: 900px) { .paper-card { grid-template-columns: 1fr; } .paper-card img { border-right: 0; border-bottom: 1px solid var(--border); min-height: 0; aspect-ratio: 16 / 9; } .move-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.os-loops { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; margin-top: 1rem; }
+.os-loop { margin: 0; } .os-loop img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--border); border-radius: 10px; background: #111; }
+.os-loop figcaption { margin-top: .4rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.os-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+.os-shot { margin: 0; } .os-shot img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--border); border-radius: 10px; }
+.os-shot:first-child { grid-column: 1 / -1; }
+.os-shot figcaption { margin-top: .4rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.os-demo { position: relative; display: block; margin: 1rem 0 .4rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.os-demo img { display: block; width: 100%; }
+.os-demo span { position: absolute; left: 1rem; bottom: 1rem; background: var(--btn-bg); color: var(--bg); font-family: var(--font-mono); font-size: .72rem; padding: .5rem .9rem; border-radius: 999px; }
+.os-demo:hover span { background: #2c2015; }
+.os-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+.os-blocks { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
+.os-code { margin: 1rem 0; padding: 1rem 1.1rem; background: #1a1008; color: #f5f0e8; border-radius: 10px; overflow-x: auto; font-family: var(--font-mono); font-size: .74rem; line-height: 1.7; }
+.os-arch { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: 1.2rem 0; font-family: var(--font-mono); font-size: .68rem; }
+.os-arch span { border: 1px solid var(--border); background: var(--bg-card); border-radius: 999px; padding: .35rem .75rem; }
+.os-arch i { font-style: normal; color: var(--text-2); }
+.os-faq { border-bottom: 1px solid var(--border); padding: .85rem 0; max-width: 40rem; }
+.os-faq summary { cursor: pointer; font-family: var(--font-body); font-size: 1.12rem; font-weight: 600; }
+.os-faq p { margin: .5rem 0 0; color: var(--text-2); line-height: 1.65; }
+.os-legal { margin-top: 1.6rem; font-family: var(--font-mono); font-size: .6rem; color: var(--text-2); max-width: 40rem; line-height: 1.6; }
+@media (max-width: 700px) { .os-loops, .os-pair, .os-gallery { grid-template-columns: 1fr; } }
+#log.paper-section { padding-top: 0; border-top: 0; }
+.tl-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); counter-reset: tl; }
+.tl-row { display: grid; grid-template-columns: 2.4rem 8.5rem minmax(0, 15rem) minmax(0, 1fr); gap: 1rem; align-items: baseline; padding: .7rem 0; border-bottom: 1px solid var(--border); counter-increment: tl; }
+.tl-row::before { content: counter(tl, decimal-leading-zero); font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.tl-date { font-family: var(--font-mono); font-size: .66rem; color: var(--text-2); text-transform: uppercase; letter-spacing: .03em; }
+.tl-what { font-family: var(--font-body); font-size: 1.04rem; font-weight: 600; line-height: 1.3; }
+.tl-what a { color: var(--text); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.tl-what a:hover { text-decoration-color: var(--text); }
+.log-sources { padding-left: 1.2rem; max-width: 40rem; } .log-sources li { margin: .4rem 0; font-size: .86rem; color: var(--text-2); line-height: 1.55; word-break: break-word; } .log-sources b { color: var(--text); font-weight: 500; }
+.tl-note { font-size: .9rem; color: var(--text-2); line-height: 1.5; }
+@media (max-width: 800px) { .tl-row { grid-template-columns: 2rem minmax(0, 1fr); gap: .15rem .8rem; } .tl-date, .tl-what, .tl-note { grid-column: 2; } }
+@media (max-width: 600px) { .exp-pager { grid-template-columns: 1fr; } .exp-pager .next { grid-column: 1; } }
+</style>
+<style>
+.rb-article { max-width: 44rem; }
+.rb-article p, .rb-article li { font-size: 1.06rem; line-height: 1.72; color: var(--text); }
+.rb-article p { margin: 0 0 1.05rem; } .rb-article li { margin: .3rem 0; } .rb-article ul, .rb-article ol { margin: 0 0 1.1rem; }
+.rb-article h2 { margin-top: .2rem; } .rb-article .section-kicker { margin-top: 3rem; }
+.rb-article h3 { font-family: var(--font-body); font-size: 1.3rem; font-weight: 600; margin: 2rem 0 .4rem; }
+.rb-article ul, .rb-article ol { padding-left: 1.2rem; }
+.rb-article code { font-family: var(--font-mono); font-size: .85em; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 0 .25rem; }
+.rb-fig img { aspect-ratio: auto !important; max-height: 34rem; object-fit: contain !important; background: #111 !important; }
+.rb-cite { font-family: var(--font-mono); font-size: .62rem; vertical-align: super; line-height: 0; text-decoration: none; color: var(--text-2); margin-left: .12rem; }
+.rb-cite:hover { color: var(--text); }
+.rb-ref { font-size: .86rem !important; line-height: 1.55 !important; color: var(--text-2) !important; padding-left: 3.2rem; text-indent: -3.2rem; word-break: break-word; }
+.rb-ref b { font-family: var(--font-mono); font-size: .7rem; color: var(--text); display: inline-block; width: 3.2rem; text-indent: 0; }
+.rb-ref:target { background: #efe7da; }
+.rb-ladder { display: flex; flex-wrap: wrap; align-items: stretch; gap: .5rem; margin: 1.3rem 0 .5rem; }
+.rb-ladder div { flex: 1 1 8rem; border: 1px solid var(--border); border-radius: 10px; padding: .7rem .8rem; background: var(--bg-card); display: flex; flex-direction: column; gap: .15rem; }
+.rb-ladder div.on { background: var(--btn-bg); color: var(--bg); border-color: transparent; }
+.rb-ladder div.on span, .rb-ladder div.on b { color: #d4cdc0; }
+.rb-ladder b { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
+.rb-ladder strong { font-family: var(--font-body); font-size: 1.1rem; }
+.rb-ladder span { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); line-height: 1.4; }
+.rb-ladder i { align-self: center; font-style: normal; color: var(--text-2); }
+.rb-abstract { border-left: 2px solid var(--btn-bg); padding-left: 1rem; }
+</style>
+</head>
+<body>
+<nav class="sidebar" aria-label="Research navigation"><div class="sidebar-inner">
+<a class="sidebar-brand" href="/" aria-label="Omo Research home"><span class="sidebar-mark"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 180V20h80M20 180h160M100 20h30m10 0h20m20 0v40m0 12v38m0 10v30m0 10v20M32 168V32h68M32 168h136" fill="none" stroke="currentColor" stroke-width="8" /><path d="M62 100a30 30 0 0 1 38-30m0 0a30 30 0 0 1 0 20m0 0a30 30 0 0 1 38 40M100 90a30 30 0 0 0-38 10" fill="none" stroke="currentColor" stroke-width="7" /><rect x="95" y="95" width="10" height="10" fill="currentColor" /></svg></span><span class="sidebar-name">Research</span></a>
+<div class="sidebar-links">
+<a class="sidebar-link" href="/omo-space">Omo Space</a><a class="sidebar-link active" href="/research/robots/">Omo Microduck</a><a class="sidebar-link" href="/research/omo-r1/">Omo R1</a><a class="sidebar-link" href="/about">Research log</a></div>
+</div></nav>
+<header class="mobile-header"><span class="mobile-brand">Omo Microduck</span><nav class="mobile-actions" aria-label="Primary"><a class="btn btn-dark btn-sm" href="/about">Research</a></nav></header>
+<main class="content-main">
+<article>
+<header class="paper-header" id="overview">
+<div class="paper-tags"><span class="tag">Working paper</span><span class="tag">Draft</span><span class="tag">Embodiment</span><span class="tag">Robots</span></div>
+<h1>Bodies in the Block World</h1>
+<p class="paper-subtitle">Notes on putting simulated robots and an agent player inside a shared Minecraft world</p>
+<p class="section-note">A field report from three days of building on a live stream, 27&ndash;30 October 2026. Not a controlled study.</p>
+<div class="meta-grid"><div class="meta-item"><p class="meta-label">Published</p><p class="meta-value"><time datetime="2026-10-30">30 Oct 2026</time></p></div><div class="meta-item"><p class="meta-label">Bodies</p><p class="meta-value">4 built</p></div><div class="meta-item"><p class="meta-label">Type</p><p class="meta-value">Field report</p></div><div class="meta-item"><p class="meta-label">Code</p><p class="meta-value"><a href="https://github.com/omoresearch/omo-microduck" target="_blank" rel="noopener">Microduck</a> · <a href="https://github.com/omoresearch/omo-brought-to-life" target="_blank" rel="noopener">OMO</a></p></div></div>
+<div class="paper-actions" style="margin-top:1.6rem;align-items:center"><a class="btn btn-dark" href="https://github.com/omoresearch/omo-microduck" target="_blank" rel="noopener">GitHub ↗</a><a class="btn btn-outline" href="https://www.instagram.com/reel/DfBYnJViObx/" target="_blank" rel="noopener">Watch the demo ↗</a><a class="act-link" style="align-self:center;margin-left:.5rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px" href="https://github.com/omoresearch/omo-microduck#quick-start" target="_blank" rel="noopener">quick start ↗</a><a class="act-link" style="align-self:center;margin-left:.5rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px" href="https://github.com/omoresearch/omo-microduck/releases/tag/v1.0.0" target="_blank" rel="noopener">or download v1.0.0 ↗</a></div>
+<figure class="exp-cover"><img src="/research/robots/img/cover.jpg" alt="Illustration: a duck robot and a humanoid in a blocky lab, a player watching from the door" /><figcaption><span>Illustration</span>Generated with ChatGPT image generation</figcaption></figure>
+</header>
+<div class="rb-article">
+<p class="section-kicker">Abstract</p>
+<p class="rb-abstract">Omo Space puts AI agents at desks inside Minecraft. Each desk is a terminal, and the agent in it does not move. Over three days in late October 2026 we tried giving agents bodies. We built four. Two are open-source robots simulated in MuJoCo and drawn in the game: Pollen Robotics' Microduck and RoboParty's RP1 humanoid. The third is a GLaDOS-style ceiling AI, a hanging chain of joints moved by scripted behaviour on top of physics. The fourth is OMO, a Mineflayer bot that joins the world as a player and is driven by a Hermes agent with 22 tools. The robots share one pattern: a local process owns the body, a client mod draws it, and a voice backend speaks for it. You talk to the body you are near or looking at. This paper describes the systems, lists what happened in order, and says plainly what broke.</p>
+<p class="section-kicker">01</p><h2>Introduction</h2>
+<div class="rb-ladder" aria-label="Ladder of embodiment">
+<div><b>1</b><strong>Terminal</strong><span>text in a window</span></div><i>&rarr;</i>
+<div><b>2</b><strong>Wall</strong><span>the terminal, pinned to a place</span></div><i>&rarr;</i>
+<div class="on"><b>3</b><strong>Avatar</strong><span>an agent that is a player</span></div><i>&rarr;</i>
+<div class="on"><b>4</b><strong>Simulated robot</strong><span>a real design, physics and a policy</span></div>
+</div>
+
+<p>Omo Space started from one idea: a place is easier to remember than a tab. An agent gets a desk in a room, its terminal hangs on the wall, and you walk to it. The public guide states the limit: "A Hermes desk agent does not act in the world. It cannot walk, place blocks or press buttons." <a class="rb-cite" href="#s10">S10</a></p>
+<p>That limit raises a question. If the world is the interface, should the agents in it have bodies? What does a body add that a wall does not?</p>
+<p>We think of it as a ladder of embodiment:</p>
+<ol>
+<li><strong>Terminal.</strong> The agent is text in a window.</li>
+<li><strong>Wall.</strong> The same terminal, pinned to a place in a shared world. You find it by walking.</li>
+<li><strong>Avatar.</strong> The agent is a player. It can walk to you, follow you, carry things and fight.</li>
+<li><strong>Simulated robot.</strong> The body is a real robot design, moved by a physics engine and a trained policy, not by an animation.</li>
+</ol>
+<p>Omo Space already had the first two rungs. This paper is about the last two. We did not set out to test the ladder. We built one body, it worked well enough to show, and then we built three more. The questions came after. They are in Section 7.</p>
+<p>Two caveats. The evidence is one builder's streams, logs and repositories, plus a few friends and viewers who joined in. Nothing was compared against a control. And most of the code was written by coding agents from short prompts typed inside the game: "I just asked Opus55 bring RoboDuck into Minecraft." (T5 02:10:03) <a class="rb-cite" href="#s12">S12</a></p>
+<p class="section-kicker">02</p><h2>Background</h2>
+<p><strong>Agents in Minecraft.</strong> Minecraft is a common testbed for language-model agents. Voyager calls itself "the first LLM-powered embodied lifelong learning agent in Minecraft", built on an automatic curriculum and a skill library of code <a class="rb-cite" href="#s1">S1</a>. MINDcraft is "an easily extensible platform built to enable LLM agents to control characters in the open-world game of Minecraft" <a class="rb-cite" href="#s2">S2</a>. OMO's body uses Mindcraft's skill library <a class="rb-cite" href="#s3">S3</a> on Mineflayer, which offers a "high level JavaScript API" for Minecraft bots <a class="rb-cite" href="#s4">S4</a>.</p>
+<p><strong>Physics and robots.</strong> MuJoCo is a physics engine for model-based control <a class="rb-cite" href="#s5">S5</a>. Pollen Robotics publishes the Microduck's MJCF model and meshes <a class="rb-cite" href="#s6">S6</a> and pretrained ONNX policies <a class="rb-cite" href="#s7">S7</a>. Community members have published more Microduck policies on Hugging Face. RoboParty publishes the RP1's description files <a class="rb-cite" href="#s8">S8</a> and deploy code with pretrained policies <a class="rb-cite" href="#s9">S9</a>.</p>
+<p>We did not find prior work that puts a real robot design into the same game world as the people and the desk agents, where you walk up to it and talk. We did not search hard, so treat that as weak.</p>
+<p class="section-kicker">03</p><h2>Systems</h2>
+<p>The three robot bodies share one design, written down first for the duck. The RP1 and GLaDOS contracts say to read the duck's files and "copy freely" <a class="rb-cite" href="#s13">S13</a><a class="rb-cite" href="#s16">S16</a>.</p>
+<ul>
+<li>A <strong>sidecar</strong>: one Python process that steps the simulation in real time and serves poses over HTTP on 127.0.0.1 only, "never 0.0.0.0" <a class="rb-cite" href="#s13">S13</a>.</li>
+<li>A <strong>client mod</strong> for Minecraft 26.2 (Fabric). It fetches the mesh once, polls poses at about 25 Hz on a background thread, and draws each part every frame, smoothed between poses. Chat commands (<code>!duck</code>, <code>!rp1</code>, <code>!glados</code>) are caught on the client and never reach the server.</li>
+<li>An optional <strong>voice backend</strong>. A Simple Voice Chat plugin sends push-to-talk audio to it and plays the reply from the body's head, as positional sound, with captions.</li>
+</ul>
+<p>Sidecars run on one thread at low priority, "so it never steals CPU from the game/OBS" <a class="rb-cite" href="#s13">S13</a>. The builder plays and streams on the same machine.</p>
+<h3>3.1 Microduck</h3>
+<figure class="exp-figure rb-fig"><img src="/research/robots/img/flock.jpg" alt="Five Microducks in the lab, each with its own eye colour and persona" loading="lazy" decoding="async" /><figcaption><span>From the game</span>Five Microducks in the lab, each with its own eye colour and persona</figcaption></figure>
+
+<figure class="exp-figure rb-fig"><img src="/research/robots/img/render-trio.jpg" alt="The duck model the game draws, rendered in MuJoCo" loading="lazy" decoding="async" /><figcaption><span>Sim render</span>The duck model the game draws, rendered in MuJoCo</figcaption></figure>
+
+<p><strong>Body.</strong> Pollen Robotics' Microduck, about 25 cm tall, with its real CAD, servo model and policies. MuJoCo runs at 200 Hz physics and 50 Hz policy, with the BAM XL330 servo model and 2° gear backlash <a class="rb-cite" href="#s11">S11</a>. Each step builds the 61-number observation the policies were trained on <a class="rb-cite" href="#s12a">S12a</a>. Pollen's <code>velstand</code> policy walks, turns, follows and gets up; <code>alpha_sitstand</code> sits and stands <a class="rb-cite" href="#s14">S14</a>. A duck still down after 3 s is reset upright <a class="rb-cite" href="#s12a">S12a</a>.</p>
+<p><strong>Blocks as terrain.</strong> Every 2 s the mod scans the blocks near the duck and sends their collision boxes to the sim. Walls stop it, carpets are walkable, ledges drop it. At the default scale a block is 25 cm, the duck's own height, so it cannot climb stairs. The README calls that "physically correct" <a class="rb-cite" href="#s11">S11</a>.</p>
+<p><strong>A flock.</strong> Up to 4 ducks by default, 8 at most, each with a persona, name tag, eye colour and quack pitch: Quackers, Rusty, Zippy, Plato and Newton <a class="rb-cite" href="#s11">S11</a>. Each duck has its own MuJoCo model, and the others appear in it as trunk-sized capsules <a class="rb-cite" href="#s12a">S12a</a>.</p>
+<p><strong>More brains.</strong> Twelve community policies are offered: sprint, roller skates, forward roll, cartwheel, hop, dance and others. Each was graded in the sim over 3 seeds first. Some were rejected, such as sprinters that "ignore the speed command, so nothing can stop them at the leash" <a class="rb-cite" href="#s12a">S12a</a>.</p>
+<p><strong>Cost.</strong> About 7% of one core for one duck and 22% for four, at a steady 50.0 Hz with 0 overruns, and about 470 MB of RAM. The model has 25,536 triangles <a class="rb-cite" href="#s11">S11</a>.</p>
+<p><strong>Voice.</strong> Hold push-to-talk within 16 blocks. The backend picks the listener in this order: a duck named in your words, then the duck you just spoke to (for 20 s), then the duck under your crosshair, then the nearest, then the default <a class="rb-cite" href="#s12b">S12b</a>. Each duck has its own voice call, at most 2 open at once. Spoken moves are parsed locally into sidecar commands, with no agent round trip; other requests can go to a Hermes agent <a class="rb-cite" href="#s20">S20</a>. The public release ships the voice plugin and protocol, not the backend. Stream viewers can walk the duck but cannot reset or remove it <a class="rb-cite" href="#s11">S11</a>.</p>
+<h3>3.2 RP1 humanoid</h3>
+<figure class="exp-figure rb-fig"><img src="/research/robots/img/rp1-lab.webp" alt="The RP1 humanoid next to a Microduck in the underground lab" loading="lazy" decoding="async" /><figcaption><span>Stream clip</span>The RP1 humanoid next to a Microduck in the underground lab</figcaption></figure>
+
+<p><strong>Body.</strong> RoboParty's RP1, 24-joint variant, with RoboParty's own policies: locomotion, a wave learned from a motion clip, and a dance <a class="rb-cite" href="#s15">S15</a>. MuJoCo steps at 0.002 s with a 50 Hz policy. Joint PD control uses the gains from RoboParty's training setup. The hardware gains were tried first; with them the robot stood and turned but did "not walk forward (0.0 m/s at cmd 0.4)" <a class="rb-cite" href="#s15">S15</a>.</p>
+<p><strong>Measured.</strong> Walking 0.395 m/s with 4 cm of sideways drift over 10 s. Turns of +86° and −85° in 2.6 s. Two 10-minute runs of random commands: 0 falls, 0 resets. CPU 8.1% of one core standing, 15.5% dancing <a class="rb-cite" href="#s15">S15</a>.</p>
+<p><strong>In the world.</strong> One sim metre is one block, so RP1 stands about 1.5 blocks tall <a class="rb-cite" href="#s17">S17</a>. Unlike the duck, "the robot can't see Minecraft blocks" <a class="rb-cite" href="#s15">S15</a>. There is no get-up policy, so every fall ends in a reset.</p>
+<p><strong>Voice.</strong> A persona called Roboto, with his own voice. While he talks, a small waist sway and forearm movement are added to the standing policy, and only while he stands <a class="rb-cite" href="#s15">S15</a><a class="rb-cite" href="#s20">S20</a>.</p>
+<h3>3.3 GLaDOS-style ceiling AI</h3>
+<p><strong>Body.</strong> A large AI hanging from the lab ceiling, about 7.5 blocks tall, in the style of the Portal games. The first model was original procedural geometry with "no Valve assets". Two credited fan-made models were added later; the model switches live in about 0.1 s <a class="rb-cite" href="#s16">S16</a>.</p>
+<p><strong>Physics without a policy.</strong> No trained policy exists for a character like this, so "the 'brain' is a scripted behaviour layer on top of real physics" <a class="rb-cite" href="#s16">S16</a>. She is a chain of 13 hinge joints under gravity at 60 Hz. Gravity compensation on the arm is cut to 50%, so it "still hangs like a pendulum and sways from the reaction torques of the head". Inverse kinematics keeps her eye on the player. Behaviours include track, angry, scan, bow, sleep, dance and an 18.6 s "spooky" routine that ends with her eye about 1.5 m from the player's. Tracking error was 0.8–4.7° over 8 targets; the service used 5.6% of one core <a class="rb-cite" href="#s16">S16</a>.</p>
+<p><strong>Voice.</strong> Her persona is written in our own words: a dry lab supervisor who calls the player "test subject" <a class="rb-cite" href="#s16">S16</a>. One version re-voices her lines through a local voice-cloning speech server <a class="rb-cite" href="#s20">S20</a>.</p>
+<p><strong>One listener at a time.</strong> Three companions in one room means three possible listeners. Each claims the mic when you are within range and looking at it, or closer to it than to the duck. The best fresh claim wins, so "exactly one companion hears each push-to-talk" <a class="rb-cite" href="#s17">S17</a>.</p>
+<h3>3.4 OMO, the agent player</h3>
+<figure class="exp-figure rb-fig"><img src="/research/robots/img/omo.jpg" alt="OMO, the agent player, in the cave base" loading="lazy" decoding="async" /><figcaption><span>From the game</span>OMO, the agent player, in the cave base</figcaption></figure>
+
+<p><strong>Body.</strong> Not a simulated robot. OMO is a Mineflayer bot that logs into your single-player world as a player. He walks, swims, takes knockback, gets hungry, fights and sleeps <a class="rb-cite" href="#s18">S18</a>. Omo Space v1.2.0 opens the world to LAN on port 25566 for agents on the same computer; offline logins from other machines are refused. Agents get the Omo skin and a <code>ChatGPT - &lt;name&gt;</code> tag <a class="rb-cite" href="#s10b">S10b</a><a class="rb-cite" href="#s18">S18</a>.</p>
+<p><strong>Brain and tools.</strong> You talk to a voice model in a browser page. Requests to do something go to OMO's own Hermes agent, which plans and calls the body's 22 tools over MCP. Long jobs can be interrupted, paused for a fight and resumed. "Come here", "follow me", "stop", "fight" and "chop some wood" skip the language model entirely <a class="rb-cite" href="#s18">S18</a><a class="rb-cite" href="#s19">S19</a>.</p>
+<p><strong>What this rung adds.</strong> The robots move and talk. OMO changes the world. On stream he went from wood to planks, sticks, a crafting table and a pickaxe, then stone and a stone sword, "including retrying a craft that failed the first time" <a class="rb-cite" href="#s18">S18</a>.</p>
+<p class="section-kicker">04</p><h2>What we did</h2>
+<p>Times are Australian Eastern Daylight Time, from commits, file times and CHANGELOGs. Stream tags (T4 = 27 Oct, T5–T7 = 28 Oct, T8 = 29 Oct) are offsets into each recording, not clock times <a class="rb-cite" href="#s21">S21</a>.</p>
+<p><strong>27 October.</strong>
+- Around midday, four commits to the Omo Space mod opened single-player worlds to local agents over LAN, let a plain bot client join a Fabric world, and added the agent skin and name tag <a class="rb-cite" href="#s22">S22</a>.
+- On stream, OMO appeared carrying a sword and following the builder (T4 00:12:59). Asked to use Hermes to find a bot's-eye camera plugin, he came back with "prismarine viewer" (T4 02:39:45) <a class="rb-cite" href="#s21">S21</a>.
+- A viewer had suggested putting the Microduck in Minecraft: "you were the one that gave me the idea" (T4 02:17:24). One prompt to a desk agent built an underground robotics lab, shown about 30 minutes later (T4 02:52:47). The duck was reported built and installed at T4 03:27:36 <a class="rb-cite" href="#s21">S21</a>.</p>
+<p><strong>28 October, night to morning.</strong>
+- The duck walked on command in the game (T5 00:11:45). The RP1 was spawned and danced (T5 00:55:46): "Now it's truly online." (T5 00:56:30) <a class="rb-cite" href="#s21">S21</a>
+- First push-to-talk conversation with the duck (T5 01:35:42). "Microduck? Do a jump." worked (T5 01:44:29) <a class="rb-cite" href="#s21">S21</a>.
+- The GLaDOS project began from the same pattern (T5 01:55:23) <a class="rb-cite" href="#s21">S21</a>. Her sidecar got a redesign, then switchable fan-made models (live from about 06:31), then the spooky routine <a class="rb-cite" href="#s16">S16</a><a class="rb-cite" href="#s23">S23</a>.
+- Multi-duck support began around 03:30 (a backup folder marks it) <a class="rb-cite" href="#s12a">S12a</a>. Soon after: "Yo ducks ducks race to my position" (T5 03:02:26) <a class="rb-cite" href="#s21">S21</a>.</p>
+<p><strong>28 October, day.</strong>
+- 12:28: Omo Microduck v1.0.0, the first public release <a class="rb-cite" href="#s24">S24</a>. 14:26: Omo, brought to life v0.1.0 <a class="rb-cite" href="#s25">S25</a>.
+- On stream, six ducks stood up and walked toward the builder (T6 06:51:55). Ducks answered spoken commands in character ("Quack. We're doing it.", T7 03:20:52), and agents cut stream clips of them into short films <a class="rb-cite" href="#s21">S21</a>.</p>
+<p><strong>29 October.</strong> The builder spoke to the flock in passing: "can two of the ducks sit down and the rest stand up" (T8 01:47:37) <a class="rb-cite" href="#s21">S21</a>.</p>
+<p><strong>30 October.</strong> The RP1 and GLaDOS code went into local version control, "not published" <a class="rb-cite" href="#s26">S26</a>.</p>
+<p class="section-kicker">05</p><h2>Observations</h2>
+<figure class="exp-figure rb-fig"><img src="/research/robots/img/roll.jpg" alt="A Microduck mid forward roll, one of the community policies" loading="lazy" decoding="async" /><figcaption><span>From the game</span>A Microduck mid forward roll, one of the community policies</figcaption></figure>
+
+<p>These are things we saw, not things we tested.</p>
+<p><strong>A real robot design reads differently from a mob.</strong> The duck falls because a policy lost its balance against simulated gravity, not because an animation played. Its stair falls became a public reel: "It can't climb stairs, so down it goes" <a class="rb-cite" href="#s11">S11</a>. The failure was the content.</p>
+<p><strong>Proximity and gaze worked as addressing.</strong> Push-to-talk "within our 16 blocks" (T5 01:20:59), with the crosshair or a name choosing the listener, was enough to talk to one duck in a flock. "Each microduck will have its own personality." (T5 01:46:32) <a class="rb-cite" href="#s21">S21</a>. The question from the same stream is still open: "How does it know where I'm talking to?" (T5 03:03:09) <a class="rb-cite" href="#s21a">S21a</a>.</p>
+<p><strong>Other people joined in.</strong> Friends on a call directed the robots ("Scale like five or six.", T5 02:19:50). One asked whether the robots could do real work, "like hold something", or were "just regular robots" (T6 07:52:13) <a class="rb-cite" href="#s21">S21</a>. That question marks the gap between the robot rung and the avatar rung.</p>
+<p><strong>The game became the lab.</strong> The robots got a test room, an obstacle course and a separate dev room. One line on a call was "This is the simulator." (T5 02:15:53); the speaker is uncertain <a class="rb-cite" href="#s21">S21</a>.</p>
+<p><strong>Only the avatar does work.</strong> OMO answered two overlapping spoken requests in one reply, a web lookup and his inventory ("four pieces of rotten flesh") <a class="rb-cite" href="#s18">S18</a>. The robots never change the world. OMO does.</p>
+<p class="section-kicker">06</p><h2>What broke, and limitations</h2>
+<figure class="exp-figure rb-fig"><img src="/research/robots/img/stairs.webp" alt="The duck meets Minecraft stairs: a fall from the stream, as posted" loading="lazy" decoding="async" /><figcaption><span>Stream reel</span>The duck meets Minecraft stairs: a fall from the stream, as posted</figcaption></figure>
+
+<p><strong>Speed of building, and its cost.</strong> Each new body reused the duck's design and took hours, not days <a class="rb-cite" href="#s15">S15</a><a class="rb-cite" href="#s17">S17</a>. We cannot tell how much of that was the pattern and how much was the coding agents.</p>
+<p><strong>Physics meets blocks.</strong> The duck fell on stairs again and again ("The micro doc is just forming on our Minecraft stairs.", T5 01:34:03) and got stuck (T8 03:32:15). Early on it walked through walls (T5 00:11:58), before terrain was added. The RP1 still cannot see blocks and walked through walls in a demo (T6 07:57:55) <a class="rb-cite" href="#s15">S15</a><a class="rb-cite" href="#s21">S21</a>.</p>
+<p><strong>Sim gaps.</strong> The duck's walking policy reaches about ⅓ of its commanded speed in our CPU sim, so commands are scaled and speeds are "nominal" <a class="rb-cite" href="#s11">S11</a>. The RP1 reaches about 0.8× <a class="rb-cite" href="#s15">S15</a>. Ducks feel each other only as capsules <a class="rb-cite" href="#s12a">S12a</a>.</p>
+<p><strong>The humanoid would not follow.</strong> "rp1 follow me and it's not working but maybe the ducks" (T6 07:56:20) <a class="rb-cite" href="#s21">S21</a>. The cause is [unverified].</p>
+<p><strong>Voice.</strong> The cloned GLaDOS voice ran slower than real time: "I'm rating 9.2 seconds of speech. / Took 15 seconds." (T6 04:45:58), and later "So, she is broken." (T6 05:17:38) <a class="rb-cite" href="#s21">S21</a>. OMO's voice runs in a browser tab, not in-game push-to-talk, over an undocumented route that "can change or break without notice" <a class="rb-cite" href="#s18">S18</a>.</p>
+<p><strong>The agent player is fragile.</strong> He would not stay put ("Stay sit sit puppy sit right not working", T4 00:13:26). He talked over the builder (T4 02:49:11). He kept dying to zombies, and the builder worried it was "using up my usage" (T4 03:04:49). One Hermes round trip never came back (T4 03:35:07) <a class="rb-cite" href="#s21">S21</a>. A request for 8 birch logs ended with 1 <a class="rb-cite" href="#s18">S18</a>.</p>
+<p><strong>The machine.</strong> The 28 October stream ends in a full PC freeze and restart <a class="rb-cite" href="#s21">S21</a>.</p>
+<p><strong>Opacity.</strong> Asked how the duck was connected, the builder said "I don't even know bro." (T5 02:10:02) <a class="rb-cite" href="#s21">S21</a>. Building by prompt is fast. It can also leave the builder unable to debug live.</p>
+<p><strong>Rights.</strong> The Microduck mod and the agent player are public under MIT, with upstream credits <a class="rb-cite" href="#s11">S11</a><a class="rb-cite" href="#s18">S18</a>. The RP1 work is "local personal use only" <a class="rb-cite" href="#s15">S15</a>. The GLaDOS work uses a character owned by Valve, fan-made models credited for personal non-commercial use, and a cloned character voice <a class="rb-cite" href="#s16">S16</a><a class="rb-cite" href="#s20">S20</a>. It is not published, and should not be.</p>
+<p><strong>Evidence.</strong> One builder, a few friends and viewers. Quotes come from automatic transcripts, checked against the transcript text but not the audio <a class="rb-cite" href="#s21">S21</a>.</p>
+<p class="section-kicker">07</p><h2>Next steps and testable questions</h2>
+<ol>
+<li><strong>Addressing.</strong> With 3 or more companions in a room, how often does a spoken request reach the intended listener? Compare routing by name, gaze and nearness. The routing is already logged <a class="rb-cite" href="#s20">S20</a>.</li>
+<li><strong>Trust.</strong> Does a body that can really fall make people more or less willing to hand an agent a real task than a scripted one does?</li>
+<li><strong>Robots that work.</strong> Connect a simulated robot to a Hermes agent with real tools, as OMO is connected. Can it "hold something"?</li>
+<li><strong>Terrain for the humanoid.</strong> Port the duck's block scan to the RP1. Measure falls per minute on a fixed obstacle course, before and after.</li>
+<li><strong>Getting up.</strong> Add a get-up policy for the RP1 and count resets per 10 minutes.</li>
+<li><strong>Long chains.</strong> Run OMO's stone-sword chain 20 times from a fresh world. How often does it finish, and why does it fail?</li>
+<li><strong>Cost.</strong> Measure game frame time with 0, 1, 4 and 8 bodies loaded, on the streaming machine, while streaming.</li>
+</ol>
+<p class="section-kicker">08</p><h2>Sources</h2>
+<p class="rb-ref" id="s1"><b>[S1]</b> Wang et al., "Voyager: An Open-Ended Embodied Agent with Large Language Models", arXiv:2305.16291. <a href="https://arxiv.org/abs/2305.16291" target="_blank" rel="noopener">arxiv.org/abs/2305.16291</a>. "the first LLM-powered embodied lifelong learning agent in Minecraft"</p>
+<p class="rb-ref" id="s2"><b>[S2]</b> White et al., "Collaborating Action by Action: A Multi-agent LLM Framework for Embodied Reasoning", arXiv:2504.17950. <a href="https://arxiv.org/abs/2504.17950" target="_blank" rel="noopener">arxiv.org/abs/2504.17950</a>. "we introduce MINDcraft, an easily extensible platform built to enable LLM agents to control characters in the open-world game of Minecraft"</p>
+<p class="rb-ref" id="s3"><b>[S3]</b> Mindcraft repository. <a href="https://github.com/mindcraft-bots/mindcraft" target="_blank" rel="noopener">github.com/mindcraft-bots/mindcraft</a>. Credited in <a class="rb-cite" href="#s18">S18</a>: "Omo's body skills are Mindcraft's library (MIT), running on Mineflayer"</p>
+<p class="rb-ref" id="s4"><b>[S4]</b> Mineflayer. <a href="https://github.com/PrismarineJS/mineflayer" target="_blank" rel="noopener">github.com/PrismarineJS/mineflayer</a>. Repository description: "Create Minecraft bots with a powerful, stable, and high level JavaScript API."</p>
+<p class="rb-ref" id="s5"><b>[S5]</b> Todorov, Erez, Tassa, "MuJoCo: A physics engine for model-based control", IROS 2012, doi:10.1109/IROS.2012.6386109. Repository: <a href="https://github.com/google-deepmind/mujoco" target="_blank" rel="noopener">github.com/google-deepmind/mujoco</a>. Citation block in the repo README: "MuJoCo: A physics engine for model-based control"</p>
+<p class="rb-ref" id="s6"><b>[S6]</b> Pollen Robotics, microduck_rl. <a href="https://github.com/pollen-robotics/microduck_rl" target="_blank" rel="noopener">github.com/pollen-robotics/microduck_rl</a>. Cited in <a class="rb-cite" href="#s12a">S12a</a>: "MJCF + meshes from pollen-robotics/microduck_rl, Apache-2.0"</p>
+<p class="rb-ref" id="s7"><b>[S7]</b> Pollen Robotics, microduck-policies. <a href="https://huggingface.co/pollen-robotics/microduck-policies" target="_blank" rel="noopener">huggingface.co/pollen-robotics/microduck-policies</a>. Cited in <a class="rb-cite" href="#s12a">S12a</a>: "the pretrained ONNX policies from pollen-robotics/microduck-policies"</p>
+<p class="rb-ref" id="s8"><b>[S8]</b> RoboParty, RP1_description. <a href="https://github.com/Roboparty/RP1_description" target="_blank" rel="noopener">github.com/Roboparty/RP1_description</a>. Cited in <a class="rb-cite" href="#s15">S15</a>: "MJCF + meshes from Roboparty/RP1_description"</p>
+<p class="rb-ref" id="s9"><b>[S9]</b> RoboParty, roboparty_inference. <a href="https://github.com/Roboparty/roboparty_inference" target="_blank" rel="noopener">github.com/Roboparty/roboparty_inference</a>. Cited in <a class="rb-cite" href="#s15">S15</a>: "RoboParty's own pretrained ONNX policies from Roboparty/roboparty_inference"</p>
+<p class="rb-ref" id="s10"><b>[S10]</b> Omo Space, docs/AGENTS-AND-TERMINALS.md, section 9 "What is not built yet" (public). <a href="https://github.com/omoresearch/omo-space/blob/main/docs/AGENTS-AND-TERMINALS.md" target="_blank" rel="noopener">github.com/omoresearch/omo-space/blob/main/docs/AGENTS-AND-TERMINALS.md</a>. "A Hermes desk agent does not act in the world. It cannot walk, place blocks or press buttons."</p>
+<p class="rb-ref" id="s10b"><b>[S10b]</b> Omo Space, docs/AGENTS-AND-TERMINALS.md, section 8 (public). <a href="https://github.com/omoresearch/omo-space/blob/main/docs/AGENTS-AND-TERMINALS.md" target="_blank" rel="noopener">github.com/omoresearch/omo-space/blob/main/docs/AGENTS-AND-TERMINALS.md</a>. "the mod opens it to LAN on port 25566 ... Those players may join from this computer only"</p>
+<p class="rb-ref" id="s11"><b>[S11]</b> Omo Microduck README. <a href="https://github.com/omoresearch/omo-microduck" target="_blank" rel="noopener">github.com/omoresearch/omo-microduck</a>. "MuJoCo at 200 Hz physics / 50 Hz policy, on one CPU core"; "about 7% of one core for one duck and 22% for four"; "It cannot climb stairs or slabs, and that is physically correct."</p>
+<p class="rb-ref" id="s12"><b>[S12]</b> Stream analysis T5 (see S21). "I just asked Opus55 bring RoboDuck into Minecraft." (T5 02:10:03)</p>
+<p class="rb-ref" id="s12a"><b>[S12a]</b> microduck-sim README (repo, local; published as <code>sidecar/</code> in S11). "61-D obs = imu gyro (3) + projected gravity ... + last action (14) + 13-D command"; "sprint-fixed/hill-fixed run 1.7/1.4 m/s but ignore the speed command, so nothing can stop them at the leash"</p>
+<p class="rb-ref" id="s12b"><b>[S12b]</b> microduck-sim CONTRACT.md, "Voice (proto 2)" (repo, local). "a duck's name in the utterance &gt; the current duck (sticky 20 s) &gt; looked-at duck &gt; nearest within 16 blocks &gt; default"</p>
+<p class="rb-ref" id="s13"><b>[S13]</b> microduck-sim CONTRACT.md (repo, local). "127.0.0.1:8796 only (never 0.0.0.0)"; "so it never steals CPU from the game/OBS"</p>
+<p class="rb-ref" id="s14"><b>[S14]</b> Omo Microduck CHANGELOG, v1.0.0. <a href="https://github.com/omoresearch/omo-microduck/blob/main/CHANGELOG.md" target="_blank" rel="noopener">github.com/omoresearch/omo-microduck/blob/main/CHANGELOG.md</a>. "<code>velstand</code> handles walk, turn, follow and getting up; <code>alpha_sitstand</code> handles sit and stand."</p>
+<p class="rb-ref" id="s15"><b>[S15]</b> rp1-sim README and CONTRACT.md (repo, local, not published). "walk (nominal 0.4 → policy 0.5): 0.395 m/s forward"; "the robot stands and turns but does not walk forward (0.0 m/s at cmd 0.4)"; "Only a flat floor; the robot can't see Minecraft blocks."; "Local personal use only"</p>
+<p class="rb-ref" id="s16"><b>[S16]</b> glados-sim README and CONTRACT.md (repo, local, not published). "the 'brain' is a scripted behaviour layer on top of real physics"; "so the arm still hangs like a pendulum"; "track aim error 0.8–4.7° over 8 targets"</p>
+<p class="rb-ref" id="s17"><b>[S17]</b> rp1-mod README (repo, local). "The best fresh claim among GLaDOS and the RP1 owns <code>omo.voice.focus</code>, so exactly one companion hears each push-to-talk." Also: "default 1: RP1 is ~1.5 blocks tall"</p>
+<p class="rb-ref" id="s18"><b>[S18]</b> Omo, brought to life README. <a href="https://github.com/omoresearch/omo-brought-to-life" target="_blank" rel="noopener">github.com/omoresearch/omo-brought-to-life</a>. "These are the 22 tools his body serves to Hermes"; "On stream he ran that whole chain himself, including retrying a craft that failed the first time."; "a request for 8 birch logs finished with 1 collected"</p>
+<p class="rb-ref" id="s19"><b>[S19]</b> Omo, brought to life, docs/how-it-works.md. <a href="https://github.com/omoresearch/omo-brought-to-life/blob/main/docs/how-it-works.md" target="_blank" rel="noopener">github.com/omoresearch/omo-brought-to-life/blob/main/docs/how-it-works.md</a>. "<code>quickIntent</code> in <code>body.mjs</code> matches short, plain requests ... and runs them on the body directly, before any language model."</p>
+<p class="rb-ref" id="s20"><b>[S20]</b> Voice backend README and fish-voice.mjs header (local, not published). "One GPT-Live call per duck ... at most 2 live at once"; "her spoken words are re-voiced by the local fish-speech server"</p>
+<p class="rb-ref" id="s21"><b>[S21]</b> Stream analysis, stream-analysis/T4–T8 (science lab, local; companion paper "Rooms, Not Windows"). Quotes are whisper-small transcripts, re-checked against the transcript text: "791/791 verified". Example: "[02:15:53] 'This is the simulator.'" (speaker uncertain)</p>
+<p class="rb-ref" id="s21a"><b>[S21a]</b> SYNTHESIS.md, counter-evidence (same source as S21). "Addressing in voice: 'How does it know where I'm talking to?' (T5 03:03:09)"</p>
+<p class="rb-ref" id="s22"><b>[S22]</b> Omo Space git log, 27 Oct 2026 (repo: <a href="https://github.com/omoresearch/omo-space)" target="_blank" rel="noopener">github.com/omoresearch/omo-space)</a>. "feat(mod): open single-player worlds to LAN for local AI agents (offline join, loopback-only)"</p>
+<p class="rb-ref" id="s23"><b>[S23]</b> glados-sim PROGRESS-v3.md (repo, local). "restart glados-sim.service 06:31 (blendswap active ...)"</p>
+<p class="rb-ref" id="s24"><b>[S24]</b> Omo Microduck git log and release v1.0.0. <a href="https://github.com/omoresearch/omo-microduck/releases/tag/v1.0.0" target="_blank" rel="noopener">github.com/omoresearch/omo-microduck/releases/tag/v1.0.0</a>. "2026-10-28 12:28:44 +1100 feat: Omo Microduck v1.0.0"</p>
+<p class="rb-ref" id="s25"><b>[S25]</b> Omo, brought to life git log and release v0.1.0. <a href="https://github.com/omoresearch/omo-brought-to-life/releases/tag/v0.1.0" target="_blank" rel="noopener">github.com/omoresearch/omo-brought-to-life/releases/tag/v0.1.0</a>. "2026-10-28 14:26:36 +1100 feat: Omo v0.1.0"</p>
+<p class="rb-ref" id="s26"><b>[S26]</b> rp1-sim / glados-sim git log (repo, local). "2026-10-30 00:43:24 +1100 Initial import: rp1-sim as it runs today (local repo, not published)"</p>
+</div>
+</article>
+</main>
+<footer class="site-footer"><div class="footer-inner"><p>© 2026 Omo Research. Prototypes from our own use, not controlled studies.</p><nav class="footer-links" aria-label="Footer"><a href="/">Home</a><a href="/omo-space">Research</a><a href="/notes">Notes</a><a href="/products">Releases</a><a href="mailto:harrythentrepreneur@gmail.com">Contact</a></nav></div></footer>
+</body>
+</html>
