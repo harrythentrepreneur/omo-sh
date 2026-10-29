@@ -146,6 +146,33 @@
 .rb-ladder i { align-self: center; font-style: normal; color: var(--text-2); }
 .rb-abstract { border-left: 2px solid var(--btn-bg); padding-left: 1rem; }
 </style>
+<style>
+.aq, .aq pre, .aq p, .aq h3 { text-align: left; }
+.aq { margin: 2rem 0 0; border: 1px solid var(--border); border-radius: 16px; background: var(--bg-card); overflow: hidden; }
+.aq-head { padding: 1.2rem 1.3rem .2rem; }
+.aq-kicker { font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .07em; color: var(--text-2); margin: 0 0 .35rem; }
+.aq-head h3 { margin: 0 0 .3rem; font-size: 1.35rem; font-weight: 600; }
+.aq-head p { margin: 0; color: var(--text-2); font-size: 1rem; line-height: 1.5; }
+.aq-ideas { justify-content: flex-start; display: flex; flex-wrap: wrap; gap: .45rem; padding: .9rem 1.3rem 0; }
+.aq-chip { font: inherit; font-size: .95rem; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: .38rem .8rem; cursor: pointer; }
+.aq-chip:hover { border-color: var(--text-2); }
+.aq-chip[aria-pressed="true"] { background: var(--btn-bg); color: var(--bg); border-color: var(--btn-bg); }
+.aq-own { display: flex; gap: .5rem; padding: .7rem 1.3rem 0; }
+.aq-own input { flex: 1; min-width: 0; font: inherit; font-size: 16px; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: .55rem .75rem; }
+.aq-own input:focus { outline: 2px solid var(--text); outline-offset: 1px; }
+.aq-box { position: relative; margin: 1rem 1.3rem 1.3rem; }
+.aq-box pre { margin: 0; background: #1a1008; color: #f5f0e8; border-radius: 12px; padding: 1rem 1.1rem 3.2rem; white-space: pre-wrap !important; word-break: break-word; overflow: hidden; font-family: var(--font-mono); font-size: .74rem; line-height: 1.6; }
+.aq-box pre mark { background: #f5f0e8; color: #1a1008; border-radius: 3px; padding: 0 .2rem; }
+.aq-copy { position: absolute; right: .7rem; bottom: .7rem; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .04em; background: #f5f0e8; color: #1a1008; border: 0; border-radius: 999px; padding: .5rem .95rem; cursor: pointer; }
+.aq-copy:hover { background: #fff; }
+.aq-foot { padding: 0 1.3rem 1.1rem; font-family: var(--font-mono); font-size: .6rem; color: var(--text-2); line-height: 1.6; }
+@media (max-width: 640px) {
+  .aq-head, .aq-ideas, .aq-own { padding-left: 1rem; padding-right: 1rem; }
+  .aq-box { margin: .9rem 1rem 1rem; }
+  .aq-box pre { font-size: .7rem; }
+  .aq-foot { padding: 0 1rem 1rem; }
+}
+</style>
 </head>
 <body>
 <nav class="sidebar" aria-label="Research navigation"><div class="sidebar-inner">
@@ -163,6 +190,11 @@
 <p class="section-note">A field report from three days of building on a live stream, 27&ndash;30 October 2026. Not a controlled study.</p>
 <div class="meta-grid"><div class="meta-item"><p class="meta-label">Published</p><p class="meta-value"><time datetime="2026-10-30">30 Oct 2026</time></p></div><div class="meta-item"><p class="meta-label">Bodies</p><p class="meta-value">4 built</p></div><div class="meta-item"><p class="meta-label">Type</p><p class="meta-value">Field report</p></div><div class="meta-item"><p class="meta-label">Code</p><p class="meta-value"><a href="https://github.com/omoresearch/omo-microduck" target="_blank" rel="noopener">Microduck</a> · <a href="https://github.com/omoresearch/omo-brought-to-life" target="_blank" rel="noopener">OMO</a></p></div></div>
 <div class="paper-actions" style="margin-top:1.6rem;align-items:center"><a class="btn btn-dark" href="https://github.com/omoresearch/omo-microduck" target="_blank" rel="noopener">GitHub ↗</a><a class="btn btn-outline" href="https://www.instagram.com/reel/DfBYnJViObx/" target="_blank" rel="noopener">Watch the demo ↗</a><a class="act-link" style="align-self:center;margin-left:.5rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px" href="https://github.com/omoresearch/omo-microduck#quick-start" target="_blank" rel="noopener">quick start ↗</a><a class="act-link" style="align-self:center;margin-left:.5rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px" href="https://github.com/omoresearch/omo-microduck/releases/tag/v1.0.0" target="_blank" rel="noopener">or download v1.0.0 ↗</a></div>
+<section class="aq" id="agent-quick-start" data-ask="Ask me what I want the duck to do first, then give me the chat commands for it." data-lead="%s"><div class="aq-head"><p class="aq-kicker">Quick start with your agent</p><h3>Install the duck and meet it, in one prompt</h3><p>Pick what you want the duck to do first, or type your own. Paste it into Claude Code, Codex or Hermes, opened in an empty folder.</p></div><div class="aq-ideas" role="group" aria-label="Pick an idea"><button type="button" class="aq-chip" aria-pressed="false" data-idea="put one duck at my feet and have it follow me">A duck that follows me</button><button type="button" class="aq-chip" aria-pressed="false" data-idea="bring the whole flock and make them all walk">The whole flock</button><button type="button" class="aq-chip" aria-pressed="false" data-idea="show me the tricks it knows and make it do a forward roll">Tricks</button></div><div class="aq-own"><input type="text" maxlength="200" placeholder="Or your own, e.g. a duck that guards my door" aria-label="Your own idea" /></div><div class="aq-box"><pre aria-live="polite"></pre><button type="button" class="aq-copy">Copy prompt</button></div><template class="aq-tpl">Set up Omo Microduck for me from https://github.com/omoresearch/omo-microduck
+
+1. Read README.md. First check that I have Minecraft Java 26.2 with Fabric Loader and Fabric API, Python 3.12+ and git, and tell me what is missing.
+2. Follow its Quick start: clone the repo, run sidecar/setup.sh, start the sidecar, and put the jar from the latest release into my Fabric 26.2 instance&#x27;s mods folder.
+3. When the game is running, tell me exactly what to type in chat for this: {IDEA}</template><p class="aq-foot">Needs Minecraft Java 26.2 with Fabric, Python 3.12+ and git. Tested on Linux x86_64.</p></section>
 <figure class="exp-cover"><img src="/research/robots/img/cover.jpg" alt="Illustration: a duck robot and a humanoid in a blocky lab, a player watching from the door" /><figcaption><span>Illustration</span>Generated with ChatGPT image generation</figcaption></figure>
 </header>
 <div class="rb-article">
@@ -311,5 +343,32 @@
 </article>
 </main>
 <footer class="site-footer"><div class="footer-inner"><p>© 2026 Omo Research. Prototypes from our own use, not controlled studies.</p><nav class="footer-links" aria-label="Footer"><a href="/">Home</a><a href="/omo-space">Research</a><a href="/notes">Notes</a><a href="/products">Releases</a><a href="mailto:harrythentrepreneur@gmail.com">Contact</a></nav></div></footer>
+<script>
+document.querySelectorAll(".aq").forEach(box => {
+  const tpl = box.querySelector("template.aq-tpl").innerHTML.trim();
+  const ask = box.dataset.ask, pre = box.querySelector("pre"), own = box.querySelector(".aq-own input");
+  const chips = [...box.querySelectorAll(".aq-chip")];
+  const esc = s => s.replace(/[&<>]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;"}[c]));
+  let idea = "";
+  const render = () => {
+    const txt = idea ? box.dataset.lead.replace("%s", idea) : ask;
+    pre.innerHTML = esc(tpl).replace("{IDEA}", "<mark>" + esc(txt) + "</mark>");
+  };
+  chips.forEach(c => c.addEventListener("click", () => {
+    const on = c.getAttribute("aria-pressed") !== "true";
+    chips.forEach(x => x.setAttribute("aria-pressed", "false"));
+    c.setAttribute("aria-pressed", on ? "true" : "false");
+    idea = on ? c.dataset.idea : ""; if (own) own.value = ""; render();
+  }));
+  if (own) own.addEventListener("input", () => { chips.forEach(x => x.setAttribute("aria-pressed", "false")); idea = own.value.trim(); render(); });
+  box.querySelector(".aq-copy").addEventListener("click", async e => {
+    const t = pre.textContent;
+    try { await navigator.clipboard.writeText(t); }
+    catch (_) { const a = document.createElement("textarea"); a.value = t; document.body.appendChild(a); a.select(); document.execCommand("copy"); a.remove(); }
+    e.target.textContent = "Copied"; setTimeout(() => e.target.textContent = "Copy prompt", 1600);
+  });
+  render();
+});
+</script>
 </body>
 </html>
