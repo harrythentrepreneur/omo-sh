@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rooms, Not Windows: Spatially Aware Agentic Interfaces | Omo Research</title>
+<meta name="description" content="Working paper from Omo Research: what happens when every AI agent gets a place? A five-day field study of Omo Space, agents at desks inside Minecraft.">
+<meta name="theme-color" content="#f5f0e8">
+<link rel="icon" href="/assets/omo-mark.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.omo.sh/research/rooms-not-windows/">
+<meta property="og:title" content="Rooms, Not Windows | Omo Research">
+<meta property="og:image" content="https://www.omo.sh/assets/og-card.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/research/rooms-not-windows/paper.css?v=1">
+</head>
+<body class="with-side">
+<nav class="site-side" aria-label="Research navigation"><a class="site-side-brand" href="/" aria-label="Omo Research home"><span class="sidebar-mark"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 180V20h80M20 180h160M100 20h30m10 0h20m20 0v40m0 12v38m0 10v30m0 10v20M32 168V32h68M32 168h136" fill="none" stroke="currentColor" stroke-width="8" /><path d="M62 100a30 30 0 0 1 38-30m0 0a30 30 0 0 1 0 20m0 0a30 30 0 0 1 38 40M100 90a30 30 0 0 0-38 10" fill="none" stroke="currentColor" stroke-width="7" /><rect x="95" y="95" width="10" height="10" fill="currentColor" /></svg></span><span>Research</span></a><div class="site-side-links"><a class="sidebar-link" href="/omo-space">Omo Space</a><a class="sidebar-link" href="/research/robots/">Omo Microduck</a><a class="sidebar-link" href="/research/omo-r1/">Omo R1</a><a class="sidebar-link" href="/about">Research log</a></div></nav>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-walk" viewBox="0 0 24 24"><circle cx="13" cy="4" r="2"/><path d="M10 21l2-6 3 3v3M8 12l3-4 3 1 2 4M11 8l-1 6"/></symbol>
+    <symbol id="i-return" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18h7a3 3 0 0 0 0-6h-4a3 3 0 0 1 0-6h7"/></symbol>
+    <symbol id="i-blocks" viewBox="0 0 24 24"><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/><rect x="8" y="3" width="8" height="8"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></symbol>
+    <symbol id="i-tabs" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M7 6V4h5v2M12 6V4h5v2"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-computer" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4M7 9l2 2-2 2M11 13h4"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M13 15h4"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="13" rx="1.5"/><path d="M2 8h20M9 21h6M12 16v5"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+    <symbol id="i-lamp" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.5"/></symbol>
+    <symbol id="i-desk" viewBox="0 0 24 24"><path d="M3 4h18v6H3zM5 10v10M19 10v10M8 7h3"/></symbol>
+    <symbol id="i-calm" viewBox="0 0 24 24"><path d="M12 2v6M12 8c-3 2-3 5 0 7s3 5 0 7"/></symbol>
+    <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M3 20l6-10 4 6 3-4 5 8z"/></symbol>
+    <symbol id="i-gallery" viewBox="0 0 24 24"><rect x="3" y="5" width="7" height="6"/><rect x="14" y="5" width="7" height="6"/><path d="M3 19h18M6 15h12"/></symbol>
+    <symbol id="i-switch" viewBox="0 0 24 24"><path d="M4 7h13l-3-3M20 17H7l3 3"/></symbol>
+    <symbol id="i-robot" viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 4v4M9 13h.01M15 13h.01M9 16h6"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14 20c0-2.5 1.5-4.5 4-4.5s4 2 4 4.5"/></symbol>
+    <symbol id="i-team" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/><path d="M2 2l20 20"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5"/></symbol>
+    <symbol id="i-hidden" viewBox="0 0 24 24"><path d="M9.9 4.2A10 10 0 0 1 12 4c6.5 0 10 8 10 8a17 17 0 0 1-2.2 3.2M6.6 6.6C3.9 8.4 2 12 2 12s3.5 8 10 8c1.9 0 3.6-.6 5.1-1.5M2 2l20 20"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 22V12M21 7l-9 5-9-5"/></symbol>
+    <symbol id="i-stack" viewBox="0 0 24 24"><path d="M12 2l10 5-10 5L2 7z"/><path d="M2 12l10 5 10-5M2 17l10 5 10-5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/></symbol>
+    <symbol id="i-loop" viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M10 9l5 3-5 3z"/></symbol>
+    <symbol id="i-read" viewBox="0 0 24 24"><path d="M2 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H2zM22 5h-7a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h8z"/></symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5H3v8h4M14 21c3 0 7-1 7-8V5h-7v8h4"/></symbol>
+  </defs>
+</svg>
+
+<header class="topbar" id="topbar">
+  <a class="home" href="/" aria-label="Omo Research home"><svg viewBox="0 0 200 200" aria-hidden="true"><path d="M20 180V20h80M20 180h160M100 20h30m10 0h20m20 0v40m0 12v38m0 10v30m0 10v20M32 168V32h68M32 168h136" fill="none" stroke="currentColor" stroke-width="10"/><path d="M62 100a30 30 0 0 1 38-30m0 0a30 30 0 0 1 0 20m0 0a30 30 0 0 1 38 40M100 90a30 30 0 0 0-38 10" fill="none" stroke="currentColor" stroke-width="9"/><rect x="94" y="94" width="12" height="12" fill="currentColor"/></svg></a><a class="back" href="/about">← Research</a>
+<div class="t">Rooms, <i>Not Windows</i></div>
+  <nav class="chapters" id="chapters">
+    <a href="#walk">The idea</a><a href="#background">Background</a><a href="#system">System</a><a href="#method">Method</a>
+    <a href="#findings">Findings</a><a href="#broke">What broke</a><a href="#discussion">Discussion</a><a href="#future">Next</a><a href="#sources">Sources</a>
+  </nav>
+  <div id="progress"></div>
+</header>
+
+<section class="hero" id="top">
+  <a class="back-pill" href="/about">← What we tried</a>
+  <div class="bgimg" role="img" aria-label="Illustration: a voxel hall with a desk for every agent"></div>
+  <div class="kicker">Omo Research · Field study</div>
+  <h1>Rooms, Not Windows</h1>
+  <p class="sub">Spatially Aware Creative Agentic Interfaces</p>
+  <div class="by"><span>Omo Research</span>·<span>October 2026</span></div>
+  <div class="pill">Working paper · draft</div>
+  <div class="cue"><i></i>Scroll</div>
+</section>
+
+<section class="chap" style="padding-top:70px">
+  <div class="col">
+    <div class="inshort reveal">
+      <div class="lbl">In short</div>
+      <p class="lead" style="margin-bottom:16px">One person now runs ten or twenty AI agents at once. A chat window was never built for that.</p>
+      <p>We gave every agent a <strong>place</strong>: a desk in a Minecraft world, with its screen on the wall and a lamp that shows whether it is working. Then we lived in it for five days, live on stream.</p>
+      <p>Four everyday chores of managing agents turned into things people already do well: <strong>finding</strong> became walking, <strong>resuming</strong> became coming back, <strong>monitoring</strong> became glancing down a hallway, and <strong>orchestrating</strong> became walking a pipeline of rooms. A lot also broke, and we show that too.</p>
+      <p class="muted" style="font-size:17px">Honest caveat: this is one builder plus one second user, with no comparison group. These are design findings and testable ideas, not proven effects.</p>
+    </div>
+    <div class="stats stagger">
+      <div class="stat"><b data-count="29" data-suffix=" h">29 h</b><span>of live streams read, start to finish</span></div>
+      <div class="stat"><b data-count="25" data-prefix="21–">21–25</b><span>agent sessions running at once, at peak</span></div>
+      <div class="stat"><b data-count="791">791</b><span>quotes checked word for word against the transcripts</span></div>
+      <div class="stat"><b data-count="2">2</b><span>people: the builder and one second user</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="chap" id="walk" style="padding-bottom:0">
+  <div class="chap-head reveal">
+    <div class="num">The idea in one walk</div>
+    <h2>From a pile of tabs to a building you can walk through</h2>
+    <p class="muted" style="font-family:var(--sans);font-size:15px;margin-top:14px">Keep scrolling: the picture changes as you read.</p>
+  </div>
+
+  <div class="scrolly">
+    <div class="sticky">
+      <div class="stage s0" id="stage">
+        <svg class="w" viewBox="0 0 800 600" role="img" aria-label="Animated diagram: chat windows turn into rooms in a building">
+          <defs>
+            <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#ddd4c6" stroke-width="1.2"/></pattern>
+            <radialGradient id="glowg"><stop offset="0" stop-color="#ffd98a" stop-opacity=".9"/><stop offset="1" stop-color="#ffd98a" stop-opacity="0"/></radialGradient>
+          </defs>
+          <g class="tabs">
+            <g class="one">
+              <rect x="230" y="150" width="340" height="300" rx="16" fill="#fbf8f3" stroke="#1a1008" stroke-width="2"/>
+              <rect x="230" y="150" width="340" height="38" rx="16" fill="#1a1008"/><rect x="230" y="170" width="340" height="18" fill="#1a1008"/>
+              <circle cx="254" cy="169" r="5" fill="#b23a2e"/><circle cx="272" cy="169" r="5" fill="#d19a2a"/><circle cx="290" cy="169" r="5" fill="#3f7d4e"/>
+              <rect x="256" y="214" width="190" height="34" rx="12" fill="#efe7da"/>
+              <rect x="354" y="262" width="190" height="34" rx="12" fill="#f3e2d3"/>
+              <rect x="256" y="310" width="150" height="34" rx="12" fill="#efe7da"/>
+              <rect x="256" y="402" width="288" height="30" rx="15" fill="none" stroke="#ddd4c6" stroke-width="2"/>
+              <text x="400" y="480" text-anchor="middle" font-size="15" fill="#6b5d4f">one agent, one chat: fine</text>
+            </g>
+            <g class="many">
+              <g id="wins"></g>
+              <text x="400" y="545" text-anchor="middle" font-size="15" fill="#6b5d4f">twelve agents, twelve tabs</text>
+            </g>
+            <g class="warn">
+              <circle cx="545" cy="244" r="20" fill="#b23a2e"><animate attributeName="r" values="18;24;18" dur="1.2s" repeatCount="indefinite"/></circle>
+              <text x="545" y="251" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">?</text>
+              <text x="400" y="575" text-anchor="middle" font-size="15" fill="#b23a2e" font-weight="600">which one is waiting for you?</text>
+            </g>
+          </g>
+
+          <g class="world">
+            <rect x="30" y="80" width="740" height="250" rx="6" fill="url(#hatch)" opacity=".7"/>
+            <rect x="30" y="300" width="740" height="64" fill="#efe7da" stroke="#1a1008" stroke-width="1.5"/>
+            <text x="760" y="356" text-anchor="end" font-size="11" letter-spacing="3" fill="#6b5d4f">HALLWAY</text>
+            <g id="rooms"></g>
+            <polygon class="cone" points="66,322 770,236 770,272" fill="#d19a2a"/>
+            <g class="token"><g transform="translate(86,236)"><rect x="0" y="0" width="34" height="24" rx="4" fill="#b4561f"/><path d="M13 6l9 6-9 6z" fill="#fff"/></g></g>
+            <g class="check" transform="translate(694,150)"><circle r="22" fill="#3f7d4e"/><path d="M-9 0l6 6 12-12" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+            <g class="newroom" id="newroom"></g>
+            <g class="bubble" transform="translate(240,452)">
+              <rect x="0" y="0" width="212" height="44" rx="14" fill="#1a1008"/>
+              <path d="M18 44 l-4 14 l16 -14z" fill="#1a1008"/>
+              <text x="106" y="27" text-anchor="middle" font-size="14" fill="#f5f0e8">“build me a robotics lab”</text>
+            </g>
+            <g class="me">
+              <g transform="translate(62,332)">
+                <ellipse cx="0" cy="16" rx="12" ry="4" fill="#1a1008" opacity=".15"/>
+                <rect x="-8" y="-6" width="16" height="20" rx="3" fill="#b4561f"/>
+                <rect x="-7" y="-22" width="14" height="14" rx="2" fill="#e8c9a8" stroke="#1a1008" stroke-width="1.2"/>
+                <text x="0" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="#b4561f">you</text>
+              </g>
+            </g>
+            <rect class="night" x="30" y="80" width="740" height="284" fill="#1a1008"/>
+            <g class="night" transform="translate(400,180)"><circle r="26" fill="#f5f0e8"/><circle cx="12" cy="-8" r="24" fill="#1a1008"/><text y="62" text-anchor="middle" font-size="15" fill="#f5f0e8" font-weight="600">game closed · PC off overnight</text></g>
+            <text class="lbl-step lbl-find" x="400" y="410" text-anchor="middle" font-size="15" font-weight="600" fill="#b4561f">walk to the room you remember</text>
+            <text class="lbl-step lbl-resume" x="400" y="410" text-anchor="middle" font-size="15" font-weight="600" fill="#b4561f">the work kept going while you were away</text>
+            <text class="lbl-step lbl-monitor" x="400" y="410" text-anchor="middle" font-size="15" font-weight="600" fill="#b4561f">one glance: gold working · green idle · red needs you</text>
+            <text class="lbl-step lbl-orch" x="400" y="410" text-anchor="middle" font-size="15" font-weight="600" fill="#b4561f">a video walks the pipeline; you approve at the end</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step" data-s="0"><div class="card">
+        <div class="tag"><svg class="ico"><use href="#i-chat"/></svg>The old way</div>
+        <h4>One agent, one chat window</h4>
+        <p>For a single assistant, a chat box works. You ask, it answers, you read.</p>
+      </div></div>
+      <div class="step" data-s="1"><div class="card">
+        <div class="tag"><svg class="ico"><use href="#i-tabs"/></svg>The problem</div>
+        <h4>Now there are twelve</h4>
+        <p>Agentic work means many agents that keep running for hours. Each gets a tab. Every tab looks the same.</p>
+      </div></div>
+      <div class="step" data-s="2"><div class="card">
+        <div class="tag"><svg class="ico"><use href="#i-tabs"/></svg>The problem</div>
+        <h4>Which one needs you?</h4>
+        <p>You lose track of three simple things: which agent is which, which is working, and which is waiting for you.</p>
+        <div class="q">“Nobody remembers which of the 12 terminal tabs are doing what”<span>Stream, 28 Oct · 07:14</span></div>
+      </div></div>
+      <div class="step" data-s="3"><div class="card">
+        <div class="tag"><svg class="ico"><use href="#i-home"/></svg>The idea</div>
+        <h4>Give every agent a place</h4>
+        <p>Each agent gets its own room, with a desk, a screen on the wall and a lamp. Rooms sit side by side along a hallway, like stages of your work.</p>
+        <div class="q">“But what if we gave a room to everything?”<span>Stream, 25 Oct · 00:38</span></div>
+      </div></div>
+      <div class="step" data-s="4"><div class="card">
+        <div class="tag"><svg class="ico"><use href="#i-walk"/></svg>Move 1 · Find</div>
+        <h4>Walk to it</h4>
+        <p>You don’t search a list. You remember the requirements room is the third door, and you walk there.</p>
+        <div class="q">“How do you keep track of your agents? I just walk around”<span>Stream, 28 Oct · 09:00</span></div>
+      </div></div>
+      <div class="step" data-s="5"><div class="card">
+        <div class="tag"><svg class="ico"><use href="#i-return"/></svg>Move 2 · Resume</div>
+        <h4>It’s where you left it</h4>
+        <p>Close the game, switch off for the night. The agents run on your PC, not in the game, so their work carries on. When you come back, every screen is where it was.</p>
+        <div class="q">“Boom the agents are still working right here”<span>Stream, 25 Oct · 02:12</span></div>
+      </div></div>
+      <div class="step" data-s="6"><div class="card">
+        <div class="tag"><svg class="ico"><use href="#i-eye"/></svg>Move 3 · Monitor</div>
+        <h4>Look down the hallway</h4>
+        <p>Lamps tell you the state of the whole team from the doorway. No tab-checking: the red one needs you.</p>
+        <div class="q">“Now you can see your whole team from the hallway.”<span>Stream, 28 Oct · 00:39</span></div>
+      </div></div>
+      <div class="step" data-s="7"><div class="card">
+        <div class="tag"><svg class="ico"><use href="#i-route"/></svg>Move 4 · Orchestrate</div>
+        <h4>Walk the pipeline</h4>
+        <p>Each room is one stage of a job: ideas, references, requirements, editing, publishing. Work moves room to room; you approve at the end.</p>
+        <div class="q">“This video went through all five rooms before you saw it.”<span>Stream, 28 Oct · 00:34</span></div>
+      </div></div>
+      <div class="step" data-s="8"><div class="card">
+        <div class="tag"><svg class="ico"><use href="#i-blocks"/></svg>Bonus · Build</div>
+        <h4>The agents build the rooms</h4>
+        <p>Nobody places these blocks by hand. You ask, and an agent builds the next room. New structure for your work costs one sentence.</p>
+        <div class="q">“Was done in one shot One prompt”<span>Stream, 25 Oct · 03:38 · about the underground base</span></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<blockquote class="big reveal">So it’s like I’m spatially aware of my workspace. … It’s not a chat window, it’s an interface.
+  <footer>The builder, first night of streaming · 25 Oct 2026 <span class="ts">00:38</span><a class="cite" href="#ref-14" data-tip="Stream analysis: synthesis of 7 streams, Oct 25–29 2026 (this study).">14</a></footer></blockquote>
+
+<section class="chap" id="background">
+  <div class="chap-head reveal">
+    <div class="num">1 · Background</div>
+    <h2>A forty-year-old idea, with something new inside</h2>
+  </div>
+  <div class="col">
+    <p class="reveal">People are very good at remembering <em>where</em> things are. You remember which room your keys are in long after you forget a file name. Interface research has used this for decades.</p>
+  </div>
+  <div class="wide">
+    <div class="timeline reveal" id="tl">
+      <div class="line"><i></i></div>
+      <div class="tl stagger">
+        <div class="ev"><div class="yr">1983</div><div class="dot"><svg class="ico"><use href="#i-desk"/></svg></div><div class="nm">Desks</div><div class="ds">Piles remind you what to do<a class="cite" href="#ref-4" data-tip="Malone (1983). How Do People Organize Their Desks?">4</a></div></div>
+        <div class="ev"><div class="yr">1986</div><div class="dot"><svg class="ico"><use href="#i-home"/></svg></div><div class="nm">Rooms</div><div class="ds">Virtual workspaces end “window thrashing”<a class="cite" href="#ref-1" data-tip="Henderson &amp; Card (1986). Rooms.">1</a></div></div>
+        <div class="ev"><div class="yr">1995</div><div class="dot"><svg class="ico"><use href="#i-calm"/></svg></div><div class="nm">Calm tech</div><div class="ds">Know the state without looking<a class="cite" href="#ref-5" data-tip="Weiser &amp; Brown (1995). Designing Calm Technology.">5</a></div></div>
+        <div class="ev"><div class="yr">1998</div><div class="dot"><svg class="ico"><use href="#i-mountain"/></svg></div><div class="nm">Data Mountain</div><div class="ds">Spatial memory finds documents<a class="cite" href="#ref-2" data-tip="Robertson et al. (1998). Data Mountain.">2</a></div></div>
+        <div class="ev"><div class="yr">2000</div><div class="dot"><svg class="ico"><use href="#i-gallery"/></svg></div><div class="nm">Task Gallery</div><div class="ds">Tasks hung on 3D gallery walls<a class="cite" href="#ref-3" data-tip="Robertson et al. (2000). The Task Gallery.">3</a></div></div>
+        <div class="ev"><div class="yr">2004</div><div class="dot"><svg class="ico"><use href="#i-switch"/></svg></div><div class="nm">Task switching</div><div class="ds">Juggling many tasks is hard<a class="cite" href="#ref-6" data-tip="Czerwinski, Horvitz &amp; Wilhite (2004). Diary Study.">6</a></div></div>
+        <div class="ev"><div class="yr">2023</div><div class="dot"><svg class="ico"><use href="#i-robot"/></svg></div><div class="nm">Agents in games</div><div class="ds">Voyager, Generative Agents<a class="cite" href="#ref-8" data-tip="Wang et al. (2023). Voyager.">8</a><a class="cite" href="#ref-9" data-tip="Park et al. (2023). Generative Agents.">9</a></div></div>
+        <div class="ev"><div class="yr">2025</div><div class="dot"><svg class="ico"><use href="#i-people"/></svg></div><div class="nm">Mindcraft</div><div class="ds">Agent teams in Minecraft<a class="cite" href="#ref-10" data-tip="White et al. (2025). Collaborating Action by Action (mindcraft).">10</a></div></div>
+        <div class="ev us"><div class="yr">2026</div><div class="dot"><svg class="ico"><use href="#i-team"/></svg></div><div class="nm">Omo Space</div><div class="ds">Rooms for live agents</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <h3 class="reveal">Space is how people remember</h3>
+    <p class="reveal">Malone interviewed office workers about their desks and found that piles are not just storage: <q>a very important function of desk organization is to remind the user of things to do</q><a class="cite" href="#ref-4" data-tip="Malone (1983). How Do People Organize Their Desks? ACM TOIS.">4</a>. Data Mountain showed this works on a screen too, with <q>statistically reliable advantages</q> over a browser’s favourites list<a class="cite" href="#ref-2" data-tip="Robertson et al. (1998). Data Mountain. UIST ’98.">2</a>. After an interruption, people use spatial memory to get back to <q>the general area where they were interrupted</q><a class="cite" href="#ref-7" data-tip="Ratwani &amp; Trafton. Now, where was I?">7</a>. And juggling many tasks at once is hard<a class="cite" href="#ref-6" data-tip="Czerwinski, Horvitz &amp; Wilhite (2004). A Diary Study of Task Switching and Interruptions. CHI ’04.">6</a>.</p>
+    <h3 class="reveal">Workspaces as places</h3>
+    <p class="reveal">Rooms named the problem <q>window thrashing</q>: spending effort just to keep the right windows visible<a class="cite" href="#ref-1" data-tip="Henderson &amp; Card (1986). Rooms. ACM TOG.">1</a>. The Task Gallery ran ordinary Windows apps inside a 3D gallery, and its users found it <q>enjoyable to use</q><a class="cite" href="#ref-3" data-tip="Robertson et al. (2000). The Task Gallery. CHI ’00.">3</a>. Calm technology added the hallway view: a “Dangling String” that twitched with network traffic and could be read <q>without being obtrusive</q><a class="cite" href="#ref-5" data-tip="Weiser &amp; Brown (1995). Designing Calm Technology.">5</a>.</p>
+    <h3 class="reveal">Agents in Minecraft</h3>
+    <p class="reveal">Minecraft is already home to many AI agents. Voyager explores and learns skills on its own<a class="cite" href="#ref-8" data-tip="Wang et al. (2023). Voyager. arXiv:2305.16291.">8</a>. Mindcraft found that talking to each other is the main bottleneck for agent teams<a class="cite" href="#ref-10" data-tip="White et al. (2025). Collaborating Action by Action (mindcraft). arXiv:2504.17950.">10</a>. Generative Agents put twenty-five simulated people in a game town users can watch<a class="cite" href="#ref-9" data-tip="Park et al. (2023). Generative Agents. arXiv:2304.03442.">9</a>.</p>
+    <div class="note reveal"><b>What is new here</b>Those systems arranged documents and windows, which sit still, or used the game as the agent’s task. Omo Space arranges <strong>live agents</strong> that keep working, change state and ask questions while you are elsewhere, and their real work (code, video, publishing) happens outside the game. The world is the <em>human’s</em> interface.</div>
+  </div>
+</section>
+
+<section class="chap" id="system">
+  <div class="chap-head reveal">
+    <div class="num">2 · The system</div>
+    <h2>Omo Space: agent sessions you can place</h2>
+  </div>
+  <div class="col">
+    <p class="reveal">Omo Space is a mod for Minecraft Java 26.2. You build an agent workspace from ordinary-looking game blocks<a class="cite" href="#ref-11" data-tip="Omo Space docs: Agents and terminals (repo).">11</a><a class="cite" href="#ref-12" data-tip="Omo Space CHANGELOG (repo).">12</a>.</p>
+  </div>
+  <div class="wide">
+    <div class="objs stagger">
+      <div class="obj"><div class="ic"><svg class="ico"><use href="#i-computer"/></svg></div><b>Hermes Computer</b><span>A named agent workspace, with its own memory, skills and model</span></div>
+      <div class="obj"><div class="ic"><svg class="ico"><use href="#i-terminal"/></svg></div><b>Terminal</b><span>A shell that keeps running, no agent</span></div>
+      <div class="obj"><div class="ic"><svg class="ico"><use href="#i-monitor"/></svg></div><b>Monitor wall</b><span>A big view of a terminal, or a live web page</span></div>
+      <div class="obj"><div class="ic"><svg class="ico"><use href="#i-link"/></svg></div><b>Linker</b><span>Connects a wall to a computer without wiring</span></div>
+      <div class="obj"><div class="ic"><svg class="ico"><use href="#i-lamp"/></svg></div><b>Status Lamp</b><span>Working, idle or interrupted, at a glance</span></div>
+      <div class="obj"><div class="ic"><svg class="ico"><use href="#i-tag"/></svg></div><b>Name Plate</b><span>The agent’s name, readable across the room</span></div>
+    </div>
+    <div class="lamps reveal" style="justify-content:center">
+      <span class="lamp-k"><i style="background:var(--gold)"></i>working</span>
+      <span class="lamp-k"><i style="background:var(--green)"></i>idle</span>
+      <span class="lamp-k"><i style="background:var(--red)"></i>interrupted</span>
+    </div>
+    <figure class="reveal"><img src="/research/rooms-not-windows/img/il-agents-in-minecraft-world.jpg" alt="A voxel building cut open: one agent per room, each with a status banner and a screen"><figcaption><b>One agent, one room.</b> Each agent has its own desk, screen and status, readable from outside the building. <span class="il">Illustration</span></figcaption></figure>
+  </div>
+  <div class="col">
+    <h3 class="reveal">How it works underneath</h3>
+    <p class="reveal">Every workspace is a <strong>tmux session</strong> (a terminal that keeps running in the background) on your own PC. A small bridge, listening only on your machine, draws those sessions onto in-game screens and sends your keystrokes back<a class="cite" href="#ref-11" data-tip="Omo Space docs: Agents and terminals (repo).">11</a>.</p>
+    <figure class="diagram reveal">
+      <svg viewBox="0 0 680 226" role="img" aria-label="System diagram: Minecraft world, local bridge, your PC">
+        <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#1a1008"/></marker></defs>
+        <g font-family="Inter,sans-serif" font-size="13" fill="#1a1008">
+          <rect x="10" y="45" width="170" height="130" rx="14" fill="#f3e2d3" stroke="#b4561f"/>
+          <text x="95" y="72" text-anchor="middle" font-weight="600">Minecraft world</text>
+          <text x="95" y="98" text-anchor="middle" fill="#6b5d4f">computers · walls</text>
+          <text x="95" y="118" text-anchor="middle" fill="#6b5d4f">lamps · web screens</text>
+          <text x="95" y="152" text-anchor="middle" font-size="11.5" fill="#b4561f" font-weight="600">WHAT YOU SEE</text>
+          <rect x="255" y="65" width="160" height="90" rx="14" fill="#fbf8f3" stroke="#1a1008"/>
+          <text x="335" y="98" text-anchor="middle" font-weight="600">omo-bridge</text>
+          <text x="335" y="120" text-anchor="middle" fill="#6b5d4f">your machine only</text>
+          <rect x="490" y="22" width="180" height="176" rx="14" fill="#1a1008"/>
+          <text x="580" y="50" text-anchor="middle" font-weight="600" fill="#f5f0e8">your PC</text>
+          <g fill="#f5f0e8" font-size="12">
+            <rect x="508" y="64" width="144" height="32" rx="7" fill="#2c2015"/><text x="580" y="85" text-anchor="middle">tmux workspaces</text>
+            <rect x="508" y="104" width="144" height="32" rx="7" fill="#2c2015"/><text x="580" y="125" text-anchor="middle">Hermes · Claude Code</text>
+            <rect x="508" y="144" width="144" height="32" rx="7" fill="#2c2015"/><text x="580" y="165" text-anchor="middle">files · web · tools</text>
+          </g>
+          <text x="580" y="218" text-anchor="middle" font-size="11.5" fill="#6b5d4f" font-weight="600">WHERE THE WORK HAPPENS</text>
+          <line x1="182" y1="97" x2="252" y2="97" stroke="#1a1008" stroke-width="1.5" marker-end="url(#a)"/>
+          <text x="217" y="89" text-anchor="middle" font-size="11" fill="#6b5d4f">keys</text>
+          <line x1="252" y1="127" x2="182" y2="127" stroke="#1a1008" stroke-width="1.5" marker-end="url(#a)"/>
+          <text x="217" y="145" text-anchor="middle" font-size="11" fill="#6b5d4f">screens</text>
+          <line x1="417" y1="110" x2="487" y2="110" stroke="#1a1008" stroke-width="1.5" marker-end="url(#a)"/>
+          <circle r="4" fill="#b4561f"><animateMotion dur="1.8s" repeatCount="indefinite" path="M182,97 L246,97"/></circle>
+          <circle r="4" fill="#b4561f"><animateMotion dur="1.8s" begin=".9s" repeatCount="indefinite" path="M252,127 L188,127"/></circle>
+          <circle r="4" fill="#b4561f"><animateMotion dur="1.8s" begin=".4s" repeatCount="indefinite" path="M417,110 L481,110"/></circle>
+        </g>
+      </svg>
+      <figcaption><b>The game is only the view.</b> Closing, leaving or crashing Minecraft does not touch the sessions on the right.</figcaption>
+    </figure>
+
+    <h3 class="reveal">Three design rules</h3>
+    <ol class="rules stagger">
+      <li><b>Leaving changes nothing</b>Closing a screen, walking away or quitting Minecraft never stops a process<a class="cite" href="#ref-12" data-tip="Omo Space CHANGELOG (repo).">12</a>.</li>
+      <li><b>State is reported honestly</b>If the session server stops, the screen says INTERRUPTED. Nothing re-runs by itself: “Revive shell” and “Resume Hermes” are buttons you press<a class="cite" href="#ref-11" data-tip="Omo Space docs: Agents and terminals (repo).">11</a>.</li>
+      <li><b>Idle agents sleep</b>An agent tab that is idle and unseen for 20 minutes exits cleanly and wakes when a screen shows it again<a class="cite" href="#ref-11" data-tip="Omo Space docs: Agents and terminals (repo).">11</a>.</li>
+    </ol>
+  </div>
+  <div class="wide">
+    <div class="stats stagger" style="margin-bottom:30px">
+      <div class="stat"><b data-count="114">114</b><span>workspaces known to the bridge</span></div>
+      <div class="stat"><b data-count="62">62</b><span>live sessions</span></div>
+      <div class="stat"><b data-count="22">22</b><span>separate agent profiles</span></div>
+      <div class="stat"><b>29 Oct</b><span>measured read-only on the builder’s machine</span></div>
+    </div>
+  </div>
+  <div class="col">
+    <figure class="reveal"><img src="/research/rooms-not-windows/img/il-minecraft-as-interface.jpg" alt="First-person view: a live web page and a terminal on wall monitors, a pocket computer in hand"><figcaption><b>The wall is the screen.</b> A live web page and a real terminal on in-world monitors, and a pocket computer you carry. <span class="il">Illustration</span></figcaption></figure>
+    <h3 class="reveal">Some agents have bodies</h3>
+    <p class="reveal">A separate project adds a Minecraft player named OMO to the same world. You speak out loud, a voice model hands the job to an agent “brain”, and the brain moves the body through 22 tools<a class="cite" href="#ref-13" data-tip="Omo, brought to life: README (repo).">13</a>. Two robots, a Microduck and an RP1 humanoid, are physics-simulated in the world and come when called by voice.</p>
+    <div class="ladder stagger">
+      <span class="r1">terminal</span><span class="ar">→</span><span class="r2">wall</span><span class="ar">→</span><span class="r3">avatar</span><span class="ar">→</span><span class="r4">simulated robot</span>
+    </div>
+    <p class="muted reveal" style="font-size:17px">A ladder of embodiment. This paper focuses on the first rungs, where the evidence is strongest.</p>
+  </div>
+</section>
+
+<section class="chap" id="method">
+  <div class="chap-head reveal">
+    <div class="num">3 · Method</div>
+    <h2>Five days, live on stream</h2>
+  </div>
+  <div class="col">
+    <p class="reveal">From 25 to 29 October 2026 the builder used Omo Space as his main workspace while streaming live. He ran a real content pipeline from inside the game: ideas, references, recording requirements, editing, publishing and analytics, each in its own room<a class="cite" href="#ref-14" data-tip="Stream analysis (this study).">14</a>.</p>
+  </div>
+  <div class="wide">
+    <div class="flow stagger">
+      <div class="node"><div class="ic"><svg class="ico"><use href="#i-play"/></svg></div><b>7</b><span>stream recordings,<br>about 29 hours read</span></div>
+      <div class="node"><div class="ic"><svg class="ico"><use href="#i-read"/></svg></div><b>8</b><span>readers, each reading<br>one chunk in full</span></div>
+      <div class="node"><div class="ic"><svg class="ico"><use href="#i-quote"/></svg></div><b>791</b><span>quotes pulled out<br>with timestamps</span></div>
+      <div class="node ok"><div class="ic"><svg class="ico"><use href="#i-check"/></svg></div><b>791 / 791</b><span>found word for word<br>by a checking script</span></div>
+    </div>
+  </div>
+  <div class="col">
+    <p class="reveal">The recordings had already been transcribed by an in-house clipping pipeline (Whisper, small model). Each chunk was read in full by a separate language-model reader, which pulled out claims, quotes, live demos, failures and guest reactions. Claims were then grouped by hand and counted across the eight chunks. A script confirmed that every extracted quote appears in the transcript within three minutes of its timestamp.</p>
+    <p class="reveal">A <strong>second user</strong>, new to Hermes and on Windows, set up his own world from the repository and joined the stream by voice. His account is self-reported.</p>
+    <div class="note reveal"><b>What this method is, and is not</b>It is a field study of one builder (an autoethnography) plus one second user. It is good at showing what the interface does in real, messy use. It cannot tell us whether rooms beat tabs for people in general.</div>
+  </div>
+</section>
+
+<section class="chap" id="findings">
+  <div class="chap-head reveal">
+    <div class="num">4 · Findings</div>
+    <h2>Four spatial moves</h2>
+  </div>
+  <div class="col"><p class="reveal">Seven themes came up in at least seven of the eight chunks. Four of them describe what space does for agent work. We call them <strong>moves</strong>.</p></div>
+  <div class="wide">
+    <div class="moves stagger" id="moves">
+      <div class="move"><div class="ic"><svg class="ico"><use href="#i-walk"/></svg></div><div class="from">remember which tab</div><div class="to">Find: walk to it</div><div class="cov">8 of 8 chunks</div><div class="bar"><i style="--w:100%"></i></div></div>
+      <div class="move"><div class="ic"><svg class="ico"><use href="#i-return"/></svg></div><div class="from">reopen and re-read</div><div class="to">Resume: it’s where you left it</div><div class="cov">8 of 8 chunks</div><div class="bar"><i style="--w:100%"></i></div></div>
+      <div class="move"><div class="ic"><svg class="ico"><use href="#i-eye"/></svg></div><div class="from">check every tab</div><div class="to">Monitor: look down the hallway</div><div class="cov">7 of 8 chunks</div><div class="bar"><i style="--w:87.5%"></i></div></div>
+      <div class="move"><div class="ic"><svg class="ico"><use href="#i-route"/></svg></div><div class="from">juggle a to-do list</div><div class="to">Orchestrate: walk the pipeline</div><div class="cov">7 of 8 chunks</div><div class="bar"><i style="--w:87.5%"></i></div></div>
+    </div>
+  </div>
+  <div class="col">
+    <p class="muted reveal" style="font-size:16px">Quotes are as transcribed; the speech recogniser sometimes garbles names.</p>
+
+    <div class="mv reveal">
+      <div class="badge"><svg class="ico"><use href="#i-walk"/></svg></div>
+      <div>
+        <div class="sub">Move 1 · 8 of 8 chunks</div>
+        <h3>Find: walk to it</h3>
+        <p>The most repeated claim: people can’t remember tabs, but they can remember rooms.</p>
+        <blockquote>“Nobody remembers which of the 12 terminal tabs are doing what but you can remember space and rooms … It’s the oldest memory trick out there.”
+          <footer>Stream, 28 Oct <span class="ts">07:14</span><a class="cite" href="#ref-14" data-tip="Stream analysis (this study).">14</a></footer></blockquote>
+        <figure><img src="/research/rooms-not-windows/img/il-terminal-workspace.jpg" alt="A wall of terminal panes, one per agent, with tangled cables"><figcaption><b>What it replaces.</b> One pane per agent: tidy on paper, hard to remember in practice. <span class="il">Illustration</span></figcaption></figure>
+        <p>This is Data Mountain’s finding<a class="cite" href="#ref-2" data-tip="Robertson et al. (1998). Data Mountain. UIST ’98.">2</a> applied to agents. At peak the builder ran 21 to 25 sessions at once and still described them as manageable.</p>
+      </div>
+    </div>
+
+    <div class="mv reveal">
+      <div class="badge"><svg class="ico"><use href="#i-return"/></svg></div>
+      <div>
+        <div class="sub">Move 2 · 8 of 8 chunks</div>
+        <h3>Resume: it’s where you left it</h3>
+        <p>Because the sessions live outside the game, the world is a place you come back to.</p>
+        <blockquote>“Boom the agents are still working right here.”
+          <footer>Stream, 25 Oct <span class="ts">02:12</span> · after quitting and reloading the game<a class="cite" href="#ref-14" data-tip="Stream analysis (this study).">14</a></footer></blockquote>
+        <p>On 29 October, after the PC had been off overnight, the world was <q>exactly where we left off</q>, and agents had edited 22 clips while he slept. In his words: <q>I’m not dreading any pain or context loss</q><a class="cite" href="#ref-14" data-tip="Stream analysis (this study).">14</a>. This matches how people use spatial memory to get back into a task<a class="cite" href="#ref-7" data-tip="Ratwani &amp; Trafton. Now, where was I?">7</a>.</p>
+      </div>
+    </div>
+
+    <div class="mv reveal">
+      <div class="badge"><svg class="ico"><use href="#i-eye"/></svg></div>
+      <div>
+        <div class="sub">Move 3 · 7 of 8 chunks</div>
+        <h3>Monitor: look down the hallway</h3>
+        <blockquote>“Every light that you see in there is an agent still working.”
+          <footer>Stream, 28 Oct <span class="ts">00:36</span><a class="cite" href="#ref-14" data-tip="Stream analysis (this study).">14</a></footer></blockquote>
+        <figure><img src="/research/rooms-not-windows/img/il-status-dashboard.jpg" alt="An observer at a ship-bridge panel of gauges and indicator lamps, one lamp unlit"><figcaption><b>The glance view.</b> State is read from lamps at a distance, not from a tab. Note the one unlit lamp: you still have to look. <span class="il">Illustration</span></figcaption></figure>
+        <p>This is calm technology for agents<a class="cite" href="#ref-5" data-tip="Weiser &amp; Brown (1995). Designing Calm Technology.">5</a>. The second user said, without being asked, that watching agents in the world was more fun than watching an AI type in a terminal.</p>
+      </div>
+    </div>
+
+    <div class="mv reveal">
+      <div class="badge"><svg class="ico"><use href="#i-route"/></svg></div>
+      <div>
+        <div class="sub">Move 4 · 7 of 8 chunks</div>
+        <h3>Orchestrate: walk the pipeline</h3>
+        <p>The builder’s content business was laid out as a row of rooms: one stage, one agent profile per room.</p>
+        <blockquote>“We just go to that room and just start building. And when we’re done, then we just leave that room.”
+          <footer>Stream, 25 Oct <span class="ts">01:04</span><a class="cite" href="#ref-14" data-tip="Stream analysis (this study).">14</a></footer></blockquote>
+        <figure><img src="/research/rooms-not-windows/img/il-kanban-boards.jpg" alt="Small agents passing cards from column to column like rooms in a pipeline"><figcaption><b>A pipeline you can walk.</b> Work moves from stage to stage, and each stage has its own agents. <span class="il">Illustration</span></figcaption></figure>
+        <p>By 29 October he proposed giving every item on his to-do list its own room, calling it <q>a repeatable pattern</q>. The human’s job shrank to reviewing and approving. In the second user’s words: <q>once you press approve inside the game, it just gets posted</q><a class="cite" href="#ref-14" data-tip="Stream analysis (this study).">14</a>.</p>
+      </div>
+    </div>
+
+    <h3 class="reveal" style="margin-top:60px">Two more findings</h3>
+  </div>
+  <div class="wide">
+    <div class="hyps stagger">
+      <div class="hyp"><span class="h">7 of 8 chunks</span><b>The interface is generated, not designed</b><p>Rooms were built by agents from a short request: <q>I didn’t build any of this</q><a class="cite" href="#ref-14" data-tip="Stream analysis (this study). 28 Oct, 07:44.">14</a>. When a room costs one prompt, adding structure to your work becomes cheap, and so does throwing it away.</p></div>
+      <div class="hyp"><span class="h">second user</span><b>It travelled to someone else</b><p>The second user, new to Hermes, built an AI office and a basketball-arena world in about a day and barely had to troubleshoot: <q>It just gave Claude the GitHub</q>. He called the web-page version <q>claustrophobic</q><a class="cite" href="#ref-14" data-tip="Stream analysis (this study).">14</a>.</p></div>
+    </div>
+  </div>
+  <blockquote class="big reveal">Spatial interfaces with persistent webpages is easy to use and talk to and control … with this, you can build whatever pipeline that you want.
+    <footer>The builder’s own summary · Stream, 29 Oct <span class="ts">03:38</span><a class="cite" href="#ref-14" data-tip="Stream analysis (this study).">14</a></footer></blockquote>
+</section>
+
+<section class="chap" id="broke">
+  <div class="chap-head reveal">
+    <div class="num">5 · What broke</div>
+    <h2>The same streams show it failing, on camera</h2>
+  </div>
+  <div class="col"><p class="reveal">Every failure below points to a design change.<a class="cite" href="#ref-14" data-tip="Stream analysis (this study).">14</a></p></div>
+  <div class="wide">
+    <div class="broke stagger">
+      <div class="bk"><div class="ic"><svg class="ico"><use href="#i-bolt"/></svg></div><div><b>Crashes</b><p>Repeated game crashes, memory exhaustion and two whole-PC freezes. A live “quit and come back” demo crashed. The agent sessions survived; the 3D client often did not.</p><div class="lesson">Keep the work outside the game.</div></div></div>
+      <div class="bk"><div class="ic"><svg class="ico"><use href="#i-bell"/></svg></div><div><b>A missed question</b><p>An agent asked him something and nothing told him.</p><div class="lesson">A lamp in another room is not a notification.</div></div></div>
+      <div class="bk"><div class="ic"><svg class="ico"><use href="#i-mic"/></svg></div><div><b>Who’s listening?</b><p><q>How does it know where I’m talking to?</q> with several voice agents in range.</p><div class="lesson">Speech needs a spatial addressing rule.</div></div></div>
+      <div class="bk"><div class="ic"><svg class="ico"><use href="#i-hidden"/></svg></div><div><b>A hidden control</b><p>The shift-right-click that opens a computer’s setup took <q>two weeks</q> to discover.</p><div class="lesson">Make setup visible.</div></div></div>
+      <div class="bk"><div class="ic"><svg class="ico"><use href="#i-cube"/></svg></div><div><b>New kinds of accident</b><p>Breaking a block by mistake disconnects that agent. Agents built an unwanted second cave. He sometimes got lost in his own world.</p><div class="lesson">Space brings its own errors.</div></div></div>
+      <div class="bk"><div class="ic"><svg class="ico"><use href="#i-stack"/></svg></div><div><b>More is not better</b><p>A challenge to post 20 reels in 100 minutes posted zero; later, <q>maybe we’re posting too much</q>.</p><div class="lesson">Measure value, not volume.</div></div></div>
+      <div class="bk"><div class="ic"><svg class="ico"><use href="#i-shield"/></svg></div><div><b>Trust</b><p>The second user would not use it at his day job because an agent could delete a database. One viewer: <q>Don’t like AI watching</q>.</p><div class="lesson">Permissions before multiplayer.</div></div></div>
+      <div class="bk"><div class="ic"><svg class="ico"><use href="#i-loop"/></svg></div><div><b>Self-doubt</b><p>He called endless tweaking of the interface <q>a hard addiction</q>; a guest warned him not to <q>get caught in the loop or refining your tools</q>.</p><div class="lesson">The tool is not the work.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="chap" id="discussion">
+  <div class="chap-head reveal">
+    <div class="num">6 · Discussion</div>
+    <h2>Five principles for spatial agent interfaces</h2>
+  </div>
+  <div class="col">
+    <ol class="rules stagger">
+      <li><b>One agent, one place</b>Give every long-running agent a stable location and a name you can read from a distance.</li>
+      <li><b>The place outlives the view</b>Closing, leaving or crashing the viewer must never stop the work.</li>
+      <li><b>Show state at room scale</b>Working, idle and stuck should be visible from the doorway, without reading text.</li>
+      <li><b>Be honest about state</b>Never claim work is running when it isn’t, and never re-run anything on the user’s behalf.</li>
+      <li><b>Space is not enough for urgency</b>Ambient signals need a backup that follows you, such as a sound, a toast or an item in your hand, for questions that can’t wait.</li>
+    </ol>
+    <h3 class="reveal">Why Minecraft?</h3>
+    <p class="reveal">Partly culture: it is already multiplayer, already buildable and familiar to a generation of players. Partly technology: the world itself can be written by agents, which earlier 3D desktops like the Task Gallery could not do<a class="cite" href="#ref-3" data-tip="Robertson et al. (2000). The Task Gallery. CHI ’00.">3</a>. The cost is a game client that is heavier and less reliable than a terminal.</p>
+    <div class="note honest reveal"><b>Limitations</b>
+      <ul>
+        <li>One builder and one second user, both enthusiasts. No comparison condition and no measured effect.</li>
+        <li>The builder is also the author and a streamer, so what he says is partly performance.</li>
+        <li>Transcripts come from a small speech model. One line reads “I don’t think Minecraft is superior” and is probably a mistranscription of “I do think”; we leave it out. Some lines are agent-edited video voiceovers he approved, not live speech.</li>
+        <li>Themes were grouped by one analyst with language-model readers, without a second coder.</li>
+        
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="chap" id="future">
+  <div class="chap-head reveal">
+    <div class="num">7 · Future work</div>
+    <h2>A study that could prove it, or not</h2>
+  </div>
+  <div class="col"><p class="reveal">Each move becomes a hypothesis, tested against an ordinary tab setup (tmux or IDE tabs) with 12 and 24 agents.</p></div>
+  <div class="wide">
+    <div class="hyps stagger">
+      <div class="hyp"><span class="h">H1 · Find</span><b>Faster to find a named agent</b><p>People locate a named agent faster in rooms than in tabs, and the gap grows with the number of agents.</p><div class="vs"><span>rooms</span><span>vs tabs · 12 &amp; 24 agents</span></div></div>
+      <div class="hyp"><span class="h">H2 · Resume</span><b>Faster back to work after a break</b><p>After a 24-hour break, the time to the first useful action is shorter in the world.</p><div class="vs"><span>world</span><span>vs tabs · after 24 h</span></div></div>
+      <div class="hyp"><span class="h">H3 · Monitor</span><b>Stuck agents noticed sooner</b><p>Lamps and walls beat tab badges for noticing an agent stuck on a question. We expect this to fail when you are in another room, which a backup channel should fix.</p><div class="vs"><span>lamps</span><span>vs badges · same room / other room</span></div></div>
+      <div class="hyp"><span class="h">H4 · Build</span><b>One-prompt rooms are usable</b><p>Most rooms built from one prompt are usable without edits. This can be measured from existing agent session logs.</p><div class="vs"><span>logs</span><span>no new study needed</span></div></div>
+    </div>
+  </div>
+  <div class="col"><p class="reveal muted" style="font-size:17px">Some data already exists: bridge logs of sleep, resume and INTERRUPTED events, per-profile agent session stores, and the stream recordings themselves (walking paths, time spent in each room).</p></div>
+</section>
+
+<section class="closing" id="conclusion">
+  <div class="k">Conclusion</div>
+  <h2 class="reveal">Chat windows were built for one conversation.</h2>
+  <p class="reveal">Agentic work now means many conversations that keep running when you look away. Giving each one a place, in a world the agents can build for you, turned four chores into four things people already do well.</p>
+  <div class="pairs stagger">
+    <span><s>finding</s>walking</span><span><s>resuming</s>returning</span><span><s>monitoring</s>glancing</span><span><s>orchestrating</s>visiting</span>
+  </div>
+  <p class="reveal" style="margin-top:34px">In five days of real use it held up for its builder and travelled to one other person, and it broke in ways that point to the next design steps. Whether it beats tabs for everyone is the next question. We have laid out how to answer it.</p>
+</section>
+
+<section class="chap" id="sources">
+  <div class="col">
+    <h2 style="font-size:34px;margin-bottom:24px">Sources</h2>
+    <ol class="refs">
+      <li id="ref-1">Henderson &amp; Card (1986). <b>Rooms: the use of multiple virtual workspaces to reduce space contention in a window-based graphical user interface.</b> ACM TOG. <a href="https://dl.acm.org/doi/10.1145/24054.24056">dl.acm.org/doi/10.1145/24054.24056</a><span class="ev">“This results in ‘window thrashing,’ in which the user must expend considerable effort to keep desired windows visible.”</span></li>
+      <li id="ref-2">Robertson, Czerwinski, Larson et al. (1998). <b>Data Mountain: Using Spatial Memory for Document Management.</b> UIST ’98. <a href="https://www.microsoft.com/en-us/research/publication/data-mountain-using-spatial-memory-for-document-management/">microsoft.com/research</a><span class="ev">“Our study demonstrates that the Data Mountain has statistically reliable advantages over the Microsoft Internet Explorer Favorites mechanism…”</span></li>
+      <li id="ref-3">Robertson et al. (2000). <b>The Task Gallery: a 3D window manager.</b> CHI ’00. <a href="https://dl.acm.org/doi/10.1145/332040.332482">dl.acm.org/doi/10.1145/332040.332482</a><span class="ev">“User studies suggest that the Task Gallery helps with task management, is enjoyable to use, and that the 3D metaphor evokes spatial memory and cognition.”</span></li>
+      <li id="ref-4">Malone (1983). <b>How Do People Organize Their Desks? Implications for the Design of Office Information Systems.</b> ACM TOIS. <a href="https://dl.acm.org/doi/pdf/10.1145/357423.357430">dl.acm.org/doi/10.1145/357423.357430</a><span class="ev">“A very important function of desk organization is to remind the user of things to do…”</span></li>
+      <li id="ref-5">Weiser &amp; Brown (1995). <b>Designing Calm Technology.</b> Xerox PARC. <a href="https://calmtech.com/papers/designing-calm-technology">calmtech.com</a><span class="ev">“…visible and audible from many offices without being obtrusive.”</span></li>
+      <li id="ref-6">Czerwinski, Horvitz &amp; Wilhite (2004). <b>A Diary Study of Task Switching and Interruptions.</b> CHI ’04. <a href="https://www.microsoft.com/en-us/research/publication/a-diary-study-of-task-switching-and-interruptions/">microsoft.com/research</a><span class="ev">“…the difficulty of shifting among numerous tasks.”</span></li>
+      <li id="ref-7">Ratwani &amp; Trafton. <b>Now, where was I? Examining the Perceptual Processes while Resuming an Interrupted Task.</b> <a href="https://gregtrafton.com/papers/a479982.pdf">gregtrafton.com</a><span class="ev">“…participants were able to use spatial memory to return to the general area where they were interrupted.”</span></li>
+      <li id="ref-8">Wang et al. (2023). <b>Voyager: An Open-Ended Embodied Agent with Large Language Models.</b> arXiv:2305.16291. <a href="https://arxiv.org/abs/2305.16291">arxiv.org/abs/2305.16291</a><span class="ev">“…the first LLM-powered embodied lifelong learning agent in Minecraft…”</span></li>
+      <li id="ref-9">Park et al. (2023). <b>Generative Agents: Interactive Simulacra of Human Behavior.</b> arXiv:2304.03442. <a href="https://arxiv.org/abs/2304.03442">arxiv.org/abs/2304.03442</a><span class="ev">“…we manifest a society of twenty-five agents in a game environment. End users can observe and interact with these agents.”</span></li>
+      <li id="ref-10">White, Nottingham, Maniar et al. (2025). <b>Collaborating Action by Action: A Multi-agent LLM Framework for Embodied Reasoning.</b> arXiv:2504.17950. <a href="https://arxiv.org/abs/2504.17950">arxiv.org/abs/2504.17950</a><span class="ev">“…the primary bottleneck in collaborating effectively for current state-of-the-art agents is efficient natural language communication…”</span></li>
+      <li id="ref-11">Omo Space documentation, <b>Agents and terminals</b>. <a href="https://github.com/omoresearch/omo-space/blob/main/docs/AGENTS-AND-TERMINALS.md">github.com/omoresearch/omo-space</a> <span class="ev">“Nothing is ever re-run without you.”</span></li>
+      <li id="ref-12">Omo Space <b>CHANGELOG</b>. <a href="https://github.com/omoresearch/omo-space/blob/main/CHANGELOG.md">github.com/omoresearch/omo-space</a> <span class="ev">“Closing a screen, leaving the chunk, quitting the game or restarting the bridge never stops a process.”</span></li>
+      <li id="ref-13">Omo, brought to life, <b>README</b>. <a href="https://github.com/omoresearch/omo-brought-to-life">github.com/omoresearch/omo-brought-to-life</a> <span class="ev">“omo-body MCP: 22 tools”</span></li>
+      <li id="ref-14"><b>Stream analysis</b>: synthesis of seven streams, 25–29 October 2026 (this study). Per-chunk quotes with timestamps are kept in our study notes. <span class="ev">“All 791 extracted quotes were re-checked…”</span></li>
+    </ol>
+    <p class="end">Illustrations were generated for Omo Research (requested model gpt-image-2.5). They are drawings, not screenshots.<br>The animated walk-through is a diagram of the idea, not a recording.<br>Omo Research · working paper, draft · 30 October 2026</p>
+  </div>
+</section>
+
+<script src="/research/rooms-not-windows/paper.js?v=1"></script>
+<footer class="site-foot">© 2026 Omo Research <a href="/">Home</a><a href="/omo-space">Research</a><a href="/notes">Notes</a><a href="/contact">Contact</a></footer>
+</body>
+</html>
