@@ -20,7 +20,7 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 **Navigation.** Vercel serves directory-index clean routes: `/about`, `/products`, and `/consulting`. Production links should use those extensionless absolute paths. Legacy product-detail files only redirect to `/products` and are marked `noindex`.
 
-**Research status.** Omo currently has no papers or publications. Research uses an honest work-log empty state. Do not add paper claims, PDFs, or a `papers/` directory unless real research exists and the site owner explicitly asks for it.
+**Research status.** Papers live under `/papers` (added at the owner's request, Oct 2026): `papers/index.html` lists them; `papers/worlds-not-windows/` holds the research paper (index.html), the whitepaper and their PDFs. They are findings from own use, not controlled studies. Add new papers only when the site owner asks.
 
 **SEO foundation.** Canonical production URLs use `https://www.omo.sh`. Keep each production page's title, description, canonical, Open Graph/Twitter metadata, and JSON-LD accurate and unique. When adding or removing a production route, update `sitemap.xml`. Design-exploration folders are excluded from indexing through `X-Robots-Tag` rules in `vercel.json`.
 
