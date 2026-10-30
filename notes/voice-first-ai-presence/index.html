@@ -20,10 +20,70 @@
   ]}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="preload" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" as="style" /><link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'" /><noscript><link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" /></noscript><link rel="stylesheet" href="/styles.css" />
+<style id="m-pass">
+.m-head, .m-tabs { display: none; }
+@media (max-width: 1023px) {
+  .mobile-header { display: none !important; }
+  .m-head { display: flex; position: sticky; top: 0; z-index: 50; align-items: center; justify-content: space-between; gap: .8rem;
+            height: 56px; box-sizing: border-box; padding: 0 1.1rem; background: rgba(245,240,232,.94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border); }
+  .m-brand { display: flex; align-items: center; gap: .55rem; color: var(--text); text-decoration: none; font-family: var(--font-mono);
+             font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; }
+  .m-brand svg { width: 24px; height: 24px; flex: none; }
+  .m-menu { position: relative; }
+  .m-menu summary { list-style: none; cursor: pointer; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase;
+                    color: var(--text); border: 1px solid var(--border); border-radius: 999px; padding: .45rem .85rem; background: var(--bg); }
+  .m-menu summary::-webkit-details-marker { display: none; }
+  .m-menu[open] summary { background: var(--btn-bg); color: var(--bg); border-color: var(--btn-bg); }
+  .m-menu nav { position: absolute; right: 0; top: calc(100% + .5rem); width: min(78vw, 300px); background: var(--bg-card); border: 1px solid var(--border);
+                border-radius: 14px; padding: .4rem; box-shadow: 0 24px 50px -24px rgba(26,16,8,.45); }
+  .m-menu nav a { display: block; padding: .8rem .85rem; border-radius: 10px; color: var(--text); text-decoration: none; font-size: 1.08rem; }
+  .m-menu nav a:hover, .m-menu nav a.on { background: var(--bg); }
+  .m-menu nav a.on { font-weight: 600; }
+  .m-menu nav hr { border: 0; border-top: 1px solid var(--border); margin: .3rem .5rem; }
+  .m-tabs { display: flex; position: sticky; top: 56px; z-index: 40; gap: .4rem; overflow-x: auto; scrollbar-width: none; padding: .5rem 1.1rem;
+            background: rgba(245,240,232,.94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .m-tabs::-webkit-scrollbar { display: none; }
+  .m-tabs a { flex: none; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .03em; color: var(--text-2); text-decoration: none;
+              border: 1px solid var(--border); border-radius: 999px; padding: .4rem .75rem; background: var(--bg); }
+  .m-tabs a.on { background: var(--btn-bg); color: var(--bg); border-color: var(--btn-bg); }
+  [id] { scroll-margin-top: 110px; }
+}
+@media (max-width: 640px) {
+  .content-main { padding-left: 1.15rem !important; padding-right: 1.15rem !important; padding-top: 0 !important; }
+  .paper-header { text-align: left !important; padding-top: 1.6rem !important; }
+  .paper-header .paper-tags { justify-content: flex-start !important; }
+  .paper-header h1 { font-size: 2.35rem !important; line-height: 1.06 !important; text-align: left !important; }
+  .paper-subtitle, .section-note, .research-intro { text-align: left !important; margin-left: 0 !important; margin-right: 0 !important; }
+  .paper-subtitle { font-size: 1.12rem !important; }
+  .meta-grid { text-align: left !important; gap: 1rem 1.2rem !important; }
+  .meta-item { text-align: left !important; }
+  .paper-actions { flex-direction: column !important; align-items: stretch !important; gap: .55rem !important; }
+  .paper-actions .btn { width: 100% !important; max-width: none !important; justify-content: center; box-sizing: border-box; }
+  .paper-actions .act-link { align-self: center !important; margin: .2rem 0 0 !important; }
+  .exp-cover, .exp-figure { margin-left: -1.15rem !important; margin-right: -1.15rem !important; }
+  .exp-cover img, .exp-figure img { border-radius: 0 !important; border-left: 0 !important; border-right: 0 !important; }
+  .exp-cover figcaption, .exp-figure figcaption { padding: 0 1.15rem; }
+  .rb-article, .body-content, .exp-lead { font-size: 1.06rem; }
+  .rb-article h2, .paper-section h2 { font-size: 1.6rem !important; line-height: 1.15 !important; }
+  .rb-article table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .rb-cite { padding: .1rem .3rem; }
+  .tl-row { padding: .85rem 0 !important; }
+  .tl-what { font-size: 1.08rem !important; }
+  .tl-row { position: relative; }
+  .tl-what a::after { content: ""; position: absolute; inset: 0; }
+  .tl-row:active { background: var(--bg-card); }
+  .exp-pager { display: grid !important; grid-template-columns: 1fr !important; gap: .6rem !important; }
+  .exp-pager a { padding: .9rem 1rem !important; }
+  .site-footer .footer-inner { flex-direction: column; align-items: flex-start; gap: .8rem; }
+  .site-footer .footer-links { display: flex; flex-wrap: wrap; gap: .3rem 1.1rem; }
+  .site-footer .footer-links a { padding: .35rem 0; }
+}
+</style>
 </head>
 <body>
   <nav class="sidebar" aria-label="Article navigation"><div class="sidebar-inner"><a class="sidebar-brand" href="/notes" aria-label="Omo Notes"><span class="sidebar-mark"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 180V20h80M20 180h160M100 20h30m10 0h20m20 0v40m0 12v38m0 10v30m0 10v20M32 168V32h68M32 168h136" fill="none" stroke="currentColor" stroke-width="8" /><path d="M62 100a30 30 0 0 1 38-30m0 0a30 30 0 0 1 0 20m0 0a30 30 0 0 1 38 40M100 90a30 30 0 0 0-38 10" fill="none" stroke="currentColor" stroke-width="7" /><rect x="95" y="95" width="10" height="10" fill="currentColor" /></svg></span><span class="sidebar-name">Omo Notes</span></a><div class="sidebar-links"><a class="sidebar-link" href="/notes">← All notes</a><a class="sidebar-sublink" href="#presence">Presence</a><a class="sidebar-sublink" href="#signals">Five signals</a><a class="sidebar-sublink" href="#silence">Silence &amp; space</a><a class="sidebar-sublink" href="#tests">Design tests</a><a class="sidebar-sublink" href="#sources">Sources</a></div></div></nav>
-  <header class="mobile-header"><a class="mobile-brand" href="/notes">Omo Notes</a><nav class="mobile-actions" aria-label="Primary"><a class="btn btn-dark btn-sm" href="/notes">← Notes</a></nav></header>
+  <header class="m-head"><a class="m-brand" href="/" aria-label="Omo Research home"><span class="sidebar-mark"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 180V20h80M20 180h160M100 20h30m10 0h20m20 0v40m0 12v38m0 10v30m0 10v20M32 168V32h68M32 168h136" fill="none" stroke="currentColor" stroke-width="8" /><path d="M62 100a30 30 0 0 1 38-30m0 0a30 30 0 0 1 0 20m0 0a30 30 0 0 1 38 40M100 90a30 30 0 0 0-38 10" fill="none" stroke="currentColor" stroke-width="7" /><rect x="95" y="95" width="10" height="10" fill="currentColor" /></svg></span><span>Omo Research</span></a><details class="m-menu"><summary>Menu</summary><nav aria-label="Site"><a href="/omo-space">Omo Space</a><a href="/research/robots">Omo Microduck</a><a href="/research/omo-r1">Omo R1</a><a href="/about">Research log</a><hr><a href="/research/rooms-not-windows">Rooms, Not Windows (paper)</a><a href="/demo">Watch the demo</a><a href="/notes">Notes</a><hr><a href="/enterprise">Enterprise</a><a href="/contact">Contact</a><a href="https://github.com/omoresearch/omo-space" target="_blank" rel="noopener">GitHub ↗</a></nav></details></header><header class="mobile-header"><a class="mobile-brand" href="/notes">Omo Notes</a><nav class="mobile-actions" aria-label="Primary"><a class="btn btn-dark btn-sm" href="/notes">← Notes</a></nav></header>
   <main class="content-main"><article>
     <header class="paper-header" id="overview"><div class="paper-tags"><span class="tag">Omo Note</span><span class="tag">Voice-first AI</span><span class="tag">Presence</span></div><h1>Voice-first AI presence</h1><p class="paper-subtitle">A convincing voice can attract attention. Presence comes from what happens next: listening, timing, interruption, restraint, and repair.</p><p class="section-note">Conceptual writing based on public sources. This is not an Omo experiment, paper, finding, or product announcement.</p><div class="meta-grid"><div class="meta-item"><p class="meta-label">Published</p><p class="meta-value"><time datetime="2026-07-10">10 Jul 2026</time></p></div><div class="meta-item"><p class="meta-label">Reading time</p><p class="meta-value">8 minutes</p></div><div class="meta-item"><p class="meta-label">Type</p><p class="meta-value">Design thesis</p></div><div class="meta-item"><p class="meta-label">Status</p><p class="meta-value">Open to critique</p></div></div></header>
     <section class="paper-section" id="presence"><p class="section-kicker">01 / Presence</p><h2>Voice is not a skin for text</h2><div class="body-text arch-intro"><p class="body-content">A text interface lets both parties pause without explanation. Speech is less forgiving. Every delay sounds like hesitation or absence. Talking over someone feels different from producing a long paragraph. A response that cannot be interrupted becomes a small captivity. When an agent speaks, timing becomes visible behavior.</p><p class="body-content">Modern systems expose capabilities needed for a more conversational loop. <a href="https://openai.com/index/introducing-gpt-realtime/" target="_blank" rel="noopener">OpenAI describes its Realtime API</a> as direct speech-to-speech processing designed for low-latency interaction. <a href="https://ai.google.dev/gemini-api/docs/live-api/capabilities" target="_blank" rel="noopener">Google’s Live API documentation</a> exposes voice activity detection, interruption handling, turn-coverage settings, and non-blocking tool behavior. These are platform capabilities, not proof that a particular experience feels natural. They reveal the design surface.</p><p class="body-content">Our thesis is that voice-first AI should be judged as a participant in turn-taking, not as a text model with audio output. The voice itself matters, but the social mechanics around it matter more.</p></div></section>

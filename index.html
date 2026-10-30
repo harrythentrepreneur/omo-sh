@@ -244,9 +244,15 @@
     }
 
     @media (max-width: 480px) {
-      .hero-actions { flex-direction: column; align-items: center; }
-      .hero-actions .btn { width: 100%; max-width: 16rem; justify-content: center; }
-      .stats-row { gap: 0.75rem; }
+      .hero { min-height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; padding: 2rem 1.4rem calc(2rem + env(safe-area-inset-bottom)); }
+      .hero-mark svg { width: 150px; height: 150px; }
+      .hero-tagline { font-size: 1.6rem; line-height: 1.18; text-wrap: balance; }
+      .hero-subtitle { text-wrap: pretty; }
+      .hero-subtitle { font-size: 1.08rem; line-height: 1.6; }
+      .hero-actions { flex-direction: column; align-items: stretch; width: 100%; }
+      .hero-actions .btn { width: 100%; max-width: none; justify-content: center; padding-top: .95rem; padding-bottom: .95rem; }
+      .stats-row { gap: 0.4rem; margin-top: .4rem; }
+      .stat-link { padding: .7rem .5rem; }
     }
   </style>
 </head>
