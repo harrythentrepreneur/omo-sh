@@ -1,0 +1,245 @@
+/* ─── omo.sh dark mode ───────────────────────────────────────
+   Neutral near-black palette (kino.ai-style): flat #171717 page,
+   #1e1e1d surfaces, hairline borders, off-white #ececea text with
+   62% / 42% muted tiers, and light pill buttons with dark text.
+   Brand fonts (Crimson Text + IBM Plex Mono) stay the same.
+   Activated by html[data-theme="dark"] (set by /theme.js).        */
+
+html[data-theme="dark"] {
+  --k-bg:       #171717;
+  --k-surface:  #1e1e1d;
+  --k-raised:   #2c2c2a;
+  --k-line:     #2a2a29;
+  --k-line-2:   #3a3a38;
+  --k-text:     #ececea;
+  --k-text-2:   #9d9d9b;   /* ≈ rgba(236,236,234,.62) */
+  --k-text-3:   #73736f;   /* ≈ rgba(236,236,234,.42) */
+  --k-wash:     rgba(236, 236, 234, 0.05);
+  --k-wash-2:   rgba(236, 236, 234, 0.08);
+
+  /* shared shell tokens (styles.css) */
+  --bg:         var(--k-bg);
+  --bg-card:    var(--k-surface);
+  --text:       var(--k-text);
+  --text-2:     var(--k-text-2);
+  --border:     var(--k-line);
+  --btn-bg:     var(--k-text);
+  --btn-hover:  #ffffff;
+  --link-color: #cfcfcc;
+
+  /* home page tokens (index.html) */
+  --ink:         var(--k-text);
+  --near-ink:    #ffffff;
+  --dark-taupe:  #b9b9b6;
+  --mid-taupe:   var(--k-text-2);
+  --light-taupe: #4a4a47;
+  --paper:       var(--k-bg);
+
+  /* paper tokens (rooms-not-windows, worlds-not-windows) */
+  --card:        var(--k-surface);
+  --ink2:        #c9c9c6;
+  --muted:       var(--k-text-2);
+  --line:        var(--k-line);
+  --wash:        #232322;
+  --accent:      var(--k-text-2);
+  --accent-soft: var(--k-raised);
+
+  color-scheme: dark;
+  background: var(--k-bg);
+}
+
+html[data-theme="dark"] body { background: var(--k-bg); color: var(--k-text); }
+
+/* smooth swap only while toggling, never on first paint */
+html.omo-theme-switching,
+html.omo-theme-switching *,
+html.omo-theme-switching *::before,
+html.omo-theme-switching *::after {
+  transition: background-color .28s ease, color .28s ease, border-color .28s ease, fill .28s ease, stroke .28s ease !important;
+}
+
+/* ─── base ─── */
+html[data-theme="dark"] ::selection { background: rgba(236, 236, 234, 0.2); color: #fff; }
+html[data-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(236, 236, 234, 0.16); }
+html[data-theme="dark"] code { background: var(--k-wash-2); }
+html[data-theme="dark"] a:focus-visible,
+html[data-theme="dark"] button:focus-visible { outline-color: var(--k-text); }
+
+/* translucent sticky bars */
+html[data-theme="dark"] .mobile-header,
+html[data-theme="dark"] .m-head,
+html[data-theme="dark"] .m-tabs,
+html[data-theme="dark"] .ent-top,
+html[data-theme="dark"] .topbar { background: rgba(23, 23, 23, 0.86); }
+
+/* hover washes that were ink-at-low-alpha */
+html[data-theme="dark"] .sidebar-link:hover,
+html[data-theme="dark"] .site-side-links .sidebar-link:hover { background: var(--k-wash); }
+html[data-theme="dark"] .sidebar-sublink:hover,
+html[data-theme="dark"] .btn-outline:hover,
+html[data-theme="dark"] .demo-tab:hover { background: var(--k-wash); }
+html[data-theme="dark"] .sidebar-sublink.active { background: var(--k-wash-2); }
+html[data-theme="dark"] .code-block,
+html[data-theme="dark"] .arch-chip,
+html[data-theme="dark"] .text-panel { background: var(--k-surface); }
+html[data-theme="dark"] .feature-item:hover,
+html[data-theme="dark"] .arch-card:hover,
+html[data-theme="dark"] .sample-card:hover { border-color: var(--k-line-2); }
+
+/* shadows: drop the warm drop-shadows, kino is flat */
+html[data-theme="dark"] .exp-card:hover,
+html[data-theme="dark"] .paper-card:hover,
+html[data-theme="dark"] .sample-card:hover,
+html[data-theme="dark"] .obj:hover { box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.7); }
+html[data-theme="dark"] .m-menu nav,
+html[data-theme="dark"] .noscript-banner { box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.8); }
+html[data-theme="dark"] .ent-hero figure,
+html[data-theme="dark"] .dm-player,
+html[data-theme="dark"] .inshort,
+html[data-theme="dark"] .card { box-shadow: none; }
+
+/* buttons: light pill, dark text (primary); hairline pill (secondary) */
+html[data-theme="dark"] .btn-primary,
+html[data-theme="dark"] .btn-dark,
+html[data-theme="dark"] .btn.primary { color: #111 !important; }
+html[data-theme="dark"] .os-demo:hover span { background: #ffffff; }
+
+/* code panels that were ink blocks with cream text */
+html[data-theme="dark"] .os-code,
+html[data-theme="dark"] .rb-article pre,
+html[data-theme="dark"] .aq-box pre {
+  background: var(--k-surface);
+  color: var(--k-text);
+  border: 1px solid var(--k-line);
+}
+html[data-theme="dark"] .aq-box pre mark { background: var(--k-text); color: #111; }
+html[data-theme="dark"] .aq-copy { background: var(--k-text); color: #111; }
+html[data-theme="dark"] .aq-copy:hover { background: #fff; }
+
+/* research pages */
+html[data-theme="dark"] .rb-ref:target { background: var(--k-raised); }
+html[data-theme="dark"] .rb-ladder div.on span,
+html[data-theme="dark"] .rb-ladder div.on b { color: #3a3a38; }
+
+/* video frames */
+html[data-theme="dark"] .ent-video,
+html[data-theme="dark"] .ent-vid,
+html[data-theme="dark"] .dm-player,
+html[data-theme="dark"] .dm-player video { background: #0e0e0e; }
+
+/* enterprise "honest" panel: inverted ink block → raised dark card */
+html[data-theme="dark"] .ent-honest {
+  background: var(--k-surface);
+  color: var(--k-text);
+  border: 1px solid var(--k-line);
+}
+html[data-theme="dark"] .ent-honest .ent-kicker { color: var(--k-text-3); }
+html[data-theme="dark"] .ent-honest li { color: var(--k-text-2); border-bottom-color: var(--k-line); }
+html[data-theme="dark"] .ent-honest h2,
+html[data-theme="dark"] .ent-honest h3,
+html[data-theme="dark"] .ent-honest strong,
+html[data-theme="dark"] .ent-honest b { color: var(--k-text); }
+html[data-theme="dark"] .ent-form label i,
+html[data-theme="dark"] .ent-form .err { color: #e5776a; }
+html[data-theme="dark"] .ent-form .bad input,
+html[data-theme="dark"] .ent-form .bad select { border-color: #e5776a; }
+
+/* form controls */
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea { background-color: var(--k-surface); color: var(--k-text); border-color: var(--k-line-2); }
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder { color: var(--k-text-3); }
+
+/* ─── papers ─── */
+/* Worlds, Not Windows (paper + whitepaper): sheet on page */
+html[data-theme="dark"] .page { background: var(--k-surface); box-shadow: none; border: 1px solid var(--k-line); }
+html[data-theme="dark"] a.c { color: #d9b48f; }
+html[data-theme="dark"] figure .cell span { background: rgba(23, 23, 23, 0.88); color: var(--k-text); }
+html[data-theme="dark"] .draftbanner { color: #e5776a; }
+html[data-theme="dark"] .omo-top { background: var(--k-bg); border-bottom-color: var(--k-line); }
+html[data-theme="dark"] .omo-top a { color: var(--k-text-2); }
+
+/* Rooms, Not Windows */
+html[data-theme="dark"] .hero::after {
+  background: radial-gradient(ellipse at center, rgba(23,23,23,.95) 0%, rgba(23,23,23,.84) 36%, rgba(23,23,23,.3) 72%, rgba(23,23,23,.12) 100%);
+}
+html[data-theme="dark"] .hero .back-pill { background: rgba(30, 30, 29, 0.8); }
+html[data-theme="dark"] .card { background: rgba(30, 30, 29, 0.97); }
+html[data-theme="dark"] .bk .ic { background: #3a2a26; }
+html[data-theme="dark"] .closing { background: var(--k-surface); color: var(--k-text); border-top: 1px solid var(--k-line); border-bottom: 1px solid var(--k-line); }
+html[data-theme="dark"] .closing h2 { color: var(--k-text); }
+html[data-theme="dark"] .closing p { color: var(--k-text-2); }
+html[data-theme="dark"] .pairs span { border-color: var(--k-line-2); }
+html[data-theme="dark"] .pairs span s { color: var(--k-text-3); }
+html[data-theme="dark"] ol.refs a { color: #cfcfcc; }
+html[data-theme="dark"] .move .from { text-decoration-color: rgba(236, 236, 234, 0.4); }
+html[data-theme="dark"] .tl .ev.us .dot svg,
+html[data-theme="dark"] .flow .node.ok .ic svg { stroke: #111; }
+
+/* inline SVG drawings with hard-coded ink / cream */
+html[data-theme="dark"] svg [stroke="#1a1008"],
+html[data-theme="dark"] svg [stroke="#2c2015"] { stroke: var(--k-text); }
+html[data-theme="dark"] svg [fill="#1a1008"],
+html[data-theme="dark"] svg [fill="#2c2015"] { fill: var(--k-text); }
+html[data-theme="dark"] svg [stroke="#4a3b2f"] { stroke: #b9b9b6; }
+html[data-theme="dark"] svg [stroke="#c4b8a8"],
+html[data-theme="dark"] svg [stroke="#ddd4c6"] { stroke: #4a4a47; }
+html[data-theme="dark"] svg [fill="#6b5d4f"] { fill: var(--k-text-2); }
+html[data-theme="dark"] svg [fill="#f5f0e8"],
+html[data-theme="dark"] svg [fill="#fbf8f3"] { fill: var(--k-surface); }
+html[data-theme="dark"] svg [fill="#efe7da"],
+html[data-theme="dark"] svg [fill="#f3e2d3"],
+html[data-theme="dark"] svg [fill="#e8c9a8"] { fill: var(--k-raised); }
+
+/* line-art diagrams drawn on cream (research/*.svg): invert to dark */
+html[data-theme="dark"] img[src^="/assets/research/"][src$=".svg"] {
+  filter: invert(0.91) saturate(0);
+}
+
+@media print {
+  html[data-theme="dark"] { --bg: #fff; --text: #000; color-scheme: light; }
+}
+
+/* ─── theme toggle (both themes) ─── */
+.omo-theme-toggle {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1000;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid #d4cdc0;
+  background: rgba(250, 247, 242, 0.92);
+  color: #1a1008;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.omo-theme-toggle:hover { border-color: #705e4d; transform: translateY(-1px); }
+.omo-theme-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.omo-theme-toggle svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.omo-theme-toggle .omo-sun { display: none; }
+html[data-theme="dark"] .omo-theme-toggle {
+  background: rgba(30, 30, 29, 0.92);
+  border-color: var(--k-line-2);
+  color: var(--k-text);
+}
+html[data-theme="dark"] .omo-theme-toggle:hover { border-color: #5a5a57; }
+html[data-theme="dark"] .omo-theme-toggle .omo-sun { display: block; }
+html[data-theme="dark"] .omo-theme-toggle .omo-moon { display: none; }
+@media print { .omo-theme-toggle { display: none !important; } }
