@@ -178,6 +178,22 @@ footer { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid var(--border
 <p>Everything here comes from Harrison using Omo Space as his main workspace for five days, live on stream, 25–29 October 2026: about 29 hours of transcribed streams. He ran a real content pipeline (ideas, references, recording, editing, publishing, analytics) with roughly one agent per stage. A friend also built his own world with it and showed it on stream.</p>
 <p>We saw place used in four ways: to <b>find</b>, to <b>resume</b>, to <b>monitor</b> and to <b>orchestrate</b>. The quotes are what was said on stream. They are reports, not measurements.</p>
 
+<div style="break-inside:avoid"><h3>By the numbers</h3>
+<p>These come from Hermes’ own token counters, not from memory. Across all of Harrison’s agent profiles:</p>
+<table>
+<thead><tr><th>Day (AEDT)</th><th>Tokens</th><th>Model calls</th><th>Agent profiles</th></tr></thead>
+<tbody>
+<tr><td>Sat 25 Oct</td><td>0.09 bn</td><td>970</td><td>3</td></tr>
+<tr><td>Sun 26 Oct</td><td>0.63 bn</td><td>5,004</td><td>9</td></tr>
+<tr><td>Mon 27 Oct</td><td>0.56 bn</td><td>3,989</td><td>9</td></tr>
+<tr><td><b>Tue 28 Oct</b></td><td><b>4.17 bn</b></td><td>25,386</td><td>11</td></tr>
+<tr><td>Wed 29 Oct</td><td>1.61 bn</td><td>7,808</td><td>12</td></tr>
+<tr><td><b>Five days</b></td><td><b>7.07 bn</b></td><td><b>43,157</b></td><td></td></tr>
+<tr><td>Thu 30 Oct</td><td>4.67 bn</td><td>21,050</td><td>20</td></tr>
+</tbody>
+</table>
+</div>
+<p>That is about 7 billion tokens in five days, and over 4 billion on 28 October alone. Most of it (96%) is long agent conversations being re-read from the prompt cache on every step; new output was about half a percent. At list prices Hermes estimates the five days at about $3,400 (an estimate, not a bill). The counters include all of his Hermes work, not only work done through the world.</p>
 <h3>Find: walk to it</h3>
 <p>Every workspace sits in a fixed, named place. You remember where an agent is, not which tab it was in. Live on the first night, Harrison named the problem the world was built to fix:</p>
 <blockquote><p>“Getting lost with all these tabs and things” <span class="loc">[T1, 01:13:45, live]</span></p></blockquote>
@@ -271,7 +287,7 @@ footer { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid var(--border
 
 <section id="about" class="about">
 <h2><span class="n">—</span>About this paper</h2>
-<p>These are findings from the author’s own use of a system he built, not a controlled study. One person used it as his main workspace, live on stream, and a friend built his own world with it. There is no comparison with tabs and nothing was measured. The longer <a href="/papers/worlds-not-windows">research paper, <i>Worlds, Not Windows</i></a> (working paper, draft v1.7), has the full method, episodes and limitations.</p>
+<p>These are findings from the author’s own use of a system he built, not a controlled study. One person used it as his main workspace, live on stream, and a friend built his own world with it. There is no comparison with tabs and nothing was measured. The longer <a href="/papers/worlds-not-windows">research paper, <i>Worlds, Not Windows</i></a> (working paper, draft v1.8), has the full method, episodes and limitations.</p>
 <p>Quotes come from the stream transcripts, which were made automatically (Whisper) and may contain errors. Transcripts have no speaker labels; where a quote is from the friend, the speaker is inferred from context. Locators such as [T1, 02:12:55] name the transcript segment and time; every quoted span was checked by script against that transcript. Live means said while working.</p>
 <p>Images are labelled by source. Real · live stream images are cropped stills from the author’s stream of 30 October 2026, the day after the period described, with real agent sessions; they show what the places look like, not outcomes. The one Illustration is generated and is not a screenshot.</p>
 </section>
