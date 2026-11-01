@@ -1,67 +1,88 @@
-/* omo.sh theme: light (cream) / dark. Follows the system setting until the
-   visitor picks one with the toggle; the choice is kept in localStorage.
-   Loaded in <head> before paint so there is no flash of the wrong theme. */
+/* omo.sh theme: light (cream, the default) / dark.
+   Light unless the visitor picks Dark with the Light/Dark switch; the choice
+   is kept in localStorage. Loaded in <head> before paint so a dark-mode
+   visitor never sees a flash of cream. The switch is placed inside each
+   page's own navigation (sidebar, mobile menu, footer or paper top bar);
+   pages with none get a small pill in the bottom-right corner. */
 (function () {
   var KEY = "omo-theme";
   var root = document.documentElement;
-  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
 
-  function stored() {
-    try { var v = localStorage.getItem(KEY); return v === "dark" || v === "light" ? v : null; }
-    catch (e) { return null; }
-  }
-  function current() { return stored() || (mq && mq.matches ? "dark" : "light"); }
-
-  function metaColor(theme) {
-    var m = document.querySelector('meta[name="theme-color"]');
-    if (!m) {
-      if (!document.head) return;
-      m = document.createElement("meta");
-      m.name = "theme-color";
-      document.head.appendChild(m);
-    }
-    m.setAttribute("content", theme === "dark" ? "#171717" : "#f5f0e8");
+  function current() {
+    try { return localStorage.getItem(KEY) === "dark" ? "dark" : "light"; }
+    catch (e) { return "light"; }
   }
 
   function apply(theme) {
     root.setAttribute("data-theme", theme);
     root.style.colorScheme = theme;
-    metaColor(theme);
-    var b = document.getElementById("omo-theme-toggle");
-    if (b) {
-      var next = theme === "dark" ? "light" : "dark";
-      b.setAttribute("aria-label", "Switch to " + next + " mode");
-      b.setAttribute("title", "Switch to " + next + " mode");
-      b.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute("content", theme === "dark" ? "#171717" : "#f5f0e8");
+    var btns = document.querySelectorAll(".omo-theme-switch button");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute("aria-pressed", btns[i].getAttribute("data-theme-set") === theme ? "true" : "false");
     }
+  }
+
+  function set(theme) {
+    if (theme === current()) return;
+    try {
+      if (theme === "dark") localStorage.setItem(KEY, "dark");
+      else localStorage.removeItem(KEY);
+    } catch (e) {}
+    root.classList.add("omo-theme-switching");
+    apply(theme);
+    setTimeout(function () { root.classList.remove("omo-theme-switching"); }, 320);
   }
 
   apply(current());
 
-  if (mq) {
-    var onChange = function () { if (!stored()) apply(current()); };
-    if (mq.addEventListener) mq.addEventListener("change", onChange);
-    else if (mq.addListener) mq.addListener(onChange);
+  // other open tabs follow along
+  window.addEventListener("storage", function (e) { if (e.key === KEY) apply(current()); });
+
+  function makeSwitch(extraClass) {
+    var wrap = document.createElement("div");
+    wrap.className = "omo-theme-switch" + (extraClass ? " " + extraClass : "");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "Colour theme");
+    ["light", "dark"].forEach(function (t) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("data-theme-set", t);
+      b.textContent = t === "light" ? "Light" : "Dark";
+      b.addEventListener("click", function () { set(t); });
+      wrap.appendChild(b);
+    });
+    return wrap;
   }
 
-  var SUN = '<svg class="omo-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>';
-  var MOON = '<svg class="omo-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8z"/></svg>';
-
   function mount() {
-    if (document.getElementById("omo-theme-toggle") || !document.body) return;
-    var b = document.createElement("button");
-    b.type = "button";
-    b.id = "omo-theme-toggle";
-    b.className = "omo-theme-toggle";
-    b.innerHTML = SUN + MOON;
-    b.addEventListener("click", function () {
-      var next = current() === "dark" ? "light" : "dark";
-      try { localStorage.setItem(KEY, next); } catch (e) {}
-      root.classList.add("omo-theme-switching");
-      apply(next);
-      setTimeout(function () { root.classList.remove("omo-theme-switching"); }, 320);
-    });
-    document.body.appendChild(b);
+    if (!document.body || document.querySelector(".omo-theme-switch")) return;
+    var q = function (s) { return document.querySelector(s); };
+
+    // desktop: bottom of the left sidebar
+    var side = q(".sidebar .sidebar-inner") || q(".site-side");
+    if (side) side.appendChild(makeSwitch("omo-ts-side"));
+
+    // mobile: last row of the Menu dropdown
+    var menu = q(".m-menu nav");
+    if (menu) {
+      var row = document.createElement("div");
+      row.className = "omo-ts-menu-row";
+      var label = document.createElement("span");
+      label.textContent = "Theme";
+      row.appendChild(label);
+      row.appendChild(makeSwitch("omo-ts-menu"));
+      menu.appendChild(document.createElement("hr"));
+      menu.appendChild(row);
+    }
+
+    // pages missing one of those: footer or paper top bar, else a corner pill
+    if (!side || !menu) {
+      var bar = q(".site-footer .footer-inner") || q(".ct-foot") || q(".site-foot") || q(".omo-top");
+      if (bar) bar.appendChild(makeSwitch("omo-ts-inline"));
+      else if (!side && !menu) document.body.appendChild(makeSwitch("omo-ts-corner"));
+    }
     apply(current());
   }
 

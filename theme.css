@@ -3,7 +3,8 @@
    #1e1e1d surfaces, hairline borders, off-white #ececea text with
    62% / 42% muted tiers, and light pill buttons with dark text.
    Brand fonts (Crimson Text + IBM Plex Mono) stay the same.
-   Activated by html[data-theme="dark"] (set by /theme.js).        */
+   Activated by html[data-theme="dark"]; light is the default and the
+   Light / Dark switch (injected by /theme.js) sets it.            */
 
 html[data-theme="dark"] {
   --k-bg:       #171717;
@@ -201,45 +202,78 @@ html[data-theme="dark"] img[src^="/assets/research/"][src$=".svg"] {
   html[data-theme="dark"] { --bg: #fff; --text: #000; color-scheme: light; }
 }
 
-/* ─── theme toggle (both themes) ─── */
-.omo-theme-toggle {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 1000;
-  width: 40px;
-  height: 40px;
+/* ─── Light / Dark switch (both themes) ─── */
+.omo-theme-switch {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 0;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--border, #d4cdc0);
   border-radius: 999px;
-  border: 1px solid #d4cdc0;
-  background: rgba(250, 247, 242, 0.92);
-  color: #1a1008;
+  background: transparent;
+  font-family: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+  line-height: 1;
+  flex: none;
+}
+.omo-theme-switch button {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  margin: 0;
+  background: transparent;
+  color: var(--text-2, #705e4d);
+  font: inherit;
+  font-size: 10.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 999px;
   cursor: pointer;
+  transition: background-color .2s ease, color .2s ease;
+}
+.omo-theme-switch button:hover { color: var(--text, #1a1008); }
+.omo-theme-switch button[aria-pressed="true"] {
+  background: var(--btn-bg, #1a1008);
+  color: var(--bg, #f5f0e8);
+  cursor: default;
+}
+.omo-theme-switch button:focus-visible { outline: 2px solid currentColor; outline-offset: 1px; }
+
+/* placements */
+.omo-ts-side { margin-top: auto; align-self: flex-start; }
+.omo-ts-menu-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem .85rem .55rem;
+  font-family: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+  font-size: .66rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-2, #705e4d);
+}
+.omo-ts-inline { margin-left: auto; }
+.omo-top .omo-ts-inline { margin: -3px 0 -3px auto; }
+.omo-ts-corner {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1000;
+  background: rgba(245, 240, 232, 0.9);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
 }
-.omo-theme-toggle:hover { border-color: #705e4d; transform: translateY(-1px); }
-.omo-theme-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
-.omo-theme-toggle svg {
-  width: 17px;
-  height: 17px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.omo-theme-toggle .omo-sun { display: none; }
-html[data-theme="dark"] .omo-theme-toggle {
-  background: rgba(30, 30, 29, 0.92);
-  border-color: var(--k-line-2);
-  color: var(--k-text);
-}
-html[data-theme="dark"] .omo-theme-toggle:hover { border-color: #5a5a57; }
-html[data-theme="dark"] .omo-theme-toggle .omo-sun { display: block; }
-html[data-theme="dark"] .omo-theme-toggle .omo-moon { display: none; }
-@media print { .omo-theme-toggle { display: none !important; } }
+
+/* pages whose own tokens differ (papers, homepage) */
+.omo-top .omo-theme-switch,
+.site-foot .omo-theme-switch { border-color: var(--line, #d4cdc0); }
+.site-foot .omo-theme-switch button[aria-pressed="true"],
+.omo-top .omo-theme-switch button[aria-pressed="true"] { background: var(--ink, #1a1008); color: #f5f0e8; }
+
+html[data-theme="dark"] .omo-theme-switch { border-color: var(--k-line-2); }
+html[data-theme="dark"] .omo-theme-switch button { color: var(--k-text-2); }
+html[data-theme="dark"] .omo-theme-switch button:hover { color: var(--k-text); }
+html[data-theme="dark"] .omo-theme-switch button[aria-pressed="true"] { background: var(--k-text); color: #111; }
+html[data-theme="dark"] .omo-ts-corner { background: rgba(30, 30, 29, 0.9); }
+
+@media print { .omo-theme-switch { display: none !important; } }
