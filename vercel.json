@@ -22,6 +22,21 @@
       "source": "/spoken-english",
       "destination": "/products",
       "permanent": true
+    },
+    {
+      "source": "/research/worlds-not-windows",
+      "destination": "/papers/worlds-not-windows",
+      "permanent": true
+    },
+    {
+      "source": "/research/worlds-not-windows/whitepaper",
+      "destination": "/papers/worlds-not-windows/whitepaper",
+      "permanent": true
+    },
+    {
+      "source": "/research/whitepaper",
+      "destination": "/papers/worlds-not-windows/whitepaper",
+      "permanent": true
     }
   ],
   "headers": [
@@ -49,6 +64,15 @@
         {
           "key": "X-Robots-Tag",
           "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
         }
       ]
     }
