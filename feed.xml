@@ -400,6 +400,13 @@
       <description>A field report from Omo Research: thirteen voice, screen, and world interfaces we built and used for working with AI agents, and what each one taught us.</description>
     </item>
     <item>
+      <title>Omo Space: Rooms, Not Windows | Omo Research</title>
+      <link>https://www.omo.sh/omo-space</link>
+      <guid isPermaLink="true">https://www.omo.sh/omo-space</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Omo Space gives every AI agent a place in Minecraft. Rooms, Not Windows is the field study behind the system: what worked, what broke, and what we would test next.</description>
+    </item>
+    <item>
       <title>Rooms, Not Windows: Spatially Aware Agentic Interfaces | Omo Research</title>
       <link>https://www.omo.sh/research/rooms-not-windows</link>
       <guid isPermaLink="true">https://www.omo.sh/research/rooms-not-windows</guid>
