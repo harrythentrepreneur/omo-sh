@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <script src="/theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A Hermes Agent plugin that gives every profile a desk in Omo Space: status lamps while agents work, a Hermes Board of live activity, in-game notices. Metadata only, loopback only. v0.1.0 release candidate." />
+  <meta name="description" content="A Hermes Agent plugin that gives every profile a desk in Omo Space: status lamps while agents work, a Hermes Board of every session, in-game notices. Metadata only, loopback only. v0.1.0 release candidate." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="author" content="Omo Research" />
   <meta name="theme-color" content="#f5f0e8" />
-  <title>Omo Space for Hermes: Your Hermes Agents as a Building | Omo Research</title>
+  <title>Omo Space for Hermes: A Desk for Every Hermes Profile | Omo Research</title>
   <link rel="canonical" href="https://www.omo.sh/hermes" />
   <link rel="alternate" type="application/rss+xml" title="Omo Notes" href="/feed.xml" />
   <link rel="icon" href="/assets/omo-mark.svg" type="image/svg+xml" />
@@ -18,16 +18,16 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Omo Research" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:title" content="Omo Space for Hermes: Your Hermes Agents as a Building | Omo Research" />
-  <meta property="og:description" content="A Hermes Agent plugin that gives every profile a desk in Omo Space: status lamps while agents work, a Hermes Board of live activity, in-game notices. Metadata only, loopback only. v0.1.0 release candidate." />
+  <meta property="og:title" content="Omo Space for Hermes: A Desk for Every Hermes Profile | Omo Research" />
+  <meta property="og:description" content="A Hermes Agent plugin that gives every profile a desk in Omo Space: status lamps while agents work, a Hermes Board of every session, in-game notices. Metadata only, loopback only. v0.1.0 release candidate." />
   <meta property="og:url" content="https://www.omo.sh/hermes" />
   <meta property="og:image" content="https://www.omo.sh/assets/hermes/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Omo Space for Hermes: your Hermes system, as a building. A Hermes Board wall inside Omo Space." />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Omo Space for Hermes: Your Hermes Agents as a Building | Omo Research" />
-  <meta name="twitter:description" content="A Hermes Agent plugin that gives every profile a desk in Omo Space: status lamps while agents work, a Hermes Board of live activity, in-game notices. Metadata only, loopback only. v0.1.0 release candidate." />
+  <meta name="twitter:title" content="Omo Space for Hermes: A Desk for Every Hermes Profile | Omo Research" />
+  <meta name="twitter:description" content="A Hermes Agent plugin that gives every profile a desk in Omo Space: status lamps while agents work, a Hermes Board of every session, in-game notices. Metadata only, loopback only. v0.1.0 release candidate." />
   <meta name="twitter:image" content="https://www.omo.sh/assets/hermes/og.png" />
   <meta name="twitter:image:alt" content="Omo Space for Hermes: your Hermes system, as a building. A Hermes Board wall inside Omo Space." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,157 +36,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="/styles.css" />
-<style>
-.exp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); gap: 1.1rem; margin-top: 1.25rem; }
-.exp-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-card); transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
-.exp-card:hover { transform: translateY(-2px); border-color: var(--text-2); box-shadow: 0 8px 22px rgba(26,16,8,.07); }
-.exp-card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid var(--border); background: var(--bg); }
-.exp-card-body { padding: .8rem .95rem 1rem; display: flex; flex-direction: column; gap: .3rem; flex: 1; }
-.exp-meta { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-2); }
-.exp-status { padding: .08rem .5rem; border: 1px solid var(--border); border-radius: 999px; }
-.exp-status.now { background: var(--btn-bg); color: var(--bg); border-color: transparent; }
-.exp-card h3 { font-family: var(--font-body); font-size: 1.12rem; font-weight: 600; line-height: 1.25; margin: .1rem 0 0; }
-.exp-card p.exp-line { color: var(--text-2); font-size: .88rem; line-height: 1.5; margin: 0; }
-.exp-more { margin-top: auto; padding-top: .35rem; font-family: var(--font-mono); font-size: .64rem; color: var(--text); }
-.exp-cover { margin: 1.2rem 0 0; }
-.exp-cover img, .exp-figure img, .exp-figure video { display: block; width: 100%; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); }
-.exp-figure { margin: 1.4rem 0 .4rem; }
-.exp-figure img, .exp-figure video { aspect-ratio: 16 / 9; object-fit: cover; }
-.exp-figure.diagram img { object-fit: contain; }
-.exp-cover figcaption, .exp-figure figcaption { margin-top: .45rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
-.exp-cover figcaption span, .exp-figure figcaption span { text-transform: uppercase; letter-spacing: .04em; margin-right: .45rem; color: var(--text); }
-.exp-lead { max-width: 38rem; color: var(--text-2); }
-.exp-list { margin: .6rem 0 0; padding-left: 1.1rem; max-width: 38rem; }
-.exp-list li { margin: .35rem 0; color: var(--text-2); line-height: 1.6; font-size: .95rem; }
-.exp-saw { max-width: 38rem; border-left: 2px solid var(--btn-bg); padding: .2rem 0 .2rem 1rem; font-size: 1.08rem; line-height: 1.6; }
-.exp-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
-.exp-pager a { text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; padding: .8rem 1rem; }
-.exp-pager a:hover { border-color: var(--text-2); }
-.exp-pager .next { text-align: right; grid-column: 2; }
-.exp-pager small { display: block; font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-2); }
-.exp-pager strong { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; }
-.sidebar-sublink .exp-n { font-family: var(--font-mono); font-size: .6rem; color: var(--text-2); margin-right: .4rem; }
-.research-intro { margin-top: .6rem; max-width: 36rem; }
-.small-links { margin-top: 2.2rem; display: flex; gap: 1.2rem; font-family: var(--font-mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .04em; }
-.small-links a { color: var(--text-2); text-decoration: none; }
-.small-links a:hover { color: var(--text); }
-.side-group { margin: 1.1rem 0 .3rem; padding: 0 .55rem; font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-2); }
-.side-group:first-of-type { margin-top: .6rem; }
-.paper-card { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg-card); margin-top: 1.1rem; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
-.paper-card:hover { transform: translateY(-2px); border-color: var(--text-2); box-shadow: 0 10px 26px rgba(26,16,8,.08); }
-.paper-card img { width: 100%; height: 100%; min-height: 15rem; object-fit: cover; border-right: 1px solid var(--border); }
-.paper-card-body { padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: .45rem; }
-.paper-card h3 { font-family: var(--font-body); font-style: italic; font-weight: 400; font-size: 2rem; line-height: 1.05; margin: .1rem 0; }
-.paper-card p { color: var(--text-2); font-size: .92rem; line-height: 1.6; margin: 0; }
-.paper-card p.exp-meta { font-size: .62rem; line-height: 1.4; }
-.sidebar-inner { max-height: 100vh; overflow-y: auto; scrollbar-width: thin; }
-.move-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin-top: .9rem; }
-.move-card { display: flex; flex-direction: column; gap: .2rem; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 10px; padding: .8rem .9rem; background: var(--bg-card); }
-.move-card:hover { border-color: var(--text-2); }
-.move-old { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); text-decoration: line-through; }
-.move-k { font-family: var(--font-mono); font-size: .6rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); margin-top: .3rem; }
-.move-card strong { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; line-height: 1.25; }
-.worked-note { margin-top: .9rem; font-family: var(--font-mono); font-size: .64rem; color: var(--text-2); }
-@media (max-width: 900px) { .paper-card { grid-template-columns: 1fr; } .paper-card img { border-right: 0; border-bottom: 1px solid var(--border); min-height: 0; aspect-ratio: 16 / 9; } .move-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.os-loops { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; margin-top: 1rem; }
-.os-loop { margin: 0; } .os-loop img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--border); border-radius: 10px; background: #111; }
-.os-loop figcaption { margin-top: .4rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
-.os-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
-.os-shot { margin: 0; } .os-shot img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--border); border-radius: 10px; }
-.os-shot:first-child { grid-column: 1 / -1; }
-.os-shot figcaption { margin-top: .4rem; font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
-.os-demo { position: relative; display: block; margin: 1rem 0 .4rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-.os-demo img { display: block; width: 100%; }
-.os-demo span { position: absolute; left: 1rem; bottom: 1rem; background: var(--btn-bg); color: var(--bg); font-family: var(--font-mono); font-size: .72rem; padding: .5rem .9rem; border-radius: 999px; }
-.os-demo:hover span { background: #2c2015; }
-.os-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
-.os-blocks { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
-.os-code { margin: 1rem 0; padding: 1rem 1.1rem; background: #1a1008; color: #f5f0e8; border-radius: 10px; overflow-x: auto; font-family: var(--font-mono); font-size: .74rem; line-height: 1.7; }
-.os-arch { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: 1.2rem 0; font-family: var(--font-mono); font-size: .68rem; }
-.os-arch span { border: 1px solid var(--border); background: var(--bg-card); border-radius: 999px; padding: .35rem .75rem; }
-.os-arch i { font-style: normal; color: var(--text-2); }
-.os-faq { border-bottom: 1px solid var(--border); padding: .85rem 0; max-width: 40rem; }
-.os-faq summary { cursor: pointer; font-family: var(--font-body); font-size: 1.12rem; font-weight: 600; }
-.os-faq p { margin: .5rem 0 0; color: var(--text-2); line-height: 1.65; }
-.os-legal { margin-top: 1.6rem; font-family: var(--font-mono); font-size: .6rem; color: var(--text-2); max-width: 40rem; line-height: 1.6; }
-@media (max-width: 700px) { .os-loops, .os-pair, .os-gallery { grid-template-columns: 1fr; } }
-#log.paper-section { padding-top: 0; border-top: 0; }
-.tl-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); counter-reset: tl; }
-.tl-row { display: grid; grid-template-columns: 2.4rem 8.5rem minmax(0, 15rem) minmax(0, 1fr); gap: 1rem; align-items: baseline; padding: .7rem 0; border-bottom: 1px solid var(--border); counter-increment: tl; }
-.tl-row::before { content: counter(tl, decimal-leading-zero); font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
-.tl-date { font-family: var(--font-mono); font-size: .66rem; color: var(--text-2); text-transform: uppercase; letter-spacing: .03em; }
-.tl-what { font-family: var(--font-body); font-size: 1.04rem; font-weight: 600; line-height: 1.3; }
-.tl-what a { color: var(--text); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
-.tl-what a:hover { text-decoration-color: var(--text); }
-.log-sources { padding-left: 1.2rem; max-width: 40rem; } .log-sources li { margin: .4rem 0; font-size: .86rem; color: var(--text-2); line-height: 1.55; word-break: break-word; } .log-sources b { color: var(--text); font-weight: 500; }
-.tl-note { font-size: .9rem; color: var(--text-2); line-height: 1.5; }
-@media (max-width: 800px) { .tl-row { grid-template-columns: 2rem minmax(0, 1fr); gap: .15rem .8rem; } .tl-date, .tl-what, .tl-note { grid-column: 2; } }
-@media (max-width: 600px) { .exp-pager { grid-template-columns: 1fr; } .exp-pager .next { grid-column: 1; } }
-</style>
-<style>
-.rb-article { max-width: 44rem; }
-.rb-article p, .rb-article li { font-size: 1.06rem; line-height: 1.72; color: var(--text); }
-.rb-article p { margin: 0 0 1.05rem; } .rb-article li { margin: .3rem 0; } .rb-article ul, .rb-article ol { margin: 0 0 1.1rem; }
-.rb-article h2 { margin-top: .2rem; } .rb-article .section-kicker { margin-top: 3rem; }
-.rb-article h3 { font-family: var(--font-body); font-size: 1.3rem; font-weight: 600; margin: 2rem 0 .4rem; }
-.rb-article ul, .rb-article ol { padding-left: 1.2rem; }
-.rb-article code { font-family: var(--font-mono); font-size: .85em; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 0 .25rem; }
-.rb-fig img { aspect-ratio: auto !important; max-height: 34rem; object-fit: contain !important; background: #111 !important; }
-.rb-cite { font-family: var(--font-mono); font-size: .62rem; vertical-align: super; line-height: 0; text-decoration: none; color: var(--text-2); margin-left: .12rem; }
-.rb-cite:hover { color: var(--text); }
-.rb-ref { font-size: .86rem !important; line-height: 1.55 !important; color: var(--text-2) !important; padding-left: 3.2rem; text-indent: -3.2rem; word-break: break-word; }
-.rb-ref b { font-family: var(--font-mono); font-size: .7rem; color: var(--text); display: inline-block; width: 3.2rem; text-indent: 0; }
-.rb-ref:target { background: #efe7da; }
-.rb-ladder { display: flex; flex-wrap: wrap; align-items: stretch; gap: .5rem; margin: 1.3rem 0 .5rem; }
-.rb-ladder div { flex: 1 1 8rem; border: 1px solid var(--border); border-radius: 10px; padding: .7rem .8rem; background: var(--bg-card); display: flex; flex-direction: column; gap: .15rem; }
-.rb-ladder div.on { background: var(--btn-bg); color: var(--bg); border-color: transparent; }
-.rb-ladder div.on span, .rb-ladder div.on b { color: #d4cdc0; }
-.rb-ladder b { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); }
-.rb-ladder strong { font-family: var(--font-body); font-size: 1.1rem; }
-.rb-ladder span { font-family: var(--font-mono); font-size: .62rem; color: var(--text-2); line-height: 1.4; }
-.rb-ladder i { align-self: center; font-style: normal; color: var(--text-2); }
-.rb-abstract { border-left: 2px solid var(--btn-bg); padding-left: 1rem; }
-
-.op-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
-.op-pair .rb-fig img { aspect-ratio: 16 / 9 !important; object-fit: cover !important; }
-.op-demo { position: relative; display: block; margin: 1.2rem 0 .6rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-.op-demo img { display: block; width: 100%; }
-.op-demo span { position: absolute; left: 1rem; bottom: 1rem; background: var(--btn-bg); color: var(--bg); font-family: var(--font-mono); font-size: .72rem; padding: .5rem .9rem; border-radius: 999px; }
-.rb-article table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.4rem; font-size: .95rem; }
-.rb-article th, .rb-article td { text-align: left; vertical-align: top; padding: .55rem .6rem; border-bottom: 1px solid var(--border); line-height: 1.5; }
-.rb-article th { font-family: var(--font-mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); font-weight: 500; }
-.rb-article pre { background: #1a1008; color: #f5f0e8; border-radius: 10px; padding: 1rem 1.1rem; overflow: hidden !important; white-space: pre-wrap !important; word-break: break-all; margin: 1rem 0 1.2rem; }
-.rb-article pre code { white-space: pre-wrap !important; display: block; }
-.rb-article pre code { background: none; border: 0; color: inherit; font-size: .72rem; line-height: 1.55; padding: 0; }
-@media (max-width: 700px) { .op-pair { grid-template-columns: 1fr; } }
-</style>
-<style>
-.aq, .aq pre, .aq p, .aq h3 { text-align: left; }
-.aq { margin: 2rem 0 0; border: 1px solid var(--border); border-radius: 16px; background: var(--bg-card); overflow: hidden; }
-.aq-head { padding: 1.2rem 1.3rem .2rem; }
-.aq-kicker { font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .07em; color: var(--text-2); margin: 0 0 .35rem; }
-.aq-head h3 { margin: 0 0 .3rem; font-size: 1.35rem; font-weight: 600; }
-.aq-head p { margin: 0; color: var(--text-2); font-size: 1rem; line-height: 1.5; }
-.aq-ideas { justify-content: flex-start; display: flex; flex-wrap: wrap; gap: .45rem; padding: .9rem 1.3rem 0; }
-.aq-chip { font: inherit; font-size: .95rem; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: .38rem .8rem; cursor: pointer; }
-.aq-chip:hover { border-color: var(--text-2); }
-.aq-chip[aria-pressed="true"] { background: var(--btn-bg); color: var(--bg); border-color: var(--btn-bg); }
-.aq-own { display: flex; gap: .5rem; padding: .7rem 1.3rem 0; }
-.aq-own input { flex: 1; min-width: 0; font: inherit; font-size: 16px; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: .55rem .75rem; }
-.aq-own input:focus { outline: 2px solid var(--text); outline-offset: 1px; }
-.aq-box { position: relative; margin: 1rem 1.3rem 1.3rem; }
-.aq-box pre { margin: 0; background: #1a1008; color: #f5f0e8; border-radius: 12px; padding: 1rem 1.1rem 3.2rem; white-space: pre-wrap !important; word-break: break-word; overflow: hidden; font-family: var(--font-mono); font-size: .74rem; line-height: 1.6; }
-.aq-box pre mark { background: #f5f0e8; color: #1a1008; border-radius: 3px; padding: 0 .2rem; }
-.aq-copy { position: absolute; right: .7rem; bottom: .7rem; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .04em; background: #f5f0e8; color: #1a1008; border: 0; border-radius: 999px; padding: .5rem .95rem; cursor: pointer; }
-.aq-copy:hover { background: #fff; }
-.aq-foot { padding: 0 1.3rem 1.1rem; font-family: var(--font-mono); font-size: .6rem; color: var(--text-2); line-height: 1.6; }
-@media (max-width: 640px) {
-  .aq-head, .aq-ideas, .aq-own { padding-left: 1rem; padding-right: 1rem; }
-  .aq-box { margin: .9rem 1rem 1rem; }
-  .aq-box pre { font-size: .7rem; }
-  .aq-foot { padding: 0 1rem 1rem; }
-}
-</style>
 <style id="m-pass">
 .m-head, .m-tabs { display: none; }
 @media (max-width: 1023px) {
@@ -248,35 +97,172 @@
 }
 </style>
   <link rel="stylesheet" href="/theme.css" />
-<style id="hermes-page">
-.hm-get { padding-left: 1.2rem; }
-.hm-get li { margin: .5rem 0; }
-.hm-note { border-left: 2px solid var(--border); padding-left: 1rem; color: var(--text-2); font-size: .98rem !important; }
-.hm-steps { padding-left: 1.3rem; }
-.hm-steps > li { margin: 1.1rem 0; padding-left: .2rem; }
-.hm-steps > li p { margin: .5rem 0 0; }
-.rb-article pre.hm-cmd, .rb-article pre.hm-out { position: relative; }
-.rb-article pre.hm-cmd { margin: .6rem 0 .4rem; padding-right: 4.8rem; }
-.rb-article pre.hm-cmd code { font-size: .78rem; }
-.rb-article pre.hm-out { white-space: pre !important; overflow-x: auto !important; word-break: normal; }
-.rb-article pre.hm-out code { white-space: pre !important; font-size: .68rem; }
-.hm-copy { position: absolute; top: .55rem; right: .55rem; font-family: var(--font-mono); font-size: .62rem; letter-spacing: .04em;
-           background: #f5f0e8; color: #1a1008; border: 0; border-radius: 999px; padding: .32rem .7rem; cursor: pointer; }
-.hm-copy:hover { background: #fff; }
-.hm-soon { font-family: var(--font-mono); font-size: .72rem !important; line-height: 1.6 !important; color: var(--text-2) !important; }
-.hm-soon::before { content: "COMING SOON"; display: inline-block; margin-right: .5rem; padding: .05rem .45rem; border: 1px solid var(--border); border-radius: 999px; font-size: .58rem; letter-spacing: .06em; }
-.rb-article td code { word-break: break-word; }
-.hm-slot figcaption span { color: var(--text-2); }
-.exp-cover img, .rb-fig img { height: auto; }
-.rb-article pre.hm-cmd, .rb-article pre.hm-cmd code { word-break: normal !important; overflow-wrap: anywhere; }
-.hm-tools td:first-child { white-space: nowrap; }
-.hm-cli { margin: 1rem 0 1.4rem; border-top: 1px solid var(--border); }
-.hm-cli dt { margin: 0; padding: .75rem 0 .15rem; }
-.hm-cli dt code { font-size: .8rem; background: none !important; border: 0 !important; padding: 0 !important; overflow-wrap: anywhere; }
-.hm-cli dd { margin: 0; padding: 0 0 .75rem; border-bottom: 1px solid var(--border); color: var(--text-2); font-size: .98rem; line-height: 1.6; }
-.rb-article p.os-legal { font-size: .7rem; line-height: 1.6; }
-.rb-fig.hm-wide img { aspect-ratio: auto !important; object-fit: contain !important; }
-.paper-header .section-note code { font-family: var(--font-mono); font-size: .85em; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 0 .25rem; }
+<link rel="preload" as="image" href="/assets/hermes/world-board-wall.webp" fetchpriority="high" />
+<style id="hermes-v2">
+/* /hermes v2: page-scoped styles. Tokens from /styles.css (light) and /theme.css (dark). */
+.hx { --hx-ink-block: #1a1008; --hx-ink-text: #f5f0e8; --hx-muted-line: #e3dccf; --hx-photo-bg: #1d1712; }
+html[data-theme="dark"] .hx { --hx-ink-block: #1e1e1d; --hx-ink-text: #ececea; --hx-muted-line: #2a2a29; --hx-photo-bg: #111; }
+
+.content-main.hx { max-width: 1040px; padding-top: 2.4rem; }
+@media (min-width: 1024px) { .content-main.hx { padding-top: 4rem; } }
+.hx p, .hx li, .hx dd { text-wrap: pretty; }
+.hx h1, .hx h2, .hx h3 { font-family: var(--font-body); color: var(--text); text-wrap: balance; }
+.hx code { font-family: var(--font-mono); font-size: .82em; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: .02em .3em; white-space: nowrap; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.hx code.w { white-space: normal; overflow-wrap: anywhere; }
+.hx a:not(.hx-btn) { text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.hx a:not(.hx-btn):hover { text-decoration-color: var(--text); }
+.hx :focus-visible { outline: 2px solid var(--text); outline-offset: 3px; border-radius: 4px; }
+
+/* ── hero ── */
+.hx-hero { text-align: center; }
+.hx-eyebrow { display: inline-flex; gap: .55rem; flex-wrap: wrap; justify-content: center; margin: 0 0 1.1rem; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-2); }
+.hx-hero h1 { font-size: clamp(2.5rem, 7.2vw, 4.4rem); font-weight: 400; font-style: italic; line-height: 1.02; letter-spacing: -.01em; margin: 0; }
+.hx-lede { max-width: 34rem; margin: 1.1rem auto 0; font-size: clamp(1.18rem, 2.6vw, 1.4rem); line-height: 1.5; color: var(--text); }
+.hx-actions { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; align-items: center; margin: 1.7rem 0 0; }
+.hx-btn { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: 0 1.15rem; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-family: var(--font-mono); font-size: .74rem; letter-spacing: .03em; text-decoration: none; transition: background-color .15s ease, border-color .15s ease; }
+.hx-btn:hover { border-color: var(--text-2); }
+.hx-btn-dark { background: var(--btn-bg); color: var(--bg); border-color: var(--btn-bg); }
+.hx-btn-dark:hover { background: var(--btn-hover); border-color: var(--btn-hover); }
+html[data-theme="dark"] .hx-btn-dark { color: #111; }
+.hx-textlink { font-family: var(--font-mono); font-size: .72rem; color: var(--text-2); padding: .6rem .4rem; }
+.hx-hero .hx-fig { margin: 2.4rem 0 0; }
+.hx-hero .hx-fig img { border-radius: 14px; }
+.hx-hero .hx-fig figcaption { text-align: left; }
+.hx-status { display: flex; gap: .7rem; align-items: baseline; max-width: 46rem; margin: 1.4rem auto 0; padding: .85rem 1rem; text-align: left; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); font-size: 1rem; line-height: 1.55; color: var(--text-2); }
+.hx-status strong { color: var(--text); font-weight: 600; }
+.hx-status .hx-dot { flex: none; transform: translateY(-.1em); }
+
+/* ── photos ── */
+.hx-fig { margin: 0; }
+.hx-fig img { display: block; width: 100%; height: auto; aspect-ratio: var(--r, 16/9); object-fit: cover; border-radius: 10px; background: var(--hx-photo-bg); border: 1px solid var(--border); }
+.hx-fig-dark img, .hx-fit-contain img { background: #19140f; }
+.hx-fit-contain img { object-fit: contain; }
+.hx-fig figcaption { margin-top: .5rem; font-family: var(--font-mono); font-size: .66rem; line-height: 1.55; color: var(--text-2); }
+.hx-fig figcaption span { text-transform: uppercase; letter-spacing: .06em; color: var(--text); margin-right: .45rem; }
+@media (max-width: 640px) { .hx-hero .hx-fig[data-slot="hero"] img { aspect-ratio: 4/3; } }
+
+/* ── sections ── */
+.hx-sec { margin-top: 5rem; }
+.hx-kicker { margin: 0 0 .5rem; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-2); }
+.hx-sec h2 { font-size: clamp(1.9rem, 4.4vw, 2.5rem); font-weight: 400; line-height: 1.12; margin: 0; }
+.hx-sub { max-width: 38rem; margin: .7rem 0 0; font-size: 1.12rem; line-height: 1.55; color: var(--text-2); }
+.hx-sec h3 { font-size: 1.28rem; font-weight: 600; line-height: 1.25; margin: 0; }
+.hx-fine { font-size: .98rem; line-height: 1.6; color: var(--text-2); margin: .6rem 0 0; }
+
+/* three-up */
+.hx-three { display: grid; gap: 2rem 1.4rem; margin-top: 1.8rem; grid-template-columns: 1fr; }
+@media (min-width: 720px) { .hx-three { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.hx-three h3 { margin-top: 1rem; }
+.hx-three p { margin: .4rem 0 0; font-size: 1.04rem; line-height: 1.55; color: var(--text-2); }
+.hx-three figcaption { min-height: 2.4em; }
+
+/* steps */
+.hx-steps { list-style: none; counter-reset: hx; margin: 2rem 0 0; padding: 0; max-width: 44rem; }
+.hx-steps > li { counter-increment: hx; position: relative; padding: 0 0 2.2rem 3.4rem; }
+.hx-steps > li::before { content: counter(hx); position: absolute; left: 0; top: -.1rem; width: 2.2rem; height: 2.2rem; display: grid; place-items: center; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-card); font-family: var(--font-mono); font-size: .8rem; color: var(--text); }
+.hx-steps > li::after { content: ""; position: absolute; left: 1.1rem; top: 2.5rem; bottom: .3rem; border-left: 1px solid var(--border); }
+.hx-steps > li:last-child { padding-bottom: .4rem; }
+.hx-steps > li:last-child::after { display: none; }
+.hx-steps p { margin: .45rem 0 0; font-size: 1.06rem; line-height: 1.6; color: var(--text-2); }
+.hx-steps .hx-fig { margin-top: 1.2rem; }
+.hx-label { margin: 1rem 0 .4rem !important; font-family: var(--font-mono); font-size: .66rem !important; letter-spacing: .05em; text-transform: uppercase; color: var(--text-2); line-height: 1.5 !important; }
+.hx-outhead { margin: 1.5rem 0 .45rem; font-size: 1rem; line-height: 1.55; color: var(--text-2); }
+.hx-outhead code { margin-right: .35rem; color: var(--text); }
+.hx-done { max-width: 44rem; margin: .4rem 0 0 3.4rem; font-size: 1.08rem; line-height: 1.6; color: var(--text-2); }
+.hx-done strong { color: var(--text); }
+
+/* code */
+.hx-code, .hx-out { position: relative; margin: .5rem 0 0; border-radius: 10px; background: var(--hx-ink-block); color: var(--hx-ink-text); font-family: var(--font-mono); line-height: 1.65; }
+html[data-theme="dark"] .hx-code, html[data-theme="dark"] .hx-out { border: 1px solid var(--k-line-2, #3a3a38); }
+.hx-code { padding: .85rem 5.2rem .85rem 1rem; font-size: .8rem; white-space: pre-wrap; word-break: normal; overflow-wrap: anywhere; }
+.hx .hx-code code, .hx .hx-out code { font: inherit; background: none; border: 0; padding: 0; color: inherit; white-space: inherit; }
+.hx-copy { position: absolute; top: 50%; right: .55rem; transform: translateY(-50%); min-height: 38px; padding: 0 .9rem; border: 0; border-radius: 999px; background: var(--hx-ink-text); color: var(--hx-ink-block); font-family: var(--font-mono); font-size: .66rem; letter-spacing: .04em; cursor: pointer; }
+.hx-code.hx-multi .hx-copy { top: .55rem; transform: none; }
+.hx-copy:hover { background: #fff; }
+.hx-copy:focus-visible { outline: 2px solid var(--hx-ink-text); outline-offset: 2px; }
+.hx-soon { margin-top: .8rem; padding: .8rem .9rem .9rem; border: 1px dashed var(--border); border-radius: 12px; }
+.hx-soon .hx-soon-head { margin: 0 0 .1rem; font-size: 1rem; }
+.hx-code-off { background: transparent; color: var(--text-2); border: 1px solid var(--border); padding-right: 1rem; }
+html[data-theme="dark"] .hx-code-off { border-color: var(--border); }
+.hx-badge { display: inline-block; margin-right: .4rem; padding: .1rem .55rem; border: 1px solid var(--text-2); border-radius: 999px; font-family: var(--font-mono); font-size: .6rem; letter-spacing: .06em; text-transform: uppercase; color: var(--text); vertical-align: .12em; }
+.hx-out { padding: 1rem 1.1rem; font-size: .7rem; white-space: pre; overflow-x: auto; }
+
+/* what you'll see */
+.hx-legend { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; margin: .9rem 0 0; font-family: var(--font-mono); font-size: .68rem; color: var(--text-2); }
+.hx-legend > span { display: inline-flex; align-items: center; gap: .45rem; }
+.hx-dot { display: inline-block; width: .55rem; height: .55rem; border-radius: 999px; background: var(--text); border: 1.5px solid var(--text); flex: none; }
+.hx-dot-open { background: transparent; }
+.hx-grid { display: grid; gap: 1.1rem; margin-top: 1.6rem; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .hx-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hx-card-wide { grid-column: 1 / -1; display: grid !important; grid-template-columns: 1.35fr 1fr; align-items: center; } .hx-card-wide .hx-fig { margin: 0; } }
+.hx-card { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-card); overflow: hidden; }
+.hx-card .hx-fig { margin: .7rem .7rem 0; }
+.hx-card .hx-fig img { border-radius: 8px; }
+.hx-card-wide .hx-fig { margin: .7rem; }
+.hx-card-body { padding: 1rem 1.15rem 1.2rem; }
+.hx-card-body h3 { display: flex; align-items: center; gap: .55rem; font-size: 1.18rem; }
+.hx-card-body h3 + p { margin: .35rem 0 0; }
+.hx-card-body p { font-size: 1.02rem; line-height: 1.55; color: var(--text-2); }
+.hx-card-body p + h3 { margin-top: 1.1rem; }
+.hx-card-text .hx-card-body { padding-top: 1.2rem; }
+@media (min-width: 760px) { .hx-card-text { grid-column: 1 / -1; } .hx-card-text .hx-card-body { display: grid; grid-template-columns: 1.35fr 1fr; gap: 0 2.4rem; align-items: start; padding: 1.3rem 1.4rem 1.4rem; } .hx-card-text .hx-mini { margin: 0; padding: .9rem 1rem; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); } }
+.hx-mini { display: grid; grid-template-columns: auto 1fr; gap: .35rem .9rem; margin: .9rem 0 0; font-size: .98rem; color: var(--text-2); align-items: baseline; }
+.hx-mini dt, .hx-mini dd { margin: 0; }
+
+/* agents */
+.hx-defs { margin: 1.6rem 0 0; max-width: 46rem; border-top: 1px solid var(--border); }
+.hx-defs > div { display: grid; grid-template-columns: 1fr; gap: .25rem; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+@media (min-width: 640px) { .hx-defs > div { grid-template-columns: 9.5rem 1fr; gap: 1.2rem; } }
+.hx-defs dt { margin: 0; }
+.hx-defs dt code { font-size: .86rem; background: none; border: 0; padding: 0; font-weight: 500; }
+.hx-defs dd { margin: 0; font-size: 1.04rem; line-height: 1.6; color: var(--text-2); }
+
+/* privacy */
+.hx-privacy { list-style: none; padding: 0; margin: 1.6rem 0 0; display: grid; gap: 0 2.2rem; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .hx-privacy { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.hx-privacy li { padding: .9rem 0; border-top: 1px solid var(--border); font-size: 1.02rem; line-height: 1.55; color: var(--text-2); }
+.hx-privacy strong { display: block; color: var(--text); font-weight: 600; font-size: 1.08rem; margin-bottom: .15rem; }
+
+/* reference: collapsed */
+.hx-ref h2 { margin-bottom: 1.2rem; }
+.hx-more { border-top: 1px solid var(--border); max-width: 52rem; }
+.hx-more:last-of-type { border-bottom: 1px solid var(--border); }
+.hx-more summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 52px; padding: .4rem .1rem; font-size: 1.18rem; color: var(--text); }
+.hx-more summary::-webkit-details-marker { display: none; }
+.hx-more summary::after { content: "+"; font-family: var(--font-mono); font-size: 1rem; color: var(--text-2); width: 1.7rem; height: 1.7rem; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 999px; flex: none; }
+.hx-more[open] summary::after { content: "−"; }
+.hx-more summary:hover::after { border-color: var(--text-2); }
+.hx-more-body { padding: 0 0 1.6rem; }
+.hx-more-body > .hx-fine:first-child { margin-top: 0; }
+.hx-cli { margin: .4rem 0 0; }
+.hx-cli dt { margin: 0; padding: .8rem 0 .15rem; font-size: 1.04rem; color: var(--text); }
+.hx-cli dt code { font-size: .8rem; }
+.hx-cli dt span { font-family: var(--font-mono); font-size: .64rem; color: var(--text-2); margin-left: .4rem; }
+.hx-cli:not(.hx-trouble) dt code { background: none; border: 0; padding: 0; }
+.hx-cli dd { margin: 0; padding: 0 0 .8rem; border-bottom: 1px solid var(--hx-muted-line); font-size: 1rem; line-height: 1.6; color: var(--text-2); }
+.hx-cli dd:last-child { border-bottom: 0; }
+.hx-list { margin: 0; padding-left: 1.1rem; }
+.hx-list li { margin: .45rem 0; font-size: 1.02rem; line-height: 1.6; color: var(--text-2); }
+.hx-list strong { color: var(--text); }
+.hx-legal { margin: 2.6rem 0 0; max-width: 46rem; font-family: var(--font-mono); font-size: .62rem; line-height: 1.7; color: var(--text-2); }
+.hx-pager { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: 1.6rem; }
+.hx-pager a { display: flex; flex-direction: column; gap: .15rem; padding: .9rem 1rem; border: 1px solid var(--border); border-radius: 12px; text-decoration: none !important; background: var(--bg-card); }
+.hx-pager a:hover { border-color: var(--text-2); }
+.hx-pager a.next { text-align: right; }
+.hx-pager small { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .05em; text-transform: uppercase; color: var(--text-2); }
+.hx-pager strong { font-size: 1.1rem; font-weight: 600; }
+
+@media (max-width: 480px) {
+  .content-main.hx { padding-inline: 1.1rem; }
+  .hx-sec { margin-top: 3.8rem; }
+  .hx-steps > li { padding-left: 2.9rem; }
+  .hx-done { margin-left: 0; }
+  .hx-code { font-size: .74rem; padding-right: 4.6rem; }
+  .hx-status { font-size: .96rem; }
+  .hx-textlink { width: 100%; text-align: center; }
+  .hx-pager { grid-template-columns: 1fr; }
+  .hx-pager a.next { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) { .hx-btn { transition: none; } }
 </style>
 <script type="application/ld+json">
 {
@@ -286,8 +272,8 @@
       "@type": "WebPage",
       "@id": "https://www.omo.sh/hermes#webpage",
       "url": "https://www.omo.sh/hermes",
-      "name": "Omo Space for Hermes: Your Hermes Agents as a Building | Omo Research",
-      "description": "A Hermes Agent plugin that gives every profile a desk in Omo Space: status lamps while agents work, a Hermes Board of live activity, in-game notices. Metadata only, loopback only. v0.1.0 release candidate.",
+      "name": "Omo Space for Hermes: A Desk for Every Hermes Profile | Omo Research",
+      "description": "A Hermes Agent plugin that gives every profile a desk in Omo Space: status lamps while agents work, a Hermes Board of every session, in-game notices. Metadata only, loopback only. v0.1.0 release candidate.",
       "isPartOf": {
         "@id": "https://www.omo.sh/#website"
       },
@@ -321,72 +307,161 @@
 <a class="sidebar-link active" href="/omo-space">Omo Space</a><a class="sidebar-link" href="/research/robots/">Omo Microduck</a><a class="sidebar-link" href="/research/omo-r1/">Omo R1</a><a class="sidebar-link" href="/papers">Papers</a><a class="sidebar-link" href="/about">Research log</a></div>
 </div></nav>
 <header class="m-head"><a class="m-brand" href="/" aria-label="Omo Research home"><span class="sidebar-mark"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 180V20h80M20 180h160M100 20h30m10 0h20m20 0v40m0 12v38m0 10v30m0 10v20M32 168V32h68M32 168h136" fill="none" stroke="currentColor" stroke-width="8" /><path d="M62 100a30 30 0 0 1 38-30m0 0a30 30 0 0 1 0 20m0 0a30 30 0 0 1 38 40M100 90a30 30 0 0 0-38 10" fill="none" stroke="currentColor" stroke-width="7" /><rect x="95" y="95" width="10" height="10" fill="currentColor" /></svg></span><span>Omo Research</span></a><details class="m-menu"><summary>Menu</summary><nav aria-label="Site"><a href="/omo-space" class="on">Omo Space</a><a href="/research/robots">Omo Microduck</a><a href="/research/omo-r1">Omo R1</a><a href="/papers">Papers</a><a href="/about">Research log</a><hr><a href="/papers/worlds-not-windows">Worlds, Not Windows (paper)</a><a href="/demo">Watch the demo</a><a href="/notes">Notes</a><hr><a href="/enterprise">Enterprise</a><a href="/contact">Contact</a><a href="https://github.com/omoresearch/omo-space" target="_blank" rel="noopener">GitHub ↗</a></nav></details></header><nav class="m-tabs" aria-label="Research sections"><a href="/omo-space" class="on">Omo Space</a><a href="/research/robots">Microduck</a><a href="/research/omo-r1">Omo R1</a><a href="/papers">Papers</a><a href="/about">Research log</a></nav><header class="mobile-header"><span class="mobile-brand">Omo Space</span><nav class="mobile-actions" aria-label="Primary"><a class="btn btn-dark btn-sm" href="/about">Research</a></nav></header>
-<main class="content-main">
-<article>
-<header class="paper-header" id="overview">
-<div class="paper-tags"><span class="tag">Hermes plugin</span><span class="tag">v0.1.0 · release candidate</span><span class="tag">MIT</span><span class="tag">Hermes ≥ 0.22.3</span></div>
-<h1>Omo Space for Hermes</h1>
-<p class="paper-subtitle">Your whole Hermes system, as a building. Every profile gets a desk, a lamp lights while an agent works, and a board on the wall says what each session is doing.</p>
-<p class="section-note">A Hermes Agent plugin, <code>omo-space</code>, for people who already run Hermes: several profiles, CLI and gateway chats, subagents, cron. It writes a small, metadata-only activity feed that your local Omo Space world reads. Nothing leaves your computer.</p>
-<div class="meta-grid"><div class="meta-item"><p class="meta-label">Status</p><p class="meta-value">v0.1.0, release candidate</p></div><div class="meta-item"><p class="meta-label">Needs</p><p class="meta-value">Hermes ≥ 0.22.3 · Omo Space</p></div><div class="meta-item"><p class="meta-label">Licence</p><p class="meta-value">MIT</p></div><div class="meta-item"><p class="meta-label">Code</p><p class="meta-value">Repo not public yet</p></div></div>
-<div class="paper-actions" style="margin-top:1.6rem;align-items:center"><a class="btn btn-dark" href="#setup">Set it up ↓</a><a class="btn btn-outline" href="/omo-space">What is Omo Space? →</a><a class="act-link" style="align-self:center;margin-left:.5rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px" href="#privacy">what it never does</a></div>
-<figure class="exp-cover"><img src="/assets/hermes/world-board-wall.webp" alt="Inside an Omo Space hall: a Hermes Board web wall between a Hermes Agent page and an empty screen, lanterns hanging from the beams" width="1280" height="720" /><figcaption><span>In game</span>A Hermes Board on a web wall in Omo Space. This shot is from the Omo Space docs and shows workspaces only, before the plugin's activity feed.</figcaption></figure>
+<main class="content-main hx" id="top">
+
+<header class="hx-hero">
+  <p class="hx-eyebrow"><span>Hermes plugin</span><span aria-hidden="true">·</span><span>v0.1.0 release candidate</span></p>
+  <h1>Omo Space for Hermes</h1>
+  <p class="hx-lede">Every Hermes profile gets a desk in your Omo Space world: its lamp lights while the agent works, and a board on the wall shows what every session is doing.</p>
+  <div class="hx-actions">
+    <a class="hx-btn hx-btn-dark" href="#setup">Set it up <span aria-hidden="true">↓</span></a>
+    <a class="hx-btn" href="#privacy">What it never does</a>
+    <a class="hx-textlink" href="/omo-space">What is Omo Space? <span aria-hidden="true">→</span></a>
+  </div>
+  <!-- slot:hero interim --><figure class="hx-fig" data-slot="hero" data-state="interim" style="--r:21/9"><img src="/assets/hermes/world-board-wall.webp" width="1280" height="720" alt="Inside an Omo Space hall: a Hermes Board on a web wall between a Hermes Agent page and a dark screen, lanterns hanging from the beams" fetchpriority="high" decoding="async" style="object-position:50% 46%" /><figcaption><span>In game</span>A Hermes Board wall in an Omo Space hall. Stand-in from the Omo Space docs, before the plugin&#x27;s activity feed.</figcaption></figure><!-- /slot:hero -->
+  <p class="hx-status" id="status"><span class="hx-dot" aria-hidden="true"></span><span><strong>Honest status.</strong> A release candidate: the repository is not public yet. Desks and the Board wall work with today's Omo Space; live lamps, Board activity and in-game notices need an Omo Space bridge update that is not released yet.</span></p>
 </header>
-<div class="rb-article">
-<p class="section-kicker">In 30 seconds</p>
-<ul class="hm-get">
-<li><strong>A desk per profile.</strong> <code>hermes omo world</code> reads your profiles and writes a Minecraft datapack, <em>Hermes HQ</em>: one Hermes Computer desk per profile plus a Hermes Board wall, built with one <code>/function</code>.</li>
-<li><strong>Lamps and a live board.</strong> Desk lamps light up while an agent thinks or runs a tool. The Board shows what every session is doing, and lists the ones that live outside the world (Telegram and other gateway chats, cron jobs, plain terminals, subagents) under <em>Elsewhere</em>.</li>
-<li><strong>Notices while you play.</strong> An agent can send you a short message with <code>omo_notify</code>; it pops up in the corner of the screen while you walk around.</li>
-<li><strong>One setup command.</strong> <code>hermes omo setup</code> finds your Omo bridge, shows which profiles have the plugin on, and prints the exact commands for the rest.</li>
-</ul>
-<p class="hm-note">Honest status: the plugin is a v0.1.0 release candidate and its repository is not public yet. The Board activity, Elsewhere, lamps and notices also need an Omo Space bridge with Hermes feed support. That support is built and tested on an Omo Space branch and is not in a released Omo Space yet; today's Omo Space shows the desks and the Board, without the activity.</p>
 
-<p class="section-kicker">01</p><h2>What you see</h2>
-<figure class="exp-figure rb-fig"><img src="/assets/hermes/board-small.webp" alt="The Hermes Board: four workspace cards (Website · Dev, Research, Kanban, Build box) with live states such as running terminal 12s and thinking, and an Elsewhere row with a Telegram session and a cron job" loading="lazy" decoding="async" width="1280" height="720" /><figcaption><span>Board preview</span>The Hermes Board with feed support, rendered in a browser from the bridge's test data (the workspace names are sample data).</figcaption></figure>
-<p>The Board is a web page the Omo bridge serves, shown on a web wall in your world. With the plugin on, each card says what its agent is doing right now: <code>thinking</code>, <code>running terminal 12s</code>, or <code>idle · 14 turns</code>. Sessions that have no desk are listed under <strong>Elsewhere</strong> with their platform: a Telegram chat on the gateway, a cron job, a subagent. With more than 24 live workspaces it switches to compact cards so one wall still shows them all.</p>
-<figure class="exp-figure rb-fig"><img src="/assets/hermes/board-big.webp" alt="The Hermes Board in compact mode: 44 small cards, Room 00 to Room 43, most running a terminal, with Telegram and cron sessions under Elsewhere" loading="lazy" decoding="async" width="1280" height="720" /><figcaption><span>Board preview</span>Compact cards past 24 live workspaces: 44 sample workspaces from the bridge's test data, rendered in a browser.</figcaption></figure>
-<figure class="exp-figure rb-fig hm-wide"><img src="/assets/hermes/e2e-board-elsewhere.webp" alt="Hermes Board from the test rig: no workspaces, and under Elsewhere one session, omo-plugin-test, cli, running terminal 7s" loading="lazy" decoding="async" width="1400" height="395" /><figcaption><span>Test rig</span>A real CLI turn in a throwaway profile showing up under Elsewhere. Rendered in a browser from our end-to-end test rig.</figcaption></figure>
-<figure class="exp-figure rb-fig hm-wide"><img src="/assets/hermes/e2e-board-messages.webp" alt="Hermes Board from the test rig: a Messages row, omo-plugin-test: Hermes HQ e2e: terminal step done, 1m ago" loading="lazy" decoding="async" width="1280" height="380" /><figcaption><span>Test rig</span>The agent's <code>omo_notify</code> message under Messages, where the newest three of the last 15 minutes stay. Same rig.</figcaption></figure>
-<!-- HQ-SLOT:START -->
-<figure class="exp-figure rb-fig hm-slot" id="hq-shot"><img src="/assets/hermes/hermes-desk.webp" alt="A Hermes desk in Omo Space: a Hermes Computer, a redstone lamp and a terminal screen on a wooden desk" loading="lazy" decoding="async" width="1280" height="720" /><figcaption><span>Stand-in</span>A Hermes desk in Omo Space (from the Omo Space docs; the session line on the screen is blurred). Photos of a generated Hermes HQ hall are still being captured.</figcaption></figure>
-<!-- HQ-SLOT:END -->
-<p>In the world itself:</p>
-<ul>
-<li><strong>Desks per profile.</strong> Each desk is a preset Hermes Computer in that profile, with its name on a plate. On our machine, with 47 profiles, the generated hall is 57 × 8 × 43 blocks. <code>--max-desks</code> caps it (48 by default).</li>
-<li><strong>Status lamps</strong> light up while that desk's agent thinks or runs a tool.</li>
-<li><strong>The Hermes Board</strong> on the hall's wall, with live activity, Elsewhere and Messages.</li>
-<li><strong>In-game notices.</strong> When an agent calls <code>omo_notify</code>, up to three cards show top left for about five seconds, with the profile name in gold. They only show when no screen is open. <code>/omonotices off</code> hides them, <code>/omonotices on</code> brings them back, <code>/omonotices test</code> shows one.</li>
-</ul>
+<section class="hx-sec" aria-labelledby="three">
+  <p class="hx-kicker">At a glance</p>
+  <h2 id="three">Three things it adds</h2>
+  <div class="hx-three">
+    <article><!-- slot:aisle interim --><figure class="hx-fig" data-slot="aisle" data-state="interim" style="--r:3/2"><img src="/assets/hermes/v2/interim-hq-desk.webp" width="1280" height="720" alt="An Omo Space hall seen from a desk: a Hermes Board wall listing workspaces, a lantern and a Hermes Computer in the foreground" loading="lazy" decoding="async" /><figcaption><span>In game</span>Stand-in from the Omo Space docs; Hermes room photos are on the way.</figcaption></figure><!-- /slot:aisle --><h3>A desk for every profile</h3><p><code>hermes omo world</code> reads your profiles and builds <em>Hermes HQ</em>: a Hermes Computer desk for each one, its name on a plate.</p></article>
+    <article><!-- slot:board interim --><figure class="hx-fig hx-fit-contain" data-slot="board" data-state="interim" style="--r:3/2"><img src="/assets/hermes/board-small.webp" width="1280" height="720" alt="The Hermes Board: four workspace cards with live states such as running terminal 12s and thinking, and an Elsewhere row with a Telegram session and a cron job" loading="lazy" decoding="async" /><figcaption><span>Board preview</span>Rendered in a browser from the bridge&#x27;s test data.</figcaption></figure><!-- /slot:board --><h3>One board for every session</h3><p>CLI, Telegram, cron jobs, subagents: what each one is doing right now, on a wall in the hall.</p></article>
+    <article><!-- slot:notice interim --><figure class="hx-fig hx-fit-contain" data-slot="notice" data-state="interim" style="--r:3/2"><img src="/assets/hermes/e2e-board-messages.webp" width="1280" height="380" alt="Hermes Board from the test rig: a Messages row reading omo-plugin-test: Hermes HQ e2e: terminal step done, 1m ago" loading="lazy" decoding="async" /><figcaption><span>Test rig</span>An agent&#x27;s omo_notify message on the Board. In-game notice photos are on the way.</figcaption></figure><!-- /slot:notice --><h3>Notices while you play</h3><p>An agent can send you a short note with <code>omo_notify</code>. It shows in the corner while you walk around.</p></article>
+  </div>
+</section>
 
-<p class="section-kicker">02</p><h2 id="setup">Setup</h2>
-<p>You already run Hermes. Three commands in a terminal, three in the game.</p>
-<ol class="hm-steps">
-<li><strong>Install Omo Space and open a world once</strong>, so its bridge is running. Follow the <a href="/omo-space">Omo Space install steps</a>.</li>
-<li><strong>Install the plugin.</strong> The one-line install works once the repository is public:
-<pre class="hm-cmd"><code>hermes plugins install omoresearch/hermes-omo-space --enable</code></pre>
-<p class="hm-soon">The repository is not public yet. Until then, if you have the plugin folder, copy it into your profile's plugins folder and enable it:</p>
-<pre class="hm-cmd"><code>cp -r omo-space ~/.hermes/plugins/omo-space
+<section class="hx-sec" aria-labelledby="setup">
+  <p class="hx-kicker">Setup</p>
+  <h2 id="setup">Four steps</h2>
+  <p class="hx-sub">For people who already run Hermes (0.22.3 or newer). The plugin asks before it changes anything.</p>
+  <ol class="hx-steps">
+    <li>
+      <h3>Install Omo Space and open a world once</h3>
+      <p>Its bridge starts with the world; the plugin talks only to that, on this computer. <a href="/omo-space">Omo Space install steps <span aria-hidden="true">→</span></a></p>
+    </li>
+    <li>
+      <h3>Add the plugin to Hermes</h3>
+      <div class="hx-soon">
+        <p class="hx-soon-head"><span class="hx-badge">Coming soon</span> One line, once the repository is public:</p>
+        <pre class="hx-code hx-code-off"><code>hermes plugins install omoresearch/hermes-omo-space --enable</code></pre>
+      </div>
+      <p class="hx-label">Today, if you have the plugin folder</p>
+      <pre class="hx-code" data-copy><code>cp -r omo-space ~/.hermes/plugins/omo-space
 hermes plugins enable omo-space</code></pre>
-<p>For another profile use its own folder, <code>~/.hermes/profiles/&lt;profile&gt;/plugins/</code>, and <code>hermes -p &lt;profile&gt; plugins enable omo-space</code>.</p></li>
-<li><strong>Run the checklist.</strong> It asks before it changes anything.
-<pre class="hm-cmd"><code>hermes omo setup</code></pre>
-<p><code>hermes omo setup --enable-all</code> lists the enable command for every profile and runs them after one y/N prompt.</p></li>
-<li><strong>Put Hermes HQ in your world.</strong> If you have more than one world, name it (<code>--list-worlds</code> shows them).
-<pre class="hm-cmd"><code>hermes omo world --install "Omo World"</code></pre></li>
-<li><strong>Build it in game.</strong> Stand in an open, flat area, then:
-<pre class="hm-cmd"><code>/reload
+      <p class="hx-fine">For another profile: <code class="w">~/.hermes/profiles/&lt;profile&gt;/plugins/</code> and <code class="w">hermes -p &lt;profile&gt; plugins enable omo-space</code>.</p>
+    </li>
+    <li>
+      <h3>Run the checklist</h3>
+      <pre class="hx-code" data-copy><code>hermes omo setup</code></pre>
+      <p>It finds your Omo bridge, shows which profiles have the plugin on and prints the exact commands for the rest. <code>--enable-all</code> runs them after one y/N prompt.</p>
+    </li>
+    <li>
+      <h3>Build Hermes HQ in your world</h3>
+      <p class="hx-label">Terminal</p>
+      <pre class="hx-code" data-copy><code>hermes omo world --install "Omo World"</code></pre>
+      <p class="hx-label">In game, standing in an open, flat area</p>
+      <pre class="hx-code" data-copy><code>/reload
 /function hermes_hq:preview
 /function hermes_hq:build</code></pre>
-<p>The preview shows the outline with particles; green sparks mark the door. <code>/function hermes_hq:info</code> lists the desks, and <code>/function hermes_hq:clear</code> removes the hall again (the white floor stays).</p></li>
-<li><strong>Chat with Hermes anywhere.</strong> In the CLI, on Telegram, from a desk in the world. Desks light up and the Board fills in.</li>
-</ol>
-<figure class="exp-figure rb-fig"><img src="/assets/omo-space/s-hermes-terminal.jpg" alt="A real Hermes session on an in-world screen, answering live on stream" loading="lazy" decoding="async" width="1600" height="900" /><figcaption><span>From our stream</span>A Hermes session on a screen in Omo Space. The plugin does not change how you chat; it shows where the chats are.</figcaption></figure>
+      <p class="hx-fine">The preview outlines the hall with particles; green sparks mark the door. Several worlds? <code>--list-worlds</code> shows their names.</p>
+      <!-- slot:build empty -->
+    </li>
+  </ol>
+  <p class="hx-done"><strong>That's it.</strong> Chat with Hermes anywhere: the CLI, Telegram, a desk in the world. Desks light up and the Board fills in.</p>
+</section>
 
-<p class="section-kicker">03</p><h2>Real output</h2>
-<p>Captured on our machine in a throwaway profile, <code>omo-plugin-test</code>. Home paths are shortened to <code>~</code>, the profile list is trimmed, and session ids are shortened.</p>
-<h3><code>hermes omo setup</code></h3>
-<pre class="hm-out"><code>$ hermes omo setup --non-interactive
+<section class="hx-sec" aria-labelledby="see">
+  <p class="hx-kicker">In the world</p>
+  <h2 id="see">What you'll see</h2>
+  <p class="hx-legend"><span><span class="hx-dot" aria-hidden="true"></span>works with today's Omo Space</span><span><span class="hx-dot hx-dot-open" aria-hidden="true"></span>needs the next Omo Space bridge</span></p>
+  <div class="hx-grid">
+    <article class="hx-card hx-card-wide">
+      <!-- slot:desk interim --><figure class="hx-fig" data-slot="desk" data-state="interim" style="--r:16/9"><img src="/assets/hermes/hermes-desk.webp" width="1280" height="720" alt="A Hermes desk in Omo Space: a Hermes Computer, a lit redstone lamp and a terminal screen on a wooden desk" loading="lazy" decoding="async" /><figcaption><span>In game</span>A Hermes desk from the Omo Space docs; the session line is blurred.</figcaption></figure><!-- /slot:desk -->
+      <div class="hx-card-body">
+        <h3><span class="hx-dot" aria-hidden="true"></span>Desks, one per profile</h3>
+        <p>Each desk is a Hermes Computer set to that profile, with its name on a plate. <code>--max-desks</code> caps the hall (48 by default).</p>
+        <h3><span class="hx-dot hx-dot-open" aria-hidden="true"></span>Status lamps</h3>
+        <p>A desk's lamp lights while its agent thinks or runs a tool, so you can see from across the hall who is busy.</p>
+      </div>
+    </article>
+    <article class="hx-card">
+      <figure class="hx-fig hx-fig-dark" style="--r:16/9"><img src="/assets/hermes/board-big.webp" alt="The Hermes Board in compact mode: 44 small cards, Room 00 to Room 43, most running a terminal, with Telegram and cron sessions under Elsewhere" width="1280" height="720" loading="lazy" decoding="async" /><figcaption><span>Board preview</span>Test data, rendered in a browser.</figcaption></figure>
+      <div class="hx-card-body">
+        <h3><span class="hx-dot hx-dot-open" aria-hidden="true"></span>The Hermes Board</h3>
+        <p>Every card says what its agent is doing: <code>thinking</code>, <code>running terminal 12s</code>, <code>idle · 14 turns</code>. Past 24 live workspaces it switches to compact cards, so one wall still shows them all.</p>
+      </div>
+    </article>
+    <article class="hx-card">
+      <figure class="hx-fig hx-fig-dark" style="--r:16/9"><img src="/assets/hermes/e2e-board-elsewhere.webp" alt="Hermes Board from the test rig: under Elsewhere, one session, omo-plugin-test, cli, running terminal 7s" width="1400" height="395" loading="lazy" decoding="async" style="object-fit:contain" /><figcaption><span>Test rig</span>A real CLI turn, rendered in a browser.</figcaption></figure>
+      <div class="hx-card-body">
+        <h3><span class="hx-dot hx-dot-open" aria-hidden="true"></span>Elsewhere</h3>
+        <p>Sessions with no desk are listed with their platform: a Telegram chat on the gateway, a cron job, a plain terminal, a subagent.</p>
+      </div>
+    </article>
+    <article class="hx-card hx-card-text">
+      <div class="hx-card-body">
+        <div>
+        <h3><span class="hx-dot hx-dot-open" aria-hidden="true"></span>In-game notices</h3>
+        <p>When an agent calls <code>omo_notify</code>, up to three cards show top left for about five seconds, the profile name in gold. They only draw when no screen is open.</p>
+        </div>
+        <dl class="hx-mini">
+          <dt><code>/omonotices off</code></dt><dd>hide them</dd>
+          <dt><code>/omonotices on</code></dt><dd>bring them back</dd>
+          <dt><code>/omonotices test</code></dt><dd>show one now</dd>
+        </dl>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="hx-sec" aria-labelledby="agents">
+  <p class="hx-kicker">For your agents</p>
+  <h2 id="agents">Your agents know where they are</h2>
+  <dl class="hx-defs">
+    <div><dt><code>omo_status</code></dt><dd>A read-only tool: is Omo Space running, what is on the Board, and where this conversation lives in the world.</dd></div>
+    <div><dt><code>omo_notify</code></dt><dd>Sends a short in-game notice: <code>{text, level?}</code> with level <code>info</code>, <code>success</code> or <code>warn</code>. At most 140 characters; anything that looks like a secret is masked.</dd></div>
+    <div><dt><code>/omo</code></dt><dd>A slash command for you: one paragraph on where this chat is in the world.</dd></div>
+  </dl>
+  <p class="hx-fine">Both tools are in the toolset <code>omo</code>. Turn on <code>notify_on_finish</code> and the plugin also sends a notice when a turn that took more than a minute ends.</p>
+</section>
+
+<section class="hx-sec" aria-labelledby="privacy">
+  <p class="hx-kicker">Privacy</p>
+  <h2 id="privacy">What it never does</h2>
+  <p class="hx-sub">Nothing leaves your computer. The whole plugin is a small activity log that your own world reads.</p>
+  <ul class="hx-privacy">
+    <li><strong>Metadata only.</strong> Event kinds, tool <em>names</em>, timings, model and platform names. Never message text, tool arguments or results. The one exception is <code>omo_notify</code> text, capped and with secrets masked.</li>
+    <li><strong>Loopback only.</strong> Its only network calls are <code>GET /health</code> and <code>GET /board.json</code> to your Omo bridge on <code>127.0.0.1</code>. Other addresses are refused; hooks never touch the network.</li>
+    <li><strong>Not someone else's bridge.</strong> On a shared Linux machine it checks that the bridge port is yours, and never queries another user's.</li>
+    <li><strong>No secrets, telemetry or accounts.</strong> It never opens <code>.env</code>, <code>auth.json</code>, <code>state.db</code>, logs or session files.</li>
+    <li><strong>Nothing running in the background.</strong> No threads, no daemons. It never approves or blocks a tool, injects context or patches Hermes.</li>
+    <li><strong>Asks first.</strong> It writes only its own folder in the profile, and <code>hermes omo setup</code> runs commands only after a y/N prompt that defaults to No.</li>
+  </ul>
+</section>
+
+<section class="hx-sec hx-ref" aria-labelledby="ref">
+  <p class="hx-kicker">Reference</p>
+  <h2 id="ref">Details, when you need them</h2>
+
+  <details class="hx-more" id="output">
+    <summary>Real output from a test profile</summary>
+    <div class="hx-more-body">
+      <p class="hx-fine">Captured on our machine in a throwaway profile, <code>omo-plugin-test</code>. Home paths are shortened to <code>~</code>, the profile list is trimmed, session ids are shortened.</p>
+      <p class="hx-outhead"><code>hermes omo status</code> The doctor. Here it caught a real problem: this machine runs the released bridge, which predates feed support.</p>
+<pre class="hx-out"><code>$ hermes omo status
+Omo Space doctor (profile: omo-plugin-test)
+  bridge      reachable at http://127.0.0.1:8781 (Omo bridge v1.1.0, 99 workspaces, 75 live)
+  feed        enabled, writing to ~/.hermes/profiles/omo-plugin-test/plugin-data/agent-plugin-omo-space-d135e42c/feed
+  marker      omo-feed.json present (plugin 0.1.0)
+  last event  5h ago (session_end)
+  profiles    omo-plugin-test
+Next step: Your Omo bridge (v1.1.0) predates Hermes feed support, so the Hermes Board and
+desk lamps stay empty even though this profile's feed is written. Update Omo Space (run its
+launcher's update/repair), then check again.</code></pre>
+      <p class="hx-outhead"><code>hermes omo setup</code></p>
+<pre class="hx-out"><code>$ hermes omo setup --non-interactive
 Omo Space setup (profile: omo-plugin-test)
   [ok] Omo Space data dir ~/.local/share/omo
   [ok] Omo bridge yours at http://127.0.0.1:8781 (v1.1.0, found via service file)
@@ -394,30 +469,16 @@ Omo Space setup (profile: omo-plugin-test)
   [ok] 1 of 48 Hermes profiles have omo-space enabled
          default                    not installed
          01-branding-submission     not installed
-         02-reference-videos        not installed
-         … 44 more profiles …
+         … 45 more profiles …
          omo-plugin-test            enabled  (feed seen)
   [!!] worlds in ~/.local/share/omo/runtime/game/saves: Omo Workshop, Omo World
 Next steps (copy and run; `hermes omo setup --enable-all` runs the enable commands after a prompt):
   1. hermes -p default plugins install https://github.com/omoresearch/hermes-omo-space --enable
-  2. hermes -p 01-branding-submission plugins install https://github.com/omoresearch/hermes-omo-space --enable
   …
-  7. ... 41 more profiles: `hermes omo setup --enable-all` lists them all and runs them after one prompt (or pick the ones you want)
   8. hermes omo world --install "&lt;World&gt;"
-  9. then in game: /reload, /function hermes_hq:preview, /function hermes_hq:build
-Each `hermes plugins enable` prints when the change takes effect for running sessions and the gateway.</code></pre>
-<h3><code>hermes omo status</code></h3>
-<p>The doctor. Here it caught a real problem: the bridge on this machine is the released one, which predates feed support.</p>
-<pre class="hm-out"><code>$ hermes omo status
-Omo Space doctor (profile: omo-plugin-test)
-  bridge      reachable at http://127.0.0.1:8781 (Omo bridge v1.1.0, 99 workspaces, 75 live)
-  feed        enabled, writing to ~/.hermes/profiles/omo-plugin-test/plugin-data/agent-plugin-omo-space-d135e42c/feed
-  marker      omo-feed.json present (plugin 0.1.0)
-  last event  5h ago (session_end)
-  profiles    omo-plugin-test
-Next step: Your Omo bridge (v1.1.0) predates Hermes feed support, so the Hermes Board and desk lamps stay empty even though this profile's feed is written. Update Omo Space (run its launcher's update/repair), then check again.</code></pre>
-<h3><code>hermes omo world --dry-run</code></h3>
-<pre class="hm-out"><code>$ hermes omo world --dry-run --profiles default,lf-01-ideas,yt-03-editing,omo-plugin-test
+  9. then in game: /reload, /function hermes_hq:preview, /function hermes_hq:build</code></pre>
+      <p class="hx-outhead"><code>hermes omo world --dry-run</code></p>
+<pre class="hx-out"><code>$ hermes omo world --dry-run --profiles default,lf-01-ideas,yt-03-editing,omo-plugin-test
 Hermes root: ~/.hermes
 4 profiles:
   default
@@ -429,86 +490,92 @@ Hermes root: ~/.hermes
   yt-03-editing - YT room 03: goal-mode edits each long-form video exactly to…
       model claude-opus-5-5 | 62 skills | 0 cron jobs | platforms - | 1 plugins
 Hermes HQ: 4 desks in 3 columns x 2 rows, hall 27 x 8 x 19 (W x H x D) toward +Z; Board wall -&gt; http://127.0.0.1:8781/board</code></pre>
-<h3><code>hermes omo feed</code></h3>
-<p>What the plugin records: event kinds, tool names, timings. The quoted text is the one exception, an <code>omo_notify</code> message the agent chose to send.</p>
-<pre class="hm-out"><code>$ hermes omo feed -n 8
-18:46:36  omo-plugin-test local-e80c… tool_end         tool=tool_describe duration_ms=26 ok=True
-18:46:38  omo-plugin-test local-e80c… tool_start       tool=omo_status
-18:46:38  omo-plugin-test local-e80c… tool_end         tool=omo_status duration_ms=145 ok=True
-18:46:40  omo-plugin-test local-e80c… tool_start       tool=omo_notify
-18:46:40  omo-plugin-test local-e80c… notify           level=success "Hermes HQ e2e: terminal step done"
-18:46:40  omo-plugin-test local-e80c… tool_end         tool=omo_notify duration_ms=25 ok=True
-18:46:41  omo-plugin-test local-e80c… turn_end         duration_ms=28371 ok=True interrupted=False
-18:46:42  omo-plugin-test local-e80c… session_end      interrupted=False</code></pre>
+      <p class="hx-outhead"><code>hermes omo feed</code> Everything the plugin records. The quoted text is the one exception, a message the agent chose to send.</p>
+<pre class="hx-out"><code>$ hermes omo feed -n 8
+18:46:36  omo-plugin-test local-e80c… tool_end    tool=tool_describe duration_ms=26 ok=True
+18:46:38  omo-plugin-test local-e80c… tool_start  tool=omo_status
+18:46:38  omo-plugin-test local-e80c… tool_end    tool=omo_status duration_ms=145 ok=True
+18:46:40  omo-plugin-test local-e80c… tool_start  tool=omo_notify
+18:46:40  omo-plugin-test local-e80c… notify      level=success "Hermes HQ e2e: terminal step done"
+18:46:40  omo-plugin-test local-e80c… tool_end    tool=omo_notify duration_ms=25 ok=True
+18:46:41  omo-plugin-test local-e80c… turn_end    duration_ms=28371 ok=True interrupted=False
+18:46:42  omo-plugin-test local-e80c… session_end interrupted=False</code></pre>
+    </div>
+  </details>
 
-<p class="section-kicker">04</p><h2>For your agents</h2>
-<table class="hm-tools">
-<thead><tr><th>Name</th><th>What it does</th></tr></thead>
-<tbody>
-<tr><td><code>omo_status</code></td><td>Read-only tool. Is Omo Space running, what is on the board, and where this conversation lives.</td></tr>
-<tr><td><code>omo_notify</code></td><td>Queues a short in-game notice: <code>{text, level?}</code>, level <code>info</code>, <code>success</code> or <code>warn</code>. At most 140 characters; anything that looks like a secret is masked.</td></tr>
-<tr><td><code>/omo</code></td><td>Slash command: a one-paragraph answer to "where is this conversation in the world?"</td></tr>
-</tbody>
-</table>
-<p>Both tools are in the toolset <code>omo</code>. With the setting <code>notify_on_finish</code> on, the plugin also queues a notice when a turn that took more than 60 seconds ends.</p>
+  <details class="hx-more" id="cli">
+    <summary>CLI reference</summary>
+    <div class="hx-more-body">
+      <dl class="hx-cli">
+        <dt><code class="w">hermes omo setup [--enable-all] [--non-interactive] [--json]</code></dt><dd>The guided checklist. Without a terminal (cron, gateway, CI) it only prints the checklist and exits 0.</dd>
+        <dt><code>hermes omo status [--json]</code></dt><dd>A doctor: the bridge on the configured URL, the feed folder, the age of the last event, which profiles have a feed, and one next step.</dd>
+        <dt><code class="w">hermes omo feed [-n N] [--json] [--follow]</code></dt><dd>Print or follow this profile's feed.</dd>
+        <dt><code class="w">hermes omo world [--install [WORLD] | --out DIR | --zip] [--list-worlds] [--dry-run]</code></dt><dd>Generate the Hermes HQ datapack. <code>--install</code> writes only <code class="w">&lt;world&gt;/datapacks/hermes_hq/</code> and needs <code>--force</code> to replace it. <code>--profiles</code>, <code>--exclude</code> and <code>--max-desks</code> choose the desks; <code>--bridge-port</code> sets the Board wall's port.</dd>
+        <dt><code>/function hermes_hq:info</code> · <code>/function hermes_hq:clear</code></dt><dd>In game: list the desks, or remove the hall again (the white floor stays).</dd>
+      </dl>
+    </div>
+  </details>
 
-<p class="section-kicker">05</p><h2>CLI reference</h2>
-<dl class="hm-cli">
-<dt><code>hermes omo setup [--enable-all] [--non-interactive] [--json]</code></dt><dd>The guided checklist. Without a terminal (cron, gateway, CI) it only prints the checklist and exits 0.</dd>
-<dt><code>hermes omo status [--json]</code></dt><dd>A doctor: the bridge on the configured URL, the feed dir and marker, the age of the last event, which profiles have a feed, and one next step.</dd>
-<dt><code>hermes omo feed [-n N] [--json] [--follow]</code></dt><dd>Print or follow this profile's feed.</dd>
-<dt><code>hermes omo world [--install [WORLD] | --out DIR | --zip] [--list-worlds] [--dry-run]</code></dt><dd>Generate the Hermes HQ datapack. <code>--install</code> writes only <code>&lt;world&gt;/datapacks/hermes_hq/</code> and refuses to replace it without <code>--force</code>. <code>--profiles</code>, <code>--exclude</code> and <code>--max-desks</code> choose the desks; <code>--bridge-port</code> sets the Board wall's port.</dd>
-</dl>
-<p>Settings live in <code>plugins.entries.omo-space.settings</code>: <code>feed</code> (default on), <code>bridge_url</code> (loopback only; empty means <code>$OMO_PORT</code> or 8780) and <code>notify_on_finish</code> (default off). They are read live, with no restart.</p>
+  <details class="hx-more" id="settings">
+    <summary>Settings</summary>
+    <div class="hx-more-body">
+      <p class="hx-fine">In <code class="w">plugins.entries.omo-space.settings</code>. Read live: no restart needed.</p>
+      <dl class="hx-cli">
+        <dt><code>feed</code> <span>on by default</span></dt><dd>Write the activity feed.</dd>
+        <dt><code>bridge_url</code> <span>empty by default</span></dt><dd>Loopback only. Empty means <code>http://127.0.0.1:$OMO_PORT</code>, or port 8780.</dd>
+        <dt><code>notify_on_finish</code> <span>off by default</span></dt><dd>Send a notice when a turn that took more than 60 seconds ends.</dd>
+      </dl>
+      <pre class="hx-code" data-copy><code>hermes config set plugins.entries.omo-space.settings.notify_on_finish true</code></pre>
+    </div>
+  </details>
 
-<p class="section-kicker">06</p><h2 id="privacy">Privacy, and what it never does</h2>
-<ul>
-<li><strong>Metadata only.</strong> The feed holds event kinds, tool <em>names</em>, counters, durations, timestamps, model and platform names, API status codes and kanban task ids. Never message text, tool arguments, tool results, error messages or subagent goals. The one exception is <code>omo_notify</code> text: capped at 140 characters, control characters stripped, secrets masked.</li>
-<li><strong>Loopback only.</strong> The only network calls are <code>GET /health</code> and <code>GET /board.json</code> to your Omo bridge on <code>127.0.0.1</code>, <code>localhost</code> or <code>::1</code>, with a 1.5 s timeout. A non-loopback <code>bridge_url</code> is refused, proxies are ignored, redirects are refused. Hooks never touch the network.</li>
-<li><strong>Not someone else's bridge.</strong> On a shared Linux machine it checks that the process on the bridge port is yours, and never queries another user's bridge.</li>
-<li><strong>No secrets, no telemetry, no accounts.</strong> It never opens <code>.env</code>, <code>auth.json</code>, <code>state.db</code>, logs, session files or the Omo bridge token. Nothing is reported anywhere.</li>
-<li><strong>No background processes.</strong> No threads, no daemons. Hooks never approve or block a tool, never inject context and never patch Hermes.</li>
-<li><strong>Its own data dir.</strong> It writes only to its own folder in the active profile (dir 0700, files 0600 on Linux and macOS), bounded: the event log rotates at 512 KiB. <code>hermes omo world</code> writes only where you tell it.</li>
-<li><strong>Asks first.</strong> <code>hermes omo setup</code> runs <code>hermes</code> commands only after a y/N prompt that defaults to No, and never edits <code>config.yaml</code> itself.</li>
-</ul>
+  <details class="hx-more" id="troubleshooting">
+    <summary>Troubleshooting</summary>
+    <div class="hx-more-body">
+      <dl class="hx-cli hx-trouble">
+        <dt>The Board shows nothing, but <code>hermes omo feed</code> has events</dt><dd>Your Omo bridge predates Hermes feed support; <code>hermes omo status</code> says so. Update Omo Space once a release with feed support is out.</dd>
+        <dt>The Board shows nothing and the feed is empty</dt><dd>The plugin is not enabled in that profile (<code>hermes omo setup</code> lists them), or <code>feed</code> is set to <code>false</code>.</dd>
+        <dt><code>hermes omo status</code> says the bridge is not yours</dt><dd>On a shared machine port 8780 can be another user's bridge. <code>hermes omo setup</code> finds yours, or set <code>bridge_url</code> to <code>http://127.0.0.1:&lt;port&gt;</code>.</dd>
+        <dt>Changes don't show up after updating the plugin</dt><dd>A running gateway keeps the plugin it loaded. In each profile run <code class="w">hermes plugins disable omo-space</code>, then <code class="w">hermes plugins enable omo-space</code>.</dd>
+        <dt>No notices in game</dt><dd>Type <code>/omonotices on</code>; <code>/omonotices test</code> shows one. Notices only draw when no screen is open.</dd>
+        <dt><code>world --install</code> says the datapack already exists</dt><dd>Add <code>--force</code>; only <code class="w">&lt;world&gt;/datapacks/hermes_hq/</code> is replaced. Then <code>/reload</code> in game.</dd>
+      </dl>
+    </div>
+  </details>
 
-<p class="section-kicker">07</p><h2>Troubleshooting</h2>
-<table>
-<thead><tr><th>You see</th><th>Do this</th></tr></thead>
-<tbody>
-<tr><td><code>hermes omo status</code> says the bridge is <strong>not yours</strong></td><td>On a shared machine port 8780 can belong to another user's Omo bridge. Run <code>hermes omo setup</code> to find yours, or <code>hermes config set plugins.entries.omo-space.settings.bridge_url http://127.0.0.1:&lt;port&gt;</code>.</td></tr>
-<tr><td>Changes don't show up after updating the plugin</td><td>A running gateway keeps the plugin it loaded. Run <code>hermes plugins disable omo-space</code>, then <code>hermes plugins enable omo-space</code>, in each profile.</td></tr>
-<tr><td>The Board shows nothing, but <code>hermes omo feed</code> has events</td><td>Your Omo bridge predates Hermes feed support; <code>hermes omo status</code> says so. Update Omo Space once a release with feed support is out.</td></tr>
-<tr><td>The Board shows nothing and the feed is empty</td><td>The plugin is not enabled in that profile (<code>hermes omo setup</code> lists them), or <code>feed</code> is set to <code>false</code>.</td></tr>
-<tr><td>No notices in game</td><td>Type <code>/omonotices on</code>; <code>/omonotices test</code> shows one. Notices only draw when no screen is open.</td></tr>
-<tr><td><code>world --install</code> says the datapack already exists</td><td>Add <code>--force</code>; only <code>&lt;world&gt;/datapacks/hermes_hq/</code> is replaced. Run <code>/reload</code> in game.</td></tr>
-</tbody>
-</table>
+  <details class="hx-more" id="requirements">
+    <summary>Requirements and status</summary>
+    <div class="hx-more-body">
+      <ul class="hx-list">
+        <li><strong>Hermes Agent 0.22.3 or newer</strong>, the first release with every hook the plugin uses. Checked with <code>hermes plugins validate</code> and <code>hermes plugins doctor</code> on 0.22.5.</li>
+        <li><strong>Omo Space</strong>, tested on Linux. The plugin itself is stdlib-only Python 3.11+; Omo Space's macOS and Windows builds are new.</li>
+        <li><strong>v0.1.0, release candidate.</strong> The repository is not public yet and a Hermes plugin catalog listing is pending. A community plugin by Omo Research, MIT licensed.</li>
+        <li><strong>Still to come:</strong> Omo Space's feed-aware bridge and in-game notices are built and tested on a branch, not in a release yet.</li>
+      </ul>
+    </div>
+  </details>
 
-<p class="section-kicker">08</p><h2>Requirements and status</h2>
-<ul>
-<li><strong>Hermes Agent 0.22.3 or newer</strong>, the first release with every hook the plugin uses. Validated with <code>hermes plugins validate</code> and <code>hermes plugins doctor</code> on 0.22.5.</li>
-<li><strong>Omo Space</strong>, tested on Linux. The plugin itself is cross-platform (stdlib only, Python 3.11+); Omo Space's macOS and Windows builds are new.</li>
-<li><strong>Status: v0.1.0, release candidate.</strong> The repository is not public yet, and a listing in the Hermes plugin catalog is pending. It is a community plugin by Omo Research, not an official or endorsed one.</li>
-<li><strong>Still to come:</strong> Omo Space's feed-aware bridge and in-game notices are on a branch, not in a release yet, and we are still capturing photos of a generated Hermes HQ hall.</li>
-</ul>
-<p class="os-legal">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft. Minecraft is a trademark of Mojang/Microsoft. Hermes Agent is by Nous Research; this plugin is by Omo Research and is not made or endorsed by Nous Research. Claude Code is by Anthropic and Codex by OpenAI.</p>
-<nav class="exp-pager" aria-label="More"><a href="/omo-space"><small>← The system</small><strong>Omo Space</strong></a><a class="next" href="/demo"><small>Watch</small><strong>The 15-minute demo →</strong></a></nav>
-</div>
-</article>
+  <p class="hx-legal">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft. Minecraft is a trademark of Mojang/Microsoft. Hermes Agent is by Nous Research; this plugin is by Omo Research and is not made or endorsed by Nous Research.</p>
+  <nav class="hx-pager" aria-label="More"><a href="/omo-space"><small>The system</small><strong><span aria-hidden="true">←</span> Omo Space</strong></a><a class="next" href="/demo"><small>Watch</small><strong>The 15-minute demo <span aria-hidden="true">→</span></strong></a></nav>
+</section>
+
 </main>
 <footer class="site-footer"><div class="footer-inner"><p>© 2026 Omo Research. Prototypes from our own use, not controlled studies.</p><nav class="footer-links" aria-label="Footer"><a href="/">Home</a><a href="/omo-space">Research</a><a href="/notes">Notes</a><a href="/products">Releases</a><a href="/contact">Contact</a></nav></div></footer>
 <script>
-document.querySelectorAll("pre.hm-cmd").forEach(pre => {
-  const b = document.createElement("button"); b.type = "button"; b.className = "hm-copy"; b.textContent = "Copy";
+document.querySelectorAll("pre[data-copy]").forEach(pre => {
+  const code = pre.querySelector("code");
+  if (code.textContent.includes("\n")) pre.classList.add("hx-multi");
+  const b = document.createElement("button"); b.type = "button"; b.className = "hx-copy"; b.textContent = "Copy";
+  b.setAttribute("aria-label", "Copy command");
   b.addEventListener("click", async () => {
-    const t = pre.querySelector("code").textContent;
+    const t = code.textContent;
     try { await navigator.clipboard.writeText(t); }
     catch (_) { const a = document.createElement("textarea"); a.value = t; document.body.appendChild(a); a.select(); document.execCommand("copy"); a.remove(); }
     b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1600);
   });
   pre.appendChild(b);
 });
+if (location.hash) { const d = document.querySelector(location.hash); if (d && d.tagName === "DETAILS") d.open = true; }
 </script>
 </body>
 </html>
