@@ -1,0 +1,2314 @@
+# Omo Research - full text of the main pages
+Source: https://www.omo.sh. Generated from the published HTML; each section starts with its canonical URL.
+
+---
+
+# Omo Research
+
+URL: https://www.omo.sh/
+
+Omo Research explores voice-first AI, spatial agents, and local AI interfaces through focused questions, prototypes, and an open research log.
+
+# The next interface isn't a chat window.
+
+Agents now run for hours, a dozen at a time. We give each one a place, so you can find it, come back to it and see who needs you, the way you remember rooms.
+
+---
+
+# Omo Space: Real AI Agents at Desks in Minecraft
+
+URL: https://www.omo.sh/omo-space
+
+Omo Space gives every AI agent a room in Minecraft: walk to it to find it, come back to resume, glance down the hall. Real Hermes, Claude Code, Codex and shell sessions.
+
+Abstract
+
+People remember rooms better than tabs. Omo Space uses that: it gives every long-running agent a place in a shared 3D world, so finding one becomes walking to it, resuming becomes coming back to where you left it, and checking on the team becomes a glance down the hallway S6. It is a Minecraft mod and a small local service. Placing a computer block starts a named workspace on your own PC: a Hermes Agent conversation, a Claude Code or Codex session, or a plain shell. Its terminal is painted on a wall, real web pages run on monitors beside it, and a lamp shows whether it is working. Walking away, or quitting the game, stops nothing, because the sessions belong to a background session server, not to the game S1S2. This page describes what Omo Space is, how it is built, what survives what, what we built with it this week, and what it does not do yet. Version 1.2.0 was released on 28 October 2026 under the MIT licence S3S8.
+
+01
+
+## Introduction
+
+Most agent interfaces disappear when you close the window. The agent is a tab, the tab looks like every other tab, and after a dozen of them it is hard to say which one is which, which one is working and which one is waiting for you.
+
+From our streamA hall of desks with screens on the walls, 27 October
+
+Omo Space starts from the opposite end. Each agent gets a place: a desk in a room, with its terminal on the wall and its name on a plate. You find it by walking to it. You check on it by looking down the hallway. When you come back the next day, it is where you left it S1.
+
+Our companion paper, Rooms, Not Windows, reports five days of using it as a main workspace S6. This page is the system itself.
+
+02
+
+## What you can build
+
+Everything is an ordinary-looking game block. The blocks below are the whole kit S1:
+
+From our streamA real Hermes session on an in-world screen, answering live on stream
+
+Block What it does
+
+Hermes Computer One named workspace with a Hermes conversation in the profile you choose. Different agents, different desks.
+
+Terminal A persistent shell. Its "+" menu opens Shell, Hermes, Claude Code or Codex tabs.
+
+Omo Monitor / Slim Screen A bigger view of a terminal, or a real Chromium page: up to 6 tabs, its own sound, WASD for web games.
+
+Omo Linker Mirrors a station onto walls across the room, with no wiring.
+
+Omo Pocket A Hermes or Terminal workspace you carry as an item.
+
+Name Plate / Status Lamp A name, and a live working / idle / interrupted light that also drives redstone.
+
+Claude Code and Codex tabs are on the main branch and ship in the next release S3.
+
+03
+
+## How it works
+
+The game is only the view. Four steps describe the whole interaction S1:
+
+in the gameYou at a deskcomputer, pocket or wall
+
+→
+
+127.0.0.1 onlyLocal bridgepaints screens, sends keys
+
+background servicetmux sessionsowns every workspace
+
+your PCReal agentsHermes, Claude Code, Codex, shell
+
+- Place a desk. A Hermes Computer or Terminal block opens a named workspace on your PC.
+
+- Type on the wall. Your keys go to a real shell or agent, and its terminal is painted in the world.
+
+- Walk away. tmux owns every session. Quit Minecraft and the work goes on while your PC is awake.
+
+- Come back. It is on the wall where you left it. After a reboot, the desk reopens its tabs; nothing is re-run.
+
+Underneath, a small bridge listens on 127.0.0.1 only. It paints the sessions onto in-game screens and sends your keystrokes back. The sessions themselves live in a tmux session server that runs as a background service S1S4.
+
+Web walls are real Chromium pages. Since v1.2.0 a world can show 12 pages at once. A guard rate-limits new pages and closes all but the nearest walls if memory runs high, which fixed a crash where three walls kept evicting each other's page S3.
+
+04
+
+## What survives what
+
+Persistence is the point, so it is worth being exact about it S2:
+
+Stream clipReviewing a cut on the wall: the editing agent's work, where you left it
+
+Event Shells and running jobs Hermes conversation
+
+Close the screen, walk away Keep running Keeps running
+
+Quit Minecraft Keep running Keeps running
+
+Restart the bridge or launcher Keep running Keeps running
+
+Hermes tab idle and unseen for 20 min (no change) Sleeps, saved, and resumes when a screen shows it
+
+PC restart Lost; the tabs come back with the same names, shells in their last folder Saved, and resumes in its reopened tab
+
+Two rules hold throughout. State is reported honestly: if the session server stops, the screen says INTERRUPTED. And nothing is re-run on its own: "Commands that were running are never re-run" S2.
+
+05
+
+## What we built with it this week
+
+We use Omo Space as our main workspace, live on stream. Between 25 and 29 October 2026 the builder ran a content pipeline from inside the game, with one room per stage: ideas, references, recording requirements, editing, publishing and analytics. Each room has its own Hermes profile S6.
+
+▶ Watch the 15-minute demo
+
+Stream clipRooms going up, block by block, from one prompt
+
+Stream clipAn underground lab, built from one prompt
+
+From our streamA pipeline room: one stage, one agent, its work on the wall
+
+From our streamThe planning wall in the underground base
+
+From our streamAn AI agent joins the world as a player and follows you around
+
+The rooms themselves were built by agents. The main underground base, with one room per stage, "Was done in one shot One prompt" S6. An underground robot lab was also built from one prompt, live on stream S1.
+
+At the time of the companion paper, the bridge on the builder's machine reported 114 known workspaces, 62 live tmux sessions and 22 separate Hermes profiles. At peak he ran 21 to 25 agent sessions at once S6.
+
+Since v1.2.0, agents running on the same computer can also join the world as players, over a LAN port that refuses offline logins from other machines S2S3. Our robots and the OMO agent player are built on that, and are described in Bodies in the Block World S7.
+
+06
+
+## Install
+
+Download the installer, your platform's bundle and SHA256SUMS from the v1.2.0 release, check them, then install S1S8:
+
+curl -LO https://github.com/omoresearch/omo-space/releases/download/v1.2.0/install.sh curl -LO https://github.com/omoresearch/omo-space/releases/download/v1.2.0/omo-research-1.2.0-linux-x64.tar.gz curl -LO https://github.com/omoresearch/omo-space/releases/download/v1.2.0/SHA256SUMS sha256sum -c --ignore-missing SHA256SUMS bash install.sh omo-research-1.2.0-linux-x64.tar.gz
+
+- The launcher fetches Minecraft 26.2, Fabric, CC: Tweaked, MCEF and Java from their official sources, with pinned hashes, into its own folder. It never touches your Minecraft or Prism installs.
+
+- You need your own Minecraft Java account, Python 3.11+ and about 2 GB free. Hermes Agent is optional, and model access is your own.
+
+- Setup fetches about 650 MB; the in-game browser fetches about 360 MB the first time a web wall opens.
+
+- On Windows 10/11 the game runs natively, and the sessions and Hermes run in WSL2 (install.ps1).
+
+07
+
+## Security model
+
+Omo Space puts real shells on your computer behind blocks in a world, so it should be treated with the same care as a terminal S4:
+
+- The bridge listens on 127.0.0.1 only and refuses foreign Host headers.
+
+- A computer's screen only ever holds a single-use ticket, bound to its station, its workspace and the running bridge.
+
+- Worlds store workspace ids and monitor URLs, never a credential.
+
+- Hermes' own approval prompts and permissions are untouched. Nothing here enables paid inference by itself.
+
+It is for singleplayer and trusted local worlds. "A block, a room or a pocket dimension is a presentation boundary, not a sandbox." S4
+
+08
+
+## Limitations
+
+From our streamPart of our world, 27 October
+
+- Platforms. Tested end to end on Linux. macOS and Windows support is new and tested offline only; a clean-machine install through Microsoft sign-in has not been tested yet S1S5.
+
+- Desk agents do not act in the world. "A Hermes desk agent does not act in the world. It cannot walk, place blocks or press buttons." Agent bodies are a separate runtime S2.
+
+- Agents do not talk to each other through the world. Work is handed between them the normal Hermes way S2.
+
+- Workspaces live on the PC that opened them. A friend on another PC gets a fresh workspace from the same preset S2.
+
+- Web video. The bundled Chromium has no H.264/AAC codecs, so YouTube plays but most Instagram, X and Reddit video does not S1.
+
+- The game is heavier than the work. In our own use, the game client crashed or froze more often than the agent sessions failed; the sessions survived S6.
+
+09
+
+## Sources
+
+[S1] Omo Space README (public). github.com/omoresearch/omo-space. "Place a computer in Minecraft and a real Hermes Agent, Claude Code, Codex or plain shell starts on your own machine."
+
+[S2] Omo Space docs, Agents and terminals (public). github.com/omoresearch/omo-space/blob/main/docs/AGENTS-AND-TERMINALS.md. "Commands that were running are never re-run, and shell scrollback is gone."
+
+[S3] Omo Space CHANGELOG (public). github.com/omoresearch/omo-space/blob/main/CHANGELOG.md. "Single-player worlds open to LAN for local AI agents once you have joined"
+
+[S4] Omo Space SECURITY.md (public). github.com/omoresearch/omo-space/blob/main/SECURITY.md. "A block, a room or a pocket dimension is a presentation boundary, not a sandbox."
+
+[S5] Omo Space docs, Platforms (public). github.com/omoresearch/omo-space/blob/main/docs/PLATFORMS.md. "Status: untested on a real Mac."
+
+[S6] Rooms, Not Windows: Spatially Aware Creative Agentic Interfaces. Omo Research working paper, October 2026. www.omo.sh/research/rooms-not-windows/
+
+[S7] Bodies in the Block World. Omo Research working paper, October 2026. www.omo.sh/research/robots/
+
+[S8] Omo Space v1.2.0 release, 28 October 2026. github.com/omoresearch/omo-space/releases/tag/v1.2.0
+
+[S9] Omo Space demo, 27 October 2026: 15 minutes, one take, live on stream. github.com/omoresearch/omo-space/releases/tag/demo-2026-10-27
+
+Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft. Minecraft is a trademark of Mojang/Microsoft. Hermes Agent is by Nous Research, Claude Code by Anthropic and Codex by OpenAI; Omo Space runs them, it doesn't ship them.
+
+---
+
+# Omo Space Demo: The Whole Loop, Live (15 min)
+
+URL: https://www.omo.sh/demo
+
+Watch the 15-minute, one-take Omo Space demo: rooms, agents at their desks, edit review, publishing, and a robotics lab built from one prompt.
+
+Omo Space · Demo · Live stream, one take
+
+# The whole loop, live.
+
+A viewer found Omo Space on Instagram and dropped into the stream, so I showed him everything: the rooms, the agents at their desks, the edit review, the publishing desk, and an underground robotics lab built from one prompt while we talked.
+
+Recorded 27 October 202615:45 · 1080pTranscriptDownload the original MP4 (345 MB)
+
+## Chapters
+
+## Try it yourself
+
+Real agents at desks inside Minecraft, on your own computer. Open source, MIT.
+
+Install with your agent GitHub ↗ For teams
+
+The first 45 seconds are a title card while a key was entered off screen, and a few private details are blurred. Nothing else is cut. Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.
+
+---
+
+# Papers
+
+URL: https://www.omo.sh/papers
+
+Papers from Omo Research on spatially aware agentic interfaces: Worlds, Not Windows, findings from giving AI agents places in a Minecraft world, plus its whitepaper.
+
+- Oct 2026Worlds, Not Windows: Spatially Aware Creative Agentic InterfacesHarrison Edwards. Research paper: giving AI agent sessions and live web pages places in a Minecraft world, from five days of daily use. PDF
+
+- Oct 2026Worlds, Not Windows: the whitepaperThe short, plain-language version: the idea, how it works, what we have seen and design lessons. PDF
+
+---
+
+# Worlds, Not Windows: Spatial Agentic Interfaces
+
+URL: https://www.omo.sh/papers/worlds-not-windows
+
+Findings so far from using Omo Space every day: AI agent sessions and live web pages given places in a Minecraft world. By Harrison Edwards, Omo Research.
+
+Worlds, Not Windows: Spatial Agentic Interfaces | Omo Research
+
+Omo Research← PapersWhitepaperPDF (paper)PDF (whitepaper)
+
+Omo Research · preprint draft v1.830 October 2026
+
+# Worlds, Not Windows
+
+Spatially Aware Creative Agentic Interfaces
+
+Harrison Edwards
+
+Omo Research
+
+Working paper · draft v1.8 · November 2026
+
+Figure 1. Worlds, not windows. An organisation drawn as an open world of districts, with agents at work in each and all of them linked to a central status wall. Generated illustration (Omo Space enterprise site), not a screenshot; captures from Minecraft appear in Figures 3–5.
+
+Abstract. AI agents now run for hours, many at a time, yet we still manage them through chat windows and terminal tabs. With twenty agents running, the tab bar stops telling you which agent is which and which one needs you. We tried something else: we gave each agent session a place in a Minecraft world. Omo Space is a mod that puts real agent sessions (Hermes Agent, Claude Code) and live web pages on in-world screens, with lamps that show when an agent is working. The sessions themselves keep running on the user’s computer, and the places are mostly built by coding agents from short requests. This paper shares findings so far from the builder using it himself. He worked in it every day while streaming (25–29 October 2026), and a friend built his own world with it. Looking back over about 29 hours of transcribed streams, we describe four ways place got used: to find work by walking to it, to resume by coming back to it, to monitor by glancing at lit screens, and to orchestrate a pipeline by moving work from place to place. We also report his real usage from the agents’ own logs: about 7 billion tokens over the five days, and over 4 billion on 28 October alone. We have not tested it against tabs; we describe what it was like, what it suggests, and what we would like to measure next.
+
+Keywords: agentic interfaces; spatial interfaces; persistence; ambient awareness; multi-agent supervision; generative environments; Minecraft; autobiographical design
+
+## 1 Introduction
+
+AI agents have gone from one chat to many long-running sessions: coding agents, research agents, video-editing agents. They work for hours, wait for approval and ask questions. Most of us still run them in chat windows or terminal tabs. That works for one agent. With twenty, the tab bar no longer tells you which session is which, which one is busy, and which one is waiting for you.
+
+The builder of the system in this paper put the motivation this way, on the first night of streaming it:
+
+“So it’s like I’m spatially aware of my workspace. … It’s not a chat window, it’s an interface.”[P1, T1, 00:38:33–00:38:50, live]
+
+Using space to organise computer work is an old idea. Rooms (1986) split a crowded screen into virtual rooms [1], Data Mountain (1998) showed people remember where they put things in 3D [2], and the Task Gallery (2000) hung running applications on gallery walls [3]. Agents are a new kind of thing to organise. They keep working when you look away, they finish, and they ask for help. We wanted to know what a world of places does for that kind of work, and what it does not do.
+
+What this paper is. Findings so far, from one person building and using his own tool. Nothing here was set up as a test. The builder just used Omo Space for his real work, live on stream, and a friend tried it too. We went back through the recordings and wrote down what happened, in his own words, including what went wrong. We do not claim the world is faster than tabs; Section 7 lists what we would like to measure next.
+
+We contribute:
+
+- A system. Omo Space, which shows live agent sessions and web pages as objects in a Minecraft world, with status lamps and agent-built places (§3).
+
+- Findings so far. Five days of the builder’s own daily use, about 29 hours of stream transcripts, read with AI helpers and checked by script (§4).
+
+- What we learned. Four uses of place, the “web page with a terminal attached” pattern, places at every scale and a traced episode (§5).
+
+- What to do next. Design lessons and what we would like to measure next (§6–7).
+
+## 2 Related Work
+
+### 2.1 Space, memory and interruption
+
+Malone found that piles on a desk do more than store things: “a very important function of desk organization is to remind the user of things to do” [4]. Rooms carried this into software with virtual workspaces, to cut “window thrashing” [1]. Data Mountain reported “statistically reliable advantages” for placing documents in space over a favourites list [2]. The Task Gallery, which hosted ordinary Windows applications in 3D, was found “enjoyable to use” [3]. People juggle many tasks and find switching hard [6], and they use spatial memory to return to “the general area where they were interrupted” [7]. Calm technology argues for displays that show state “without being obtrusive” [5]. All of this was about documents, windows and tasks; none of it was about supervising agents that keep working on their own.
+
+### 2.2 Agents in game worlds
+
+Minecraft is a common home for AI agents. Voyager explores and learns skills [8], Mindcraft studies agent teams and finds communication is a main bottleneck [10], and Generative Agents fills a game town with twenty-five agents people can watch and talk to [9]. In those systems the world is mostly where the agents act. In Omo Space the world is mainly the human’s view of, and controls for, agents whose real work (code, video, publishing) happens outside the game. The line is not sharp, since Generative Agents is also something people watch.
+
+### 2.3 Supervising many agents
+
+The closest recent work tackles the same problem with dashboards. ParallelPilot adds planning, a run-logger and “an ambient dashboard alongside existing coding tools”; in a study with 16 people, participants “supervised an average of one more concurrent agent at peak” [19]. AgentGUI is built for “observing and steering AI agents amid multiple concurrent, long-running sessions” [20]. Magentic-UI offers “co-planning, co-tasking, multi-tasking, action guards, and long-term memory” [21]. Generative UI shows models can generate “not just the content, but the interface itself” [22]. Spatial hypertext found that “a visual/spatial metaphor … allows people to express the nuances of structure” [23]. Table 0 compares them. What Omo Space adds is a combination: places, built by people or agents, that hold long-running sessions and agent-made pages. Unlike ParallelPilot and AgentGUI it has not been tested with users. Unlike Magentic-UI it has no action guards. And unlike ParallelPilot’s dashboard, which surfaces intervention cues, its lamps show activity but not “this agent is waiting for you”.
+
+Table 0. Omo Space and the nearest systems, as described in the material we inspected (mostly abstracts and introductions). “n/i” means not established from the inspected source; it does not mean the feature is absent.
+
+SystemConcurrent sessionsWhere jobs run; persistenceState / intervention cuesGenerated interfaceSpatial organisationEvaluation (task)
+
+ParallelPilot [19]YesExisting coding tools; n/iAmbient dashboard; intervention cuesn/in/iWithin-subjects N=16 (short coding tickets)
+
+AgentGUI [20]Yes, long-runningLocally hosted; n/iTrace visualisation; steeringn/in/iControlled study (finding key elements in traces)
+
+Magentic-UI [21]Multi-taskingWeb, code, files; n/iAction guards; co-planningn/in/iBenchmarks, simulated users, qualitative study, safety tests
+
+Generative UI [22]n/in/in/iCustom pages per promptn/iHuman preference ratings
+
+VIKI [23]n/in/in/in/iUser-arranged 2D spacen/i
+
+Task Gallery [3]ApplicationsUnmodified Windows appsn/in/i3D gallery (authored)User studies
+
+Omo SpaceYestmux on user’s machine; survives client exitLamps, lit screens; no waiting statePages and placesGenerated places, any scaleNone yet (findings from own use)
+
+### 2.4 How we looked back at it
+
+Building a tool and learning from your own use of it has a name in HCI, autobiographical design: “design research drawing on extensive, genuine usage by those creating or building a system” [16], with an autoethnographic flavour [18]. We borrow the steps of thematic analysis [15]. Because AI models did the first reading, we call it an AI-assisted thematic synthesis rather than a full reflexive analysis. AI coding has matched experts reasonably well when there is a fixed codebook [17], but ours was open-ended, so we also checked the outputs by script (§4.3).
+
+## 3 System: Omo Space
+
+Omo Space is a Fabric mod for Minecraft Java 26.2 plus a small local bridge [11][12]. We describe it from source snapshot 75d4677 (27 Oct 2026); the builds used day to day were not recorded. At the time it ran on Linux only [11].
+
+### 3.1 What is in the world
+
+A workspace is a named terminal session (tmux) on the user’s computer. It has one or more tabs, each running an agent (Hermes, Claude Code, Codex) or a plain shell. Each Hermes agent has its own profile: memory, skills and model. In the world, a station is the computer block for a workspace. Views (wall monitors, slim screens) show a tab or a live web page, and several views can show the same workspace. A place is anything you build around them: a room, a cave, a tower, a world. Places are just builds; they carry no permissions and run nothing.
+
+Table 1. In-world objects and their counterparts on the user’s machine [11].
+
+ObjectCounterpart on the machine
+
+Hermes Computer (station)A named workspace whose first tab runs a Hermes agent in its own profile
+
+TerminalA workspace tab running a shell or another agent CLI
+
+Monitor wall / Slim ScreenA larger view of a tab, or a pinned live web page (embedded Chromium)
+
+LinkerBinds a view to a workspace without adjacency; several views may mirror one
+
+Status LampFollows an explicitly linked station, or else the nearest station within 8 blocks. Gold if any live tab in the workspace is busy, green otherwise, red once interrupted, dark without a live workspace
+
+Name PlateThe workspace name, legible at a distance
+
+A lamp sums up its workspace: gold if any tab is busy, otherwise green (source: StationStatus.glow). It has no “waiting for your answer” state. Agents do not pass work to each other through the world, and a friend loading the same map gets fresh workspaces of their own [11]. So a pipeline that runs across places is the user’s own scripts and agent instructions, not something the mod does.
+
+Figure 2. Architecture. Processes are owned by a tmux server on the user’s machine. A loopback-only bridge renders tabs onto in-world screens and forwards input. The client presents and accepts input but does not own the external agent jobs.
+
+### 3.2 What survives what
+
+Each Hermes tab is one named conversation (hermes -p <profile> chat --tui -c omo:<workspace>:<tab>), so reopening a screen brings back the same conversation [11]. Closing a screen, quitting Minecraft or restarting the bridge does not stop the agents. Restarting the computer does stop running jobs, but saved conversations can be resumed with a button. Idle Hermes tabs nap after 20 minutes unseen and wake when shown again; apart from that, “Nothing is ever re-run without you” [11].
+
+Table 2. Documented lifecycle by event [11]; documented behaviour, not a survival test run for this paper. World layout is saved by Minecraft. Web-page state on a wall is not covered by this table,.
+
+EventShells and running jobsHermes conversation
+
+Close the view, walk awayKeep runningKeeps running
+
+Quit or crash MinecraftKeep runningKeeps running
+
+Restart the bridgeKeep runningKeeps running
+
+Hermes tab idle and unseen 20 min—Exits cleanly; resumes when shown
+
+Host restart, or tmux server stopsLostSaved; tab shows INTERRUPTED; user presses Resume
+
+(a) Terminal + web wall
+
+(b) Review wall
+
+Figure 3. Agent work as objects in a place. (a) A Hermes session on a wall terminal (right) beside other agents’ walls across the room. (b) An agent-built review page pinned on a wall: a queue of clips “ready to review” with a player and notes. Stills from the authors’ live stream of 30 Oct 2026 (recordings 2026-10-30 05-26-05 and 23-31-03), the day after the five days covered here, in the live world with real agent sessions. Frames are cropped to remove the face camera, stream label and game HUD.
+
+### 3.3 Places built by agents
+
+Places can be built and changed by coding agents from plain requests, and people also build by hand. Agents can also have bodies: a companion project brings a Hermes-driven player into the same world [13], and simulated robots appear in it. Bodies are outside the scope of this paper.
+
+## 4 How We Looked Back
+
+### 4.1 Who used it
+
+From 25 to 29 October 2026 the builder (P1), a solo developer, simply used Omo Space as his main workspace while streaming to Twitch and YouTube. There was no study plan; the streams were his normal work. He ran a real content pipeline (ideas, references, recording, editing, publishing, analytics) with about one agent profile per stage, linked by his own scripts. A friend (P2), new to Hermes and on Windows, built his own world from the public repository with help from Claude Code and showed it on two streams. We did not inspect P2’s code; his set-up time and how easy he found it are his own account (§5.7).
+
+### 4.2 Data
+
+We used seven main stream recordings and four short pickups, transcribed with Whisper (small), with a timestamp on every line. We split them into eight segments (Table 3), 29.05 hours in total. That figure is computed by corpus_manifest.py from the first and last timestamp in each analysed range. It includes silence, chat and replayed clips, so it is recorded time, not hours of distinct events. Two stretches were not analysed: the first 93 minutes of the 28 October part-2 recording (only partly transcribed) and 29 October after 3 h 44 min (not yet transcribed). The transcripts have no speaker labels, so who said what is inferred from context throughout. For P2 we also mark it at each quote.
+
+Table 3. Corpus and extraction yield per segment. Counts are extracted records, not distinct events; repeated clips and scripted takes can yield several records.
+
+Seg.Recording (2026)HoursThesesQuotesDemos
+
+T125 Oct, 02:08 (first stream)2.80175918
+
+T225 Oct, 18:56 + pickups (incl. 26 Oct)1.99156017
+
+T325 Oct, 23:413.90175514
+
+T427 Oct, 18:033.77175925
+
+T528 Oct, 01:36, 0:00–4:404.65166420
+
+T628 Oct, 01:36, 4:40–9:204.67185423
+
+T728 Oct, 11:40, 1:33–5:073.57165921
+
+T829 Oct, 16:19, 0:00–3:443.70175918
+
+Total29.05133469156
+
+### 4.3 Real usage
+
+The streams show what was said. Hermes also keeps its own token counters for every session, so we can say how much agent work actually ran (Table 4). Over the five days the builder’s agents used about 7.1 billion tokens in 43,157 model calls. On 28 October alone they used about 4.2 billion; counting only sessions that started and ended that day it is still 3.75 billion. The day after the five days, 30 October, was busier again at 4.7 billion, with 20 agent profiles active. By 29 October twelve profiles were running, roughly one per pipeline stage.
+
+Most of these tokens are context being re-read, not new text. From 24 October to 1 November, 95.7% were cache reads: each step of a long-running agent re-reads its whole conversation from the provider’s prompt cache. Output was 66 million tokens (0.5%). Nearly all of it (99.3%) ran on Claude Opus 5.5. At list prices Hermes estimates the five days at about $3,400; no billed cost is recorded, so this is an equivalent, not what was paid. The counters cover all of the builder’s Hermes work, including sessions that never appeared in the world, so they measure how much agent work he was running, not how much Omo Space caused. The script and per-day data are in the project’s usage/ folder.
+
+Table 4. Real usage, from Hermes’ own per-session token counters across all 45 local profile databases (read 1 Nov 2026). Days in AEDT; sessions that ran past midnight are split by time. The sessions column includes sub-agents and scheduled jobs. Cost is Hermes’ estimate at published list prices, not an invoice.
+
+DayTokensAPI callsAgent profilesSessionsList-price estimate
+
+Sat 25 Oct0.09 bn970333$32
+
+Sun 26 Oct0.63 bn5,0049137$311
+
+Mon 27 Oct0.56 bn3,989994$323
+
+Tue 28 Oct4.17 bn25,38611537$1,978
+
+Wed 29 Oct1.61 bn7,80812159$730
+
+Five days7.07 bn43,157——$3,374
+
+Thu 30 Oct (after)4.67 bn21,05020229$2,094
+
+### 4.4 Analysis
+
+Reading. Each segment was read in full by a separate AI reader (Claude Opus 5.5). Each listed the claims made about the interface with 1–4 exact timestamped quotes each, the live demos, the failures and doubts, and guest reactions. All readers shared one brief. That brief asked what the builder was “trying to SAY/PROVE” and gave example claims, so it was looking for his intent, and may have nudged the readers (full prompts: Appendix A).
+
+Grouping. An AI drafting assistant (also Claude) grouped the 133 segment-level claims into cross-segment themes. P1 checked the result against what he meant. No second person coded the material. The theme list, its rules and coverage counts are in Appendix C as an index; the findings below do not rest on the counts.
+
+Labels on quotes. Each quote is tagged live (said while working), take (a scripted promo line recorded in the world) or playback (an edited clip replayed on stream). Takes show what P1 wanted to say, not what happened. Even live quotes are reports of what someone said, not observed outcomes. We worked from transcripts, not video.
+
+Checks. A script confirmed that all 791 quotes the readers extracted appear in the transcripts within 3 minutes of their timestamps. A second, stricter script checks every quote in this paper against its own segment’s transcript within 90 seconds. On v1.8 it found 30 timed matches and no failures, and it matched 14 literature quotes against the fetched sources (Appendix B). These checks show the words are there; they do not prove who said them or what happened. Key moments have not yet been checked against the audio.
+
+### 4.5 Privacy and consent
+
+The streams were public, and P1 is the system’s author. Figures 3–5 are stream stills cropped so that no face camera, chat, viewer names or stream labels show. P2 has a pseudonym here, but the working files name him and his words can be found in the public recordings. He is not named here, and everything quoted was said on public streams.
+
+## 5 What We Found
+
+We read the material through four uses of place: find, resume, monitor and orchestrate. They are how we make sense of what happened, not proven effects. Table 5 sums them up; the sections after it give the evidence. Then come the “web page with a terminal” pattern, places at every scale, and P2’s world.
+
+Table 5. The four uses of place at a glance. Each row: what it looked like, what the builders said helped, and the lesson we draw.
+
+UseWhat it looked likeWhat helped (reported)Lesson
+
+FindWalk to the agent’s placeRemembering places, not tab positions; about 25 sessions at oncePlaces help find work if they stay put and stay legible
+
+ResumeCome back to where you left itAgents still running after quitting the gameThe place is an address; each kind of state needs its own guarantee
+
+MonitorGlance at lit screens and lampsScreens “turn on” when an agent works (T8, 00:48:43, live)Activity and “waiting for you” are different signals
+
+OrchestrateMove work from place to placePipeline stages visible as roomsSpace is not routing; hand-offs need to be explicit
+
+(a) Find
+
+(b) Resume
+
+(c) Monitor
+
+(d) Orchestrate
+
+Figure 4. What each use of place looks like in the world. (a) Find: a corridor of places, each with its own screen. (b) Resume: a hall of agent places in the underground base he worked in every day. (c) Monitor: lit screens readable from the cavern entrance. (d) Orchestrate: the review stage of the video pipeline, with approve / send back / move to done controls, beside the editing agent’s terminal. Stills from the authors’ live stream of 30 Oct 2026 (recordings 2026-10-30 05-26-05 and 23-31-03), the day after the five days covered here, in the live world with real agent sessions. Frames are cropped to remove the face camera, stream label and game HUD. The images illustrate layout; they do not show interaction outcomes.
+
+### 5.1 Find: walking to the work
+
+Every workspace sits in a fixed, named place, so you can remember where an agent is instead of which tab it was in. P1 put it most sharply in a scripted take:
+
+“Nobody remembers which of the 12 terminal tabs are doing what but you can remember space and rooms … It’s the oldest memory trick out there.”[P1, T6, 07:14:29–07:14:46, take]
+
+Live, he named the problem the world was built to fix: “Getting lost with all these tabs and things” [T1, 01:13:45, live]. He reported about 25 sessions running at once (the logs show 537 sessions active on 28 October, counting sub-agents and scheduled jobs), “within the interface that we can conceptually understand” [T6, 07:37:22, live]. Whether the spatial-memory gains seen for documents [2] carry over to live agents is something we would like to measure (H1).
+
+### 5.2 Resume: coming back to it
+
+The agents run outside the game (Table 2), so leaving the game does not stop them, and the places are still there when you return. After quitting and reloading on the first night P1 said: “So we can close it enjoy our day And then Come back Boom the agents are still working right here” [T1, 02:12:55, live]. On 29 October he said agents had kept editing after he closed Minecraft, about 22 clips [T8, 00:06:30–00:08:38, live]. Separately, after turning the computer off and on, he found “everything’s persistent” [T8, 00:11:55–00:11:59, live]. A restart keeps the world and the saved conversations but not running jobs (Table 2), so we read these as two separate moments, not as work done while the computer was off. He tied this to how it felt to start work: “I’m not dreading any pain / Or like context loss because I know anytime I want to work on the robotics project / I just fly down here” [T4, 02:21:42, live].
+
+### 5.3 Monitor: glancing at lit screens
+
+Lamps and lit screens let you read activity from across the room, much like calm technology [5]. P1’s clearest lines are takes recorded in the Batcave: “because every light that you see in there is an agent still working” [T5, 00:36:26, take] and “Now you can see your whole team from the hallway.” [T5, 00:39:00, take]. P2 described the same cue live, in his own world: “How I can tell when the task is like running because their screen will turn on” [T8, 00:48:43, live; P2, inferred]. He also said watching the team was more fun than “just looking at you know Claude you know just typing” [T8, 01:00:57, live; P2, inferred].
+
+The lamps show who is busy. They do not yet show that an agent is waiting for an answer, and that is the next signal to build (H3).
+
+### 5.4 Orchestrate: moving work between places
+
+P1 laid out his content pipeline as a row of places, about one stage and one agent each: “We just go to that room and just start building / And when we’re done, then we just leave that room” [T2, 01:04:14, live]. In a take he summed it up: “This video went through all five rooms before you saw it” [T5, 00:34:55, take]. By 29 October he wanted a place for each to-do item, “a repeatable pattern” [T8, 03:28:22, live]. In conversation, approving was described as a single in-world step: “once you press approve inside the game, it just gets posted” [T8, 00:56:28, live; speaker unclear].
+
+The hand-offs between places are his own scripts and agent instructions, not a feature of the mod. Laying the pipeline out in space made its stages visible and easy to visit.
+
+### 5.5 Web pages with a terminal attached
+
+On the last day P1 described the idea in its most general form, apart from Minecraft:
+
+“the concept of spatial interfaces with persistent webpages is easy to use and talk to and control. … We’re doing it inside Minecraft, but I believe there is not enough … attention, these persistent webpages with a terminal attached to it. And with this, you can build whatever pipeline that you want.”[P1, T8, 03:38:57–03:39:18, live]
+
+Pieced together from several moments, the pattern goes like this. You ask an agent at a station for a page for one job, such as a review queue, an analytics view or a publishing form. You pin it on a wall in the right place, check it, and approve or ask for changes through the terminal next to it. Then you come back to it later. The page does the job-specific work; the place gives it a fixed home next to related work. An ordinary browser tab could host the same page, and we did not separate the two effects. The in-world browser also had limits: drop-down menus could not be selected [T8, 03:22:45, live]. The episode below shows one piece of it on the first night.
+
+Episode A: leave and return (T1, 02:10:30–02:13:16; live; reports). Set-up. P1 pins a web page on a wall beside working agents: “And then I get pins page to forever be here” [T1, 02:10:40]. Action. He closes the world: “I’m closing it entirely” [T1, 02:12:03]. Result as reported. On reloading: “Boom the agents are still working right here” [T1, 02:13:04], and “Web page is still here” [T1, 02:13:12]. What it shows. The agent sessions’ survival matches the documented lifecycle (Table 2). The pinned page was there too.
+
+### 5.6 Places at every scale
+
+The places were not just rooms. P1 ran his content pipeline through a cave of five rooms. He wanted whole worlds for lines of work: “We can build a whole world for the paid ads” [T7, 02:48:38, live]. To show how personal it could get, he imagined a pirate ship holding your tax work [T6, 08:09:08, live]. He said agents did most of the building: “I didn’t build any of this” [T6, 07:45:10, live]. He also liked building by hand sometimes: “I also think it’s quite nice to just build with hand” [T1, 02:25:32, live]. The pattern is that people choose the shape and size of a place to fit the work, instead of the system choosing for them.
+
+(a) Atrium
+
+(b) Hall
+
+(c) White hall
+
+(d) Tunnel
+
+Figure 5. Places at several scales in the authors’ world, from a single atrium to halls and the tunnels that connect them. In (b) an embodied agent (name tag “ChatGPT – …”) stands in the hall. The authors report that these places were generated by agents from short requests; per-build prompts were not logged. Stills from the authors’ live stream of 30 Oct 2026 (recordings 2026-10-30 05-26-05 and 23-31-03), the day after the five days covered here, in the live world with real agent sessions. Frames are cropped to remove the face camera, stream label and game HUD.
+
+### 5.7 A friend’s world
+
+This part comes from what was said during P2’s screen-share, not from watching the video. P2 had never used Hermes before [T8, 00:59:38] and described about 24 hours of work [T8, 00:54:32] with little troubleshooting: “It just gave Claude the GitHub and then gave it a few prompts and then it just it built the world” [T8, 01:04:44, live; P2, inferred]. He showed an AI office with a manager agent, teams for web, social and IT, and a podium for talking to the whole team. Agents walked to their seats at a conference table, and a sports arena showed live scores [T8, 00:28–01:13]. The manager, seating and podium were his own additions, not part of Omo Space; they show a second builder taking the idea his own way. Someone in the exchange described a meeting table where a message “will go to each of the four people’s like memories and sessions” [T8, 01:12:04, live]; the transcript does not show who said it or whose table it was. The day before, P2 had called a page-only setup “claustrophobic” [T7, 04:16:50, live; P2, inferred].
+
+## 6 Discussion
+
+### 6.1 Design implications
+
+- Give agent work a persistent, recognisable place, while allowing several sessions per place, mirrored views and user-chosen scales.
+
+- Separate address from state: state the persistence of process, conversation, page and world separately (Table 2).
+
+- Distinguish activity from a request for attention, without colour as the only cue.
+
+- Honest state: never show progress that is not happening; re-run nothing on the user’s behalf except documented idle resume.
+
+- Let the work choose the shape: places of any scale, built by agents or by hand.
+
+- Make hand-offs between places explicit objects, not a consequence of layout.
+
+### 6.2 Why a game world, and why people liked it
+
+Earlier 3D workspaces were designed by their makers [3]. A buildable world lets agents make the places from requests and lets other people build their own. That is what gave us places at every scale (§5.6) and P2’s world (§5.7).
+
+Both builders also chose where to work and said they liked being there. P1 described moving between reading and coding: “I can uh, read and then I can go to the other room … Do some coding or whatever and then go back to like reading and it’s all together in one place in my mind” [T3, 02:01:07–02:01:11, live]. P2 said watching the team “makes this like AI coding and building stuff just more fun” [T8, 01:00:57, live; P2, inferred]. These are claims about how it felt, not wellbeing results.
+
+### 6.3 Limitations
+
+- Just us so far. One builder using his own tool, and one friend. Nothing was set up as a test, there is no comparison and nothing was measured. These are lessons from use, not proof that worlds beat tabs.
+
+- The builder is the author. P1 built the system and was streaming, and some key lines are promo takes or replayed clips (§4.3). Studying your own system shows a lot but leans toward your own needs [16].
+
+- Analysis. AI models did the reading and grouping, and P1 checked them. There was no second human coder.
+
+- Transcripts. Whisper (small), no speaker labels. One line reads “I don’t think Minecraft is superior” (T6, 08:33:45). It may be misheard, but until someone listens to the audio we leave it open.
+
+- Coverage. About 29 hours analysed; two stretches were not (§4.2).
+
+- Pictures. The figures show what the interface looks like, not results. Figures 3–5 are stills from 30 October, the day after the five days covered here; Figure 1 is a generated illustration.
+
+## 7 What We Would Like to Measure Next
+
+None of this has been tested yet. If we do test it, three of the four uses can be compared against ordinary tabs, and generated places can be looked at from logs (Table 6). The comparison must be fair. The tab setup gets the same agents, the same persistence, good names, status badges and search, so any difference comes from space and not from better tools. Orchestration waits until hand-offs between places are real features.
+
+Table 6. Proposed studies. H1–H3 are within-subjects and counterbalanced. Sample size is provisional (about 16–24) pending a pilot and power analysis. H4 is an observational log study.
+
+StudyPredictionManipulationMeasure
+
+H1 FindNamed sessions are located faster in the world than in tabs, and the gap widens with session count.Interface (world, tabs) × sessions (12, 24)Time to locate; wrong selections
+
+H2 ResumeAfter a 24 h break, time to first useful action is shorter in the world.Interface; 24 h delay; “useful action” defined in advanceResumption lag; errors
+
+H3 MonitorWith a proposed “waiting for you” lamp state (not yet built), a blocked session is noticed sooner than with equivalent tab badges when it is in view, but not when out of view unless escalation is added.Interface × visibility (in view: same room / visible tab strip; out of view: other room / other workspace) × escalation (off, on); identical event schedule in bothDetection latency; misses (unnoticed within 5 min)
+
+H4 Build (obs.)Most one-prompt places are used without post-generation revisions.None; log every build attempt (failed and abandoned included) started in days 1–30, each followed for 14 days (observation ends day 44)Author acceptance; still in use after 14 days; revisions; independent usability rating against a pre-registered checklist
+
+“Useful action” in H2 means the first edit, approval or instruction that moves the interrupted task forward. Participants practise each interface until they complete two trials unaided, and task versions are matched by session count and event schedule. In H4, a “one-prompt” place is one plain request with no follow-up, and any later edit the user asks for, by hand or by agent, counts as a revision. Some of the data already exists: bridge logs of sleep, resume and INTERRUPTED events, the Hermes session stores, and the recordings.
+
+## 8 Conclusion
+
+Chat windows were made for one conversation; agent work is now many conversations that keep going when you look away. We gave that work places in a world you can build, from a single room up to whole worlds. Its builder described finding, resuming, watching and routing agent work by moving through those places, and a friend took the idea his own way. Whether worlds help people more than windows is still an open question; §7 sketches how we would like to find out.
+
+## Data and Materials
+
+The per-segment extractions, reader prompts, synthesis, theme matrix (theme_matrix.py), corpus manifest (corpus_manifest.py), quotation verifiers (verify_quotes.py, verify_paper_quotes.py), citation ledger with verbatim evidence and the review history are held in the project folder. They are not a public release: they contain identifying material about P2 and other speakers. A redacted evidence subset will be prepared before any release. Raw recordings are not released.
+
+## AI Use Disclosure
+
+Language-model readers (Claude) performed first-pass extraction. A language-model assistant (Claude) proposed the cross-segment themes, coverage counts and the text of this draft, which P1 reviewed. An independent model (GPT-6 Astra) reviewed the draft against the evidence files and the full drafting history; its review is kept with the project materials. Stream quotations were checked by script against transcripts (Appendix B), and literature quotations against fetched source text in the citation ledger. Those checks cover the existence of the words, not interpretation. The thesis-to-theme matrix in Appendix C was reconstructed by the drafting assistant after review.
+
+## References
+
+- D. A. Henderson Jr. and S. K. Card. 1986. Rooms: The use of multiple virtual workspaces to reduce space contention in a window-based graphical user interface. ACM Transactions on Graphics. https://doi.org/10.1145/24054.24056
+
+- G. Robertson, M. Czerwinski, K. Larson, D. Robbins, D. Thiel and M. van Dantzich. 1998. Data Mountain: Using spatial memory for document management. In Proc. UIST ’98. ACM. https://www.microsoft.com/en-us/research/publication/data-mountain-using-spatial-memory-for-document-management
+
+- G. Robertson et al. 2000. The Task Gallery: A 3D window manager. In Proc. CHI ’00. ACM. https://doi.org/10.1145/332040.332482
+
+- T. W. Malone. 1983. How do people organize their desks? Implications for the design of office information systems. ACM Transactions on Office Information Systems. https://doi.org/10.1145/357423.357430
+
+- M. Weiser and J. S. Brown. 1995. Designing calm technology. Xerox PARC, 21 December 1995. https://calmtech.com/papers/designing-calm-technology
+
+- M. Czerwinski, E. Horvitz and S. Wilhite. 2004. A diary study of task switching and interruptions. In Proc. CHI ’04. ACM. https://doi.org/10.1145/985692.985715
+
+- R. M. Ratwani and J. G. Trafton. 2006. Now, where was I? Examining the perceptual processes while resuming an interrupted task. In Proc. 28th Annual Meeting of the Cognitive Science Society. https://escholarship.org/uc/item/7br305k1
+
+- G. Wang et al. 2023. Voyager: An open-ended embodied agent with large language models. arXiv:2305.16291.
+
+- J. S. Park et al. 2023. Generative agents: Interactive simulacra of human behavior. arXiv:2304.03442.
+
+- I. White, K. Nottingham, A. Maniar, M. Robinson, H. Lillemark, M. Maheshwari, L. Qin and P. Ammanabrolu. 2025. Collaborating action by action: A multi-agent LLM framework for embodied reasoning. arXiv:2504.17950.
+
+- Omo Research. 2026. Omo Space documentation: Agents and terminals. docs/AGENTS-AND-TERMINALS.md, revision 75d4677. https://github.com/omoresearch/omo-space
+
+- Omo Research. 2026. Omo Space changelog. CHANGELOG.md, revision 75d4677. https://github.com/omoresearch/omo-space
+
+- Omo Research. 2026. Omo, brought to life (v0.1.0). Source repository, README.md (local repository; revision not pinned).
+
+- This study. 2026. Stream analysis: per-segment extractions and synthesis of seven recordings and pickups, 25–29 October 2026.
+
+- V. Braun and V. Clarke. 2006. Using thematic analysis in psychology. Qualitative Research in Psychology 3(2), 77–101. https://doi.org/10.1191/1478088706qp063oa
+
+- C. Neustaedter and P. Sengers. 2012. Autobiographical design in HCI research: Designing and learning through use-it-yourself. In Proc. DIS ’12. ACM. https://doi.org/10.1145/2317956.2318034
+
+- Z. Xiao, X. Yuan, Q. V. Liao, R. Abdelghani and P.-Y. Oudeyer. 2023. Supporting qualitative analysis with large language models: Combining codebook with GPT-3 for deductive coding. In IUI ’23 Companion. arXiv:2304.10548.
+
+- C. Ellis, T. E. Adams and A. P. Bochner. 2011. Autoethnography: An overview. Historical Social Research 36(4), 273–290. https://doi.org/10.12759/hsr.36.2011.4.273-290
+
+- T. Long, W. Shi, H. Mozannar, M. Murad and R. Hosn. 2026. ParallelPilot: Supporting coordination and monitoring in parallel AI coding. arXiv:2609.33113. https://arxiv.org/abs/2609.33113
+
+- X. Zhao, J. Sohn, Q. Zheng and M. Moor. 2026. AgentGUI: An interface for observing and steering long-running AI agents. arXiv:2607.26300. https://arxiv.org/abs/2607.26300
+
+- H. Mozannar, G. Bansal, C. Tan, A. Fourney, V. Dibia et al. 2025. Magentic-UI: Towards human-in-the-loop agentic systems. arXiv:2507.22358. https://arxiv.org/abs/2507.22358
+
+- Y. Leviathan, D. Valevski, M. Kalman et al. 2026. Generative UI: LLMs are effective UI generators. arXiv:2604.09577. https://arxiv.org/abs/2604.09577
+
+- C. C. Marshall, F. M. Shipman III and J. H. Coombs. 1994. VIKI: Spatial hypertext supporting emergent structure. In Proc. ECHT ’94, 13–23. ACM. https://doi.org/10.1145/192757.192759
+
+## Appendix A. Reader Prompts
+
+The eight reader prompts (one shared brief plus a per-segment assignment) are archived verbatim in stream-analysis/READER-PROMPTS.json, recovered from the session store. The shared brief asks the reader to read the assigned range completely and extract: (1) theses, i.e. every claim the builder is “trying to demonstrate/prove about the interface”, with examples given; (2) 1–4 verbatim quotations per thesis with line timestamps; (3) live demonstrations; (4) counter-evidence and friction, including sceptical guest reactions; (5) guest and viewer reactions; and (6) memorable phrasings. It asks for honesty when a chunk is unrelated and says “Never invent quotes or timestamps”. These are instructions; compliance was checked only for quotation existence (Appendix B). The example theses in the brief may have primed the readers.
+
+## Appendix B. Quotation Verification
+
+Corpus check. verify_quotes.py normalises each quotation record from the readers’ theses, friction and phrasings (lowercase, punctuation stripped except apostrophes, whitespace collapsed, split on ellipses). It requires the fragments in order within ±180 s of the stated time. Result, first run 29 Oct 2026 and re-run by the reviewer on 30 Oct: 791 of 791 matched. Limits: T2 pickups are pooled, records without a parsable time are searched without a window, and speakers and live/replay status are not checked.
+
+Paper check. verify_paper_quotes.py detects selected main-text quotations (curly-quoted spans before the References) and checks their text near the supplied locators. It requires every fragment, split on ellipses and “ / ”, to occur in order in the stated segment’s own transcript, between 90 s before the earliest and 90 s after the latest time in the locator. T2 pickups are resolved by file name. A listed set of scare-quoted terms in our own voice is skipped. Literature excerpts are matched against the pooled fetched source texts and cited local documentation. This is not a check of attribution to a specific reference; that was done by hand and is recorded with evidence in ledger.json. Result on v1.8 is recorded in the study README.
+
+## Appendix C. Thesis-to-Theme Matrix (reconstructed)
+
+Files. theme_matrix.py holds the rules, the mapping and the change log, and checks without writing. --write regenerates stream-analysis/THEME-MATRIX.json; the input is restricted to the eight segment files. Current matrix: 133 enumerated theses; 117 linked to at least one theme; 16 unlinked; 137 links. The first-pass reconstruction is kept as theme_matrix_v1.py.
+
+Changes in the second pass. T8-8 (one-prompt delegation of websites, ads and clips) was removed from C7 because no place is built. T8-5 (P2’s world “built” by Claude from the repository) was added to C7. T6 T15 (an observation deck and feeling safe) was removed from C5 because no agent state is read. T3-11 (gamified, fun work) was moved from C12 to C13. T1-5 was added to C5, because C5 includes proposals. Five theses were added to C13. Net effect against the first pass: C5 8→7, C12 5→4, C13 new at 5; C7 unchanged at 7, now resting on T8-5 rather than T8-8.
+
+Worked positive case. T6 thesis T2 (strength 5), “Rooms, not tabs: spatial memory … beats remembering which of N terminal tabs does what”, with quotation [T6, 07:14:29, take], meets the C1 rule.
+
+Worked boundary case. T1-5 (strength 4), “Reading text in chat boxes causes fatigue … wants visual, glanceable or voice output”. It meets C4 (reading fatigue) and, because C5 counts proposals, C5. Under a use-only reading it would leave C5; that would not change C5’s count, because T1 has other qualifying theses.
+
+Fragility. The script lists every cell where dropping one link lowers a theme’s count; for example, C7 in T8 rests only on T8-5, and C10 in T1 only on T1-10. The negative case in the corpus (“I don’t think Minecraft is superior”, T6 08:33:45) is a separate, unresolved ASR question, not part of this matrix.
+
+Excluding C11 (a product claim), seven themes appear in at least seven of eight segments; four of them sit at exactly 7/8 and depend on single links in at least one segment.
+
+Table C1. Cross-segment themes. Coverage = segments with a mapped thesis at centrality ≥3 (n = 8; reconstructed matrix, Appendix C). Rows are listed by theme identifier. C11 is a product claim, C12–C13 concern audience and experience. Rules for each theme are in theme_matrix.py.
+
+#Theme (as reported by participants)Cov.Representative quotation
+
+C1Locating work by place rather than by tab8/8“you can remember space and rooms” (T6, 07:14:29, take)
+
+C2The place holds the work; return rather than reopen8/8“Boom the agents are still working right here” (T1, 02:13:04, live)
+
+C3An interface, not a chat window8/8“It’s not a chat window, it’s an interface.” (T1, 00:38:50, live)
+
+C4Cognitive fit and ease of returning7/8“I’m not dreading any pain / Or like context loss” (T4, 02:21:42, live)
+
+C5Agent state legible from the surroundings7/8“see your whole team from the hallway” (T5, 00:39:00, take)
+
+C6Workflows laid out as places to move through7/8“we just walk it through the pipeline” (T2, 01:38:37, live)
+
+C7Places generated from requests7/8“I didn’t build any of this” (T6, 07:45:10, live)
+
+C8Real tools, not a toy6/8“They’re real agents.” (T5, 00:36:58, take)
+
+C9Embodied co-inhabitants (voice, robots)6/8“Yo ducks ducks race to my position” (T5, 03:02:26, live)
+
+C10Transfer to other people and shared worlds5/8“It just gave Claude the GitHub” (T8, 01:04:44, live)
+
+C11Business throughput (product claim)7/8—
+
+C12Creativity and access for non-coders4/8—
+
+C13Enjoyment and inhabitation5/8“It makes it makes it more fun” (T8, 01:00:57, live; P2, inferred)
+
+---
+
+# Worlds, Not Windows · Omo Research whitepaper
+
+URL: https://www.omo.sh/papers/worlds-not-windows/whitepaper
+
+Worlds, Not Windows. Spatially aware creative agentic interfaces: findings so far, from daily use of Omo Space.
+
+## 01The problem
+
+AI agents no longer answer one question and stop. They run for hours. They write code, cut video, draft posts and wait for approval. And we run many of them at once.
+
+Most of us still manage them through chat windows and terminal tabs. That works for one agent. It mostly works for three. With twenty, the tab bar stops telling you the things you need to know. Which session is which? Which one is busy? Which one finished an hour ago? Which one is stuck, waiting for you?
+
+A tab is a label in a row of labels. It looks the same whether the agent behind it is working hard, done, or blocked on a question. You find out by clicking through them, one by one.
+
+On the first night of streaming with Omo Space, Harrison put the alternative like this:
+
+“So it’s like I’m spatially aware of my workspace. … It’s not a chat window, it’s an interface.” [T1, 00:38:33–00:38:50, live]
+
+## 02The idea: worlds, not windows
+
+Our idea is simple. Give agent work a place. Not a tab, not a window, but somewhere you can walk to.
+
+People are good at remembering where things are. We remember which room the books are in and which shelf holds the tools. We are much worse at remembering that the video agent was the seventh tab from the left. So instead of a row of tabs, we put each agent session in a place in a world, with a screen you can read and a lamp that shows when it is working.
+
+Places come at every scale. A single room for one job. A cave of rooms for a whole content pipeline. A tower, an office, an arena. A whole world for one line of work. The shape is chosen to fit the work, not imposed by the software.
+
+And the places do not have to be built by hand. In Omo Space, coding agents build most of them from short requests. You ask for a place and an agent builds it. That changes the cost of a spatial interface: making a new room is closer to opening a new folder than to building a level in a game.
+
+IllustrationThe idea at its largest scale: an organisation drawn as an open world of districts, with agents at work in each. A generated illustration, not a screenshot. It shows where we would like to go, not what we have seen.
+
+## 03How Omo Space works
+
+Omo Space is a Fabric mod for Minecraft Java 26.2, plus a small local bridge. It puts real agent sessions (Hermes Agent and Claude Code) and live web pages on screens inside the game.
+
+The key design choice: the game does not run the agents. Each workspace is a named terminal session (tmux) on the user’s own computer. It has one or more tabs, each running an agent or a plain shell. A bridge that listens only on the local machine paints those sessions onto in-world screens and sends your keys back. Minecraft is the view and the controls. The work lives outside it.
+
+In the worldWhat it is on the computer
+
+Hermes ComputerA named workspace whose first tab runs a Hermes agent in its own profile (its own memory, skills and model)
+
+TerminalA workspace tab running a shell or another agent CLI
+
+Monitor wall / Slim ScreenA larger view of a tab, or a pinned live web page
+
+LinkerBinds a screen to a workspace from a distance; several screens can mirror one
+
+Status LampGold if any tab in the workspace is busy, green when idle, red once interrupted, dark with no live workspace
+
+Name PlateThe workspace name, readable from across the room
+
+A place is anything you build around these objects: a room, a cave, a tower, a world. Places are just builds. They carry no permissions and run nothing.
+
+### What survives what
+
+Because the agents live in tmux, not in the game, closing things in the game does not stop them. Each Hermes tab is one named conversation, so reopening a screen brings back the same conversation, not a new one.
+
+What happensRunning jobsHermes conversation
+
+Close the screen, walk awayKeep runningKeeps running
+
+Quit or crash MinecraftKeep runningKeeps running
+
+Restart the bridgeKeep runningKeeps running
+
+Hermes tab idle and unseen 20 min—Naps; wakes when shown again
+
+Restart the PCStoppedSaved; tab shows INTERRUPTED; press Resume
+
+So a PC restart does stop running work. Saved conversations come back with a button. Nothing re-runs on its own: in the documentation’s words, “Nothing is ever re-run without you” [1]. This table is the documented behaviour. Web pages pinned on walls are a separate kind of state.
+
+Two things the system does not do yet. A lamp shows activity, but there is no “waiting for you” state. And agents do not pass work to each other through the world. Any pipeline that runs from place to place is the user’s own scripts and agent instructions.
+
+Real · live stream, 30 Oct 2026A Hermes session on a wall terminal (right), with other agents’ screens across the room. Cropped still; face camera, stream label and game HUD removed.
+
+## 04What we’ve seen so far
+
+Everything here comes from Harrison using Omo Space as his main workspace for five days, live on stream, 25–29 October 2026: about 29 hours of transcribed streams. He ran a real content pipeline (ideas, references, recording, editing, publishing, analytics) with roughly one agent per stage. A friend also built his own world with it and showed it on stream.
+
+We saw place used in four ways: to find, to resume, to monitor and to orchestrate. The quotes are what was said on stream. They are reports, not measurements.
+
+### By the numbers
+
+These come from Hermes’ own token counters, not from memory. Across all of Harrison’s agent profiles:
+
+Day (AEDT)TokensModel callsAgent profiles
+
+Sat 25 Oct0.09 bn9703
+
+Sun 26 Oct0.63 bn5,0049
+
+Mon 27 Oct0.56 bn3,9899
+
+Tue 28 Oct4.17 bn25,38611
+
+Wed 29 Oct1.61 bn7,80812
+
+Five days7.07 bn43,157
+
+Thu 30 Oct4.67 bn21,05020
+
+That is about 7 billion tokens in five days, and over 4 billion on 28 October alone. Most of it (96%) is long agent conversations being re-read from the prompt cache on every step; new output was about half a percent. At list prices Hermes estimates the five days at about $3,400 (an estimate, not a bill). The counters include all of his Hermes work, not only work done through the world.
+
+### Find: walk to it
+
+Every workspace sits in a fixed, named place. You remember where an agent is, not which tab it was in. Live on the first night, Harrison named the problem the world was built to fix:
+
+“Getting lost with all these tabs and things” [T1, 01:13:45, live]
+
+Later he reported about 25 sessions running at once, “within the interface that we can conceptually understand” [T6, 07:37:22, live].
+
+Real · live stream, 30 Oct 2026Find: a corridor of places, each with its own screen. The image shows layout, not an outcome.
+
+### Resume: come back to it
+
+The agents run outside the game, so leaving the game does not stop them, and the place is still there when you return. After quitting and reloading on the first night:
+
+“So we can close it enjoy our day And then Come back Boom the agents are still working right here” [T1, 02:12:55, live]
+
+On 29 October he said agents had kept editing, about 22 clips, after he closed Minecraft [T8, 00:06:30–00:08:38, live]. That fits the table above: closing the game does not stop jobs. It does not mean work ran while the PC was off; a restart stops running jobs. He also tied this to how it felt to start work: “I’m not dreading any pain / Or like context loss because I know anytime I want to work on the robotics project / I just fly down here” [T4, 02:21:42, live].
+
+### Monitor: glance at lit screens
+
+Lamps and lit screens let you read activity from across a room. The friend described exactly this cue, live, in his own world:
+
+“How I can tell when the task is like running because their screen will turn on” [T8, 00:48:43, live; a friend, speaker inferred]
+
+He also said watching the team was more fun than “just looking at you know Claude you know just typing” [T8, 01:00:57, live; a friend, speaker inferred].
+
+Lamps show who is busy. They do not yet show that an agent is waiting for an answer; that is the next signal to build.
+
+Real · live stream, 30 Oct 2026Monitor: lit screens readable from the cavern entrance. The image shows layout, not an outcome.
+
+### Orchestrate: move work room to room
+
+Harrison laid his content pipeline out as a row of places, about one stage and one agent each:
+
+“We just go to that room and just start building / And when we’re done, then we just leave that room” [T2, 01:04:14, live]
+
+By 29 October he wanted a place for each to-do item, “a repeatable pattern” [T8, 03:28:22, live].
+
+The hand-offs between rooms are his own scripts and agent instructions. Laying the pipeline out in space made its stages visible and easy to visit.
+
+### Places at every scale
+
+The places were not just rooms. The pipeline lived in a cave of five rooms. He wanted whole worlds for lines of work: “We can build a whole world for the paid ads” [T7, 02:48:38, live]. To show how personal it could get, he imagined a pirate ship holding your tax work; that one stayed an idea. He said agents did most of the building: “I didn’t build any of this” [T6, 07:45:10, live].
+
+Real · live stream, 30 Oct 2026An atrium.
+
+Real · live stream, 30 Oct 2026A hall, with an embodied agent.
+
+A friend took the idea his own way. New to Hermes and on Windows, he described about 24 hours of work: “It just gave Claude the GitHub and then gave it a few prompts and then it just it built the world” [T8, 01:04:44, live; a friend, speaker inferred]. His world had an AI office with a manager agent, teams, a podium and a sports arena; those were his own additions, not part of Omo Space.
+
+## 05Web pages with a terminal attached
+
+Late in the week Harrison described the core pattern in its most general form, apart from Minecraft:
+
+“the concept of spatial interfaces with persistent webpages is easy to use and talk to and control. … We’re doing it inside Minecraft, but I believe there is not enough … attention, these persistent webpages with a terminal attached to it. And with this, you can build whatever pipeline that you want.” [T8, 03:38:57–03:39:18, live]
+
+Pieced together from several moments, the pattern goes like this. You ask an agent at a station for a page for one job: a review queue, an analytics view, a publishing form. You pin it on a wall in the right place. You check it, and you approve or ask for changes through the terminal next to it. Then you come back to it later.
+
+The page does the job-specific work. The place gives it a fixed home next to related work. The terminal beside it means the page is never finished; you can always ask the agent to change it. An ordinary browser tab could host the same page, and we have not separated those two effects. The in-world browser has limits too: drop-down menus could not be selected [T8, 03:22:45, live].
+
+Real · live stream, 30 Oct 2026A page with a terminal attached: the review stage of the video pipeline, with approve, send back and move-to-done controls, beside the editing agent’s terminal.
+
+## 06Design lessons
+
+- Give work a place. A persistent, recognisable place per line of work, with room for several sessions per place, mirrored screens and any scale.
+
+- Separate address from state. A place is an address. The process, the conversation, the page and the world behind it each need their own stated guarantee, and each needs testing.
+
+- Activity is not “waiting for you”. A lit screen says busy. A question needs its own state, and a signal that follows the person into other rooms. Do not rely on colour alone.
+
+- Make hand-offs explicit. Moving work between places should be a visible object or action, not something implied by layout.
+
+- Let the work choose the shape. Rooms, caves, towers, ships, whole worlds; built by agents or by hand.
+
+- Honest state. Never show progress that is not happening. Re-run nothing on the user’s behalf. Make the cost of the world itself visible, not only the work it saves.
+
+## 07What’s next
+
+We do not claim worlds beat tabs. We have not measured that. Here is what we’d like to measure next.
+
+- Finding. How fast can someone find a named agent among 12 or 24 sessions in a world, compared with tabs? The tab side should be fair: same agents, same persistence, good names, status badges and search, so any difference comes from space and not from better tools.
+
+- Resuming. After a day away, how long until the first useful action, in a world versus tabs?
+
+- A “waiting for you” signal. We have not built it yet. Once it exists: is a blocked agent noticed sooner? And does it still work when the agent is in another room, or only with a signal that follows you?
+
+- One-prompt places. Logging every place an agent builds, including failed and abandoned ones, to see how many get used as-is, how many need fixing, and how many are still in use two weeks later.
+
+Some of the raw material already exists: bridge logs of sleep, resume and interruption events, the Hermes session stores, and the recordings.
+
+## 08Prior work
+
+Using space to organise computer work is an old idea. Rooms (1986) split a crowded screen into virtual rooms [2]. Data Mountain (1998) showed people can use spatial memory to place and find documents [3]. The Task Gallery (2000) hung running applications on the walls of a 3D gallery [4]. Calm technology argued for displays that show state “without being obtrusive” [5]. All of that was about documents, windows and tasks, not agents that keep working on their own. The closest recent work tackles agent supervision with dashboards: ParallelPilot adds “an ambient dashboard alongside existing coding tools” [6], and AgentGUI is an interface for observing and steering long-running agents [7]. Both report controlled user experiments; we have none. What Omo Space adds is a combination: places, built by people or by agents, that hold long-running sessions and agent-made pages.
+
+### References
+
+- Omo Research. 2026. Omo Space documentation: Agents and terminals. docs/AGENTS-AND-TERMINALS.md, revision 75d4677. https://github.com/omoresearch/omo-space
+
+- D. A. Henderson Jr. and S. K. Card. 1986. Rooms: The use of multiple virtual workspaces to reduce space contention in a window-based graphical user interface. ACM Transactions on Graphics. https://doi.org/10.1145/24054.24056
+
+- G. Robertson, M. Czerwinski, K. Larson, D. Robbins, D. Thiel and M. van Dantzich. 1998. Data Mountain: Using spatial memory for document management. In Proc. UIST ’98. ACM. https://www.microsoft.com/en-us/research/publication/data-mountain-using-spatial-memory-for-document-management
+
+- G. Robertson et al. 2000. The Task Gallery: A 3D window manager. In Proc. CHI ’00. ACM. https://doi.org/10.1145/332040.332482
+
+- M. Weiser and J. S. Brown. 1995. Designing calm technology. Xerox PARC, 21 December 1995. https://calmtech.com/papers/designing-calm-technology
+
+- T. Long, W. Shi, H. Mozannar, M. Murad and R. Hosn. 2026. ParallelPilot: Supporting coordination and monitoring in parallel AI coding. arXiv:2609.33113. https://arxiv.org/abs/2609.33113
+
+- X. Zhao, J. Sohn, Q. Zheng and M. Moor. 2026. AgentGUI: An interface for observing and steering long-running AI agents. arXiv:2607.26300. https://arxiv.org/abs/2607.26300
+
+## —About this paper
+
+These are findings from the author’s own use of a system he built, not a controlled study. One person used it as his main workspace, live on stream, and a friend built his own world with it. There is no comparison with tabs and nothing was measured. The longer research paper, Worlds, Not Windows (working paper, draft v1.8), has the full method, episodes and limitations.
+
+Quotes come from the stream transcripts, which were made automatically (Whisper) and may contain errors. Transcripts have no speaker labels; where a quote is from the friend, the speaker is inferred from context. Locators such as [T1, 02:12:55] name the transcript segment and time; every quoted span was checked by script against that transcript. Live means said while working.
+
+Images are labelled by source. Real · live stream images are cropped stills from the author’s stream of 30 October 2026, the day after the period described, with real agent sessions; they show what the places look like, not outcomes. The one Illustration is generated and is not a screenshot.
+
+---
+
+# Bodies in the Block World: Robots Inside Minecraft
+
+URL: https://www.omo.sh/research/robots
+
+Working paper from Omo Research: a simulated Microduck, an RP1 humanoid, a ceiling AI and an agent player in one Minecraft world. What worked and what broke.
+
+Abstract
+
+Omo Space puts AI agents at desks inside Minecraft. Each desk is a terminal, and the agent in it does not move. Over three days in late October 2026 we tried giving agents bodies. We built four. Two are open-source robots simulated in MuJoCo and drawn in the game: Pollen Robotics' Microduck and RoboParty's RP1 humanoid. The third is a GLaDOS-style ceiling AI, a hanging chain of joints moved by scripted behaviour on top of physics. The fourth is OMO, a Mineflayer bot that joins the world as a player and is driven by a Hermes agent with 22 tools. The robots share one pattern: a local process owns the body, a client mod draws it, and a voice backend speaks for it. You talk to the body you are near or looking at. This paper describes the systems, lists what happened in order, and says plainly what broke.
+
+01
+
+## Introduction
+
+1Terminaltext in a window
+
+→
+
+2Wallthe terminal, pinned to a place
+
+3Avataran agent that is a player
+
+4Simulated robota real design, physics and a policy
+
+Omo Space started from one idea: a place is easier to remember than a tab. An agent gets a desk in a room, its terminal hangs on the wall, and you walk to it. The public guide states the limit: "A Hermes desk agent does not act in the world. It cannot walk, place blocks or press buttons." S10
+
+That limit raises a question. If the world is the interface, should the agents in it have bodies? What does a body add that a wall does not?
+
+We think of it as a ladder of embodiment:
+
+- Terminal. The agent is text in a window.
+
+- Wall. The same terminal, pinned to a place in a shared world. You find it by walking.
+
+- Avatar. The agent is a player. It can walk to you, follow you, carry things and fight.
+
+- Simulated robot. The body is a real robot design, moved by a physics engine and a trained policy, not by an animation.
+
+Omo Space already had the first two rungs. This paper is about the last two. We did not set out to test the ladder. We built one body, it worked well enough to show, and then we built three more. The questions came after. They are in Section 7.
+
+Two caveats. The evidence is one builder's streams, logs and repositories, plus a few friends and viewers who joined in. Nothing was compared against a control. And most of the code was written by coding agents from short prompts typed inside the game: "I just asked Opus55 bring RoboDuck into Minecraft." (T5 02:10:03) S12
+
+02
+
+## Background
+
+Agents in Minecraft. Minecraft is a common testbed for language-model agents. Voyager calls itself "the first LLM-powered embodied lifelong learning agent in Minecraft", built on an automatic curriculum and a skill library of code S1. MINDcraft is "an easily extensible platform built to enable LLM agents to control characters in the open-world game of Minecraft" S2. OMO's body uses Mindcraft's skill library S3 on Mineflayer, which offers a "high level JavaScript API" for Minecraft bots S4.
+
+Physics and robots. MuJoCo is a physics engine for model-based control S5. Pollen Robotics publishes the Microduck's MJCF model and meshes S6 and pretrained ONNX policies S7. Community members have published more Microduck policies on Hugging Face. RoboParty publishes the RP1's description files S8 and deploy code with pretrained policies S9.
+
+We did not find prior work that puts a real robot design into the same game world as the people and the desk agents, where you walk up to it and talk. We did not search hard, so treat that as weak.
+
+03
+
+## Systems
+
+The three robot bodies share one design, written down first for the duck. The RP1 and GLaDOS contracts say to read the duck's files and "copy freely" S13S16.
+
+- A sidecar: one Python process that steps the simulation in real time and serves poses over HTTP on 127.0.0.1 only, "never 0.0.0.0" S13.
+
+- A client mod for Minecraft 26.2 (Fabric). It fetches the mesh once, polls poses at about 25 Hz on a background thread, and draws each part every frame, smoothed between poses. Chat commands (!duck, !rp1, !glados) are caught on the client and never reach the server.
+
+- An optional voice backend. A Simple Voice Chat plugin sends push-to-talk audio to it and plays the reply from the body's head, as positional sound, with captions.
+
+Sidecars run on one thread at low priority, "so it never steals CPU from the game/OBS" S13. The builder plays and streams on the same machine.
+
+### 3.1 Microduck
+
+From the gameFive Microducks in the lab, each with its own eye colour and persona
+
+Sim renderThe duck model the game draws, rendered in MuJoCo
+
+Body. Pollen Robotics' Microduck, about 25 cm tall, with its real CAD, servo model and policies. MuJoCo runs at 200 Hz physics and 50 Hz policy, with the BAM XL330 servo model and 2° gear backlash S11. Each step builds the 61-number observation the policies were trained on S12a. Pollen's velstand policy walks, turns, follows and gets up; alpha_sitstand sits and stands S14. A duck still down after 3 s is reset upright S12a.
+
+Blocks as terrain. Every 2 s the mod scans the blocks near the duck and sends their collision boxes to the sim. Walls stop it, carpets are walkable, ledges drop it. At the default scale a block is 25 cm, the duck's own height, so it cannot climb stairs. The README calls that "physically correct" S11.
+
+A flock. Up to 4 ducks by default, 8 at most, each with a persona, name tag, eye colour and quack pitch: Quackers, Rusty, Zippy, Plato and Newton S11. Each duck has its own MuJoCo model, and the others appear in it as trunk-sized capsules S12a.
+
+More brains. Twelve community policies are offered: sprint, roller skates, forward roll, cartwheel, hop, dance and others. Each was graded in the sim over 3 seeds first. Some were rejected, such as sprinters that "ignore the speed command, so nothing can stop them at the leash" S12a.
+
+Cost. About 7% of one core for one duck and 22% for four, at a steady 50.0 Hz with 0 overruns, and about 470 MB of RAM. The model has 25,536 triangles S11.
+
+Voice. Hold push-to-talk within 16 blocks. The backend picks the listener in this order: a duck named in your words, then the duck you just spoke to (for 20 s), then the duck under your crosshair, then the nearest, then the default S12b. Each duck has its own voice call, at most 2 open at once. Spoken moves are parsed locally into sidecar commands, with no agent round trip; other requests can go to a Hermes agent S20. The public release ships the voice plugin and protocol, not the backend. Stream viewers can walk the duck but cannot reset or remove it S11.
+
+### 3.2 RP1 humanoid
+
+Stream clipThe RP1 humanoid next to a Microduck in the underground lab
+
+Body. RoboParty's RP1, 24-joint variant, with RoboParty's own policies: locomotion, a wave learned from a motion clip, and a dance S15. MuJoCo steps at 0.002 s with a 50 Hz policy. Joint PD control uses the gains from RoboParty's training setup. The hardware gains were tried first; with them the robot stood and turned but did "not walk forward (0.0 m/s at cmd 0.4)" S15.
+
+Measured. Walking 0.395 m/s with 4 cm of sideways drift over 10 s. Turns of +86° and −85° in 2.6 s. Two 10-minute runs of random commands: 0 falls, 0 resets. CPU 8.1% of one core standing, 15.5% dancing S15.
+
+In the world. One sim metre is one block, so RP1 stands about 1.5 blocks tall S17. Unlike the duck, "the robot can't see Minecraft blocks" S15. There is no get-up policy, so every fall ends in a reset.
+
+Voice. A persona called Roboto, with his own voice. While he talks, a small waist sway and forearm movement are added to the standing policy, and only while he stands S15S20.
+
+### 3.3 GLaDOS-style ceiling AI
+
+Body. A large AI hanging from the lab ceiling, about 7.5 blocks tall, in the style of the Portal games. The first model was original procedural geometry with "no Valve assets". Two credited fan-made models were added later; the model switches live in about 0.1 s S16.
+
+Physics without a policy. No trained policy exists for a character like this, so "the 'brain' is a scripted behaviour layer on top of real physics" S16. She is a chain of 13 hinge joints under gravity at 60 Hz. Gravity compensation on the arm is cut to 50%, so it "still hangs like a pendulum and sways from the reaction torques of the head". Inverse kinematics keeps her eye on the player. Behaviours include track, angry, scan, bow, sleep, dance and an 18.6 s "spooky" routine that ends with her eye about 1.5 m from the player's. Tracking error was 0.8–4.7° over 8 targets; the service used 5.6% of one core S16.
+
+Voice. Her persona is written in our own words: a dry lab supervisor who calls the player "test subject" S16. One version re-voices her lines through a local voice-cloning speech server S20.
+
+One listener at a time. Three companions in one room means three possible listeners. Each claims the mic when you are within range and looking at it, or closer to it than to the duck. The best fresh claim wins, so "exactly one companion hears each push-to-talk" S17.
+
+### 3.4 OMO, the agent player
+
+From the gameOMO, the agent player, in the cave base
+
+Body. Not a simulated robot. OMO is a Mineflayer bot that logs into your single-player world as a player. He walks, swims, takes knockback, gets hungry, fights and sleeps S18. Omo Space v1.2.0 opens the world to LAN on port 25566 for agents on the same computer; offline logins from other machines are refused. Agents get the Omo skin and a ChatGPT - <name> tag S10bS18.
+
+Brain and tools. You talk to a voice model in a browser page. Requests to do something go to OMO's own Hermes agent, which plans and calls the body's 22 tools over MCP. Long jobs can be interrupted, paused for a fight and resumed. "Come here", "follow me", "stop", "fight" and "chop some wood" skip the language model entirely S18S19.
+
+What this rung adds. The robots move and talk. OMO changes the world. On stream he went from wood to planks, sticks, a crafting table and a pickaxe, then stone and a stone sword, "including retrying a craft that failed the first time" S18.
+
+04
+
+## What we did
+
+Times are Australian Eastern Daylight Time, from commits, file times and CHANGELOGs. Stream tags (T4 = 27 Oct, T5–T7 = 28 Oct, T8 = 29 Oct) are offsets into each recording, not clock times S21.
+
+27 October. - Around midday, four commits to the Omo Space mod opened single-player worlds to local agents over LAN, let a plain bot client join a Fabric world, and added the agent skin and name tag S22. - On stream, OMO appeared carrying a sword and following the builder (T4 00:12:59). Asked to use Hermes to find a bot's-eye camera plugin, he came back with "prismarine viewer" (T4 02:39:45) S21. - A viewer had suggested putting the Microduck in Minecraft: "you were the one that gave me the idea" (T4 02:17:24). One prompt to a desk agent built an underground robotics lab, shown about 30 minutes later (T4 02:52:47). The duck was reported built and installed at T4 03:27:36 S21.
+
+28 October, night to morning. - The duck walked on command in the game (T5 00:11:45). The RP1 was spawned and danced (T5 00:55:46): "Now it's truly online." (T5 00:56:30) S21 - First push-to-talk conversation with the duck (T5 01:35:42). "Microduck? Do a jump." worked (T5 01:44:29) S21. - The GLaDOS project began from the same pattern (T5 01:55:23) S21. Her sidecar got a redesign, then switchable fan-made models (live from about 06:31), then the spooky routine S16S23. - Multi-duck support began around 03:30 (a backup folder marks it) S12a. Soon after: "Yo ducks ducks race to my position" (T5 03:02:26) S21.
+
+28 October, day. - 12:28: Omo Microduck v1.0.0, the first public release S24. 14:26: Omo, brought to life v0.1.0 S25. - On stream, six ducks stood up and walked toward the builder (T6 06:51:55). Ducks answered spoken commands in character ("Quack. We're doing it.", T7 03:20:52), and agents cut stream clips of them into short films S21.
+
+29 October. The builder spoke to the flock in passing: "can two of the ducks sit down and the rest stand up" (T8 01:47:37) S21.
+
+30 October. The RP1 and GLaDOS code went into local version control, "not published" S26.
+
+05
+
+## Observations
+
+From the gameA Microduck mid forward roll, one of the community policies
+
+These are things we saw, not things we tested.
+
+A real robot design reads differently from a mob. The duck falls because a policy lost its balance against simulated gravity, not because an animation played. Its stair falls became a public reel: "It can't climb stairs, so down it goes" S11. The failure was the content.
+
+Proximity and gaze worked as addressing. Push-to-talk "within our 16 blocks" (T5 01:20:59), with the crosshair or a name choosing the listener, was enough to talk to one duck in a flock. "Each microduck will have its own personality." (T5 01:46:32) S21. The question from the same stream is still open: "How does it know where I'm talking to?" (T5 03:03:09) S21a.
+
+Other people joined in. Friends on a call directed the robots ("Scale like five or six.", T5 02:19:50). One asked whether the robots could do real work, "like hold something", or were "just regular robots" (T6 07:52:13) S21. That question marks the gap between the robot rung and the avatar rung.
+
+The game became the lab. The robots got a test room, an obstacle course and a separate dev room. One line on a call was "This is the simulator." (T5 02:15:53); the speaker is uncertain S21.
+
+Only the avatar does work. OMO answered two overlapping spoken requests in one reply, a web lookup and his inventory ("four pieces of rotten flesh") S18. The robots never change the world. OMO does.
+
+06
+
+## What broke, and limitations
+
+Stream reelThe duck meets Minecraft stairs: a fall from the stream, as posted
+
+Speed of building, and its cost. Each new body reused the duck's design and took hours, not days S15S17. We cannot tell how much of that was the pattern and how much was the coding agents.
+
+Physics meets blocks. The duck fell on stairs again and again ("The micro doc is just forming on our Minecraft stairs.", T5 01:34:03) and got stuck (T8 03:32:15). Early on it walked through walls (T5 00:11:58), before terrain was added. The RP1 still cannot see blocks and walked through walls in a demo (T6 07:57:55) S15S21.
+
+Sim gaps. The duck's walking policy reaches about ⅓ of its commanded speed in our CPU sim, so commands are scaled and speeds are "nominal" S11. The RP1 reaches about 0.8× S15. Ducks feel each other only as capsules S12a.
+
+The humanoid would not follow. "rp1 follow me and it's not working but maybe the ducks" (T6 07:56:20) S21. The cause is [unverified].
+
+Voice. The cloned GLaDOS voice ran slower than real time: "I'm rating 9.2 seconds of speech. / Took 15 seconds." (T6 04:45:58), and later "So, she is broken." (T6 05:17:38) S21. OMO's voice runs in a browser tab, not in-game push-to-talk, over an undocumented route that "can change or break without notice" S18.
+
+The agent player is fragile. He would not stay put ("Stay sit sit puppy sit right not working", T4 00:13:26). He talked over the builder (T4 02:49:11). He kept dying to zombies, and the builder worried it was "using up my usage" (T4 03:04:49). One Hermes round trip never came back (T4 03:35:07) S21. A request for 8 birch logs ended with 1 S18.
+
+The machine. The 28 October stream ends in a full PC freeze and restart S21.
+
+Opacity. Asked how the duck was connected, the builder said "I don't even know bro." (T5 02:10:02) S21. Building by prompt is fast. It can also leave the builder unable to debug live.
+
+Rights. The Microduck mod and the agent player are public under MIT, with upstream credits S11S18. The RP1 work is "local personal use only" S15. The GLaDOS work uses a character owned by Valve, fan-made models credited for personal non-commercial use, and a cloned character voice S16S20. It is not published, and should not be.
+
+Evidence. One builder, a few friends and viewers. Quotes come from automatic transcripts, checked against the transcript text but not the audio S21.
+
+07
+
+## Next steps and testable questions
+
+- Addressing. With 3 or more companions in a room, how often does a spoken request reach the intended listener? Compare routing by name, gaze and nearness. The routing is already logged S20.
+
+- Trust. Does a body that can really fall make people more or less willing to hand an agent a real task than a scripted one does?
+
+- Robots that work. Connect a simulated robot to a Hermes agent with real tools, as OMO is connected. Can it "hold something"?
+
+- Terrain for the humanoid. Port the duck's block scan to the RP1. Measure falls per minute on a fixed obstacle course, before and after.
+
+- Getting up. Add a get-up policy for the RP1 and count resets per 10 minutes.
+
+- Long chains. Run OMO's stone-sword chain 20 times from a fresh world. How often does it finish, and why does it fail?
+
+- Cost. Measure game frame time with 0, 1, 4 and 8 bodies loaded, on the streaming machine, while streaming.
+
+08
+
+## Sources
+
+[S1] Wang et al., "Voyager: An Open-Ended Embodied Agent with Large Language Models", arXiv:2305.16291. arxiv.org/abs/2305.16291. "the first LLM-powered embodied lifelong learning agent in Minecraft"
+
+[S2] White et al., "Collaborating Action by Action: A Multi-agent LLM Framework for Embodied Reasoning", arXiv:2504.17950. arxiv.org/abs/2504.17950. "we introduce MINDcraft, an easily extensible platform built to enable LLM agents to control characters in the open-world game of Minecraft"
+
+[S3] Mindcraft repository. github.com/mindcraft-bots/mindcraft. Credited in S18: "Omo's body skills are Mindcraft's library (MIT), running on Mineflayer"
+
+[S4] Mineflayer. github.com/PrismarineJS/mineflayer. Repository description: "Create Minecraft bots with a powerful, stable, and high level JavaScript API."
+
+[S5] Todorov, Erez, Tassa, "MuJoCo: A physics engine for model-based control", IROS 2012, doi:10.1109/IROS.2012.6386109. Repository: github.com/google-deepmind/mujoco. Citation block in the repo README: "MuJoCo: A physics engine for model-based control"
+
+[S6] Pollen Robotics, microduck_rl. github.com/pollen-robotics/microduck_rl. Cited in S12a: "MJCF + meshes from pollen-robotics/microduck_rl, Apache-2.0"
+
+[S7] Pollen Robotics, microduck-policies. huggingface.co/pollen-robotics/microduck-policies. Cited in S12a: "the pretrained ONNX policies from pollen-robotics/microduck-policies"
+
+[S8] RoboParty, RP1_description. github.com/Roboparty/RP1_description. Cited in S15: "MJCF + meshes from Roboparty/RP1_description"
+
+[S9] RoboParty, roboparty_inference. github.com/Roboparty/roboparty_inference. Cited in S15: "RoboParty's own pretrained ONNX policies from Roboparty/roboparty_inference"
+
+[S10] Omo Space, docs/AGENTS-AND-TERMINALS.md, section 9 "What is not built yet" (public). github.com/omoresearch/omo-space/blob/main/docs/AGENTS-AND-TERMINALS.md. "A Hermes desk agent does not act in the world. It cannot walk, place blocks or press buttons."
+
+[S10b] Omo Space, docs/AGENTS-AND-TERMINALS.md, section 8 (public). github.com/omoresearch/omo-space/blob/main/docs/AGENTS-AND-TERMINALS.md. "the mod opens it to LAN on port 25566 ... Those players may join from this computer only"
+
+[S11] Omo Microduck README. github.com/omoresearch/omo-microduck. "MuJoCo at 200 Hz physics / 50 Hz policy, on one CPU core"; "about 7% of one core for one duck and 22% for four"; "It cannot climb stairs or slabs, and that is physically correct."
+
+[S12] Stream analysis T5 (see S21). "I just asked Opus55 bring RoboDuck into Minecraft." (T5 02:10:03)
+
+[S12a] microduck-sim README (repo, local; published as sidecar/ in S11). "61-D obs = imu gyro (3) + projected gravity ... + last action (14) + 13-D command"; "sprint-fixed/hill-fixed run 1.7/1.4 m/s but ignore the speed command, so nothing can stop them at the leash"
+
+[S12b] microduck-sim CONTRACT.md, "Voice (proto 2)" (repo, local). "a duck's name in the utterance > the current duck (sticky 20 s) > looked-at duck > nearest within 16 blocks > default"
+
+[S13] microduck-sim CONTRACT.md (repo, local). "127.0.0.1:8796 only (never 0.0.0.0)"; "so it never steals CPU from the game/OBS"
+
+[S14] Omo Microduck CHANGELOG, v1.0.0. github.com/omoresearch/omo-microduck/blob/main/CHANGELOG.md. "velstand handles walk, turn, follow and getting up; alpha_sitstand handles sit and stand."
+
+[S15] rp1-sim README and CONTRACT.md (repo, local, not published). "walk (nominal 0.4 → policy 0.5): 0.395 m/s forward"; "the robot stands and turns but does not walk forward (0.0 m/s at cmd 0.4)"; "Only a flat floor; the robot can't see Minecraft blocks."; "Local personal use only"
+
+[S16] glados-sim README and CONTRACT.md (repo, local, not published). "the 'brain' is a scripted behaviour layer on top of real physics"; "so the arm still hangs like a pendulum"; "track aim error 0.8–4.7° over 8 targets"
+
+[S17] rp1-mod README (repo, local). "The best fresh claim among GLaDOS and the RP1 owns omo.voice.focus, so exactly one companion hears each push-to-talk." Also: "default 1: RP1 is ~1.5 blocks tall"
+
+[S18] Omo, brought to life README. github.com/omoresearch/omo-brought-to-life. "These are the 22 tools his body serves to Hermes"; "On stream he ran that whole chain himself, including retrying a craft that failed the first time."; "a request for 8 birch logs finished with 1 collected"
+
+[S19] Omo, brought to life, docs/how-it-works.md. github.com/omoresearch/omo-brought-to-life/blob/main/docs/how-it-works.md. "quickIntent in body.mjs matches short, plain requests ... and runs them on the body directly, before any language model."
+
+[S20] Voice backend README and fish-voice.mjs header (local, not published). "One GPT-Live call per duck ... at most 2 live at once"; "her spoken words are re-voiced by the local fish-speech server"
+
+[S21] Stream analysis, stream-analysis/T4–T8 (science lab, local; companion paper "Rooms, Not Windows"). Quotes are whisper-small transcripts, re-checked against the transcript text: "791/791 verified". Example: "[02:15:53] 'This is the simulator.'" (speaker uncertain)
+
+[S21a] SYNTHESIS.md, counter-evidence (same source as S21). "Addressing in voice: 'How does it know where I'm talking to?' (T5 03:03:09)"
+
+[S22] Omo Space git log, 27 Oct 2026 (repo: github.com/omoresearch/omo-space). "feat(mod): open single-player worlds to LAN for local AI agents (offline join, loopback-only)"
+
+[S23] glados-sim PROGRESS-v3.md (repo, local). "restart glados-sim.service 06:31 (blendswap active ...)"
+
+[S24] Omo Microduck git log and release v1.0.0. github.com/omoresearch/omo-microduck/releases/tag/v1.0.0. "2026-10-28 12:28:44 +1100 feat: Omo Microduck v1.0.0"
+
+[S25] Omo, brought to life git log and release v0.1.0. github.com/omoresearch/omo-brought-to-life/releases/tag/v0.1.0. "2026-10-28 14:26:36 +1100 feat: Omo v0.1.0"
+
+[S26] rp1-sim / glados-sim git log (repo, local). "2026-10-30 00:43:24 +1100 Initial import: rp1-sim as it runs today (local repo, not published)"
+
+---
+
+# Omo R1: An AI Agent Player in Your Minecraft World
+
+URL: https://www.omo.sh/research/omo-r1
+
+Omo R1 joins your Minecraft world as a real player. Talk to him out loud; a Hermes agent plans the job and his body does it with 22 tools. Open source, MIT.
+
+Abstract
+
+Omo R1 is our first agent brought all the way to life in Minecraft. He is not a chatbot in a side window. He logs into your single-player world as a real player, you talk to him out loud, he answers in his own voice, and then he goes and does it S1. Three parts make him: a realtime voice model that listens and speaks, a Hermes agent that plans, and a Mineflayer body that serves 22 tools to that agent S1S2. He was released as open source on 28 October 2026, after a first live run on stream the day before S3. This page describes how he works, what he did on stream, and where he still falls short.
+
+01
+
+## Introduction
+
+The desk agents in Omo Space work in terminals. They cannot walk, place blocks or press buttons S4. That keeps them safe and simple, but it also means the world around them is scenery.
+
+From our streamOmo R1 in the underground base, 27 October
+
+Omo R1 is the next step on our ladder of embodiment: from a terminal, to a terminal on a wall, to an agent that is a player S5. At Omo Research we want agents that are present: with a body, a place and a voice S1. R1 is the first one that has all three.
+
+02
+
+## What he is
+
+From our streamHe follows you through the base on his own legs
+
+From our streamA player entity with a body, a skin and a name tag
+
+- A body. Omo logs into your world as a player called ChatGPT - OMO, with his own skin. He walks, jumps, swims, takes knockback, gets hungry, fights and sleeps. Other mobs see him as a player, because he is one S1.
+
+- A place. He lives where you play. He sees the blocks, mobs and players around him, carries an inventory, and uses the same crafting tables, furnaces and chests that you do S1.
+
+- A voice. You press "Start talking" and speak. A realtime voice model listens and answers, full duplex, in Omo's own voice, a warm old grandad. When you ask for something real, a Hermes agent plans it and drives his body S1S3.
+
+03
+
+## How it works
+
+- Voice. A local web page opens a realtime voice call. The voice model chats on its own; when you ask Omo to do something, it hands the request off as a delegation S1S2.
+
+- Brain. Each delegation goes to Omo's own Hermes profile. Hermes plans with the omo-body skill and calls body tools until the job is done. Requests that arrive mid-job are queued, and every answer goes back to the newest request, so the voice always says it S1.
+
+- Body. A Mineflayer bot named OMO joins your world over LAN and serves its actions as an MCP server. Its skills are Mindcraft's library, wrapped in jobs that can be interrupted, paused for a fight and resumed S1S6S7.
+
+- World. Omo Space v1.2.0 opens your single-player world to LAN for agents on the same computer only, lets a plain bot client join, and gives agents the Omo skin and name tag S1S4.
+
+Short, plain requests such as "come here", "follow me", "stop", "fight" and "chop some wood" take a fast path straight to the body, so they never wait on a language model S1S2.
+
+04
+
+## What he can do
+
+His body serves 22 tools to Hermes. Each returns a short fact he can say out loud S1:
+
+Group Tools
+
+See where he is, health, food, nearby players, blocks and mobs, inventory; what he can craft now
+
+Move come to you, follow you, stop, go to coordinates, go to the nearest block of a type, look at you
+
+Fight guard mode (on by default), attack the nearest monster, hunt a mob type
+
+Work chop and mine with the right tool, craft, smelt, place blocks, use chests, pick up and give items, equip tools and armour
+
+Live eat, sleep in the nearest bed, type in chat
+
+He also has reflexes he uses without being asked: he fights back, backs off and eats when his health is low, gets out of lava, fire and deep water, wears the best armour he picks up, and looks at whoever hits him S1.
+
+05
+
+## What he did on stream
+
+On the 27 October 2026 live stream, from the bridge log S1:
+
+From our streamWaiting by the rooms of the base while a job runs
+
+- A whole crafting chain. "Make me a stone sword" became: collect wood, craft planks, sticks, a crafting table and a wooden pickaxe, mine stone, craft the sword, equip it. He ran the whole chain himself, "including retrying a craft that failed the first time" S1.
+
+- Following through the base. He followed the builder through the underground base and up the stairs, on his own legs S1.
+
+- Two requests at once. Asked to look something up and, at the same time, what was in his inventory, he answered both in one reply: "I've got four pieces of rotten flesh and nothing else. Not exactly a gourmet picnic." S1
+
+Because his brain is a full Hermes agent, he can also do real work outside the world when asked: look something up, read a file, check a project S1.
+
+06
+
+## Verified
+
+The v0.1.0 release ships with 18 tests, all passing on Linux x86_64 with Node 22 S1S3:
+
+Suite What it covers Result
+
+Voice sessions, delegation parsing, newest-delegation delivery and queueing 7/7
+
+Body the LAN file, MCP tools, follow, fast-path movement and combat, jobs pausing for a fight and resuming 8/8
+
+Hygiene no tokens or machine paths in the tree; the README's tools table matches the served tools 3/3
+
+07
+
+## Limitations
+
+- Jobs can come up short. On stream, a request for 8 birch logs finished with 1 collected. He reports the real count, so Hermes has to notice and retry. Long gather-then-craft chains are the weakest part today S1.
+
+- The voice route is not a public API. It uses your own ChatGPT login against the endpoint the Codex app uses. It can change or break without notice, and usage counts against your subscription S1.
+
+- You talk through a browser tab. In-game push-to-talk is not wired up for Omo yet S1.
+
+- Minecraft 26.2 is newer than released Mineflayer. Installing patches in 26.2 data, and multi-item crafts desync, so he crafts one batch at a time S1.
+
+- He is slow to think. Hermes replies take 8 to 12 seconds in the log, so the voice says "on it" first S1.
+
+- He is one agent, for one player. Use it for yourself; do not run it as a service for others S1.
+
+08
+
+## Next
+
+The questions we want to answer next are in our robots paper: how often a long chain like the stone sword finishes from a fresh world, and why it fails when it doesn't S5. We also want him to hear you through in-game push-to-talk, the way our robot ducks already do S5.
+
+09
+
+## Sources
+
+[S1] Omo, brought to life: README (public). github.com/omoresearch/omo-brought-to-life. "Not a chatbot in a side window. Omo is a player in your Minecraft world"
+
+[S2] Omo, brought to life: How it works (public). github.com/omoresearch/omo-brought-to-life/blob/main/docs/how-it-works.md. "runs them on the body directly, before any language model."
+
+[S3] Omo, brought to life: CHANGELOG, v0.1.0 "First breath", 28 October 2026 (public). github.com/omoresearch/omo-brought-to-life/blob/main/CHANGELOG.md. "The first public release of Omo as one repo: voice, brain, body and the mod changes that let him in."
+
+[S4] Omo Space docs, Agents and terminals (public). github.com/omoresearch/omo-space/blob/main/docs/AGENTS-AND-TERMINALS.md. "A Hermes desk agent does not act in the world. It cannot walk, place blocks or press buttons."
+
+[S5] Bodies in the Block World. Omo Research working paper, October 2026. www.omo.sh/research/robots/
+
+[S6] Mindcraft. github.com/mindcraft-bots/mindcraft
+
+[S7] Mineflayer. github.com/PrismarineJS/mineflayer
+
+Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft. Not affiliated with or endorsed by OpenAI. Body skills are Mindcraft's library on Mineflayer (MIT); the brain is Hermes Agent by Nous Research.
+
+---
+
+# What Is a Spatial AI Agent? A Working Definition
+
+URL: https://www.omo.sh/notes/what-is-a-spatial-ai-agent
+
+A practical definition of a spatial AI agent: an agent that perceives place, builds spatial memory, acts in an environment, and makes its presence understandable.
+
+01 / Definition
+
+## Spatial agency begins when place changes what the agent can know and do
+
+Our working definition: a spatial AI agent is a software system whose perception, memory, decisions, or actions are meaningfully organized by relationships in a physical or virtual environment—and whose situated behavior can be understood and redirected by people.
+
+The first half connects spatial agency to embodied AI. AI Habitat describes embodied AI in terms of intelligent machines with a physical or virtual embodiment and studies tasks such as navigation, instruction following, and question answering. The second half adds an interface requirement. A capable system is not automatically a good collaborator. People need cues about where it is, what it can perceive, why it moved, and how to intervene.
+
+“Spatial” therefore means more than rendering an avatar beside a chat box. Position must have consequences. Distance might change what is audible or relevant. Orientation might determine what is perceived. A room might hold persistent context. Movement might be an action, a signal, or both.
+
+02 / Four layers
+
+## A practical stack for spatial agency
+
+01
+
+### Situated perception
+
+The agent receives observations from somewhere: a camera view, coordinates, nearby objects, sound direction, or a bounded field of attention. It cannot treat all context as equally present.
+
+02
+
+### Spatial memory
+
+The agent retains useful relations among places, objects, people, and prior events. It can distinguish “beside,” “behind,” “where we met,” and “the route that failed.”
+
+03
+
+### Situated action
+
+The agent can alter its position or the environment: navigate, point, place, retrieve, open, build, or hand off. Action is constrained by reach, access, time, and other occupants.
+
+04
+
+### Social legibility
+
+The system communicates attention, intention, uncertainty, and availability in ways a nearby person can interpret. Presence becomes part of the interface contract.
+
+Research platforms make the technical layers concrete. Habitat Lab lets researchers define agents with physical forms, sensors, capabilities, and tasks. Project Malmo exposes sensing and acting inside Minecraft. Neither project implies Omo’s social-legibility layer; that layer is our design proposal for turning spatial intelligence into a human-facing interface.
+
+03 / Boundaries
+
+## What does not count on its own
+
+Not sufficient
+
+A 3D avatar
+
+Representation is not agency. If place never changes perception, memory, or action, the space is decoration.
+
+A map lookup
+
+A system can answer geographic questions without occupying a position or maintaining a situated relationship to a world.
+
+A remote cursor
+
+Moving a pointer can act on a screen, but it does not by itself create spatial memory, constraints, or presence.
+
+These can still be ingredients. An avatar can signal gaze. A map can support route planning. A cursor can reveal intent. The distinction is whether spatial relationships participate in the loop from observation to memory to choice to action—and whether a human can read that loop well enough to coordinate with it.
+
+04 / Design questions
+
+## The questions a spatial interface should answer without a manual
+
+### Where is the agent’s attention?
+
+A person should be able to tell what the system is attending to, and distinguish looking from knowing.
+
+### What will happen if I move?
+
+Proximity and orientation need consistent meaning. Crossing a boundary should not silently change permissions or context.
+
+### What does this place remember?
+
+Persistent context needs visible scope, ownership, and expiry. A room that remembers is also a room that can surprise.
+
+### How do I stop or correct it?
+
+Intervention must work at the pace of action. A spatial agent should make pausing, redirecting, and undoing easier than watching.
+
+This shifts evaluation from abstract intelligence toward lived coordination. Did the agent reach the destination? Did the person understand its route? Could they predict its next action? Did the space clarify responsibility or obscure it? The strongest spatial system may not be the most autonomous one. It may be the one that makes joint action easiest.
+
+05 / Primary sources
+
+## Foundations for the definition
+
+### AI Habitat — embodied AI platform ↗
+
+A simulation platform and research community for intelligent machines with physical or virtual embodiment.
+
+### Habitat Lab documentation ↗
+
+Defines tasks, agents, sensors, capabilities, training approaches, and benchmark metrics for embodied AI.
+
+### Project Malmo — Microsoft Research ↗
+
+A Minecraft-based platform that lets agents sense and act in complex, varied environments.
+
+06 / Continue
+
+## See the definition inside a world
+
+Related Omo Note
+
+Minecraft makes spatial agency inspectable.
+
+The related note looks at a shared game world as interface material for visible action, collaboration, recovery, and persistent traces.
+
+Read the Minecraft note →Next: voice presence
+
+---
+
+# Minecraft as an Interface for AI Agents
+
+URL: https://www.omo.sh/notes/minecraft-as-an-agent-interface
+
+Why Minecraft is a useful interface and test world for AI agents: shared space, visible action, persistent consequences, collaboration, and human legibility.
+
+01 / Why a world?
+
+## Agency becomes easier to see when it has somewhere to happen
+
+Most AI interfaces hide the sequence between intention and result. A person asks; the system answers. Even when an agent calls tools, the experience often collapses perception, planning, action, and recovery into a progress spinner. Minecraft stretches those steps across a world. To fetch wood, an agent must locate a tree, travel, select a tool, act, retain the result, and adjust when the route or resource changes.
+
+That is one reason Minecraft has repeatedly served as an AI environment. Microsoft’s Project Malmo exposes a Minecraft-based platform in which agents sense and act. MineDojo frames Minecraft as an open-ended setting for embodied-agent research. The Voyager paper uses it to study an LLM-powered agent that explores, builds a reusable skill library, and improves programs using environmental feedback.
+
+These projects are not evidence for every claim one might make about “general” agents. They do show why the environment is useful: it combines long tasks, many possible actions, partial knowledge, persistent objects, and consequences that both a human and a machine can inspect.
+
+02 / Interface model
+
+## The world is not only a benchmark. It can be the interface.
+
+Our working model separates four kinds of legibility.
+
+01
+
+### Perceptual legibility
+
+Where is the agent looking? What is near enough to matter? A body with a position and orientation makes the limits of perception discussable.
+
+02
+
+### Procedural legibility
+
+Walking, opening, mining, crafting, and building expose the route between a request and its completion. A mistake has a location and a moment.
+
+03
+
+### Social legibility
+
+A person can approach, follow, interrupt, demonstrate, or work alongside the agent. Cooperation is expressed through shared activity, not only messages.
+
+04
+
+### Historical legibility
+
+A path, chest, unfinished wall, or changed landscape can become a durable trace. The environment carries some of the interaction history.
+
+The technical threshold for exploring this is lower than it once was. Mineflayer provides a high-level API for Minecraft bots with world queries, movement, inventory, crafting, building, and chat. That does not make a bot intelligent. It does make the boundary between high-level intent and world action concrete enough to inspect.
+
+03 / Design tests
+
+## What would make a Minecraft agent feel present?
+
+Test 01
+
+Point before prose
+
+Can the agent orient toward a place or object before explaining it, so language and attention agree?
+
+Test 02
+
+Recover in public
+
+When a route or plan fails, can the agent make the failure visible and choose a comprehensible alternative?
+
+Test 03
+
+Leave useful traces
+
+Can its actions create landmarks, storage, signs, or paths that help the next collaboration?
+
+The most interesting evaluation may not be “did it complete the task?” alone. A collaborator also needs to know whether the agent stayed oriented to the shared goal, whether its next move was predictable, and whether intervention was easy. Completion, legibility, and corrigibility should be measured separately.
+
+Voice adds another layer. “Meet me by the bridge” is a spatial instruction whose meaning depends on shared landmarks. “Put that over there” combines speech, pointing, and context. Minecraft offers a bounded place to ask how an agent should resolve those references, acknowledge uncertainty, and negotiate a plan while both parties can see the same consequences.
+
+04 / Limits
+
+## Minecraft is a lens, not the world
+
+A block world has clean rules, discrete items, and forgiving consequences. Homes, streets, workplaces, and bodies do not. Success in Minecraft does not establish safety, reliability, or usefulness elsewhere. The environment can also tempt designers to optimize for spectacle—long autonomous runs or impressive builds—when the human question is whether the agent can be understood and redirected.
+
+The Omo thesis is narrower: a shared world is a promising interface material because it makes agency observable. Minecraft is valuable where it lets us examine presence, coordination, memory, and repair. If a simpler environment answers a question more honestly, the simpler environment should win.
+
+05 / Primary sources
+
+## Projects behind this note
+
+### Project Malmo — Microsoft Research ↗
+
+An AI experimentation platform built on Minecraft for sensing, acting, learning, and collaboration research.
+
+### MineDojo — project site ↗
+
+An open-ended embodied-agent framework and dataset built around Minecraft.
+
+### Voyager — paper and authors ↗
+
+An LLM-powered Minecraft agent organized around an automatic curriculum, executable skill library, and iterative program improvement.
+
+### Mineflayer — PrismarineJS ↗
+
+An open-source high-level API for Minecraft bots and world interaction.
+
+06 / Continue
+
+## From world to spatial agency
+
+Related Omo Note
+
+What makes an agent spatial?
+
+A body in a world is only the beginning. The next note proposes a working definition built around place, spatial memory, situated action, and understandable presence.
+
+Read the spatial agent note →All notes
+
+---
+
+# Voice-First AI Presence: Beyond a Realistic Voice
+
+URL: https://www.omo.sh/notes/voice-first-ai-presence
+
+Voice-first AI presence is a turn-taking design problem: latency, interruption, silence, attention, and repair matter more than a realistic synthetic voice alone.
+
+01 / Presence
+
+## Voice is not a skin for text
+
+A text interface lets both parties pause without explanation. Speech is less forgiving. Every delay sounds like hesitation or absence. Talking over someone feels different from producing a long paragraph. A response that cannot be interrupted becomes a small captivity. When an agent speaks, timing becomes visible behavior.
+
+Modern systems expose capabilities needed for a more conversational loop. OpenAI describes its Realtime API as direct speech-to-speech processing designed for low-latency interaction. Google’s Live API documentation exposes voice activity detection, interruption handling, turn-coverage settings, and non-blocking tool behavior. These are platform capabilities, not proof that a particular experience feels natural. They reveal the design surface.
+
+Our thesis is that voice-first AI should be judged as a participant in turn-taking, not as a text model with audio output. The voice itself matters, but the social mechanics around it matter more.
+
+02 / Five signals
+
+## What makes a voice agent feel attentive?
+
+01
+
+### Arrival
+
+The system acknowledges that it heard something quickly, without pretending it already understands. A small signal can separate attentive delay from dead air.
+
+02
+
+### Turn boundaries
+
+The agent distinguishes a pause for thought from the end of a turn. It leaves room for continuation and does not seize the floor at every silence.
+
+03
+
+### Interruptibility
+
+A person can cut in, correct a premise, or stop an action. The agent yields promptly and does not finish a cached speech buffer over them.
+
+04
+
+### Economy
+
+Spoken answers are shaped for the ear. The agent gives the next useful piece, then checks whether more detail is wanted.
+
+05
+
+### Repair
+
+When hearing or intent is uncertain, it asks a narrow question, states the uncertainty, and preserves the part of the conversation that remains valid.
+
+Interruption is especially revealing. Google’s documentation notes that voice activity detection can cancel ongoing generation and that clients should discard buffered audio after interruption. This implementation detail becomes an experiential rule: the system must stop sounding as soon as it stops holding the floor. A delayed client can make an interruptible model feel stubborn.
+
+03 / Silence & space
+
+## Sometimes presence means not answering
+
+A voice agent in a phone call is invited to treat nearly every utterance as addressed to it. An agent in a room, game, vehicle, or shared workspace faces a harder question: was that speech for the agent, for another person, or simply thinking aloud? Always answering turns presence into intrusion.
+
+Proactivity features point toward this problem. Google documents a mode in which a live model can decide not to respond when input is irrelevant. But relevance is not only semantic. It can depend on wake cues, gaze, distance, role, the current activity, and the cost of interruption. This is where voice and spatial agency meet: who is near, what they face, and what place they occupy can help define whether the agent has the floor.
+
+Silence should not be mysterious. The interface can signal “listening,” “not addressed,” “working,” or “uncertain” without speaking a sentence. Presence is not maximum output. It is the right level of availability for the moment.
+
+State
+
+Listening
+
+Available, but not claiming every sound as a request.
+
+Thinking
+
+Holding the task while leaving the person free to interrupt.
+
+Receding
+
+Remaining reachable without competing for attention.
+
+04 / Design tests
+
+## Measure the conversation, not only the model
+
+### Time to acknowledgement
+
+How quickly does the person know their speech was received, separate from the time needed for a full answer?
+
+### Time to yield
+
+From the start of a human interruption, how long until audible output actually stops at the speaker?
+
+### False turn rate
+
+How often does the agent answer a pause, side conversation, or ambient utterance that was not a completed request?
+
+### Repair cost
+
+After a misunderstanding, how many words and turns are required to restore shared context and continue?
+
+These measures sit across model, network, audio pipeline, interface, and context policy. That is precisely the point. A voice experience is the whole loop. Evaluating transcription accuracy or response quality in isolation misses the behaviors people encounter most directly.
+
+A useful voice-first agent should feel easy to begin, easy to interrupt, and easy to leave. Naturalness is not mimicry. It is shared control over attention and time.
+
+05 / Primary sources
+
+## Capabilities behind this note
+
+### OpenAI Realtime API announcement ↗
+
+Describes direct speech-to-speech processing, lower latency, tool use, and production voice-agent capabilities.
+
+### Gemini Live API capabilities ↗
+
+Documents voice activity detection, interruption, turn coverage, proactive audio, and asynchronous function behavior.
+
+### Gemini Live API best practices ↗
+
+Connects audio chunking, client buffering, and interruption handling to low-latency live interaction.
+
+06 / Continue
+
+## Put the voice somewhere
+
+Related Omo Note
+
+Presence changes when an agent shares a world.
+
+Minecraft offers a legible place to connect speech with gaze, movement, landmarks, action, and visible recovery.
+
+Read the Minecraft note →All notes
+
+---
+
+# Thirteen Interfaces We Tried for Working with AI Agents
+
+URL: https://www.omo.sh/notes/interfaces-we-tried
+
+A field report from Omo Research: thirteen voice, screen, and world interfaces we built and used for working with AI agents, and what each one taught us.
+
+01 / Approach
+
+## Build it, use it for real work, notice what we return to
+
+Each interface started from the same question: what is the most natural way for one person to work with a team of AI agents? We built the smallest version that could answer it, used it for actual projects, and kept notes on what felt natural, what broke, and which tools we quietly stopped opening. The experiments fall under the three questions on our research agenda: voice, screens, and space.
+
+02 / Voice
+
+## Can speaking replace typing?
+
+01
+
+Apr 2026Prototype
+
+### Talk to anything
+
+Point a phone at a mug or a mouse, tap it, and it wakes up with a face, a personality, and a voice you can talk back to. Built at a hackathon.
+
+ScreenshotHackathon demo: everyday objects with faces and voices
+
+What we sawTalking out loud felt natural as soon as the thing we talked to had a face and a place.
+
+02
+
+May 2026Open source
+
+### Holographic co-founder
+
+A voice-first hologram that draws live business charts in the air, with a command terminal and a small pixel office where the agent team works. Built in two and a half days and placed third at a hackathon.
+
+DemoHologram demo, from the open-source repo (demo data)
+
+What we sawGiving the agent a body and a place made it feel present, which pointed us toward worlds instead of windows.
+
+03
+
+Oct 2026Open source
+
+### Voice control from the phone
+
+Ask out loud what's new, hear a spoken catch-up, and post into a thread by voice. Later versions also show the messages on screen.
+
+ScreenshotThe open-source voice app's landing page (example conversation)
+
+What we sawMost spoken requests were catch-ups (“any updates?”, “what's new?”), not instructions. Reading every post back for confirmation felt slow, and a voice app and a text chat on top of the same agent drifted into giving different answers.
+
+03 / Screens
+
+## Can the right app make many agents manageable?
+
+04
+
+Sep 2026Tried
+
+### Terminal workspace
+
+One space per project and one tab per agent profile in a terminal multiplexer.
+
+DiagramOne tab per agent, split panes per task
+
+What we sawThe most fluid text setup we used. It broke down on small things, like copying text over a remote connection.
+
+05
+
+Sep 2026Kept as the message layer
+
+### Chat server as HQ
+
+One channel per agent with its reasoning and tool calls visible, plus an HQ channel that sends work out and relays results back.
+
+DiagramA channel per agent; HQ sends work out and relays results back
+
+What we sawSeeing reasoning in the open helped. Nested threads got confusing fast, and the app felt heavy for what we used.
+
+06
+
+Sep–Oct 2026Stalled
+
+### One chat that runs everything
+
+Talk to one agent in one thread; it delegates to the others and reports back.
+
+DiagramOne thread in front, the agents hidden behind it
+
+What we sawIt was hard to tell which agent was actually answering. For a while, it was still the default one.
+
+07
+
+Sep 2026App retired
+
+### Kanban boards
+
+A web board and a native app to watch agent tasks move across columns.
+
+DiagramAgent tasks moving across columns
+
+What we sawGood for status at a glance. A separate app for it didn't stick.
+
+08
+
+### Browser extension
+
+A community-built extension we tried, not one of ours: the agent in a side panel next to the page it is working on.
+
+DiagramThe agent in a side panel next to the page
+
+What we sawHandy next to a single page, but one more place to look.
+
+09
+
+### Status dashboard
+
+A small desktop app for logs, service health, and API costs: the agent system as a dashboard instead of a conversation.
+
+DiagramLogs, services, jobs, and API costs at a glance
+
+What we sawGood for health and costs. It said nothing about what the agents were working on.
+
+10
+
+Sep 2026Prototype
+
+### Glass desktop app
+
+A lightweight native app with the same channel and thread structure as the chat server: about 206 MB of memory against roughly 1 GB, and ready in a quarter of a second.
+
+DiagramChannels and threads in a lightweight glass window
+
+What we sawA lighter skin on the same structure. Replies were only tested against a mock backend.
+
+04 / Space
+
+## Can a place replace the menu?
+
+11
+
+Jun–Aug 2026Led to the next step
+
+### Agents in a Minecraft world
+
+Agents living in a shared Minecraft world instead of a chat window.
+
+ImageAgents at their desks in a Minecraft build
+
+What we sawGave us our working idea: the world is the interface.
+
+12
+
+Sep 2026Led to Omo Space
+
+### Minecraft as the interface
+
+A real terminal inside Minecraft, a pocket computer you can type into, and in-game monitors that show live web pages.
+
+ScreenshotIn-game footage: a live web page on a Minecraft monitor
+
+What we sawThe first version felt slightly laggy. Once typing in the world was instant, it became the interface we kept coming back to.
+
+13
+
+Oct 2026 – nowNow
+
+### Omo Space
+
+One room per project and screens that stay where you left them, which became Omo Space: real AI agents at their own desks inside Minecraft, each with its terminal on the wall.
+
+ScreenshotOmo Space: agent terminals and a live board on the walls
+
+What we sawWalking to an agent's desk is a fast way to know what it is doing. This is what we use every day.
+
+05 / Patterns
+
+## What kept showing up
+
+Pattern 01
+
+Every setup rebuilt rooms
+
+Tabs per agent, channels per agent, spaces per project. Each text interface ended up drawing a map. A world gives you that map directly.
+
+Pattern 02
+
+Voice is for catching up
+
+Spoken requests were mostly status questions. Detailed instructions still went through typing.
+
+Pattern 03
+
+Speed decides everything
+
+A beautiful interface that lags gets abandoned. The in-world terminal only stuck once typing felt instant.
+
+Pattern 04
+
+One agent, one front door
+
+Two interfaces on the same agent drifted apart in tone and answers. Shared state underneath matters more than the skin on top.
+
+Pattern 05
+
+Persistence builds trust
+
+Screens and desks that stay where you left them made it easy to pick up where an agent was.
+
+Pattern 06
+
+Hidden routing hurts
+
+The more an interface hid which agent was doing what, the harder it was to fix things when they went wrong.
+
+06 / Limits
+
+## One small team, one set of habits
+
+These observations come from a small team using its own tools. We did not run controlled comparisons, and most numbers here are from our own setup. Some ideas stalled for practical reasons, such as a bug or a missing feature, rather than because the idea failed. Treat this as a map of what we tried, not as evidence that one interface is better for everyone.
+
+07 / Continue
+
+## Where it led
+
+Experiment 13, ongoing
+
+Omo Space
+
+Real AI agents at their own desks inside Minecraft, each with its terminal on the wall. It is what we use every day now, and where the next experiments will happen.
+
+See Omo Space ↗Read the Minecraft note
+
+---
+
+# Omo Enterprise: Agentic Interfaces for Organisations
+
+URL: https://www.omo.sh/enterprise
+
+Give every AI agent in your organisation a place: spatial interfaces where teams find, resume and monitor dozens of agents. Built on open-source Omo Space.
+
+Enterprise · Agentic interfaces
+
+# Give every agent in your organisation a place.
+
+Your teams are starting to run agents by the dozen, for hours at a time, and nobody can see anyone else’s. A chat window was built for one person and one conversation. We design spaces where people can find any agent, see which one needs them, and pick up where they left off.
+
+Request a conversationWatch the demo →GitHub ↗
+
+21–25agent sessions running at once, at peak, for one person
+
+22agent profiles in our studio, one per role
+
+114workspaces on one machine, 62 of them live
+
+791quotes checked against 29 hours of footage
+
+Measured in our own studio, 25–29 October 2026, and reported in our working paper Rooms, Not Windows. One builder plus one second user; not a controlled study.
+
+01 / The problem
+
+## One agent fits in a chat window. Twelve do not.
+
+Agentic work means many agents that keep running for hours. Each one gets a tab, and every tab looks the same. Past a dozen, people lose track of three simple things.
+
+Which is which?Twelve identical tabs, and the names stop meaning anything.
+
+Which is working?Checking means opening every tab, one by one, all day.
+
+Which is waiting for you?The agent that asked a question an hour ago is still waiting, silently.
+
+“Nobody remembers which of the 12 terminal tabs are doing what but you can remember space and rooms … It’s the oldest memory trick out there.”From our stream, 28 Oct 2026
+
+02 / And it gets worse with teams
+
+## More people does not mean more done. It often means less.
+
+Agents were designed as one person talking to one assistant. Put fifty people in a team, each running ten agents, and you have five hundred conversations that only their owners can see. Adding people to that does not add up; the coordination cost grows faster than the work.
+
+Invisible to everyone elseEach person’s agents live in their own tabs. Nobody else can see what is running, what is stuck or what is already done.
+
+Handoffs happen in chatWork moves between people by pasting outputs into messages. Context is lost at every step, and agents start again from zero.
+
+Waiting on the wrong personAn agent asks a question its owner will not see until tomorrow, while the colleague who could answer it sits next to them.
+
+Duplicated workTwo people set agents on the same problem, because nothing shows that someone already has.
+
+No shape to the workA new hire cannot see how the team actually runs. The process lives in people’s heads and private chat histories.
+
+Managers fly blindThe only way to know where things stand is to ask around, which is the very interruption agents were meant to remove.
+
+### A place is shared by default.
+
+In a space, the agents are not hidden inside someone’s laptop; they are in rooms everyone can walk into. The floor shows the whole team’s work at once: which room belongs to which team, which agents are working, which one is waiting, and who it is waiting for.
+
+- One room per team or stageThe structure of the work is the building. New people learn it by walking it.
+
+- Status anyone can readA lamp outside a room tells the whole team that an agent needs someone, not just its owner.
+
+- Handoffs by walking, not pastingWork moves to the next room with its context, the way it moves through our studio pipeline.
+
+Honest status: today a workspace lives on the computer that opened it, and a friend on another PC gets a fresh copy. Shared spaces for whole teams are what our pilots are for.
+
+03 / See it
+
+## A real workspace, not a mock-up.
+
+This is our own world, filmed tonight. Every room is a job, and every room was built by an agent from a short request. In daily use each terminal on a wall is a live agent session on the computer underneath.
+
+The library: our launch-video and branding room, one agent desk per job. In-game footage, 30 Oct 2026, filmed on a copy of the world, so these screens show log text rather than live agents.
+
+The Glass Tower An office floor around a glass box, with an agent inside.
+
+Mountain Studio An eight-stage video pipeline, one zone per stage.
+
+The Lantern Grove The calm centre, with research papers on the walls.
+
+04 / Why a place
+
+## Four chores that break in a chat window, and work in a room.
+
+People remember places far better than tabs; interface research has shown it for forty years. A spatial interface turns the four hardest parts of running many agents into things people already do well. Each of these came up in nearly every part of our five-day study.
+
+Find · 8 of 8
+
+### Walk to it
+
+Each agent has a desk, a name plate and a screen. You find it the way you find a colleague.
+
+“How do you keep track of your agents? I just walk around”Stream, 28 Oct
+
+Resume · 8 of 8
+
+### Come back to it
+
+The work stays on the wall where you left it, through closed screens, restarts and days away.
+
+“Boom the agents are still working right here”Stream, 25 Oct, after quitting the game
+
+Monitor · 7 of 8
+
+### Glance down the hall
+
+Status lamps show working, idle or interrupted. You see who needs you without opening anything.
+
+“Every light that you see in there is an agent still working.”Stream, 28 Oct
+
+Orchestrate · 7 of 8
+
+### Walk the pipeline
+
+One room per stage or team, so the shape of the work is visible to everyone who walks in.
+
+“We just go to that room and just start building. And when we’re done, then we just leave that room.”Stream, 25 Oct
+
+“So it’s like I’m spatially aware of my workspace. … It’s not a chat window, it’s an interface.”
+
+First night of streaming the studio · 25 Oct 2026
+
+05 / How we use it
+
+## We run Omo Research from inside it, every day, live on stream.
+
+Before we offer this to anyone, we use it ourselves. Our whole content studio is a row of rooms in one world. Each room is one stage, with its own agent profile and its own screens.
+
+Room 1IdeasAgents gather and rank ideas for videos and posts.
+
+Room 2ReferencesResearch and examples for the chosen idea.
+
+Room 3RequirementsWhat to record, shot by shot.
+
+Room 4EditingAgents cut and caption the footage.
+
+Room 5PublishingA person reviews and approves here.
+
+Room 6AnalyticsWhat worked, fed back into ideas.
+
+MorningCome back to a world that kept working
+
+After the PC had been off overnight, the world was exactly where we left it, and agents had edited 22 clips while we slept. I’m not dreading any pain or context loss.
+
+Through the dayWalk the pipeline
+
+Each piece of work moves from room to room. A video went through all five production rooms before a person saw it; the human’s job shrinks to reviewing and approving.
+
+Any timeGlance down the hallway
+
+Lamps outside each room show the state of the whole team from the doorway: working, idle or interrupted.
+
+When the work changesAsk for a new room
+
+Nobody places these blocks by hand. Our underground base and a robotics lab were each built by an agent from one prompt, live on stream. Was done in one shot. One prompt.
+
+Hands freeTalk to an agent out loud
+
+An agent player, Omo R1, joins the same world. You speak, a Hermes agent plans the job, and his body does it with 22 tools.
+
+21–25sessions at once, at peak
+
+22clips edited overnight
+
+6rooms, one per stage
+
+1prompt to build a room
+
+06 / What runs at the desks
+
+## The tools your teams already use, given a place.
+
+Omo Space does not replace your agents. Every desk runs the real tool on a real machine, with your own model access.
+
+Agents
+
+### Hermes, Claude Code, Codex
+
+Any desk can run Hermes Agent, Claude Code, Codex or a plain shell. Each Hermes desk can have its own profile, memory and skills.
+
+Persistence
+
+### Sessions that outlive the screen
+
+Work keeps running when the screen closes, the game quits or the bridge restarts. After a reboot, desks reopen their tabs; nothing re-runs on its own.
+
+Status
+
+### Lamps and name plates
+
+A name readable across the room, and a lamp that is lit while the agent works. The same signal can drive anything else in the world.
+
+Web walls
+
+### Live pages on the walls
+
+Real browser pages for dashboards, docs and video, up to 12 in a world, each with its own tabs and sound.
+
+Voice
+
+### Agents with bodies
+
+Agents on the same computer can join as players. Omo R1 takes spoken requests and acts in the world.
+
+Research
+
+### Robots in the same world
+
+Open-source robots simulated with real physics walk on the blocks and come when called by voice. Early research, not a product.
+
+07 / It travels
+
+## A second person set it up in about a day.
+
+A builder new to Hermes, working on Windows, set up his own world from the public repository and built an AI office in about a day, barely troubleshooting along the way. Unprompted, he said watching agents in a world was more fun than watching an AI type in a terminal.
+
+“It just gave Claude the GitHub.”Second user, on stream · self-reported
+
+08 / Built on research
+
+## A forty-year-old idea, with live agents inside.
+
+People remember where things are long after they forget names. Earlier systems arranged documents and windows, which sit still. We arrange agents that keep working, change state and ask questions while you are somewhere else.
+
+1983DesksPiles remind people what to do.
+
+1986RoomsVirtual workspaces end window thrashing.
+
+1995Calm technologyKnow the state without looking.
+
+1998Data MountainSpatial memory helps people find documents.
+
+2026Omo SpaceRooms for live agents.
+
+Sources and method in Rooms, Not Windows: seven stream recordings, about 29 hours, 791 quotes each checked word for word against the transcripts.
+
+09 / What broke
+
+## We show the failures too.
+
+Five days of real use also broke things, on camera. Each failure is a design requirement, and each one shapes how we would run a pilot with you.
+
+What happenedIn our studioWhat it means for a pilot
+
+The 3D view crashedGame crashes and two whole-PC freezes. The agent sessions survived; the 3D client often did not.The work always lives outside the view. A crash costs you the picture, never the work.
+
+A question was missedAn agent asked something and nothing told the builder. A lamp in another room is not a notification.Urgent questions need a backup that follows the person: a sound, a message, an alert.
+
+Who is listening?With several voice agents in range, it was unclear which one was being spoken to.Voice needs a clear rule for who is addressed before teams share a space.
+
+TrustThe second user would not use it at his day job, because an agent could delete a database.Permissions and review come before shared, multi-user spaces.
+
+More is not betterA challenge to post 20 short videos in 100 minutes posted none.We measure the value of the work, not the volume of agents.
+
+10 / Working with us
+
+## Start with one team, one real workflow.
+
+We work with a small number of organisations at a time. Each engagement starts from the work your people already do with agents, not from a demo.
+
+### Map the work
+
+We sit with one team and map how their agents run today: how many, which tools, where things get lost and who waits on whom.
+
+### Build a pilot space
+
+We design a space around that workflow: a room per stage or role, status everyone can see, and the agents your team already uses.
+
+### Measure and decide
+
+Your team uses it for real work. We write up what changed and what did not, in plain language, before anyone decides on more.
+
+Measure 1 · FindTime to find a named agent
+
+In the space versus your current tabs, at the number of agents your team really runs.
+
+Measure 2 · ResumeTime back to useful work
+
+After a break or a day away, how long until the first useful action.
+
+Measure 3 · MonitorTime to notice a stuck agent
+
+How long an agent waits on a question before someone sees it.
+
+These are the tests proposed in our working paper. A pilot is how we find out whether the effect holds for your teams, or not.
+
+11 / Where it fits
+
+## For teams that already run many agents.
+
+Content and creative: one room per stage, from idea to publish. This is how we run our own channels.
+
+Research and engineering: rooms where papers, experiments and long runs stay on the walls while people move between them.
+
+New interfaces: agents that join the world as players you can talk to. Early research.
+
+12 / Security and honesty
+
+## What it is today, and what it is not yet.
+
+Our motto is questions before claims. Here is the plain version, so nobody is surprised in a security review.
+
+- Local by design. The bridge listens on this machine only (127.0.0.1) and refuses foreign hosts. Worlds store workspace ids, never a credential.
+
+- Your models, your permissions. Agents use your own model access and keep their own approval prompts. Nothing turns on paid inference by itself.
+
+- Not a sandbox. A room is a way to see work, not a security boundary. Agents have the same access as a terminal.
+
+- Single machine today. Workspaces live on the PC that opened them. Shared, multi-user spaces are part of what pilots explore.
+
+- Not yet built: single sign-on, an admin console, audit exports. Tested end to end on Linux; macOS and Windows support is newer. Security notes ↗
+
+13 / Talk to us
+
+## Tell us how your teams work with agents.
+
+A short form. We read every request ourselves and reply with a time to talk, or an honest note if we are not the right fit yet.
+
+- A 30-minute conversationAbout your teams, your agents and what slows them down.
+
+- No slides, no pressureWe show the real system running, in our own studio.
+
+- Prefer email?harrythentrepreneur@gmail.com
+
+Questions
+
+Do our people need to play Minecraft?
+
+No game skills are needed. You walk, look and type. Today's system uses Minecraft as the view because it is a fast way to build and walk through spaces, and agents can build it for you. What we study is the interface: places, presence and status, not the game.
+
+Why Minecraft, for a serious organisation?
+
+It is already multiplayer, already buildable and familiar to a generation of people, and the world itself can be written by agents, which earlier 3D desktops could not do. The cost is a client that is heavier and less reliable than a terminal, which is why the work never lives inside it.
+
+Which agents does it work with?
+
+Any desk can run Hermes Agent, Claude Code, Codex or a plain shell. They are the real tools, running on your machine, with your own model access.
+
+Does it replace our existing tools?
+
+No. Your agents, repositories and dashboards stay where they are. The space is a way to see and reach them; web walls can show the dashboards you already use.
+
+Is our data sent to you?
+
+No. The open-source system runs on your machine and talks to nothing of ours. If we work together on a pilot, what we see is agreed with you first.
+
+What does it cost?
+
+The core is free and open source. Pilots are scoped per organisation after a first conversation.
+
+## Chat windows were built for one conversation.
+
+Your teams now run dozens. Let's find out together what a place does for them.
+
+Request a conversationWatch the demo →
+
+---
+
+# Contact
+
+URL: https://www.omo.sh/contact
+
+For any enquiries, email Omo Research at harrythentrepreneur@gmail.com.
+
+Contact
+
+# Say hello.
+
+For any enquiries, please email me at
+
+harrythentrepreneur@gmail.com
+
+Write an email
+
+I read every message myself.
+
+For teams and organisations, see Enterprise.

@@ -24,6 +24,8 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 **SEO foundation.** Canonical production URLs use `https://www.omo.sh`. Keep each production page's title, description, canonical, Open Graph/Twitter metadata, and JSON-LD accurate and unique. When adding or removing a production route, update `sitemap.xml`. Design-exploration folders are excluded from indexing through `X-Robots-Tag` rules in `vercel.json`.
 
+**AI search.** `robots.txt` explicitly allows search and AI-assistant crawlers; `llms.txt` (llmstxt.org format) and `llms-full.txt` give language models a plain-text map and the text of the main pages. After adding or editing pages run, in order: `python3 scripts/seo/ai-search.py .` (adds missing JSON-LD, Open Graph/Twitter tags and article dates, rebuilds robots/llms files; idempotent, never touches page bodies), `node scripts/seo/generate-sitemap.mjs --write`, `python3 scripts/seo/ai-search.py .` again (llms.txt follows the sitemap), `node scripts/seo/generate-feed.mjs --write`, then `node scripts/seo/audit.mjs` (CI runs it on every push). Production pages are all indexable `.html` files, served with clean URLs (`omo-space.html` -> `/omo-space`, `papers/index.html` -> `/papers`); folder pages have no trailing slash.
+
 **Design exploration directories.** `branding/`, `sidebar-variants/`, and `homepage-heroes/` hold standalone design-variant prototypes (not part of the live site). Treat them as a scratchpad of alternatives, not production pages.
 
 ## Conventions

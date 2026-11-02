@@ -1,0 +1,103 @@
+# Omo Research
+
+> Omo Research (omo.sh) builds spatial interfaces for AI agents. Its open-source system, Omo Space (MIT, v1.2.0, 28 Oct 2026), puts real AI agents at desks inside Minecraft: placing a computer block starts a Hermes Agent, Claude Code, Codex or shell session on your own PC, its terminal is painted on a wall, real web pages run on in-world monitors, and the sessions keep running after you quit the game.
+
+Key facts:
+- Omo Space is a Minecraft Java Edition 26.2 mod plus a small local service; it runs on Linux, macOS and Windows (WSL2) and needs a Minecraft Java account, Python 3.11+ and about 2 GB free.
+- Code and releases: https://github.com/omoresearch/omo-space (MIT licence).
+- Idea in one line: people remember rooms better than tabs, so every long-running agent gets a place; finding becomes walking, resuming becomes coming back, monitoring becomes a glance down the hallway.
+- Built and used live on stream (https://www.twitch.tv/yiifannn). Results on this site come from the team's own use, not controlled studies.
+- Omo Space is not an official Minecraft product and is not approved by or associated with Mojang or Microsoft.
+- Contact: harrythentrepreneur@gmail.com
+
+## Omo Space (the product)
+
+- [Omo Space: Real AI Agents at Desks in Minecraft](https://www.omo.sh/omo-space): Omo Space gives every AI agent a room in Minecraft: walk to it to find it, come back to resume, glance down the hall. Real Hermes, Claude Code, Codex and shell sessions.
+- [Omo Space Demo: The Whole Loop, Live (15 min)](https://www.omo.sh/demo): Watch the 15-minute, one-take Omo Space demo: rooms, agents at their desks, edit review, publishing, and a robotics lab built from one prompt.
+- [Omo Space: Experiment 13](https://www.omo.sh/research/omo-space): Real AI agents at their own desks inside Minecraft. Experiment 13 of 13 in Omo Research's search for a better interface for AI agents.
+
+## Papers
+
+- [Papers](https://www.omo.sh/papers): Papers from Omo Research on spatially aware agentic interfaces: Worlds, Not Windows, findings from giving AI agents places in a Minecraft world, plus its whitepaper.
+- [Worlds, Not Windows: Spatial Agentic Interfaces](https://www.omo.sh/papers/worlds-not-windows): Findings so far from using Omo Space every day: AI agent sessions and live web pages given places in a Minecraft world. By Harrison Edwards, Omo Research.
+- [Worlds, Not Windows · Omo Research whitepaper](https://www.omo.sh/papers/worlds-not-windows/whitepaper): Worlds, Not Windows. Spatially aware creative agentic interfaces: findings so far, from daily use of Omo Space.
+- [Rooms, Not Windows: Spatial Agentic Interfaces](https://www.omo.sh/research/rooms-not-windows): Working paper from Omo Research: what happens when every AI agent gets a place? A five-day field study of Omo Space, agents at desks inside Minecraft.
+- [Bodies in the Block World: Robots Inside Minecraft](https://www.omo.sh/research/robots): Working paper from Omo Research: a simulated Microduck, an RP1 humanoid, a ceiling AI and an agent player in one Minecraft world. What worked and what broke.
+- [Omo R1: An AI Agent Player in Your Minecraft World](https://www.omo.sh/research/omo-r1): Omo R1 joins your Minecraft world as a real player. Talk to him out loud; a Hermes agent plans the job and his body does it with 22 tools. Open source, MIT.
+
+## Notes (explainers)
+
+- [Notes on Minecraft AI, Spatial Agents & Voice](https://www.omo.sh/notes): Read Omo Notes on Minecraft AI agents, spatial intelligence, voice-first interfaces, and the design of human-agent presence.
+- [Thirteen Interfaces We Tried for Working with AI Agents](https://www.omo.sh/notes/interfaces-we-tried): A field report from Omo Research: thirteen voice, screen, and world interfaces we built and used for working with AI agents, and what each one taught us.
+- [Minecraft as an Interface for AI Agents](https://www.omo.sh/notes/minecraft-as-an-agent-interface): Why Minecraft is a useful interface and test world for AI agents: shared space, visible action, persistent consequences, collaboration, and human legibility.
+- [Voice-First AI Presence: Beyond a Realistic Voice](https://www.omo.sh/notes/voice-first-ai-presence): Voice-first AI presence is a turn-taking design problem: latency, interruption, silence, attention, and repair matter more than a realistic synthetic voice alone.
+- [What Is a Spatial AI Agent? A Working Definition](https://www.omo.sh/notes/what-is-a-spatial-ai-agent): A practical definition of a spatial AI agent: an agent that perceives place, builds spatial memory, acts in an environment, and makes its presence understandable.
+
+## Research log and prototypes
+
+- [Research Log: The Road to Omo Space](https://www.omo.sh/about): Thirteen interfaces Omo Research built and tried for working with AI agents: voice, screens, and space, from a talking mug to agents at desks in Minecraft.
+- [Agents in a Minecraft world: Experiment 11](https://www.omo.sh/research/agents-in-minecraft-world): Agents as characters with homes, banners, and screens in a shared world. Experiment 11 of 13 in Omo Research's search for a better interface for AI agents.
+- [Browser extension: Experiment 08](https://www.omo.sh/research/browser-extension): A community-built side panel that puts the agent next to the page. Experiment 08 of 13 in Omo Research's search for a better interface for AI agents.
+- [Chat server as HQ: Experiment 05](https://www.omo.sh/research/chat-server-hq): A channel per agent, with an HQ room that sends work out and brings results back. Experiment 05 of 13 in Omo Research's search for a better interface for AI agents.
+- [Glass desktop app: Experiment 10](https://www.omo.sh/research/glass-desktop-app): The same channels and threads, in a light glass window. Experiment 10 of 13 in Omo Research's search for a better interface for AI agents.
+- [Holographic co-founder: Experiment 02](https://www.omo.sh/research/holographic-cofounder): A voice-first assistant on a display on your desk, with charts in the air. Experiment 02 of 13 in Omo Research's search for a better interface for AI agents.
+- [Kanban boards: Experiment 07](https://www.omo.sh/research/kanban-boards): Watch agent tasks move across a board. Experiment 07 of 13 in Omo Research's search for a better interface for AI agents.
+- [Minecraft as the interface: Experiment 12](https://www.omo.sh/research/minecraft-as-interface): A real terminal, a pocket computer, and live web pages inside the game. Experiment 12 of 13 in Omo Research's search for a better interface for AI agents.
+- [One chat that runs everything: Experiment 06](https://www.omo.sh/research/one-chat): Talk to one agent; it delegates to the others and reports back. Experiment 06 of 13 in Omo Research's search for a better interface for AI agents.
+- [Status dashboard: Experiment 09](https://www.omo.sh/research/status-dashboard): The agent system as a dashboard instead of a conversation. Experiment 09 of 13 in Omo Research's search for a better interface for AI agents.
+- [Talk to anything: Experiment 01](https://www.omo.sh/research/talk-to-anything): Point a phone at a mug, tap it, and talk to it. Experiment 01 of 13 in Omo Research's search for a better interface for AI agents.
+- [Terminal workspace: Experiment 04](https://www.omo.sh/research/terminal-workspace): One space per project, one tab per agent, all in a terminal. Experiment 04 of 13 in Omo Research's search for a better interface for AI agents.
+- [Voice control from the phone: Experiment 03](https://www.omo.sh/research/voice-from-the-phone): Run a team of agents hands-free: catch up, post, and undo by voice. Experiment 03 of 13 in Omo Research's search for a better interface for AI agents.
+
+## Company
+
+- [Omo Enterprise: Agentic Interfaces for Organisations](https://www.omo.sh/enterprise): Give every AI agent in your organisation a place: spatial interfaces where teams find, resume and monitor dozens of agents. Built on open-source Omo Space.
+- [AI Prototyping & Spatial Agent Consulting](https://www.omo.sh/consulting): Work with Omo Research on voice-first AI, spatial agents, local AI systems, and focused human-agent interface prototypes.
+- [Voice-First & Spatial AI Product Directions](https://www.omo.sh/products): Explore Omo's product directions for voice-first agents, spatial AI interfaces, and local intelligence designed around human needs.
+- [Contact](https://www.omo.sh/contact): For any enquiries, email Omo Research at harrythentrepreneur@gmail.com.
+
+## Optional
+
+Research log entries, one per experiment:
+
+- [A ceiling AI](https://www.omo.sh/research/log/a-ceiling-ai): A hanging, physics-driven character that tracks you with its eye. Entry 46 of the Omo Research log.
+- [A dedicated one-chat agent](https://www.omo.sh/research/log/a-dedicated-one-chat-agent): A fresh agent in one thread. Used for one session. Entry 35 of the Omo Research log.
+- [A desk with a hologram](https://www.omo.sh/research/log/a-desk-with-a-hologram): Notes on a main desk, a big monitor of live data and a hologram in the corner. Entry 3 of the Omo Research log.
+- [A flock of ducks](https://www.omo.sh/research/log/a-flock-of-ducks): Up to eight ducks with names, personas and voices; talk to the one you look at. Entry 44 of the Omo Research log.
+- [A launch film](https://www.omo.sh/research/log/a-launch-film): A storyboard, an animatic and a film of the world. Entry 33 of the Omo Research log.
+- [A paper on what worked](https://www.omo.sh/research/log/a-paper-on-what-worked): Rooms, Not Windows: five days of streams, every quote checked. Entry 50 of the Omo Research log.
+- [A pirate ship](https://www.omo.sh/research/log/a-pirate-ship): One room per project, with screens that stay lit. Entry 36 of the Omo Research log.
+- [A pocket computer](https://www.omo.sh/research/log/a-pocket-computer): The terminal as an item you carry and type into. Entry 25 of the Omo Research log.
+- [A product spec for computers in Minecraft](https://www.omo.sh/research/log/a-product-spec-for-computers-in-minecraft): Computer block, terminal block, persistent web monitors. Entry 27 of the Omo Research log.
+- [A profile-pool fork](https://www.omo.sh/research/log/a-profile-pool-fork): Delegation that routes work to specialist agent profiles. Entry 22 of the Omo Research log.
+- [A robot lab, from one prompt](https://www.omo.sh/research/log/a-robot-lab-from-one-prompt): An underground lab built by an agent, live on stream. Entry 42 of the Omo Research log.
+- [A second user](https://www.omo.sh/research/log/a-second-user): Someone new to Hermes built his own world from the repository in about a day. Entry 49 of the Omo Research log.
+- [A shell in the chat app](https://www.omo.sh/research/log/a-shell-in-the-chat-app): A shell bot, to run commands from a chat channel. Entry 30 of the Omo Research log.
+- [A terminal channel](https://www.omo.sh/research/log/a-terminal-channel): Syncing the terminal chat and the chat app into one conversation. Entry 17 of the Omo Research log.
+- [A virtual office as the default interface](https://www.omo.sh/research/log/a-virtual-office-as-the-default-interface): Using a game office instead of a messaging app, every day. Entry 12 of the Omo Research log.
+- [A voice loop with captions](https://www.omo.sh/research/log/a-voice-loop-with-captions): Speak, see what it heard, hear the answer. The earliest voice interface. Entry 2 of the Omo Research log.
+- [A workspace map](https://www.omo.sh/research/log/a-workspace-map): A drawn map of every room in the chat server and how work moves between them. Entry 29 of the Omo Research log.
+- [Agents join as players](https://www.omo.sh/research/log/agents-join-as-players): Single-player worlds open to agents on the same computer. Entry 40 of the Omo Research log.
+- [Claude Code and Codex tabs](https://www.omo.sh/research/log/claude-code-and-codex-tabs): Any terminal can open Claude Code or Codex tabs, not just Hermes. On main, in the next release. Entry 48 of the Omo Research log.
+- [Microduck](https://www.omo.sh/research/log/microduck): An open-source robot duck, simulated in MuJoCo and walking on Minecraft blocks. Entry 43 of the Omo Research log.
+- [Minecraft with the best mods](https://www.omo.sh/research/log/minecraft-with-the-best-mods): Shaders, distant horizons, and fixing a ghosting bug one mod at a time. Entry 23 of the Omo Research log.
+- [Omo R1](https://www.omo.sh/research/log/omo-r1): An agent player you talk to out loud, with a Hermes brain and 22 tools. Entry 41 of the Omo Research log.
+- [omo.sh](https://www.omo.sh/research/log/omo-sh): The site: “The next interface isn't a chat window.” Entry 10 of the Omo Research log.
+- [Omo Space v1.2.0](https://www.omo.sh/research/log/omo-space-v1-2-0): The release: agents join as players, web walls with tabs and sound, macOS and Windows. Entry 47 of the Omo Research log.
+- [Omo Space](https://www.omo.sh/research/log/omo-space): Real AI agents at their own desks inside Minecraft. Entry 51 of the Omo Research log.
+- [Open-sourcing old projects](https://www.omo.sh/research/log/open-sourcing-old-projects): Audited and opened up earlier prototypes with clean READMEs. Entry 37 of the Omo Research log.
+- [Other people's setups](https://www.omo.sh/research/log/other-people-s-setups): Compared our setup with other builders' agent personas and stewardship flows. Entry 21 of the Omo Research log.
+- [Our own launcher](https://www.omo.sh/research/log/our-own-launcher): Our own launcher instead of a third-party one, in our own style. Entry 28 of the Omo Research log.
+- [Release candidate 1.1](https://www.omo.sh/research/log/release-candidate-1-1): Blocks, workspaces that survive, Hermes per desk, web monitors, remote walls. Entry 32 of the Omo Research log.
+- [Research into the next interface](https://www.omo.sh/research/log/research-into-the-next-interface): Writing down the question that became Omo Research. Entry 8 of the Omo Research log.
+- [Research posts](https://www.omo.sh/research/log/research-posts): A series of image posts: the world is the interface; voice, space, presence. Entry 11 of the Omo Research log.
+- [RP1 humanoid](https://www.omo.sh/research/log/rp1-humanoid): An open-source humanoid that walks, waves and dances in the world. Entry 45 of the Omo Research log.
+- [Smart glasses, on paper](https://www.omo.sh/research/log/smart-glasses-on-paper): “One pair, every environment”: on-device AI glasses and a small vision model for wearables. Entry 6 of the Omo Research log.
+- [Streaming the work](https://www.omo.sh/research/log/streaming-the-work): Using the world as the main workspace, live, every day. Entry 39 of the Omo Research log.
+- [The official desktop app](https://www.omo.sh/research/log/the-official-desktop-app): Got it installed, looked for a task board in it. Entry 13 of the Omo Research log.
+- [The Omo Ship](https://www.omo.sh/research/log/the-omo-ship): A vision document: a ship as the place where agents live and work. Entry 7 of the Omo Research log.
+- [The underground base](https://www.omo.sh/research/log/the-underground-base): One room per stage of a video pipeline, built from one prompt. Entry 38 of the Omo Research log.
+- [Voice-only control](https://www.omo.sh/research/log/voice-only-control): Running email, ads, files and agents by voice alone, on paper first. Entry 5 of the Omo Research log.
+- [Web pages on monitors](https://www.omo.sh/research/log/web-pages-on-monitors): Real web pages on in-game walls that stay where you put them. Entry 26 of the Omo Research log.
+
+Full text of the main pages for language models: https://www.omo.sh/llms-full.txt
