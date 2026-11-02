@@ -2,7 +2,7 @@
 import { execFileSync } from "node:child_process";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
-import { ROOT, SITE_ORIGIN, exists, productionPages } from "./lib.mjs";
+import { ROOT, SITE_ORIGIN, exists, productionPages, routeFor } from "./lib.mjs";
 
 const args = process.argv.slice(2);
 const valueAfter = (flag) => {
@@ -47,9 +47,9 @@ function changedFiles() {
 }
 
 function routeForIndex(file) {
-  if (file === "index.html") return "/";
-  if (file.endsWith("/index.html")) return `/${file.slice(0, -"/index.html".length)}`;
-  return "";
+  if (!file.endsWith(".html")) return "";
+  const route = routeFor(file);
+  return allPageUrls.includes(`${SITE_ORIGIN}${route}`) ? route : "";
 }
 
 function urlsForChanges(files) {

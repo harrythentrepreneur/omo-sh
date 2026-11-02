@@ -5,14 +5,413 @@
     <link>https://www.omo.sh/notes</link>
     <description>Notes on voice-first AI, spatial agents, local intelligence, and human-agent interaction.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 29 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://www.omo.sh/feed.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Thirteen Interfaces We Tried for Working with AI Agents | Omo Notes</title>
+      <title>Worlds, Not Windows · Omo Research whitepaper</title>
+      <link>https://www.omo.sh/papers/worlds-not-windows/whitepaper</link>
+      <guid isPermaLink="true">https://www.omo.sh/papers/worlds-not-windows/whitepaper</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Worlds, Not Windows. Spatially aware creative agentic interfaces: findings so far, from daily use of Omo Space.</description>
+    </item>
+    <item>
+      <title>Worlds, Not Windows: Spatial Agentic Interfaces | Omo Research</title>
+      <link>https://www.omo.sh/papers/worlds-not-windows</link>
+      <guid isPermaLink="true">https://www.omo.sh/papers/worlds-not-windows</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Findings so far from using Omo Space every day: AI agent sessions and live web pages given places in a Minecraft world. By Harrison Edwards, Omo Research.</description>
+    </item>
+    <item>
+      <title>Agents in a Minecraft world: Experiment 11 | Omo Research</title>
+      <link>https://www.omo.sh/research/agents-in-minecraft-world</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/agents-in-minecraft-world</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Agents as characters with homes, banners, and screens in a shared world. Experiment 11 of 13 in Omo Research&amp;#x27;s search for a better interface for AI agents.</description>
+    </item>
+    <item>
+      <title>Browser extension: Experiment 08 | Omo Research</title>
+      <link>https://www.omo.sh/research/browser-extension</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/browser-extension</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A community-built side panel that puts the agent next to the page. Experiment 08 of 13 in Omo Research&amp;#x27;s search for a better interface for AI agents.</description>
+    </item>
+    <item>
+      <title>Chat server as HQ: Experiment 05 | Omo Research</title>
+      <link>https://www.omo.sh/research/chat-server-hq</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/chat-server-hq</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A channel per agent, with an HQ room that sends work out and brings results back. Experiment 05 of 13 in Omo Research&amp;#x27;s search for a better interface for AI agents.</description>
+    </item>
+    <item>
+      <title>Glass desktop app: Experiment 10 | Omo Research</title>
+      <link>https://www.omo.sh/research/glass-desktop-app</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/glass-desktop-app</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>The same channels and threads, in a light glass window. Experiment 10 of 13 in Omo Research&amp;#x27;s search for a better interface for AI agents.</description>
+    </item>
+    <item>
+      <title>Holographic co-founder: Experiment 02 | Omo Research</title>
+      <link>https://www.omo.sh/research/holographic-cofounder</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/holographic-cofounder</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A voice-first assistant on a display on your desk, with charts in the air. Experiment 02 of 13 in Omo Research&amp;#x27;s search for a better interface for AI agents.</description>
+    </item>
+    <item>
+      <title>Kanban boards: Experiment 07 | Omo Research</title>
+      <link>https://www.omo.sh/research/kanban-boards</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/kanban-boards</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Watch agent tasks move across a board. Experiment 07 of 13 in Omo Research&amp;#x27;s search for a better interface for AI agents.</description>
+    </item>
+    <item>
+      <title>A ceiling AI | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-ceiling-ai</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-ceiling-ai</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A hanging, physics-driven character that tracks you with its eye. Entry 46 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A dedicated one-chat agent | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-dedicated-one-chat-agent</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-dedicated-one-chat-agent</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A fresh agent in one thread. Used for one session. Entry 35 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A desk with a hologram | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-desk-with-a-hologram</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-desk-with-a-hologram</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Notes on a main desk, a big monitor of live data and a hologram in the corner. Entry 3 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A flock of ducks | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-flock-of-ducks</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-flock-of-ducks</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Up to eight ducks with names, personas and voices; talk to the one you look at. Entry 44 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A launch film | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-launch-film</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-launch-film</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A storyboard, an animatic and a film of the world. Entry 33 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A paper on what worked | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-paper-on-what-worked</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-paper-on-what-worked</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Rooms, Not Windows: five days of streams, every quote checked. Entry 50 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A pirate ship | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-pirate-ship</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-pirate-ship</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>One room per project, with screens that stay lit. Entry 36 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A pocket computer | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-pocket-computer</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-pocket-computer</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>The terminal as an item you carry and type into. Entry 25 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A product spec for computers in Minecraft | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-product-spec-for-computers-in-minecraft</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-product-spec-for-computers-in-minecraft</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Computer block, terminal block, persistent web monitors. Entry 27 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A profile-pool fork | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-profile-pool-fork</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-profile-pool-fork</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Delegation that routes work to specialist agent profiles. Entry 22 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A robot lab, from one prompt | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-robot-lab-from-one-prompt</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-robot-lab-from-one-prompt</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>An underground lab built by an agent, live on stream. Entry 42 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A second user | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-second-user</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-second-user</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Someone new to Hermes built his own world from the repository in about a day. Entry 49 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A shell in the chat app | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-shell-in-the-chat-app</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-shell-in-the-chat-app</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A shell bot, to run commands from a chat channel. Entry 30 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A terminal channel | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-terminal-channel</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-terminal-channel</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Syncing the terminal chat and the chat app into one conversation. Entry 17 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A virtual office as the default interface | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-virtual-office-as-the-default-interface</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-virtual-office-as-the-default-interface</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Using a game office instead of a messaging app, every day. Entry 12 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A voice loop with captions | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-voice-loop-with-captions</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-voice-loop-with-captions</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Speak, see what it heard, hear the answer. The earliest voice interface. Entry 2 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>A workspace map | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/a-workspace-map</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/a-workspace-map</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A drawn map of every room in the chat server and how work moves between them. Entry 29 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Agents join as players | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/agents-join-as-players</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/agents-join-as-players</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Single-player worlds open to agents on the same computer. Entry 40 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Claude Code and Codex tabs | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/claude-code-and-codex-tabs</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/claude-code-and-codex-tabs</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Any terminal can open Claude Code or Codex tabs, not just Hermes. On main, in the next release. Entry 48 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Microduck | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/microduck</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/microduck</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>An open-source robot duck, simulated in MuJoCo and walking on Minecraft blocks. Entry 43 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Minecraft with the best mods | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/minecraft-with-the-best-mods</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/minecraft-with-the-best-mods</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Shaders, distant horizons, and fixing a ghosting bug one mod at a time. Entry 23 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Omo R1 | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/omo-r1</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/omo-r1</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>An agent player you talk to out loud, with a Hermes brain and 22 tools. Entry 41 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>omo.sh | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/omo-sh</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/omo-sh</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>The site: “The next interface isn&amp;#x27;t a chat window.” Entry 10 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Omo Space v1.2.0 | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/omo-space-v1-2-0</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/omo-space-v1-2-0</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>The release: agents join as players, web walls with tabs and sound, macOS and Windows. Entry 47 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Omo Space | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/omo-space</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/omo-space</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Real AI agents at their own desks inside Minecraft. Entry 51 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Open-sourcing old projects | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/open-sourcing-old-projects</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/open-sourcing-old-projects</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Audited and opened up earlier prototypes with clean READMEs. Entry 37 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Other people&amp;#x27;s setups | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/other-people-s-setups</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/other-people-s-setups</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Compared our setup with other builders&amp;#x27; agent personas and stewardship flows. Entry 21 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Our own launcher | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/our-own-launcher</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/our-own-launcher</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Our own launcher instead of a third-party one, in our own style. Entry 28 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Release candidate 1.1 | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/release-candidate-1-1</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/release-candidate-1-1</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Blocks, workspaces that survive, Hermes per desk, web monitors, remote walls. Entry 32 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Research into the next interface | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/research-into-the-next-interface</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/research-into-the-next-interface</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Writing down the question that became Omo Research. Entry 8 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Research posts | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/research-posts</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/research-posts</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A series of image posts: the world is the interface; voice, space, presence. Entry 11 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>RP1 humanoid | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/rp1-humanoid</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/rp1-humanoid</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>An open-source humanoid that walks, waves and dances in the world. Entry 45 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Smart glasses, on paper | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/smart-glasses-on-paper</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/smart-glasses-on-paper</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>“One pair, every environment”: on-device AI glasses and a small vision model for wearables. Entry 6 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Streaming the work | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/streaming-the-work</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/streaming-the-work</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Using the world as the main workspace, live, every day. Entry 39 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>The official desktop app | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/the-official-desktop-app</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/the-official-desktop-app</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Got it installed, looked for a task board in it. Entry 13 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>The Omo Ship | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/the-omo-ship</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/the-omo-ship</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A vision document: a ship as the place where agents live and work. Entry 7 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>The underground base | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/the-underground-base</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/the-underground-base</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>One room per stage of a video pipeline, built from one prompt. Entry 38 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Voice-only control | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/voice-only-control</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/voice-only-control</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Running email, ads, files and agents by voice alone, on paper first. Entry 5 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Web pages on monitors | Research Log | Omo Research</title>
+      <link>https://www.omo.sh/research/log/web-pages-on-monitors</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/log/web-pages-on-monitors</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Real web pages on in-game walls that stay where you put them. Entry 26 of the Omo Research log.</description>
+    </item>
+    <item>
+      <title>Minecraft as the interface: Experiment 12 | Omo Research</title>
+      <link>https://www.omo.sh/research/minecraft-as-interface</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/minecraft-as-interface</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A real terminal, a pocket computer, and live web pages inside the game. Experiment 12 of 13 in Omo Research&amp;#x27;s search for a better interface for AI agents.</description>
+    </item>
+    <item>
+      <title>Omo Space: Experiment 13 | Omo Research</title>
+      <link>https://www.omo.sh/research/omo-space</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/omo-space</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Real AI agents at their own desks inside Minecraft. Experiment 13 of 13 in Omo Research&amp;#x27;s search for a better interface for AI agents.</description>
+    </item>
+    <item>
+      <title>One chat that runs everything: Experiment 06 | Omo Research</title>
+      <link>https://www.omo.sh/research/one-chat</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/one-chat</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Talk to one agent; it delegates to the others and reports back. Experiment 06 of 13 in Omo Research&amp;#x27;s search for a better interface for AI agents.</description>
+    </item>
+    <item>
+      <title>Bodies in the Block World: Robots Inside Minecraft | Omo Research</title>
+      <link>https://www.omo.sh/research/robots</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/robots</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Working paper from Omo Research: a simulated Microduck, an RP1 humanoid, a ceiling AI and an agent player in one Minecraft world. What worked and what broke.</description>
+    </item>
+    <item>
+      <title>Status dashboard: Experiment 09 | Omo Research</title>
+      <link>https://www.omo.sh/research/status-dashboard</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/status-dashboard</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>The agent system as a dashboard instead of a conversation. Experiment 09 of 13 in Omo Research&amp;#x27;s search for a better interface for AI agents.</description>
+    </item>
+    <item>
+      <title>Talk to anything: Experiment 01 | Omo Research</title>
+      <link>https://www.omo.sh/research/talk-to-anything</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/talk-to-anything</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Point a phone at a mug, tap it, and talk to it. Experiment 01 of 13 in Omo Research&amp;#x27;s search for a better interface for AI agents.</description>
+    </item>
+    <item>
+      <title>Terminal workspace: Experiment 04 | Omo Research</title>
+      <link>https://www.omo.sh/research/terminal-workspace</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/terminal-workspace</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>One space per project, one tab per agent, all in a terminal. Experiment 04 of 13 in Omo Research&amp;#x27;s search for a better interface for AI agents.</description>
+    </item>
+    <item>
+      <title>Voice control from the phone: Experiment 03 | Omo Research</title>
+      <link>https://www.omo.sh/research/voice-from-the-phone</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/voice-from-the-phone</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Run a team of agents hands-free: catch up, post, and undo by voice. Experiment 03 of 13 in Omo Research&amp;#x27;s search for a better interface for AI agents.</description>
+    </item>
+    <item>
+      <title>Thirteen Interfaces We Tried for Working with AI Agents</title>
       <link>https://www.omo.sh/notes/interfaces-we-tried</link>
       <guid isPermaLink="true">https://www.omo.sh/notes/interfaces-we-tried</guid>
       <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
       <description>A field report from Omo Research: thirteen voice, screen, and world interfaces we built and used for working with AI agents, and what each one taught us.</description>
+    </item>
+    <item>
+      <title>Rooms, Not Windows: Spatial Agentic Interfaces | Omo Research</title>
+      <link>https://www.omo.sh/research/rooms-not-windows</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/rooms-not-windows</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Working paper from Omo Research: what happens when every AI agent gets a place? A five-day field study of Omo Space, agents at desks inside Minecraft.</description>
+    </item>
+    <item>
+      <title>Omo R1: An AI Agent Player in Your Minecraft World | Omo Research</title>
+      <link>https://www.omo.sh/research/omo-r1</link>
+      <guid isPermaLink="true">https://www.omo.sh/research/omo-r1</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Omo R1 joins your Minecraft world as a real player. Talk to him out loud; a Hermes agent plans the job and his body does it with 22 tools. Open source, MIT.</description>
     </item>
     <item>
       <title>Minecraft as an Interface for AI Agents | Omo Notes</title>

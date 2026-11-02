@@ -135,7 +135,7 @@ for (const page of pages) {
   }
   if (!JSON.stringify(schemas).includes(canonical)) fail(label, "JSON-LD does not reference the canonical URL");
   if (meta(page.html, "property", "og:type") === "article") {
-    if (!types.some((type) => ["Article", "BlogPosting", "TechArticle"].includes(type))) fail(label, "article page needs Article JSON-LD");
+    if (!types.some((type) => ["Article", "BlogPosting", "TechArticle", "ScholarlyArticle"].includes(type))) fail(label, "article page needs Article JSON-LD");
     for (const property of ["article:published_time", "article:modified_time"]) {
       if (!/^\d{4}-\d{2}-\d{2}(?:T.*)?$/.test(meta(page.html, "property", property))) fail(label, `missing or invalid ${property}`);
     }
@@ -149,7 +149,9 @@ for (const page of pages) {
     }
   }
 
-  for (const match of page.html.matchAll(/<a\b[^>]*href\s*=\s*(["'])(.*?)\1/gi)) {
+  // Ignore markup inside inline scripts (string templates are not links).
+  const markup = page.html.replace(/<script\b[\s\S]*?<\/script>/gi, "");
+  for (const match of markup.matchAll(/<a\b[^>]*href\s*=\s*(["'])(.*?)\1/gi)) {
     const href = match[2];
     if (!href || /^(?:https?:|mailto:|tel:|javascript:)/i.test(href)) continue;
     const url = new URL(href, `${SITE_ORIGIN}${page.route}`);

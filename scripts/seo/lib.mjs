@@ -11,7 +11,9 @@ const EXCLUDED_DIRECTORIES = new Set([
   "branding",
   "homepage-heroes",
   "node_modules",
+  "api",
   "scripts",
+  "seo",
   "sidebar-variants",
 ]);
 
@@ -24,22 +26,34 @@ export async function exists(file) {
   }
 }
 
+// Production pages: every indexable .html file. Vercel serves them with cleanUrls (about/index.html -> /about,
+// omo-space.html -> /omo-space). Pages marked noindex (legacy redirects, 404) are not production pages.
 async function walk(directory, output = []) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
-    if (entry.isDirectory() && EXCLUDED_DIRECTORIES.has(entry.name)) continue;
+    if (entry.isDirectory() && (EXCLUDED_DIRECTORIES.has(entry.name) || entry.name.startsWith("."))) continue;
     const fullPath = path.join(directory, entry.name);
     if (entry.isDirectory()) await walk(fullPath, output);
-    else if (entry.name === "index.html") output.push(fullPath);
+    else if (entry.name.endsWith(".html")) output.push(fullPath);
   }
   return output;
 }
 
+function isNoindex(html) {
+  return /<meta\b[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html);
+}
+
+export function routeFor(relative) {
+  if (relative === "index.html") return "/";
+  if (relative.endsWith("/index.html")) return `/${relative.slice(0, -"/index.html".length)}`;
+  return `/${relative.replace(/\.html$/, "")}`;
+}
+
 export async function productionPages() {
   const files = (await walk(ROOT)).sort();
-  return Promise.all(
+  const pages = await Promise.all(
     files.map(async (file) => {
       const relative = path.relative(ROOT, file).replaceAll(path.sep, "/");
-      const route = relative === "index.html" ? "/" : `/${relative.replace(/\/index\.html$/, "")}`;
+      const route = routeFor(relative);
       return {
         file,
         relative,
@@ -49,6 +63,7 @@ export async function productionPages() {
       };
     }),
   );
+  return pages.filter((page) => !isNoindex(page.html));
 }
 
 export function decodeEntities(value = "") {

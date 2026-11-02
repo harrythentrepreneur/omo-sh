@@ -31,48 +31,6 @@
   <meta name="twitter:description" content="Exploring voice-first AI, spatial agents, and local AI interfaces for more natural human-agent interaction." />
   <meta name="twitter:image" content="https://www.omo.sh/assets/og-card.png" />
   <meta name="twitter:image:alt" content="Omo Research — voice, space, and presence for human-agent interaction" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://www.omo.sh/#organization",
-        "name": "Omo Research",
-        "url": "https://www.omo.sh/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://www.omo.sh/assets/icon-512.png",
-          "width": 512,
-          "height": 512
-        },
-        "description": "Omo Research explores voice-first AI, spatial agents, local AI interfaces, and more natural forms of human-agent interaction.",
-        "email": "harrythentrepreneur@gmail.com",
-        "sameAs": ["https://github.com/omoresearch/omo-space"]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://www.omo.sh/#website",
-        "url": "https://www.omo.sh/",
-        "name": "Omo Research",
-        "alternateName": "Omo",
-        "description": "Voice-first AI, spatial agents, and local AI interface research.",
-        "publisher": { "@id": "https://www.omo.sh/#organization" },
-        "inLanguage": "en"
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://www.omo.sh/#webpage",
-        "url": "https://www.omo.sh/",
-        "name": "Omo Research — Voice, Space, Presence",
-        "isPartOf": { "@id": "https://www.omo.sh/#website" },
-        "about": { "@id": "https://www.omo.sh/#organization" },
-        "description": "Omo Research explores voice-first AI, spatial agents, and local AI interfaces.",
-        "inLanguage": "en"
-      }
-    ]
-  }
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" as="style" />
@@ -257,6 +215,116 @@
     }
   </style>
   <link rel="stylesheet" href="/theme.css" />
+  <script type="application/ld+json" id="omo-geo-ld">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://www.omo.sh/#organization",
+   "name": "Omo Research",
+   "alternateName": "Omo",
+   "url": "https://www.omo.sh/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.omo.sh/assets/icon-512.png",
+    "width": 512,
+    "height": 512
+   },
+   "image": "https://www.omo.sh/assets/og-card.png",
+   "description": "Omo Research builds and studies spatial interfaces for AI agents. Its main system, Omo Space, gives every long-running AI agent a desk in a shared Minecraft world, with real Hermes Agent, Claude Code, Codex or shell terminals on the walls.",
+   "email": "harrythentrepreneur@gmail.com",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "email": "harrythentrepreneur@gmail.com",
+    "url": "https://www.omo.sh/contact"
+   },
+   "knowsAbout": [
+    "AI agents",
+    "agentic interfaces",
+    "spatial computing",
+    "voice-first AI",
+    "Minecraft mods",
+    "human-agent interaction",
+    "MuJoCo robot simulation"
+   ],
+   "sameAs": [
+    "https://github.com/omoresearch",
+    "https://github.com/omoresearch/omo-space",
+    "https://www.twitch.tv/yiifannn"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://www.omo.sh/#website",
+   "url": "https://www.omo.sh/",
+   "name": "Omo Research",
+   "alternateName": "Omo",
+   "publisher": {
+    "@id": "https://www.omo.sh/#organization"
+   },
+   "inLanguage": "en"
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://www.omo.sh/#webpage",
+   "url": "https://www.omo.sh/",
+   "name": "Omo Research | Voice-First AI, Spatial Agents & Local AI",
+   "description": "Omo Research explores voice-first AI, spatial agents, and local AI interfaces through focused questions, prototypes, and an open research log.",
+   "isPartOf": {
+    "@id": "https://www.omo.sh/#website"
+   },
+   "publisher": {
+    "@id": "https://www.omo.sh/#organization"
+   },
+   "inLanguage": "en",
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://www.omo.sh/assets/og-card.png"
+   },
+   "about": {
+    "@id": "https://www.omo.sh/#organization"
+   },
+   "mainEntity": {
+    "@id": "https://www.omo.sh/#organization"
+   }
+  },
+  {
+   "@type": "SoftwareApplication",
+   "@id": "https://www.omo.sh/omo-space#software",
+   "name": "Omo Space",
+   "description": "Omo Space puts real AI agents at desks inside Minecraft. Placing a computer block starts a named workspace on your own PC (a Hermes Agent conversation, a Claude Code or Codex session, or a plain shell); its terminal is on the wall, real web pages run on monitors, and the sessions keep running after you quit the game. A Minecraft mod plus a small local service.",
+   "url": "https://www.omo.sh/omo-space",
+   "applicationCategory": "DeveloperApplication",
+   "applicationSubCategory": "Minecraft Java mod",
+   "operatingSystem": "Linux, macOS, Windows (WSL2)",
+   "softwareVersion": "1.2.0",
+   "dateModified": "2026-10-28",
+   "softwareRequirements": "Minecraft: Java Edition 26.2 account, Python 3.11+, about 2 GB free disk",
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "downloadUrl": "https://github.com/omoresearch/omo-space/releases/latest",
+   "releaseNotes": "https://github.com/omoresearch/omo-space/releases/tag/v1.2.0",
+   "image": "https://www.omo.sh/assets/og-card.png",
+   "author": {
+    "@id": "https://www.omo.sh/#organization"
+   },
+   "publisher": {
+    "@id": "https://www.omo.sh/#organization"
+   },
+   "sameAs": [
+    "https://github.com/omoresearch/omo-space"
+   ]
+  }
+ ]
+}
+  </script>
 </head>
 <body>
 
