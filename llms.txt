@@ -12,7 +12,7 @@ Key facts:
 
 ## Omo Space (the product)
 
-- [Omo Space: Real AI Agents at Desks in Minecraft](https://www.omo.sh/omo-space): Omo Space gives every AI agent a room in Minecraft: walk to it to find it, come back to resume, glance down the hall. Real Hermes, Claude Code, Codex and shell sessions.
+- [Omo Space — Give Your Agents a Place](https://www.omo.sh/omo-space): Give your AI agents a place, not another tab. Real terminals, live web pages and persistent agent workspaces inside Minecraft. Open source, on your computer.
 - [Omo Space Demo: The Whole Loop, Live (15 min)](https://www.omo.sh/demo): Watch the 15-minute, one-take Omo Space demo: rooms, agents at their desks, edit review, publishing, and a robotics lab built from one prompt.
 - [Omo Space: Experiment 13](https://www.omo.sh/research/omo-space): Real AI agents at their own desks inside Minecraft. Experiment 13 of 13 in Omo Research's search for a better interface for AI agents.
 
